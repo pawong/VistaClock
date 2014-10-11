@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="MZVistaClockAppDelegate">
+            <connections>
+                <outlet property="altcal" destination="voP-wI-1NQ" id="nho-BC-Qjq"/>
+                <outlet property="calendar" destination="VjI-6X-CtF" id="P6v-AE-GMn"/>
+                <outlet property="clockArrayController" destination="n32-YG-z2q" id="ZrS-BT-nJj"/>
+                <outlet property="clockCollectionView" destination="LE1-6V-Mkx" id="WHX-UI-SHT"/>
+                <outlet property="clockScrollView" destination="FM0-Ss-wrg" id="bcU-gq-8kU"/>
+                <outlet property="statusMenu" destination="XSr-wM-FQN" id="Ijs-x2-yPY"/>
+                <outlet property="timeNow" destination="umV-W3-GU5" id="gg3-AF-MbB"/>
+                <outlet property="titleTextLabel" destination="fyp-sb-JwW" id="UbH-z8-eNe"/>
+                <outlet property="vistaClockWindow" destination="QvC-M9-y7g" id="gGz-wa-Rv1"/>
+            </connections>
+        </customObject>
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" unifiedTitleAndToolbar="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES"/>
+            <windowPositionMask key="initialPositionMask" rightStrut="YES" topStrut="YES"/>
+            <rect key="contentRect" x="1100" y="750" width="374" height="204"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <view key="contentView" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="374" height="204"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <datePicker verticalHuggingPriority="750" id="voP-wI-1NQ">
+                        <rect key="frame" x="54" y="34" width="139" height="148"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <datePickerCell key="cell" alignment="left" datePickerStyle="clockAndCalendar" id="HJa-S2-5zt">
+                            <font key="font" metaFont="system"/>
+                            <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
+                                <!--1982-02-12 16:00:00 +0000-->
+                                <timeZone key="timeZone" name="US/Pacific"/>
+                            </calendarDate>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        </datePickerCell>
+                    </datePicker>
+                    <customView id="VjI-6X-CtF" customClass="MZCalendarControl">
+                        <rect key="frame" x="2" y="8" width="246" height="188"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                    </customView>
+                    <scrollView wantsLayer="YES" focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" id="FM0-Ss-wrg">
+                        <rect key="frame" x="245" y="8" width="128" height="188"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                        <clipView key="contentView" drawsBackground="NO" id="9AM-xQ-3zb">
+                            <rect key="frame" x="0.0" y="0.0" width="128" height="188"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <collectionView canDrawConcurrently="YES" focusRingType="none" selectable="YES" maxNumberOfRows="1" id="LE1-6V-Mkx">
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="188"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="primaryBackgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                    <connections>
+                                        <binding destination="n32-YG-z2q" name="content" keyPath="arrangedObjects" id="hg7-W1-dG2"/>
+                                        <binding destination="n32-YG-z2q" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="hg7-W1-dG2" id="19L-Tn-zPg"/>
+                                        <outlet property="itemPrototype" destination="k8k-gd-YvX" id="AKp-bi-Khh"/>
+                                    </connections>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ceW-iA-MbX">
+                            <rect key="frame" x="0.0" y="172" width="128" height="16"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hHM-KH-Q6U">
+                            <rect key="frame" x="-100" y="-100" width="15" height="334"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="10637D39-A2C7-411E-8650-48F66CAF536B" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="ogL-3j-zvl">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="291B8126-487C-40DB-AACC-430605A2501D" label="Title" paletteLabel="Title" id="hAg-Ry-6Rm">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="17"/>
+                        <size key="maxSize" width="259" height="32"/>
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fyp-sb-JwW">
+                            <rect key="frame" x="0.0" y="14" width="195" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="nG8-mt-JhT">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="uPV-UT-51W"/>
+                    <toolbarItem implicitItemIdentifier="FB690E92-6282-4D8B-946F-A5FEF379C849" label="Prefs" paletteLabel="Prefs" image="Gear_16x16x32" id="6tl-48-IMa" userLabel="Toolbar Item - Prefs">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="32" height="20"/>
+                        <size key="maxSize" width="42" height="30"/>
+                        <popUpButton key="view" id="9fl-c0-jVR">
+                            <rect key="frame" x="0.0" y="14" width="42" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" image="Gear_16x16x32" imagePosition="only" alignment="center" scrollable="YES" lineBreakMode="clipping" allowsMixedState="YES" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="EIt-bQ-bw5">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" title="OtherViews" id="v95-KR-9Yr">
+                                    <items>
+                                        <menuItem image="Gear_16x16x32" hidden="YES" enabled="NO" id="uaF-NI-thn"/>
+                                        <menuItem title="Launch Calendar" keyEquivalent="c" id="Z3Q-NG-vCt">
+                                            <connections>
+                                                <action selector="launchCalendar:" target="Voe-Tx-rLC" id="8ZS-rK-7ha"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Launch Reminders" keyEquivalent="r" id="G5R-EN-FqF">
+                                            <connections>
+                                                <action selector="launchReminders:" target="Voe-Tx-rLC" id="SdO-pH-em2"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="7Dz-oo-t9F"/>
+                                        <menuItem title="Preferences..." id="5Nx-Ji-vQO">
+                                            <connections>
+                                                <action selector="openPreferences:" target="Voe-Tx-rLC" id="dKe-Ve-adc"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Date &amp; Time Preferences..." id="dUs-xC-hxi">
+                                            <connections>
+                                                <action selector="launchDateTimePreferencePanel:" target="Voe-Tx-rLC" id="glG-E7-eCx"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="mGI-IO-O6y"/>
+                                        <menuItem title="Quit" keyEquivalent="q" id="qTV-wb-qaM">
+                                            <connections>
+                                                <action selector="terminate:" target="-1" id="fNW-GN-Rn1"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                        </popUpButton>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="hAg-Ry-6Rm"/>
+                    <toolbarItem reference="uPV-UT-51W"/>
+                    <toolbarItem reference="6tl-48-IMa"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="Tzp-WP-9Xo"/>
+            </connections>
+            <point key="canvasLocation" x="129.5" y="130"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="DgO-bJ-VFY"/>
+        <menu id="XSr-wM-FQN" userLabel="StatusItemMenu">
+            <items>
+                <menuItem title="TimeNow" enabled="NO" id="umV-W3-GU5">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="bC4-mR-D0y"/>
+                <menuItem title="About" id="fFX-OE-me3">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="launchAboutBoxPanel:" target="Voe-Tx-rLC" id="c0m-W9-Kkz"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Preferences..." id="lil-8S-hR0">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openPreferences:" target="Voe-Tx-rLC" id="GQa-Cg-Iuk"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Date &amp; Time Preferences..." id="qTD-JZ-Fq2">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="launchDateTimePreferencePanel:" target="Voe-Tx-rLC" id="k8W-rP-H2V"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="MfV-3f-rmU"/>
+                <menuItem title="Quit" keyEquivalent="q" id="RWT-xR-hd4">
+                    <connections>
+                        <action selector="terminate:" target="-1" id="7QA-LX-lU9"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="bWx-fm-8fM"/>
+            </connections>
+        </menu>
+        <arrayController id="n32-YG-z2q">
+            <connections>
+                <binding destination="Voe-Tx-rLC" name="contentArray" keyPath="clockCollectionArray" id="04I-Hd-3TL"/>
+            </connections>
+        </arrayController>
+        <collectionViewItem nibName="MZClockItem" id="k8k-gd-YvX" userLabel="Clock Item" customClass="MZClockItem"/>
+    </objects>
+    <resources>
+        <image name="Gear_16x16x32" width="16" height="16"/>
+    </resources>
+</document>
