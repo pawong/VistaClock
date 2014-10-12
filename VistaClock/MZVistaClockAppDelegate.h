@@ -59,6 +59,8 @@
 @property (strong) NSWindowController* prefsWindow;
 @property (assign) IBOutlet NSMenuItem* timeNow;
 
+
+// methods
 -(void) fireTimer: NSTimer;
 -(void) updateTime;
 -(int) addClock;

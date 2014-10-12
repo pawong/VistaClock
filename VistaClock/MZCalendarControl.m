@@ -787,7 +787,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     	retval = true;
 
 	return retval;
-}
+} // end HasEvents
 
 -(bool) HasReminders:(NSDate*) date
 {
@@ -813,7 +813,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }];
     
 	return remindersFound;
-}
+} // end HasReminders
 
 // With the observable keys set up above and the appropriate bindings in IB,
 // we can trigger UI updates just by signaling changes to the keys

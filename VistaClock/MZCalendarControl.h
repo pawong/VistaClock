@@ -47,7 +47,7 @@
     
     // calendar store
     EKEventStore* store;
-    bool remindersFound;
+    bool remindersFound; // global
 }
 
 -(void) setDate:(NSDate*) aDate;

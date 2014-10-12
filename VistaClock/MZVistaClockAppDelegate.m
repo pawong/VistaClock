@@ -81,7 +81,7 @@
         [self configureWindow];
     }
 
-    // use dark menus?
+    // use dark menus, and then force to update
     if ([self isDarkMenu] != darkMenu)
     {
         lastWeek = -1; // force redraw
