@@ -28,6 +28,9 @@
     [_vistaClockWindow setCollectionBehavior
         :NSWindowCollectionBehaviorCanJoinAllSpaces];
     
+    // only for 10.10 and beyond
+    //_vistaClockWindow.titleVisibility = NSWindowTitleHidden;
+    
     // should be yes, but make sure
     settings.needsDisplay = YES;
  
@@ -46,6 +49,12 @@
     // get the date
     lastDate = [[NSDate getDateNSDate:[NSDate date]] copy];
 
+    // dark menu, init
+    darkMenu = FALSE;
+
+    // get calendar access
+    [self getCalendarAccess];
+    
     // launch the timer last
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self 
         selector:@selector(fireTimer:) userInfo:nil repeats:YES];
@@ -70,6 +79,21 @@
     if (settings.needsDisplay == YES)
     {
         [self configureWindow];
+    }
+
+    // use dark menus?
+    if ([self isDarkMenu] != darkMenu)
+    {
+        lastWeek = -1; // force redraw
+        darkMenu = [self isDarkMenu];
+        if (darkMenu)
+        {
+            [statusItemView setDarkTheme:TRUE];
+        }
+        else
+        {
+            [statusItemView setDarkTheme:FALSE];
+        }
     }
 
     NSDate* now = [NSDate date];
@@ -143,7 +167,19 @@
             }
             NSPoint p = {x, 2};
             [weekImage lockFocus];
-            [weekString drawAtPoint:p withAttributes:nil];
+            
+            // switch font color for dark menus?
+            if ([self isDarkMenu] && settings.useBWWeekIcon == TRUE)
+            {
+                NSDictionary* attributes = [NSDictionary
+                    dictionaryWithObject:[NSColor whiteColor]
+                    forKey:NSForegroundColorAttributeName];
+                [weekString drawAtPoint:p withAttributes:attributes];
+            }
+            else
+            {
+                [weekString drawAtPoint:p withAttributes:nil];
+            }
             [weekImage unlockFocus];
             
             // update image
@@ -617,6 +653,43 @@
 } // end of openPreferences
 
 
+-(void) getCalendarAccess
+{
+    // get calendar access
+    store = [[EKEventStore alloc] init];
+    BOOL needsToRequestAccessToEventStore = NO; // iOS 5 behavior
+    EKAuthorizationStatus authorizationStatus = EKAuthorizationStatusAuthorized; // iOS 5 behavior
+    if ([[EKEventStore class] respondsToSelector:@selector(authorizationStatusForEntityType:)])
+    {
+        authorizationStatus = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent&EKEntityTypeEvent];
+        needsToRequestAccessToEventStore = (authorizationStatus == EKAuthorizationStatusNotDetermined);
+    }
+
+    if (needsToRequestAccessToEventStore)
+    {
+        [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error)
+        {
+            if (granted)
+            {
+                dispatch_async(dispatch_get_main_queue(),
+                ^{
+                    // You can use the event store now
+                });
+            }
+        }];
+    }
+    else if (authorizationStatus != EKAuthorizationStatusAuthorized)
+    {
+        // Access denied
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Access to calendar data has been denied!  Please enable access in System Preferences and restart NextEvent."];
+        [alert runModal];
+        // quit
+        [NSApp terminate:self];
+        
+    }
+} // end of getCalendarAccess
+
 -(IBAction)launchCalendar:(id)sender
 {
     [[NSWorkspace sharedWorkspace] launchApplication:@"iCal"];
@@ -628,5 +701,21 @@
     [[NSWorkspace sharedWorkspace] launchApplication:@"Reminders"];
 } // end of launchReminders
 
+
+-(bool) isDarkMenu
+{
+    bool retval = FALSE;
+    
+    // get the key
+    NSString* value = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    
+    // if got a key
+    if (value && [value compare:@"Dark"] == NSOrderedSame)
+    {
+        retval = TRUE;
+    }
+    
+    return retval;
+} // end of isDarkMenu
 
 @end

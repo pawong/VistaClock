@@ -1,6 +1,7 @@
 #import <AppKit/AppKit.h>
 #import "NSDate+Tools.h"
 #import <CalendarStore/CalendarStore.h>
+#import <EventKit/EKEventStore.h>
 
 //static int numberOfDayInMonthForYear(int aMonth,int aYear);
 
@@ -43,6 +44,10 @@
     NSDictionary* currentMonthAttributes;
     NSDictionary* selectedDayAttributes;
     NSDictionary* weekAttributes;
+    
+    // calendar store
+    EKEventStore* store;
+    bool remindersFound;
 }
 
 -(void) setDate:(NSDate*) aDate;

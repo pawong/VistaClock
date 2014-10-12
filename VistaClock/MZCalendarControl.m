@@ -49,6 +49,8 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         shadowColor = [[NSColor darkGrayColor] copy];
         shadow = [[NSShadow alloc] init];
         [self setStyle];
+        
+        store = [[EKEventStore alloc] init];
     }
     
     return self;
@@ -59,27 +61,14 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 {
 	// Register for notifications on calendars, events and tasks so we can
 	// update the GUI to reflect any changes beneath us
-/*	[[NSNotificationCenter defaultCenter] addObserver:self
-    	selector:@selector(calendarsChanged:)
-        name:CalCalendarsChangedExternallyNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-    	selector:@selector(calendarsChanged:)
-        name:CalCalendarsChangedNotification object:nil];
-	
-    [[NSNotificationCenter defaultCenter] addObserver:self
-    	selector:@selector(eventsChanged:)
-        name:CalEventsChangedExternallyNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-    	selector:@selector(eventsChanged:)
-    	name:CalEventsChangedNotification object:nil];
-	
-    [[NSNotificationCenter defaultCenter] addObserver:self
-    	selector:@selector(tasksChanged:)
-        name:CalTasksChangedExternallyNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-    	selector:@selector(tasksChanged:)
-        name:CalTasksChangedNotification object:nil];
-*/
+    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        if (granted) {
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                selector:@selector(calendarsChanged:)
+                name:EKEventStoreChangedNotification
+                object:nil];
+        }
+    }];
 }
 
 -(void) setDate:(NSDate*) aDate
@@ -780,64 +769,50 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 -(bool) HasEvents:(NSDate*) date
 {
 	bool retval = false;
-/*
+
     NSDateComponents* comps = [[NSCalendar currentCalendar]
     	components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
         fromDate: date];
     NSDate* startDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
     NSDate* endDate = [startDate dateByAddingTimeInterval: (24*60*60)-1];
     
-    NSPredicate *eventsForTheDay
-    	= [CalCalendarStore eventPredicateWithStartDate: date
-        endDate:endDate calendars:[[CalCalendarStore defaultCalendarStore]
-        calendars]];
+    // Create the predicate from the event store's instance method
+    NSPredicate *predicate = [store predicateForEventsWithStartDate:startDate
+        endDate:endDate calendars:nil];
     
-    
-    // Fetch all events for this year
-    NSArray *events = [[CalCalendarStore defaultCalendarStore]
-        eventsWithPredicate: eventsForTheDay];
+    // Fetch all events that match the predicate
+    NSArray *events = [store eventsMatchingPredicate:predicate];
     
     if ([events count] > 0)
     	retval = true;
-*/
+
 	return retval;
 }
 
 -(bool) HasReminders:(NSDate*) date
 {
-	bool retval = false;
-/*
+    remindersFound = FALSE;
+
     NSDateComponents* comps = [[NSCalendar currentCalendar]
     	components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
         fromDate: date];
         
     NSDate* startDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
     NSDate* endDate = [startDate dateByAddingTimeInterval:(24*60*60)-1];
+
+    // Create the predicate from the event store's instance method
+    NSPredicate *predicate
+        = [store predicateForIncompleteRemindersWithDueDateStarting:startDate
+        ending:endDate calendars:nil];
     
-    NSPredicate *remindersEndingThisDay = [CalCalendarStore
-        taskPredicateWithUncompletedTasksDueBefore: endDate
-        calendars:[[CalCalendarStore defaultCalendarStore] calendars]];
-        
-   	NSArray *reminders
-    	= [[CalCalendarStore defaultCalendarStore]
-        tasksWithPredicate: remindersEndingThisDay];
-    
-    int i;
-    for (i=0; i<[reminders count]; i++)
-    {
-        NSDateComponents* tempComp = [[NSCalendar currentCalendar]
-    		components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
-        	fromDate: [[reminders objectAtIndex:i] dueDate]];
-        NSDate* dueDate = [[NSCalendar currentCalendar]
-        	dateFromComponents:tempComp];
-        if ([dueDate isEqualToDate:startDate])
-        {
-            retval = true;
-            break;
+    // Fetch all events that match the predicate
+    [store fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders) {
+        if ([reminders count] > 0) {
+            self->remindersFound = TRUE;
         }
-    }
-*/
-	return retval;
+    }];
+    
+	return remindersFound;
 }
 
 // With the observable keys set up above and the appropriate bindings in IB,

@@ -12,6 +12,7 @@
 #import "MZCalendarControl.h"
 #import "MZVistaClockPreferences.h"
 #import <ServiceManagement/ServiceManagement.h>
+#import <EventKit/EKEventStore.h>
 #import "VCSettings.h"
 
 #define DATE_FORMAT_DAY_FULL            @"eeee"
@@ -50,6 +51,8 @@
     NSInteger lastWeek;
     NSString* lastCal;
     NSDate* lastDate;
+    bool darkMenu;
+    EKEventStore* store;
 }
 
 @property (assign) IBOutlet NSWindow *vistaClockWindow;
@@ -69,11 +72,14 @@
 -(IBAction) launchDateTimePreferencePanel:(id)sender;
 -(IBAction) openPreferences:(id)sender;
 
+
+-(void) getCalendarAccess;
 -(IBAction)launchCalendar:(id)sender;
 -(IBAction)launchReminders:(id)sender;
 
 -(NSString*) getCurrentCalendar;
 -(bool) isCalendarChanged;
+-(bool) isDarkMenu;
 
 @end
 

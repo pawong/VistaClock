@@ -6,22 +6,30 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>4B54B87E-4BD8-46FF-AFBD-E72EA9231078</string>
+	<key>IDESourceControlProjectName</key>
+	<string>VistaClock</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>16E3D76BE9638D2034CA9DB9067A215879AE884D</key>
+		<string>leto:VistaClock2</string>
 		<key>CE2BCAB29E630245988693A31E0B7EF403872B51</key>
 		<string>leto:VistaClock</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>VistaClock.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>16E3D76BE9638D2034CA9DB9067A215879AE884D</key>
+		<string>../..</string>
 		<key>CE2BCAB29E630245988693A31E0B7EF403872B51</key>
-		<string>VistaClock.old/</string>
+		<string>../../../VistaClock.old</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>leto:VistaClock</string>
+	<string>leto:VistaClock2</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CE2BCAB29E630245988693A31E0B7EF403872B51</string>
+	<string>16E3D76BE9638D2034CA9DB9067A215879AE884D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -31,6 +39,14 @@
 			<string>CE2BCAB29E630245988693A31E0B7EF403872B51</string>
 			<key>IDESourceControlWCCName</key>
 			<string>VistaClock.old</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>16E3D76BE9638D2034CA9DB9067A215879AE884D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>VistaClock2</string>
 		</dict>
 	</array>
 </dict>
