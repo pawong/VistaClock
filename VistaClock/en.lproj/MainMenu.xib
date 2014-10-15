@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
@@ -29,14 +29,15 @@
             <windowStyleMask key="styleMask" titled="YES" unifiedTitleAndToolbar="YES"/>
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES"/>
             <windowPositionMask key="initialPositionMask" rightStrut="YES" topStrut="YES"/>
-            <rect key="contentRect" x="1100" y="750" width="380" height="204"/>
+            <rect key="contentRect" x="935" y="750" width="380" height="204"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="380" height="204"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="voP-wI-1NQ">
-                        <rect key="frame" x="54" y="34" width="139" height="148"/>
+                    <datePicker verticalHuggingPriority="750" id="voP-wI-1NQ">
+                        <rect key="frame" x="58" y="28" width="139" height="148"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <datePickerCell key="cell" alignment="left" datePickerStyle="clockAndCalendar" id="HJa-S2-5zt">
                             <font key="font" metaFont="system"/>
                             <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
@@ -47,15 +48,13 @@
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         </datePickerCell>
                     </datePicker>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="VjI-6X-CtF" customClass="MZCalendarControl">
+                    <customView id="VjI-6X-CtF" customClass="MZCalendarControl">
                         <rect key="frame" x="8" y="8" width="246" height="188"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="188" id="D0M-Lb-hem"/>
-                            <constraint firstAttribute="width" constant="246" id="SuZ-tb-3Sa"/>
-                        </constraints>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <scrollView wantsLayer="YES" focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="FM0-Ss-wrg">
+                    <scrollView wantsLayer="YES" focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" id="FM0-Ss-wrg">
                         <rect key="frame" x="252" y="8" width="128" height="188"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="9AM-xQ-3zb">
                             <rect key="frame" x="0.0" y="0.0" width="128" height="188"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,17 +82,6 @@
                         </scroller>
                     </scrollView>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="VjI-6X-CtF" firstAttribute="bottom" secondItem="FM0-Ss-wrg" secondAttribute="bottom" id="0Rp-3o-JYy"/>
-                    <constraint firstItem="VjI-6X-CtF" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="8" id="7mG-l8-d2d"/>
-                    <constraint firstItem="voP-wI-1NQ" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="22" id="Jcz-Uv-qLo"/>
-                    <constraint firstItem="VjI-6X-CtF" firstAttribute="centerY" secondItem="EiT-Mj-1SZ" secondAttribute="centerY" id="OXb-TD-626"/>
-                    <constraint firstItem="VjI-6X-CtF" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="8" id="SuQ-Fp-IWV"/>
-                    <constraint firstItem="voP-wI-1NQ" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="54" id="X11-ts-Gdw"/>
-                    <constraint firstItem="FM0-Ss-wrg" firstAttribute="leading" secondItem="voP-wI-1NQ" secondAttribute="trailing" constant="59" id="ZgY-WZ-R1A"/>
-                    <constraint firstItem="FM0-Ss-wrg" firstAttribute="top" secondItem="VjI-6X-CtF" secondAttribute="top" id="fDk-ds-Ix8"/>
-                    <constraint firstAttribute="trailing" secondItem="FM0-Ss-wrg" secondAttribute="trailing" id="xpQ-zo-LSe"/>
-                </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="10637D39-A2C7-411E-8650-48F66CAF536B" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="ogL-3j-zvl">
                 <allowedToolbarItems>

@@ -62,6 +62,9 @@
     int clockFaceIndex;
     IBOutlet MZClockControl* clockPicker;
     NSMutableDictionary* timezones;
+    
+    IBOutlet NSTabView* tView;
+    bool canChangeTab;
 }
 
 -(IBAction) addClockConfig:(id)sender;

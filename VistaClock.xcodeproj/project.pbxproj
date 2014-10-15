@@ -69,23 +69,30 @@
 		132E0AB219D3211E00CC9CF6 /* MZClockConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */; };
 		132E0AE419D4CCF200CC9CF6 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132E0AE319D4CCF200CC9CF6 /* ServiceManagement.framework */; };
 		132E0AE619D4CD0000CC9CF6 /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132E0AE519D4CD0000CC9CF6 /* CalendarStore.framework */; };
-		132E0AEA19D4D35900CC9CF6 /* VistaClockLoginHelper.app in Resources */ = {isa = PBXBuildFile; fileRef = 132E0AE919D4D35900CC9CF6 /* VistaClockLoginHelper.app */; };
 		134E392019BA107B004FA01A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 134E391F19BA107B004FA01A /* Cocoa.framework */; };
 		134E392A19BA107B004FA01A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 134E392819BA107B004FA01A /* InfoPlist.strings */; };
 		134E392C19BA107B004FA01A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E392B19BA107B004FA01A /* main.m */; };
 		134E393019BA107B004FA01A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 134E392E19BA107B004FA01A /* Credits.rtf */; };
 		134E393319BA107B004FA01A /* MZVistaClockAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E393219BA107B004FA01A /* MZVistaClockAppDelegate.m */; };
-		134E393619BA107B004FA01A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134E393419BA107B004FA01A /* MainMenu.xib */; };
 		134E393819BA107B004FA01A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 134E393719BA107B004FA01A /* Images.xcassets */; };
 		134E3A0519BA1388004FA01A /* MZStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E39B919BA1388004FA01A /* MZStatusItemView.m */; };
 		134E3A0619BA1388004FA01A /* statusbarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 134E39BA19BA1388004FA01A /* statusbarIcon.png */; };
 		134E3A0719BA1388004FA01A /* statusbarIconBW.png in Resources */ = {isa = PBXBuildFile; fileRef = 134E39BB19BA1388004FA01A /* statusbarIconBW.png */; };
 		134E3A1019BA16A6004FA01A /* mazookie_name_tiny.png in Resources */ = {isa = PBXBuildFile; fileRef = 134E3A0E19BA16A6004FA01A /* mazookie_name_tiny.png */; };
 		134E3A1119BA16A6004FA01A /* VistaClock.icns in Resources */ = {isa = PBXBuildFile; fileRef = 134E3A0F19BA16A6004FA01A /* VistaClock.icns */; };
+		13A4EB4519ED9F5E0031D4DE /* VistaClockLoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 13C2705C19DB5577005A36DA /* VistaClockLoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */; };
 		13BEBE1C19C8EAC6009C7B76 /* VCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		13A4EB4719EDA0980031D4DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 132E0ADB19D4CBB600CC9CF6 /* VistaClockLoginHelper.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 13785DBA15D5385F00D9D1D3;
+			remoteInfo = VistaClockLoginHelper;
+		};
 		13C2705B19DB5577005A36DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 132E0ADB19D4CBB600CC9CF6 /* VistaClockLoginHelper.xcodeproj */;
@@ -96,12 +103,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		132E0AE819D4CEB700CC9CF6 /* CopyFiles */ = {
+		13A4EB4319ED9ED40031D4DE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Content/Library/LoginItems;
+			buildActionMask = 12;
+			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
+				13A4EB4519ED9F5E0031D4DE /* VistaClockLoginHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,7 +189,6 @@
 		132E0AE319D4CCF200CC9CF6 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		132E0AE519D4CD0000CC9CF6 /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
 		132E0AE719D4CDA600CC9CF6 /* VistaClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VistaClock.entitlements; sourceTree = "<group>"; };
-		132E0AE919D4D35900CC9CF6 /* VistaClockLoginHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; name = VistaClockLoginHelper.app; path = "/Users/pwong/Library/Developer/Xcode/DerivedData/VistaClock-dwypojlycnhwjmfntfmdqmqhcafv/Build/Products/Debug/VistaClockLoginHelper.app"; sourceTree = "<absolute>"; };
 		134E391C19BA107B004FA01A /* VistaClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VistaClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		134E391F19BA107B004FA01A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		134E392219BA107B004FA01A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -194,7 +201,6 @@
 		134E392F19BA107B004FA01A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		134E393119BA107B004FA01A /* MZVistaClockAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MZVistaClockAppDelegate.h; sourceTree = "<group>"; };
 		134E393219BA107B004FA01A /* MZVistaClockAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MZVistaClockAppDelegate.m; sourceTree = "<group>"; };
-		134E393519BA107B004FA01A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		134E393719BA107B004FA01A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		134E393E19BA107B004FA01A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		134E394519BA107B004FA01A /* VistaClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VistaClockTests-Info.plist"; sourceTree = "<group>"; };
@@ -206,6 +212,7 @@
 		134E39BB19BA1388004FA01A /* statusbarIconBW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusbarIconBW.png; sourceTree = "<group>"; };
 		134E3A0E19BA16A6004FA01A /* mazookie_name_tiny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazookie_name_tiny.png; sourceTree = "<group>"; };
 		134E3A0F19BA16A6004FA01A /* VistaClock.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = VistaClock.icns; sourceTree = "<group>"; };
+		13A4EB4E19EDA6E70031D4DE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSettings.m; sourceTree = "<group>"; };
 		13BEBE1B19C8EAC6009C7B76 /* VCSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSettings.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -282,7 +289,7 @@
 				134E39B919BA1388004FA01A /* MZStatusItemView.m */,
 				134E393119BA107B004FA01A /* MZVistaClockAppDelegate.h */,
 				134E393219BA107B004FA01A /* MZVistaClockAppDelegate.m */,
-				134E393419BA107B004FA01A /* MainMenu.xib */,
+				13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */,
 				1300F5CB19BCE700006E8FD9 /* MZClockItem.h */,
 				1300F5CC19BCE700006E8FD9 /* MZClockItem.m */,
 				1300F61619BCE9A5006E8FD9 /* MZClockItem.xib */,
@@ -305,6 +312,7 @@
 		134E392619BA107B004FA01A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				134E3A0F19BA16A6004FA01A /* VistaClock.icns */,
 				1300F5BF19BCE700006E8FD9 /* MBVCB01.png */,
 				1313723D19C386D300B65CDE /* move.png */,
 				1313723E19C386D300B65CDE /* delete.png */,
@@ -355,7 +363,6 @@
 				1300F5BD19BCE700006E8FD9 /* HWVCB01.png */,
 				1300F5AB19BCB8F8006E8FD9 /* Gear_16x16x32.png */,
 				134E3A0E19BA16A6004FA01A /* mazookie_name_tiny.png */,
-				134E3A0F19BA16A6004FA01A /* VistaClock.icns */,
 				134E392719BA107B004FA01A /* VistaClock-Info.plist */,
 				134E39BA19BA1388004FA01A /* statusbarIcon.png */,
 				134E392819BA107B004FA01A /* InfoPlist.strings */,
@@ -403,11 +410,12 @@
 				134E391819BA107B004FA01A /* Sources */,
 				134E391919BA107B004FA01A /* Frameworks */,
 				134E391A19BA107B004FA01A /* Resources */,
-				132E0AE819D4CEB700CC9CF6 /* CopyFiles */,
+				13A4EB4319ED9ED40031D4DE /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				13A4EB4819EDA0980031D4DE /* PBXTargetDependency */,
 			);
 			name = VistaClock;
 			productName = VistaClock;
@@ -479,6 +487,7 @@
 				1300F5FA19BCE700006E8FD9 /* MVCW07.png in Resources */,
 				1300F5FC19BCE700006E8FD9 /* MWVCB01.png in Resources */,
 				1300F5E819BCE700006E8FD9 /* DVCW03.png in Resources */,
+				13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */,
 				134E3A0619BA1388004FA01A /* statusbarIcon.png in Resources */,
 				1300F60519BCE700006E8FD9 /* SVCW05.png in Resources */,
 				1300F60819BCE700006E8FD9 /* SWVCB01.png in Resources */,
@@ -510,7 +519,6 @@
 				1300F5EA19BCE700006E8FD9 /* DVCW07.png in Resources */,
 				1300F60419BCE700006E8FD9 /* SVCW03.png in Resources */,
 				1300F5ED19BCE700006E8FD9 /* HBVCB01.png in Resources */,
-				132E0AEA19D4D35900CC9CF6 /* VistaClockLoginHelper.app in Resources */,
 				1300F60D19BCE700006E8FD9 /* VCB02.png in Resources */,
 				1313724119C386D300B65CDE /* move.png in Resources */,
 				134E393819BA107B004FA01A /* Images.xcassets in Resources */,
@@ -532,7 +540,6 @@
 				1300F5F319BCE700006E8FD9 /* HVCW08.png in Resources */,
 				1300F5F919BCE700006E8FD9 /* MVCW05.png in Resources */,
 				1300F60E19BCE700006E8FD9 /* VCB06.png in Resources */,
-				134E393619BA107B004FA01A /* MainMenu.xib in Resources */,
 				1300F60319BCE700006E8FD9 /* SVCB06.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,6 +568,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		13A4EB4819EDA0980031D4DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VistaClockLoginHelper;
+			targetProxy = 13A4EB4719EDA0980031D4DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		134E392819BA107B004FA01A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -578,20 +593,20 @@
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		134E393419BA107B004FA01A /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				134E393519BA107B004FA01A /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		134E394619BA107B004FA01A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				134E394719BA107B004FA01A /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13A4EB4E19EDA6E70031D4DE /* en */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -614,7 +629,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -675,6 +690,7 @@
 				CODE_SIGN_ENTITLEMENTS = VistaClock/VistaClock.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClock/VistaClock-Prefix.pch";
 				INFOPLIST_FILE = "VistaClock/VistaClock-Info.plist";
@@ -690,6 +706,7 @@
 				CODE_SIGN_ENTITLEMENTS = VistaClock/VistaClock.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClock/VistaClock-Prefix.pch";
 				INFOPLIST_FILE = "VistaClock/VistaClock-Info.plist";

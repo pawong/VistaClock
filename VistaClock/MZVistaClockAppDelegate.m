@@ -472,8 +472,10 @@
         [calendar setColor:[NSColor blackColor]];
     }
     
+    // resize the panel
+    [self resizeWindow];
     
-    // add clocks from config
+    // add clocks from config last
     int cnt = (int)[settings clockConfigs].count;
     for (int i=0; i<cnt; i++)
     {
@@ -490,10 +492,7 @@
                 militaryTime:settings.useMilitary];
         }
     }
-    
-    // resize the panel
-    [self resizeWindow];
-    
+
     // done painting
     settings.needsDisplay = NO;
 } // end of configureWindow
@@ -505,8 +504,8 @@
     
     int clockSize = 0;
     int maxSize = screenRect.size.width;
-    
-    for (long i=0; i<clockCollectionArray.count; i++)
+
+    for (long i=0; i<[settings.clockConfigs count]; i++)
     {
         if (clockSize+(2*128) > maxSize)
             break;
@@ -518,13 +517,13 @@
     
     int windowSize = 0;
     // show calendar?
-    if (!settings.showCalendar && clockCollectionArray.count > 0)
+    if (!settings.showCalendar && [settings.clockConfigs count] > 0)
     {
         [calendar setHidden:TRUE];
         [altcal setHidden:TRUE];
-        [clockScrollView setFrameOrigin:NSMakePoint(10, 10)];
+        [clockScrollView setFrameOrigin:NSMakePoint(8, 8)];
         [clockScrollView setNeedsDisplay:TRUE];
-        windowSize = 20;
+        windowSize = 16;
     }
     else // no clocks means you have to have a calendar
     {
@@ -538,11 +537,11 @@
             [calendar setHidden:TRUE];
             [altcal setHidden:FALSE];
         }
-        [clockScrollView setFrameOrigin:NSMakePoint(252, 10)];
+        [clockScrollView setFrameOrigin:NSMakePoint(254, 8)];
         [clockScrollView setNeedsDisplay:TRUE];
-        [calendar setFrameOrigin:NSMakePoint(10, 10)];
+        [calendar setFrameOrigin:NSMakePoint(8, 8)];
         [calendar setNeedsDisplay:TRUE];
-        windowSize = 258;
+        windowSize = 262;
     }
     
     windowSize += clockSize;

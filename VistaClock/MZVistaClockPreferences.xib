@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
     </dependencies>
     <objects>
@@ -22,7 +21,7 @@
                 <outlet property="showStatusWeekDayCB" destination="hkX-Cj-Ahr" id="UII-7R-yyi"/>
                 <outlet property="showWeekNumberIconCB" destination="OOm-jc-yQv" id="YfO-rz-JTX"/>
                 <outlet property="showWeekNumbersCB" destination="v0f-Ke-l35" id="bON-vo-uje"/>
-                <outlet property="tabView" destination="g9X-nT-gdv" id="VOc-gY-D8k"/>
+                <outlet property="tView" destination="g9X-nT-gdv" id="ywr-la-3wZ"/>
                 <outlet property="timezoneButton" destination="Fhg-LT-ngF" id="l4p-5i-F5e"/>
                 <outlet property="titleField" destination="vFe-SP-fYv" id="2AY-II-t5q"/>
                 <outlet property="useAutoHideCB" destination="UvR-hq-60Q" id="A88-hH-TGI"/>
@@ -473,6 +472,9 @@
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="D4b-xb-Kr5"/>
+                        </connections>
                     </tabView>
                     <button verticalHuggingPriority="750" id="lv3-ZU-X7O">
                         <rect key="frame" x="262" y="521" width="86" height="32"/>
