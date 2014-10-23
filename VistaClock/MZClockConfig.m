@@ -23,7 +23,8 @@
 
 -(id) initWithCoder:(NSCoder*) decoder
 {
-    if (self == [super init])
+    self = [super init];
+    if (self)
     {
         title = [decoder decodeObjectForKey:@"title"];
         timezoneName = [decoder decodeObjectForKey:@"timezone"];

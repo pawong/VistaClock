@@ -66,6 +66,7 @@
 -(int) addClock;
 -(void) removeClock;
 -(void) resizeWindow;
+-(float) titleBarHeight;
 -(NSString*) buildStatusItemDateFormatString;
 
 -(void) createStatusItem;

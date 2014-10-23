@@ -29,7 +29,8 @@
         :NSWindowCollectionBehaviorCanJoinAllSpaces];
     
     // only for 10.10 and beyond
-    //_vistaClockWindow.titleVisibility = NSWindowTitleHidden;
+    _vistaClockWindow.titleVisibility = NSWindowTitleHidden;
+    
     
     // should be yes, but make sure
     settings.needsDisplay = YES;
@@ -505,16 +506,6 @@
     int clockSize = 0;
     int maxSize = screenRect.size.width;
 
-    for (long i=0; i<[settings.clockConfigs count]; i++)
-    {
-        if (clockSize+(2*128) > maxSize)
-            break;
-        clockSize+=128;
-    }
-    NSRect clockFrame = [clockScrollView frame];
-    clockFrame.size.width = clockSize;
-    [clockScrollView setFrame:clockFrame];
-    
     int windowSize = 0;
     // show calendar?
     if (!settings.showCalendar && [settings.clockConfigs count] > 0)
@@ -544,13 +535,37 @@
         windowSize = 262;
     }
     
+    for (long i=0; i<[settings.clockConfigs count]; i++)
+    {
+        if (clockSize+128+windowSize > maxSize)
+            break;
+        clockSize+=128;
+    }
+    
+    NSRect clockFrame = [clockScrollView frame];
+    clockFrame.size.width = clockSize;
+    [clockScrollView setFrame:clockFrame];
+    
     windowSize += clockSize;
     
     NSRect frame = [_vistaClockWindow frame];
     frame.size.width = windowSize;
+    frame.size.height = 216 + [self titleBarHeight]; // set always
     [_vistaClockWindow setFrame:frame display:YES animate:YES];
 } // end of resizeWindow
 
+
+-(float) titleBarHeight
+{
+    NSRect frame = NSMakeRect (0, 0, 100, 100);
+
+    NSRect contentRect;
+    contentRect = [NSWindow contentRectForFrameRect: frame
+                            styleMask: NSTitledWindowMask];
+
+    return (frame.size.height - contentRect.size.height);
+
+} // titleBarHeight
 
 // build StatusItem DateFormat String
 -(NSString*) buildStatusItemDateFormatString

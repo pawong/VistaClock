@@ -296,7 +296,7 @@
     
     // Draw the clock face (draw it flipped if we are in a flipped view
     // , like NSMatrix).
-    [clockFaceImage setFlipped:[controlView isFlipped]];
+    // [clockFaceImage setFlipped:[controlView isFlipped]]; // deprecated 10.6
     [clockFaceImage drawInRect:NSMakeRect(NSMinX(cellFrame), NSMinY(cellFrame)
         , clockDiameter, clockDiameter) fromRect:NSMakeRect( 0, 0
         , [clockFaceImage size].width

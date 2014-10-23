@@ -262,7 +262,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClockLoginHelper/VistaClockLoginHelper-Prefix.pch";
 				INFOPLIST_FILE = "VistaClockLoginHelper/VistaClockLoginHelper-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -276,11 +276,10 @@
 				CODE_SIGN_ENTITLEMENTS = VistaClockLoginHelper/VistaClockLoginHelper.entitlements;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Mazookie, LLC";
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClockLoginHelper/VistaClockLoginHelper-Prefix.pch";
 				INFOPLIST_FILE = "VistaClockLoginHelper/VistaClockLoginHelper-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
