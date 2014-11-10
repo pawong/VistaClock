@@ -58,11 +58,13 @@
     
     // initials window settings
     [self initSettings];
-    
-    canChangeTab = false;
+
     [addClockButton setEnabled:FALSE];
+    
+    // no more delay
     //[self updateClockConfigArray];
-    [self performSelector:@selector(updateClockConfigArray) withObject:nil afterDelay:2.0];
+    // delay
+    [self performSelector:@selector(updateClockConfigArray) withObject:nil afterDelay:0.25];
     
 } // end windowDidLoad
 
@@ -173,7 +175,6 @@
         [self addClockConfig:item.title timezone:item.timezoneName useSeconds:item.useSeconds];
     }
     [addClockButton setEnabled:TRUE];
-    canChangeTab = TRUE;
 } // end updateClockConfigArray
     
 
@@ -367,17 +368,6 @@
     [clockPicker setTime: [NSDate date]];
 } // end of updateClockPicker
 
-
--(bool) tabView: (NSTabView*)tabView shouldSelectTabViewItem: (NSTabViewItem*)tabViewItem
-{
-    //NSLog(@"shouldSelectTabViewItem to %ld!\n", [tabView indexOfTabViewItem: tabViewItem]);
-    // don't change til config is fixed up.
-    if (canChangeTab == TRUE)
-    {
-        return TRUE;
-    }
-    return FALSE;
-} // end shouldSelectTabViewItem
 
 // -----------------------------------------------------------------------------
 // code to add item to start on launch

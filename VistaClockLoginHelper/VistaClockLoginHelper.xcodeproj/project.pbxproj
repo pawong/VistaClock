@@ -13,6 +13,7 @@
 		13785DD015D5385F00D9D1D3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 13785DCE15D5385F00D9D1D3 /* Credits.rtf */; };
 		13785DD315D5385F00D9D1D3 /* MZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13785DD215D5385F00D9D1D3 /* MZAppDelegate.m */; };
 		13785DD615D5385F00D9D1D3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13785DD415D5385F00D9D1D3 /* MainMenu.xib */; };
+		13E6A9231A060C4800551CE4 /* mazookie_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 13E6A9221A060C4800551CE4 /* mazookie_icon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		13785DD215D5385F00D9D1D3 /* MZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MZAppDelegate.m; sourceTree = "<group>"; };
 		13785DD515D5385F00D9D1D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13785DE315D53B9E00D9D1D3 /* VistaClockLoginHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VistaClockLoginHelper.entitlements; sourceTree = "<group>"; };
+		13E6A9221A060C4800551CE4 /* mazookie_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = mazookie_icon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				13785DC715D5385F00D9D1D3 /* VistaClockLoginHelper-Info.plist */,
+				13E6A9221A060C4800551CE4 /* mazookie_icon.icns */,
 				13785DC815D5385F00D9D1D3 /* InfoPlist.strings */,
 				13785DCB15D5385F00D9D1D3 /* main.m */,
 				13785DCD15D5385F00D9D1D3 /* VistaClockLoginHelper-Prefix.pch */,
@@ -156,6 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13E6A9231A060C4800551CE4 /* mazookie_icon.icns in Resources */,
 				13785DCA15D5385F00D9D1D3 /* InfoPlist.strings in Resources */,
 				13785DD015D5385F00D9D1D3 /* Credits.rtf in Resources */,
 				13785DD615D5385F00D9D1D3 /* MainMenu.xib in Resources */,

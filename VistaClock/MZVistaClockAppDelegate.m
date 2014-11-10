@@ -28,9 +28,25 @@
     [_vistaClockWindow setCollectionBehavior
         :NSWindowCollectionBehaviorCanJoinAllSpaces];
     
-    // only for 10.10 and beyond
-    _vistaClockWindow.titleVisibility = NSWindowTitleHidden;
     
+    // get the mac os x version
+    NSDictionary* systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:
+        @"/System/Library/CoreServices/SystemVersion.plist"];
+
+    NSString* systemVersion =
+        [systemVersionDictionary objectForKey:@"ProductVersion"];
+    if ([systemVersion compare:@"10.9" options:NSNumericSearch] >= NSOrderedSame)
+    {
+        // only for 10.9 and beyond
+        // get calendar access
+        [self getCalendarAccess];
+    }
+    if ([systemVersion compare:@"10.10" options:NSNumericSearch] >= NSOrderedSame)
+    {
+        // only for 10.10 and beyond
+        _vistaClockWindow.titleVisibility = NSWindowTitleHidden;
+        //_vistaClockWindow.titlebarAppearsTransparent = TRUE;
+    }
     
     // should be yes, but make sure
     settings.needsDisplay = YES;
@@ -52,9 +68,6 @@
 
     // dark menu, init
     darkMenu = FALSE;
-
-    // get calendar access
-    [self getCalendarAccess];
     
     // launch the timer last
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self 
@@ -550,22 +563,37 @@
     
     NSRect frame = [_vistaClockWindow frame];
     frame.size.width = windowSize;
-    frame.size.height = 216 + [self titleBarHeight]; // set always
+    frame.size.height = 204 + [self titleBarHeight:_vistaClockWindow] + [self toolbarHeight:_vistaClockWindow]; // set always
     [_vistaClockWindow setFrame:frame display:YES animate:YES];
 } // end of resizeWindow
 
 
--(float) titleBarHeight
+-(CGFloat) titleBarHeight:(NSWindow*) window
 {
-    NSRect frame = NSMakeRect (0, 0, 100, 100);
+    CGFloat titleBarHeight = 0.0;
+    NSRect frame = [window frame];
 
     NSRect contentRect;
-    contentRect = [NSWindow contentRectForFrameRect: frame
-                            styleMask: NSTitledWindowMask];
+    contentRect = [NSWindow contentRectForFrameRect: frame styleMask: window.styleMask];
 
-    return (frame.size.height - contentRect.size.height);
-
+    titleBarHeight = frame.size.height - contentRect.size.height;
+    return titleBarHeight;
 } // titleBarHeight
+
+-(CGFloat) toolbarHeight:(NSWindow*) window
+{
+    NSToolbar *toolbar = [window toolbar];
+    CGFloat toolbarHeight = 0.0;
+    NSRect windowFrame;
+
+    if (toolbar && [toolbar isVisible]) {
+        windowFrame = [NSWindow contentRectForFrameRect:[window frame]
+                                                  styleMask:[window styleMask]];
+        toolbarHeight = NSHeight(windowFrame) - 
+                        NSHeight([[window contentView] frame]);
+    }
+    return toolbarHeight;
+} // end toolbarHeight
 
 // build StatusItem DateFormat String
 -(NSString*) buildStatusItemDateFormatString

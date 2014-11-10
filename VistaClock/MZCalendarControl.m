@@ -59,16 +59,26 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 
 -(void) awakeFromNib
 {
-	// Register for notifications on calendars, events and tasks so we can
-	// update the GUI to reflect any changes beneath us
-    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
-        if (granted) {
-            [[NSNotificationCenter defaultCenter] addObserver:self
-                selector:@selector(calendarsChanged:)
-                name:EKEventStoreChangedNotification
-                object:nil];
-        }
-    }];
+    NSDictionary* systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:
+        @"/System/Library/CoreServices/SystemVersion.plist"];
+
+    NSString* systemVersion =
+        [systemVersionDictionary objectForKey:@"ProductVersion"];
+    
+    
+    if ([systemVersion compare:@"10.9" options:NSNumericSearch] >= NSOrderedSame)
+    {
+        // Register for notifications on calendars, events and tasks so we can
+        // update the GUI to reflect any changes beneath us
+        [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+            if (granted) {
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                    selector:@selector(calendarsChanged:)
+                    name:EKEventStoreChangedNotification
+                    object:nil];
+            }
+        }];
+    }
 }
 
 -(void) setDate:(NSDate*) aDate
