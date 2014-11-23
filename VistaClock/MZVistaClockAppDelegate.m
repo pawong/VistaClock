@@ -46,6 +46,8 @@
         // only for 10.10 and beyond
         _vistaClockWindow.titleVisibility = NSWindowTitleHidden;
         //_vistaClockWindow.titlebarAppearsTransparent = TRUE;
+        //NSAppearance* appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+        //[_vistaClockWindow setAppearance:appearance];
     }
     
     // should be yes, but make sure
@@ -724,7 +726,7 @@
     {
         // Access denied
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Access to calendar data has been denied!  Please enable access in System Preferences and restart NextEvent."];
+        [alert setMessageText:@"Access to calendar data has been denied!  Please enable access in System Preferences and restart VistaClock."];
         [alert runModal];
         // quit
         [NSApp terminate:self];
