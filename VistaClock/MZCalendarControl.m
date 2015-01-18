@@ -801,7 +801,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 
 -(bool) HasReminders:(NSDate*) date
 {
-    remindersFound = FALSE;
+    __block bool remindersFound = FALSE;
 
     NSDateComponents* comps = [[NSCalendar currentCalendar]
     	components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
@@ -815,12 +815,17 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         = [store predicateForIncompleteRemindersWithDueDateStarting:startDate
         ending:endDate calendars:nil];
     
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    
     // Fetch all events that match the predicate
     [store fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders) {
         if ([reminders count] > 0) {
-            self->remindersFound = TRUE;
+            remindersFound = TRUE;
         }
+        dispatch_semaphore_signal(sema);
     }];
+    
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     
 	return remindersFound;
 } // end HasReminders
