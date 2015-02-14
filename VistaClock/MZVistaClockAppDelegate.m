@@ -301,8 +301,8 @@
         NSTimeInterval secondsBetween = [selectedDate timeIntervalSinceDate:[NSDate getDateNSDate:now]];
         
         [doyLabel setStringValue:[selectedDate getDayOfYearString]];
-        [dayIntervalLabel setStringValue:[[NSString alloc] initWithFormat:@"%d"
-            , (int)secondsBetween/86400]];
+        [dayIntervalLabel setStringValue:[[NSString alloc] initWithFormat:@"%ld"
+            , (long)secondsBetween/86400]];
     }
     
 } // end of updateTime
