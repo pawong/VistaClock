@@ -208,7 +208,17 @@
     [showStatusAMPMCB setState:settings.showStatusAMPM];
     [showStatusWeekDayCB setState:settings.showStatusWeekDay];
     [showStatusDateCB setState:settings.showStatusDate];
+    [showStatusFullMonthCB setState:settings.showStatusFullMonth];
     [showStatusSecondaryTimeCB setState:settings.showStatusSecondaryTime];
+    NSArray* tz = [timezones allKeysForObject:settings.statusSecondaryTimezone];
+    if ([tz count] > 0)
+    {
+        [statusTimezoneButton selectItemWithTitle:[tz objectAtIndex:0]];
+    }
+    else
+    {
+        [statusTimezoneButton selectItemAtIndex:0];
+    }
     
     // clock settings
     [useMilitaryCB setState:settings.useMilitary];
@@ -222,8 +232,11 @@
     [showRemindersCB setState:settings.showReminders];
     [showCalendarBoxesCB setState:settings.showCalendarBoxes];
     
-    // disable black and white icon
+    // disable status
     [useBWWeekIconCB setEnabled:settings.showWeekNumberIcon];
+    [showStatusAMPMCB setEnabled:!settings.useStatusMilitary];
+    [showStatusFullMonthCB setEnabled:settings.showStatusDate];
+    [statusTimezoneButton setEnabled:settings.showStatusSecondaryTime];
     
     // disable keep on top
     [useKeepTopCB setEnabled:!settings.useAutoHide];
@@ -257,7 +270,9 @@
     settings.showStatusAMPM = ([showStatusAMPMCB state] == NSOnState)?YES:NO;
     settings.showStatusWeekDay = ([showStatusWeekDayCB state] == NSOnState)?YES:NO;
     settings.showStatusDate = ([showStatusDateCB state] == NSOnState)?YES:NO;
+    settings.showStatusFullMonth = ([showStatusFullMonthCB state] == NSOnState)?YES:NO;
     settings.showStatusSecondaryTime = ([showStatusSecondaryTimeCB state] == NSOnState)?YES:NO;
+    settings.statusSecondaryTimezone = [timezones objectForKey:[statusTimezoneButton titleOfSelectedItem]];
     
     // clock settings
     settings.useMilitary = ([useMilitaryCB state] == NSOnState)?YES:NO;
@@ -271,8 +286,11 @@
     settings.showCalendarBoxes = ([showCalendarBoxesCB state] == NSOnState)?YES:NO;
     
     // update view
-    // disable black and white icon
+    // disable status options
+    [showStatusAMPMCB setEnabled:!settings.useStatusMilitary];
     [useBWWeekIconCB setEnabled:settings.showWeekNumberIcon];
+    [showStatusFullMonthCB setEnabled:settings.showStatusDate];
+    [statusTimezoneButton setEnabled:settings.showStatusSecondaryTime];
     
     // disable keep on top
     [useKeepTopCB setEnabled:!settings.useAutoHide];

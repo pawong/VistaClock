@@ -11,6 +11,7 @@
 @implementation MZVistaClockAppDelegate
 
 @synthesize prefsWindow;
+@synthesize dateDrawer;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -213,11 +214,11 @@
     {
         NSDateFormatter* title1DateFormat = [[NSDateFormatter alloc] init];
         [title1DateFormat setDateFormat:DATE_FORMAT_TIMEZONE_DAY];
-        [title1DateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+        [title1DateFormat setTimeZone:[NSTimeZone timeZoneWithName:settings.statusSecondaryTimezone]];
         NSString* title1 = [title1DateFormat stringFromDate:now];
         NSDateFormatter* title2DateFormat = [[NSDateFormatter alloc] init];
         [title2DateFormat setDateFormat:TIME_FORMAT_NORMAL];
-        [title2DateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+        [title2DateFormat setTimeZone:[NSTimeZone timeZoneWithName:settings.statusSecondaryTimezone]];
         NSString* title2 = [title2DateFormat stringFromDate:now];
         
         [statusItemView setTitles:statusItemDate subTitle1:title1 subTitle2:title2];
@@ -290,6 +291,18 @@
             lastDate = [[NSDate getDateNSDate:now] copy];
             [calendar setDate:lastDate];
         }
+    }
+    
+    // update day details
+    if ([_vistaClockWindow isVisible] && (([dateDrawer state] == NSDrawerOpenState)
+        || ([dateDrawer state] == NSDrawerOpeningState)))
+    {
+        NSDate* selectedDate = [calendar getDate];
+        NSTimeInterval secondsBetween = [selectedDate timeIntervalSinceDate:[NSDate getDateNSDate:now]];
+        
+        [doyLabel setStringValue:[selectedDate getDayOfYearString]];
+        [dayIntervalLabel setStringValue:[[NSString alloc] initWithFormat:@"%d"
+            , (int)secondsBetween/86400]];
     }
     
 } // end of updateTime
@@ -525,6 +538,8 @@
     // show calendar?
     if (!settings.showCalendar && [settings.clockConfigs count] > 0)
     {
+        [goDateMenuItem setEnabled:FALSE]; // disable menu item
+        [dateDrawer close];
         [calendar setHidden:TRUE];
         [altcal setHidden:TRUE];
         [clockScrollView setFrameOrigin:NSMakePoint(8, 8)];
@@ -533,6 +548,7 @@
     }
     else // no clocks means you have to have a calendar
     {
+        [goDateMenuItem setEnabled:TRUE]; // enaable menu item
         if ([lastCal compare:@"gregorian"] == NSOrderedSame)
         {
             [calendar setHidden:FALSE];
@@ -618,8 +634,11 @@
         	withString:@""];
         dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"," 
         	withString:@""];
-        dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"MMMM" 
-        	withString:@"MMM"];
+        if (!settings.showStatusFullMonth)
+        {
+            dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"MMMM"
+                withString:@"MMM"];
+        }
         buildString = [buildString stringByAppendingString:dateFormat];
     }
     if (settings.useStatusMilitary)
@@ -693,25 +712,81 @@
         prefsWindow = [[MZVistaClockPreferences alloc] initWithWindowNibName:@"MZVistaClockPreferences"];
     [prefsWindow showWindow:self];
     [prefsWindow.window makeKeyAndOrderFront:nil];
+    [NSApp activateIgnoringOtherApps:YES];
     //[NSApp runModalForWindow:prefsWindow.window];
 } // end of openPreferences
 
 
+-(IBAction) openDateDrawer:(id)sender
+{
+    if (([dateDrawer state] == NSDrawerClosingState)
+        || ([dateDrawer state] == NSDrawerClosedState))
+    {
+        [dateDrawer open];
+        [gotoDateField becomeFirstResponder];
+    }
+} // end of openDateDrawer
+
+
+-(IBAction) gotoDate:(id)sender
+{
+    if ([dateDrawer state] == NSDrawerOpenState)
+    {
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MM/dd/yyyy"];
+        NSDate* date = [dateFormat dateFromString:[gotoDateField stringValue]];
+        if (date != nil)
+        {
+            [calendar setDate:date];
+        }
+        else
+        {
+            long deltaDays = [gotoDateField integerValue];
+            [gotoDateField setStringValue:[NSString stringWithFormat:@"%ld",deltaDays]];
+            NSDateFormatter *format = [[NSDateFormatter alloc] init];
+            format.dateFormat = @"dd-MM-yyyy";
+            NSDate* newDate = [[NSDate getDateNSDate:[NSDate date]] dateByAddingTimeInterval:deltaDays*86400];
+            [calendar setDate:newDate];
+        }
+    }
+} // end of gotoDate
+
+
+-(IBAction) goToday:(id)sender
+{
+    [calendar setDate:[NSDate getDateNSDate:[NSDate date]]];
+} // end of goToday
+
+
 -(void) getCalendarAccess
 {
-    // get calendar access
-    store = [[EKEventStore alloc] init];
+    // get calendar access do in main init.
+    store = [[EKEventStore alloc] init]; 
+        
     BOOL needsToRequestAccessToEventStore = NO; // iOS 5 behavior
     EKAuthorizationStatus authorizationStatus = EKAuthorizationStatusAuthorized; // iOS 5 behavior
     if ([[EKEventStore class] respondsToSelector:@selector(authorizationStatusForEntityType:)])
     {
-        authorizationStatus = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent&EKEntityTypeEvent];
+        authorizationStatus = ([EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent] 
+            & [EKEventStore authorizationStatusForEntityType:EKEntityTypeReminder]);
         needsToRequestAccessToEventStore = (authorizationStatus == EKAuthorizationStatusNotDetermined);
     }
 
     if (needsToRequestAccessToEventStore)
     {
+        // events
         [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error)
+        {
+            if (granted)
+            {
+                dispatch_async(dispatch_get_main_queue(),
+                ^{
+                    // You can use the event store now
+                });
+            }
+        }];
+        // reminders
+        [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error)
         {
             if (granted)
             {
@@ -726,7 +801,8 @@
     {
         // Access denied
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Access to calendar data has been denied!  Please enable access in System Preferences and restart VistaClock."];
+        [alert setMessageText:@"Access to calendar or reminder data has been denied!\n"
+            "Please enable access in System Preferences and restart VistaClock."];
         [alert runModal];
         // quit
         [NSApp terminate:self];

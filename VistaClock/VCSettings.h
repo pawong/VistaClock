@@ -32,7 +32,9 @@
 @property (nonatomic, assign) BOOL showStatusAMPM;
 @property (nonatomic, assign) BOOL showStatusWeekDay;
 @property (nonatomic, assign) BOOL showStatusDate;
+@property (nonatomic, assign) BOOL showStatusFullMonth;
 @property (nonatomic, assign) BOOL showStatusSecondaryTime;
+@property (nonatomic, assign) NSString* statusSecondaryTimezone;
 
 // clock panel settings
 @property (nonatomic, assign) BOOL useMilitary;

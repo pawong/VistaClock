@@ -61,12 +61,10 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 {
     NSDictionary* systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:
         @"/System/Library/CoreServices/SystemVersion.plist"];
-
     NSString* systemVersion =
         [systemVersionDictionary objectForKey:@"ProductVersion"];
-    
-    
-    if ([systemVersion compare:@"10.9" options:NSNumericSearch] >= NSOrderedSame)
+
+    if ([systemVersion compare:@"10.9" options:NSNumericSearch] == NSOrderedDescending)
     {
         // Register for notifications on calendars, events and tasks so we can
         // update the GUI to reflect any changes beneath us
@@ -78,6 +76,19 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
                     object:nil];
             }
         }];
+        [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {
+            if (granted) {
+                [[NSNotificationCenter defaultCenter] addObserver:self
+                    selector:@selector(tasksChanged:)
+                    name:EKEventStoreChangedNotification
+                    object:nil];
+            }
+        }];
+        useTasks = FALSE;
+    }
+    else
+    {
+        useTasks = TRUE;
     }
 }
 
@@ -164,6 +175,13 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         [self setNeedsDisplay:YES];
     }
 }
+
+
+-(NSDate*) getDate
+{
+    return selectedDate;
+}
+
 
 -(void) setShowWeekNumbers:(bool) value
 {
@@ -523,7 +541,16 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     // check for reminders
     if (showReminderIndicators)
     {
-    	if ([self HasReminders:monthView[aDay]] == true)
+        bool hasReminders = FALSE;
+        if (useTasks == TRUE)
+        {
+            hasReminders = [self HasRemindersDeprecated:monthView[aDay]];
+        }
+        else
+        {
+            hasReminders = [self HasRemindersDeprecated:monthView[aDay]];
+        }
+    	if (hasReminders == true)
     	{
         	[reminderImage drawAtPoint:
             	NSMakePoint(tRect.origin.x+tRect.size.width-MZINDICATOR_X_OFFSET
@@ -829,6 +856,43 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     
 	return remindersFound;
 } // end HasReminders
+
+-(bool) HasRemindersDeprecated:(NSDate*) date
+{
+	bool retval = false;
+    
+    NSDateComponents* comps = [[NSCalendar currentCalendar]
+    	components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+        fromDate: date];
+        
+    NSDate* startDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    NSDate* endDate = [startDate dateByAddingTimeInterval:(24*60*60)-1];
+    
+    NSPredicate *remindersEndingThisDay = [CalCalendarStore
+        taskPredicateWithUncompletedTasksDueBefore: endDate
+        calendars:[[CalCalendarStore defaultCalendarStore] calendars]];
+        
+   	NSArray *reminders
+    	= [[CalCalendarStore defaultCalendarStore]
+        tasksWithPredicate: remindersEndingThisDay];
+    
+    int i;
+    for (i=0; i<[reminders count]; i++)
+    {
+        NSDateComponents* tempComp = [[NSCalendar currentCalendar]
+    		components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+        	fromDate: [[reminders objectAtIndex:i] dueDate]];
+        NSDate* dueDate = [[NSCalendar currentCalendar]
+        	dateFromComponents:tempComp];
+        if ([dueDate isEqualToDate:startDate])
+        {
+            retval = true;
+            break;
+        }
+    }
+    
+	return retval;
+}
 
 // With the observable keys set up above and the appropriate bindings in IB,
 // we can trigger UI updates just by signaling changes to the keys

@@ -28,12 +28,14 @@
     IBOutlet NSButton* useAutoLaunchCB;
     IBOutlet NSButton* useAutoHideCB;
     IBOutlet NSButton* useKeepTopCB;
-
-    IBOutlet NSButton* showMasterClockCB;
-    IBOutlet NSButton* showOtherClocksCB;
     IBOutlet NSButton* useShadowsCB;
     IBOutlet NSButton* useDarkThemeCB;
     
+    // for later use
+    IBOutlet NSButton* showMasterClockCB;
+    IBOutlet NSButton* showOtherClocksCB;
+
+    // menu bar
     IBOutlet NSButton* showWeekNumberIconCB;
     IBOutlet NSButton* useBWWeekIconCB;
     IBOutlet NSButton* showStatusSecondsCB;
@@ -41,9 +43,12 @@
     IBOutlet NSButton* showStatusAMPMCB;
     IBOutlet NSButton* showStatusWeekDayCB;
     IBOutlet NSButton* showStatusDateCB;
+    IBOutlet NSButton* showStatusFullMonthCB;
     IBOutlet NSButton* showStatusSecondaryTimeCB;
+    IBOutlet NSPopUpButton* statusTimezoneButton;
+
     
-    // clock options
+    // clock settings
     IBOutlet NSButton* useMilitaryCB;
     IBOutlet NSButton* addClockButton;
     

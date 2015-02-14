@@ -30,6 +30,7 @@
     IBOutlet NSMenu* statusMenu;
     NSString* statusItemFormat;
     IBOutlet NSTextField* titleTextLabel;
+    IBOutlet NSMenuItem* goDateMenuItem;
     
     // clocks
     IBOutlet NSCollectionView *clockCollectionView;
@@ -40,6 +41,9 @@
     IBOutlet MZCalendarControl* calendar;
     IBOutlet NSScrollView* clockScrollView;
     IBOutlet NSDatePicker* altcal;
+    IBOutlet NSTextField* gotoDateField;
+    IBOutlet NSTextField* doyLabel;
+    IBOutlet NSTextField* dayIntervalLabel;
     
     // timer
     NSTimer* timer;
@@ -58,6 +62,7 @@
 @property (assign) IBOutlet NSWindow *vistaClockWindow;
 @property (strong) NSWindowController* prefsWindow;
 @property (assign) IBOutlet NSMenuItem* timeNow;
+@property (assign) IBOutlet NSDrawer* dateDrawer;
 
 
 // methods
@@ -69,12 +74,15 @@
 -(CGFloat) titleBarHeight:(NSWindow*) window;
 -(CGFloat) toolbarHeight:(NSWindow*) window;
 -(NSString*) buildStatusItemDateFormatString;
-
 -(void) createStatusItem;
+
 -(IBAction) openVistaClockWindow:(id)sender;
 -(IBAction) launchAboutBoxPanel:(id)sender;
 -(IBAction) launchDateTimePreferencePanel:(id)sender;
 -(IBAction) openPreferences:(id)sender;
+-(IBAction) openDateDrawer:(id)sender;
+-(IBAction) gotoDate:(id)sender;
+-(IBAction) goToday:(id)sender;
 
 
 -(void) getCalendarAccess;

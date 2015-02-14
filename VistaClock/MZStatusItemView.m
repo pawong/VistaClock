@@ -130,7 +130,7 @@
 // sets the status items title
 -(void) setTitle:(NSString*)newTitle
 {
-    title = newTitle;
+    title = [newTitle copy];
         
     // Update status item size (which will also update this view's bounds)
     NSRect titleBounds = [self titleBoundingRect];
@@ -157,9 +157,9 @@
 -(void) setTitles:(NSString*)newTitle subTitle1:(NSString*) newSubTitle1
     subTitle2:(NSString*) newSubTitle2
 {
-    title = newTitle;
-    subTitle1 = newSubTitle1;
-    subTitle2 = newSubTitle2;
+    title = [newTitle copy];
+    subTitle1 = [newSubTitle1 copy];
+    subTitle2 = [newSubTitle2 copy];
     
     // Update status item size (which will also update this view's bounds)
     NSRect titleBounds = [self titleBoundingRect];

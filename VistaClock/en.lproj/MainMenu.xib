@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -19,6 +19,11 @@
                 <outlet property="clockArrayController" destination="n32-YG-z2q" id="ZrS-BT-nJj"/>
                 <outlet property="clockCollectionView" destination="LE1-6V-Mkx" id="WHX-UI-SHT"/>
                 <outlet property="clockScrollView" destination="FM0-Ss-wrg" id="bcU-gq-8kU"/>
+                <outlet property="dateDrawer" destination="2kC-aH-brg" id="lxE-xh-F9W"/>
+                <outlet property="dayIntervalLabel" destination="cva-Wk-pri" id="piW-em-uzS"/>
+                <outlet property="doyLabel" destination="5f0-F1-hQc" id="HU6-Gg-4rA"/>
+                <outlet property="goDateMenuItem" destination="DrG-nT-eui" id="WRG-ai-JnC"/>
+                <outlet property="gotoDateField" destination="WCn-XB-fOW" id="Yil-nn-hnG"/>
                 <outlet property="statusMenu" destination="XSr-wM-FQN" id="Ijs-x2-yPY"/>
                 <outlet property="timeNow" destination="umV-W3-GU5" id="gg3-AF-MbB"/>
                 <outlet property="titleTextLabel" destination="fyp-sb-JwW" id="UbH-z8-eNe"/>
@@ -107,12 +112,18 @@
                         <popUpButton key="view" id="9fl-c0-jVR">
                             <rect key="frame" x="0.0" y="14" width="42" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" image="Gear_16x16x32" imagePosition="only" alignment="center" scrollable="YES" lineBreakMode="clipping" allowsMixedState="YES" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="EIt-bQ-bw5">
+                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" image="Gear_16x16x32" imagePosition="only" alignment="center" scrollable="YES" lineBreakMode="clipping" allowsMixedState="YES" imageScaling="proportionallyDown" inset="2" pullsDown="YES" autoenablesItems="NO" id="EIt-bQ-bw5">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
-                                <menu key="menu" title="OtherViews" id="v95-KR-9Yr">
+                                <menu key="menu" title="OtherViews" autoenablesItems="NO" id="v95-KR-9Yr">
                                     <items>
                                         <menuItem image="Gear_16x16x32" hidden="YES" enabled="NO" id="uaF-NI-thn"/>
+                                        <menuItem title="Go Date" keyEquivalent="d" id="DrG-nT-eui">
+                                            <connections>
+                                                <action selector="openDateDrawer:" target="Voe-Tx-rLC" id="4Up-3o-2c6"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="aiN-V4-cFM"/>
                                         <menuItem title="Launch Calendar" keyEquivalent="c" id="Z3Q-NG-vCt">
                                             <connections>
                                                 <action selector="launchCalendar:" target="Voe-Tx-rLC" id="8ZS-rK-7ha"/>
@@ -155,7 +166,7 @@
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="Tzp-WP-9Xo"/>
             </connections>
-            <point key="canvasLocation" x="82" y="52"/>
+            <point key="canvasLocation" x="-111" y="21"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="DgO-bJ-VFY"/>
         <menu id="XSr-wM-FQN" userLabel="StatusItemMenu">
@@ -199,6 +210,108 @@
             </connections>
         </arrayController>
         <collectionViewItem nibName="MZClockItem" id="k8k-gd-YvX" userLabel="Clock Item" customClass="MZClockItem"/>
+        <customView id="qCZ-UP-cgC" userLabel="Drawer Content View">
+            <rect key="frame" x="0.0" y="-1" width="157" height="147"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="joF-Rq-Xjo">
+                    <rect key="frame" x="10" y="120" width="137" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Date (mm/dd/yyyy)" id="d9k-LC-saN">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="vc3-JU-3Ok">
+                    <rect key="frame" x="12" y="57" width="133" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5f0-F1-hQc">
+                    <rect key="frame" x="68" y="34" width="79" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="124" id="6GC-1I-rKn">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cva-Wk-pri">
+                    <rect key="frame" x="68" y="9" width="79" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="-18245" id="I7R-0F-Q7S">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="WCn-XB-fOW">
+                    <rect key="frame" x="12" y="97" width="133" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ekw-lO-mLG">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <action selector="gotoDate:" target="Voe-Tx-rLC" id="oiT-tl-Gie"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="600-yc-ztm">
+                    <rect key="frame" x="10" y="34" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="DOY:" id="dvw-ok-YJW">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="TCz-UN-pvQ" userLabel="Today">
+                    <rect key="frame" x="6" y="61" width="76" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Today" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZXi-Bm-2Ll">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="goToday:" target="Voe-Tx-rLC" id="b2y-c4-1UI"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="fxF-bh-N7p" userLabel="Goto">
+                    <rect key="frame" x="75" y="61" width="76" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Go" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6ym-Nr-I4W">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="gotoDate:" target="Voe-Tx-rLC" id="a5K-vr-V1F"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rHn-KI-hJP">
+                    <rect key="frame" x="10" y="9" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Interval:" id="vU1-eQ-UVe">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-499.5" y="-46.5"/>
+        </customView>
+        <drawer preferredEdge="minX" leadingOffset="30" trailingOffset="20" id="2kC-aH-brg">
+            <size key="contentSize" width="158" height="148"/>
+            <size key="minContentSize" width="158" height="148"/>
+            <size key="maxContentSize" width="158" height="148"/>
+            <connections>
+                <outlet property="contentView" destination="qCZ-UP-cgC" id="FAN-B1-IpK"/>
+                <outlet property="parentWindow" destination="QvC-M9-y7g" id="2zb-GL-JMM"/>
+            </connections>
+        </drawer>
     </objects>
     <resources>
         <image name="Gear_16x16x32" width="16" height="16"/>

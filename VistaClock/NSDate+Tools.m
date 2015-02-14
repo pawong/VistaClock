@@ -159,6 +159,15 @@
     return retval; 
 }
 
+-(NSString*) getDayOfYearString
+{
+    NSString* retval;
+    NSDateFormatter* format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"D"];
+    retval = [format stringFromDate:(NSDate*)self];
+    return retval; 
+}
+
 -(int) getHours
 {
     int retval;

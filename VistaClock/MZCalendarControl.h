@@ -35,6 +35,7 @@
     bool showEventIndicators;
     bool showReminderIndicators;
     bool showBoxes;
+    bool useTasks;
 
     NSDictionary* titleAttributes;
     NSDictionary* normalAttributes;
@@ -50,6 +51,7 @@
 }
 
 -(void) setDate:(NSDate*) aDate;
+-(NSDate*) getDate;
 -(void) setShowWeekNumbers:(bool) value;
 -(void) setShowEventIndicators:(bool) value;
 -(void) setShowReminderIndicators:(bool) value;
@@ -72,6 +74,7 @@
 
 -(bool) HasEvents:(NSDate*) date;
 -(bool) HasReminders:(NSDate*) date;
+-(bool) HasRemindersDeprecated:(NSDate*) date;
 
 // Handler methods for Calendar Store notifications
 - (void) calendarsChanged:(NSNotification *)notification;

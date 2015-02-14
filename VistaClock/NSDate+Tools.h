@@ -34,5 +34,6 @@
 -(NSString*) getWeekString;
 -(NSString*) getDayNameShortString;
 -(NSString*) getDayString;
+-(NSString*) getDayOfYearString;
 
 @end

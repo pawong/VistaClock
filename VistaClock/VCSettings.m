@@ -24,7 +24,7 @@ static VCSettings* sharedSettings = nil;
 // status item options
 @synthesize showWeekNumberIcon, useBWWeekIcon, showStatusSeconds
     , useStatusMilitary, showStatusAMPM, showStatusWeekDay, showStatusDate
-    , showStatusSecondaryTime;
+    , showStatusFullMonth, showStatusSecondaryTime, statusSecondaryTimezone;
 
 // clock panel options
 @synthesize useMilitary, clockFaceName;
@@ -45,8 +45,7 @@ static VCSettings* sharedSettings = nil;
     NSArray*paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory
         , NSUserDomainMask, YES);
     insist(paths && [paths count]);
-    NSString* programName
-        = [NSString stringWithFormat:@"%@.cfg",
+    NSString* programName = [NSString stringWithFormat:@"%@.cfg",
         [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey]
         ];
     return [[paths objectAtIndex:0] stringByAppendingPathComponent:programName];
@@ -113,7 +112,9 @@ static VCSettings* sharedSettings = nil;
     showStatusAMPM = [decoder decodeBoolForKey:@"showStatusAMPM"];
     showStatusWeekDay = [decoder decodeBoolForKey:@"showStatusWeekDay"];
     showStatusDate = [decoder decodeBoolForKey:@"showStatusDate"];
+    showStatusFullMonth = [decoder decodeBoolForKey:@"showStatusFullMonth"];
     showStatusSecondaryTime = [decoder decodeBoolForKey:@"showStatusSecondaryTime"];
+    statusSecondaryTimezone = [decoder decodeObjectForKey:@"statusSecondaryTimezone"];
     
     // clock panel options
     useMilitary = [decoder decodeBoolForKey:@"useMilitary"];
@@ -160,7 +161,9 @@ static VCSettings* sharedSettings = nil;
     [encoder encodeBool:showStatusAMPM forKey:@"showStatusAMPM"];
     [encoder encodeBool:showStatusWeekDay forKey:@"showStatusWeekDay"];
     [encoder encodeBool:showStatusDate forKey:@"showStatusDate"];
+    [encoder encodeBool:showStatusFullMonth forKey:@"showStatusFullMonth"];
     [encoder encodeBool:showStatusSecondaryTime forKey:@"showStatusSecondaryTime"];
+    [encoder encodeObject:statusSecondaryTimezone forKey:@"statusSecondaryTimezone"];
     
     // clock options
     [encoder encodeBool:useMilitary forKey:@"useMilitary"];
@@ -198,7 +201,9 @@ static VCSettings* sharedSettings = nil;
     showStatusAMPM = YES;
     showStatusWeekDay = NO;
     showStatusDate = NO;
+    showStatusFullMonth = NO;
     showStatusSecondaryTime = NO;
+    statusSecondaryTimezone = @"GMT";
     
     // clock options
     useMilitary = NO;
