@@ -318,6 +318,7 @@
     	if ([[arguments objectAtIndex:i] isEqualToString:@"-R"])
         {
         	[settings reset];
+            [settings archive];
         }
     }
     // now handle the rest
@@ -326,10 +327,12 @@
         if ([[arguments objectAtIndex:i] isEqualToString:@"-F:1"])
         {
             settings.floatRight = TRUE;
+            [settings archive];
         }
         else if ([[arguments objectAtIndex:i] isEqualToString:@"-F:0"])
         {
             settings.floatRight = FALSE;
+            [settings archive];
         }
     }
 } // end of processCommandLine
