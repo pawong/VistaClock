@@ -217,7 +217,14 @@
         [title1DateFormat setTimeZone:[NSTimeZone timeZoneWithName:settings.statusSecondaryTimezone]];
         NSString* title1 = [title1DateFormat stringFromDate:now];
         NSDateFormatter* title2DateFormat = [[NSDateFormatter alloc] init];
-        [title2DateFormat setDateFormat:TIME_FORMAT_NORMAL];
+        if (settings.useStatusMilitary)
+        {
+            [title2DateFormat setDateFormat:TIME_FORMAT_MILITARY];
+        }
+        else
+        {
+            [title2DateFormat setDateFormat:TIME_FORMAT_NORMAL];
+        }
         [title2DateFormat setTimeZone:[NSTimeZone timeZoneWithName:settings.statusSecondaryTimezone]];
         NSString* title2 = [title2DateFormat stringFromDate:now];
         
