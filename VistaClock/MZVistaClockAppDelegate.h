@@ -19,8 +19,8 @@
 #define DATE_FORMAT_TIMEZONE_DAY        @"z ccc"
 #define TIME_FORMAT_NORMAL              @"h:mm a"
 #define TIME_FORMAT_NORMAL_FULL         @"h:mm:ss a"
-#define TIME_FORMAT_MILITARY            @"H:mm"
-#define TIME_FORMAT_MILITARY_FULL       @"H:mm:ss"
+#define TIME_FORMAT_MILITARY            @"HH:mm"
+#define TIME_FORMAT_MILITARY_FULL       @"HH:mm:ss"
 
 @interface MZVistaClockAppDelegate : NSObject <NSApplicationDelegate>
 {

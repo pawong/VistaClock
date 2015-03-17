@@ -89,7 +89,7 @@
 {
     NSString* retval;
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"H:mm:ss"];
+    [format setDateFormat:@"HH:mm:ss"];
     retval = [format stringFromDate:(NSDate*)self];
     return retval;     
 }
