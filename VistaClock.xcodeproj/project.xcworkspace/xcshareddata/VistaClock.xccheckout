@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>4B54B87E-4BD8-46FF-AFBD-E72EA9231078</string>
 	<key>IDESourceControlProjectName</key>
-	<string>VistaClock</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>16E3D76BE9638D2034CA9DB9067A215879AE884D</key>
 		<string>leto:VistaClock2</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>VistaClock.xcodeproj</string>
+	<string>VistaClock.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>16E3D76BE9638D2034CA9DB9067A215879AE884D</key>
