@@ -81,6 +81,13 @@
 -(IBAction) launchDateTimePreferencePanel:(id)sender;
 -(IBAction) openPreferences:(id)sender;
 -(IBAction) openDateDrawer:(id)sender;
+
+-(NSDate*) AddToDate:(NSDate*) originalDate unitType:(int) unitType units:(int) units;
+-(int) GetDays:(NSString*) inputString;
+-(int) GetWeeks:(NSString*) inputString;
+-(int) GetMonths:(NSString*) inputString;
+-(int) GetYears:(NSString*) inputString;
+
 -(IBAction) gotoDate:(id)sender;
 -(IBAction) goToday:(id)sender;
 

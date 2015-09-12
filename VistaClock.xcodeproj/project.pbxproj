@@ -78,8 +78,6 @@
 		134E3A0619BA1388004FA01A /* statusbarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 134E39BA19BA1388004FA01A /* statusbarIcon.png */; };
 		134E3A0719BA1388004FA01A /* statusbarIconBW.png in Resources */ = {isa = PBXBuildFile; fileRef = 134E39BB19BA1388004FA01A /* statusbarIconBW.png */; };
 		134E3A1019BA16A6004FA01A /* mazookie_name_tiny.png in Resources */ = {isa = PBXBuildFile; fileRef = 134E3A0E19BA16A6004FA01A /* mazookie_name_tiny.png */; };
-		134E3A1119BA16A6004FA01A /* VistaClock.icns in Resources */ = {isa = PBXBuildFile; fileRef = 134E3A0F19BA16A6004FA01A /* VistaClock.icns */; };
-		1361544519F8C0FB009CDAC9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1361544419F8C0FB009CDAC9 /* Images.xcassets */; };
 		139ED8D819F9B7AC00181875 /* VistaClockLoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 139ED8D719F9B75700181875 /* VistaClockLoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */; };
 		13BEBE1C19C8EAC6009C7B76 /* VCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */; };
@@ -202,8 +200,6 @@
 		134E39BA19BA1388004FA01A /* statusbarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusbarIcon.png; sourceTree = "<group>"; };
 		134E39BB19BA1388004FA01A /* statusbarIconBW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusbarIconBW.png; sourceTree = "<group>"; };
 		134E3A0E19BA16A6004FA01A /* mazookie_name_tiny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazookie_name_tiny.png; sourceTree = "<group>"; };
-		134E3A0F19BA16A6004FA01A /* VistaClock.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = VistaClock.icns; path = VistaClock/VistaClock.icns; sourceTree = "<group>"; };
-		1361544419F8C0FB009CDAC9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		139ED8D219F9B75700181875 /* VistaClockLoginHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VistaClockLoginHelper.xcodeproj; path = VistaClockLoginHelper/VistaClockLoginHelper.xcodeproj; sourceTree = "<group>"; };
 		13A4EB4E19EDA6E70031D4DE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSettings.m; sourceTree = "<group>"; };
@@ -228,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				139ED8D219F9B75700181875 /* VistaClockLoginHelper.xcodeproj */,
-				134E3A0F19BA16A6004FA01A /* VistaClock.icns */,
 				134E392519BA107B004FA01A /* VistaClock */,
 				134E394319BA107B004FA01A /* VistaClockTests */,
 				134E391E19BA107B004FA01A /* Frameworks */,
@@ -297,7 +292,6 @@
 				1313723A19C386D300B65CDE /* MZClockConfigItem.xib */,
 				132E0AB019D3211E00CC9CF6 /* MZClockConfig.h */,
 				132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */,
-				1361544419F8C0FB009CDAC9 /* Images.xcassets */,
 				134E392619BA107B004FA01A /* Supporting Files */,
 			);
 			path = VistaClock;
@@ -493,7 +487,6 @@
 				1300F5AC19BCB8F8006E8FD9 /* Gear_16x16x32.png in Resources */,
 				134E392A19BA107B004FA01A /* InfoPlist.strings in Resources */,
 				1300F5F119BCE700006E8FD9 /* HVCW05.png in Resources */,
-				1361544519F8C0FB009CDAC9 /* Images.xcassets in Resources */,
 				1313723F19C386D300B65CDE /* MZClockConfigItem.xib in Resources */,
 				1300F5F419BCE700006E8FD9 /* HWVCB01.png in Resources */,
 				1300F60619BCE700006E8FD9 /* SVCW07.png in Resources */,
@@ -516,7 +509,6 @@
 				1300F5E919BCE700006E8FD9 /* DVCW05.png in Resources */,
 				134E393019BA107B004FA01A /* Credits.rtf in Resources */,
 				1300F5EB19BCE700006E8FD9 /* DVCW08.png in Resources */,
-				134E3A1119BA16A6004FA01A /* VistaClock.icns in Resources */,
 				1300F5E719BCE700006E8FD9 /* DVCB06.png in Resources */,
 				1300F61719BCE9A5006E8FD9 /* MZClockItem.xib in Resources */,
 				134E3A0719BA1388004FA01A /* statusbarIconBW.png in Resources */,

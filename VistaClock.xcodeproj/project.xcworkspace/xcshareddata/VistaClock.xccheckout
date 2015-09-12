@@ -12,8 +12,6 @@
 	<dict>
 		<key>16E3D76BE9638D2034CA9DB9067A215879AE884D</key>
 		<string>leto:VistaClock2</string>
-		<key>CE2BCAB29E630245988693A31E0B7EF403872B51</key>
-		<string>leto:VistaClock</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>VistaClock.xcodeproj</string>
@@ -21,8 +19,6 @@
 	<dict>
 		<key>16E3D76BE9638D2034CA9DB9067A215879AE884D</key>
 		<string>../..</string>
-		<key>CE2BCAB29E630245988693A31E0B7EF403872B51</key>
-		<string>../../../VistaClock.old</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>leto:VistaClock2</string>
@@ -32,14 +28,6 @@
 	<string>16E3D76BE9638D2034CA9DB9067A215879AE884D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CE2BCAB29E630245988693A31E0B7EF403872B51</string>
-			<key>IDESourceControlWCCName</key>
-			<string>VistaClock.old</string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

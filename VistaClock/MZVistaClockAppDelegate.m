@@ -738,6 +738,91 @@
 } // end of openDateDrawer
 
 
+-(NSDate*) AddToDate:(NSDate*) originalDate unitType:(int) unitType units:(int) units
+{
+	NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+	NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+	switch (unitType)
+	{
+		case 1: [dateComponents setDay: units*7]; 	// week
+			break;
+		case 2: [dateComponents setMonth: units]; 	// month
+			break;
+		case 3: [dateComponents setYear: units];	// year
+			break;
+		case 0:
+		default: [dateComponents setDay: units];	// day
+			break;
+	}
+	
+	return([currentCalendar dateByAddingComponents:dateComponents toDate:originalDate options:0]);
+} // end of AddToDate
+
+
+-(int) GetDays:(NSString*) inputString
+{
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(-?\\d+)(d|D)"
+		options:NSRegularExpressionCaseInsensitive	error:NULL];
+	NSUInteger numberOfMatches = [regex numberOfMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
+	if (numberOfMatches) 
+	{
+		NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
+		NSRange matchRange = [textCheckingResult rangeAtIndex:1];
+		NSString *match = [inputString substringWithRange:matchRange];	
+		return [match intValue];
+	}
+	return 0;
+} // end of GetDays
+
+
+-(int) GetWeeks:(NSString*) inputString
+{
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(-?\\d+)(w|W)"
+		options:NSRegularExpressionCaseInsensitive	error:NULL];
+	NSUInteger numberOfMatches = [regex numberOfMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
+	if (numberOfMatches) 
+	{
+		NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
+		NSRange matchRange = [textCheckingResult rangeAtIndex:1];
+		NSString *match = [inputString substringWithRange:matchRange];	
+		return [match intValue];
+	}
+	return 0;
+} // end of GetWeeks
+
+
+-(int) GetMonths:(NSString*) inputString
+{
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(-?\\d+)(m|M)"
+		options:NSRegularExpressionCaseInsensitive	error:NULL];
+	NSUInteger numberOfMatches = [regex numberOfMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
+	if (numberOfMatches) 
+	{
+		NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
+		NSRange matchRange = [textCheckingResult rangeAtIndex:1];
+		NSString *match = [inputString substringWithRange:matchRange];	
+		return [match intValue];
+	}
+	return 0;
+} // end of GetMonths
+
+
+-(int) GetYears:(NSString*) inputString
+{
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(-?\\d+)(y|Y)"
+		options:NSRegularExpressionCaseInsensitive	error:NULL];
+	NSUInteger numberOfMatches = [regex numberOfMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
+	if (numberOfMatches) 
+	{
+		NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
+		NSRange matchRange = [textCheckingResult rangeAtIndex:1];
+		NSString *match = [inputString substringWithRange:matchRange];	
+		return [match intValue];
+	}
+	return 0;
+} // end of GetYears
+
+
 -(IBAction) gotoDate:(id)sender
 {
     if ([dateDrawer state] == NSDrawerOpenState)
@@ -751,12 +836,32 @@
         }
         else
         {
-            long deltaDays = [gotoDateField integerValue];
-            [gotoDateField setStringValue:[NSString stringWithFormat:@"%ld",deltaDays]];
-            NSDateFormatter *format = [[NSDateFormatter alloc] init];
-            format.dateFormat = @"dd-MM-yyyy";
-            NSDate* newDate = [[NSDate getDateNSDate:[NSDate date]] dateByAddingTimeInterval:deltaDays*86400];
-            [calendar setDate:newDate];
+            int units = 0;
+            int unitType = 0;
+            
+            if ((units = [self GetDays:[gotoDateField stringValue]]) != 0)
+            {
+                unitType = 0; // days
+            }
+            else if ((units = [self GetWeeks:[gotoDateField stringValue]]) != 0)
+            {
+                unitType = 1; // days
+            }
+            else if ((units = [self GetMonths:[gotoDateField stringValue]]) != 0)
+            {
+                unitType = 2; // days
+            }
+            else if ((units = [self GetYears:[gotoDateField stringValue]]) != 0)
+            {
+                unitType = 3; // days
+            }
+		
+            if (units != 0)
+            {
+                NSDate* newDate = [self AddToDate:[NSDate getDateNSDate:[NSDate date]]
+                    unitType: unitType units: units];
+                [calendar setDate:newDate];
+            }
         }
     }
 } // end of gotoDate
