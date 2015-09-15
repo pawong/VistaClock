@@ -70,6 +70,8 @@
 }
 
 -(IBAction) addClockConfig:(id)sender;
+-(IBAction) moveUpClockConfig:(id)sender;
+-(IBAction) moveDownClockConfig:(id)sender;
 -(IBAction) removeClockConfig:(id)sender;
 -(void) removeAllClockConfig;
 -(void) addClockConfig:(NSString*) title timezone:(NSString*) tz useSeconds:(BOOL) secs;

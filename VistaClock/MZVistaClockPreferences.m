@@ -124,7 +124,7 @@
 -(IBAction) removeClockConfig:(id)sender
 {
     // looks for the button(sender) that asked to be deleted
-    for( int i = 0; i < [[clockConfigController arrangedObjects] count]; i++ )
+    for( long i = 0; i < [[clockConfigController arrangedObjects] count]; i++ )
     {
         MZClockConfigItem *item = (MZClockConfigItem*)[clockConfigView itemAtIndex:i];
         
@@ -133,12 +133,91 @@
         {
             [clockConfigController removeObjectAtArrangedObjectIndex:i];
             [self updateSettings:nil];
+            
+            //NSLog(@"Delete");
             break;
         }
     }
     
 } // end removeClockConfig
 
+-(IBAction) moveUpClockConfig:(id)sender
+{
+    long clockCount = [[clockConfigController arrangedObjects] count];
+    // looks for the button(sender) that asked to be moved up
+    for( long i = 0; i < clockCount; i++ )
+    {
+        MZClockConfigItem *item = (MZClockConfigItem*)[clockConfigView itemAtIndex:i];
+        
+        // does button id match item button id?
+        if(sender == [item upButton])
+        {
+            if (i != 0) // not top do it
+            {
+                NSString *title = [item.titleConfigLabel stringValue];
+                NSString *timezone = [item.timezoneConfigLabel stringValue];
+                bool second = item.useSecond;
+                
+                MZClockConfigItem *item1 = (MZClockConfigItem*)[clockConfigView itemAtIndex:i-1];
+                NSString *title1 = [item1.titleConfigLabel stringValue];
+                NSString *timezone1 = [item1.timezoneConfigLabel stringValue];
+                bool second1 = item1.useSecond;
+                
+                [item1.titleConfigLabel setStringValue:title];
+                [item1.timezoneConfigLabel setStringValue:timezone];
+                item1.useSecond = second;
+                
+                [item.titleConfigLabel setStringValue:title1];
+                [item.timezoneConfigLabel setStringValue:timezone1];
+                item.useSecond = second1;
+                
+                [self updateSettings:nil];
+                //NSLog(@"Move UP");
+            }
+            break;
+        }
+    }
+    
+} // end moveUpClockConfig
+
+-(IBAction) moveDownClockConfig:(id)sender
+{
+    long clockCount = [[clockConfigController arrangedObjects] count];
+    // looks for the button(sender) that asked to be moved down
+    for( long i = 0; i < clockCount; i++ )
+    {
+        MZClockConfigItem *item = (MZClockConfigItem*)[clockConfigView itemAtIndex:i];
+        
+        // does button id match item button id?
+        if(sender == [item downButton])
+        {
+            if (i != clockCount-1) // not bottom so do it
+            {
+                NSString *title = [item.titleConfigLabel stringValue];
+                NSString *timezone = [item.timezoneConfigLabel stringValue];
+                bool second = item.useSecond;
+                
+                MZClockConfigItem *item1 = (MZClockConfigItem*)[clockConfigView itemAtIndex:i+1];
+                NSString *title1 = [item1.titleConfigLabel stringValue];
+                NSString *timezone1 = [item1.timezoneConfigLabel stringValue];
+                bool second1 = item1.useSecond;
+                
+                [item1.titleConfigLabel setStringValue:title];
+                [item1.timezoneConfigLabel setStringValue:timezone];
+                item1.useSecond = second;
+                
+                [item.titleConfigLabel setStringValue:title1];
+                [item.timezoneConfigLabel setStringValue:timezone1];
+                item.useSecond = second1;
+                
+                [self updateSettings:nil];
+                //NSLog(@"Move DOWN");
+            }
+            break;
+        }
+    }
+    
+} // end moveDownClockConfig
 
 -(void) removeAllClockConfig
 {

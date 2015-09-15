@@ -1,13 +1,13 @@
 #import "MZCalendarControl.h"
 
-#define MZCALENDARCONTROL_WEEK_OFFSET_V         32  // title set
 #define MZCALENDARCONTROL_OFFSET_H              4
 #define MZCALENDARCONTROL_OFFSET_V              6
 #define MZINDICATOR_X_OFFSET                    5.0
 #define MZINDICATOR_Y_OFFSET                    5.0
+#define NUMBER_OF_ROWS                          8
 
 
-#define MZMONTH_VIEW_DAYS					42
+#define MZMONTH_VIEW_DAYS                       42
 
 static NSImage* _gCalendarBackground_ = nil;
 
@@ -29,36 +29,26 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }
     
     return 1;
-}
+} // end numberOfDayInMonthForYear
 
 @implementation MZCalendarControl
 
--(id) initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    
-    if (self)
-    {
-        showWeekNumbers = false;                // off by default
-        showEventIndicators = false;            // off by default
-        showReminderIndicators = false;         // off by default
-        showBoxes = false; // off by default
-        firstWeekday = (int)[[NSCalendar currentCalendar] firstWeekday];
-        [self setDate:[NSDate getDateNSDate:[NSDate date]]];
-        dateColor = [[NSColor blackColor] copy];
-        shadowColor = [[NSColor darkGrayColor] copy];
-        shadow = [[NSShadow alloc] init];
-        [self setStyle];
-        
-        store = [[EKEventStore alloc] init];
-    }
-    
-    return self;
-}
-
-
 -(void) awakeFromNib
 {
+    showWeekNumbers = false;                // off by default
+    showEventIndicators = false;            // off by default
+    showReminderIndicators = false;         // off by default
+    hiliteDay = false;                      // off by default
+    showBoxes = false; // off by default
+    firstWeekday = (int)[[NSCalendar currentCalendar] firstWeekday];
+    [self setDate:[NSDate getDateNSDate:[NSDate date]]];
+    dateColor = [[NSColor blackColor] copy];
+    shadowColor = [[NSColor darkGrayColor] copy];
+    shadow = [[NSShadow alloc] init];
+    fontSize = 13;
+    [self setStyle];
+        
+    store = [[EKEventStore alloc] init];
     NSDictionary* systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:
         @"/System/Library/CoreServices/SystemVersion.plist"];
     NSString* systemVersion =
@@ -90,7 +80,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     {
         useTasks = TRUE;
     }
-}
+} // end awakeFromNib
 
 -(void) setDate:(NSDate*) aDate
 {
@@ -144,8 +134,6 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 
         // find the first day of the month
         firstDay = [firstDayOfMonth getDayOfWeek]-1;
-        //firstDay = ((([firstDayOfMonth getDayOfWeek] 
-    		//- ([firstDayOfMonth getDay]%7) - firstDayOfWeek + 1)) + 7)%7;
         
         // leave some last month days first
         if (firstDay == 0)
@@ -174,14 +162,12 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         
         [self setNeedsDisplay:YES];
     }
-}
-
+} // end setDate
 
 -(NSDate*) getDate
 {
     return selectedDate;
-}
-
+} // end getDate
 
 -(void) setShowWeekNumbers:(bool) value
 {
@@ -190,7 +176,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         showWeekNumbers = value;
         [self setNeedsDisplay:YES];
     }
-}
+} // end setShowWeekNumbers
 
 -(void) setShowEventIndicators:(bool) value
 {
@@ -199,7 +185,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         showEventIndicators = value;
         [self setNeedsDisplay:YES];
     }
-}
+} // end setShowEventIndicators
 
 -(void) setShowReminderIndicators:(bool) value
 {
@@ -208,7 +194,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         showReminderIndicators = value;
         [self setNeedsDisplay:YES];
     }
-}
+} // end setShowReminderIndicators
 
 -(void) setShowBoxes:(bool) value
 {
@@ -217,50 +203,31 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         showBoxes = value;
         [self setNeedsDisplay:YES];
     }
-}
+} // end setShowBoxes
 
--(int) dayAtPoint:(NSPoint) aPoint
+-(void) setFontSize:(int) value
 {
-    NSRect tBounds = [self bounds];
-    int tColumn, tRow;
-    
-    if (aPoint.y > NSHeight(tBounds)-MZCALENDARCONTROL_WEEK_OFFSET_V 
-    	-MZCALENDARCONTROL_OFFSET_V)
+    if (value > 0)
     {
-        return 0;
+        fontSize = value;
+        [self setStyle];
     }
-    
-    tRow = (NSHeight(tBounds) - aPoint.y - MZCALENDARCONTROL_WEEK_OFFSET_V 
-    	- MZCALENDARCONTROL_OFFSET_V)/dayHeight;
-    
-    tColumn = (aPoint.x-MZCALENDARCONTROL_OFFSET_H-cwOffset)/dayWidth;
-    
-    if (tColumn < 0)
+} // end setFontSize
+
+-(void) setHiliteDay:(bool) value
+{
+    if (hiliteDay != value)
     {
-        tColumn = 0;
+        hiliteDay = value;
+        [self setStyle];
     }
-    else if (tColumn > 6)
-    {
-        tColumn = 6;
-    }
-    
-    if (tRow < 0)
-    {
-        tRow = 0;
-    }
-    else if (tRow > 6)
-    {
-        tRow = 6;
-    }
-    
-    return [monthView[tRow*7 + tColumn] getDay];
-}
+} // end setHiliteDay
 
 -(void) setStyle
 {
     // Calendar Fonts
     //NSFont *dayFont = [NSFont fontWithName:@"Andale Mono" size:13];
-    NSFont *dayFont = [NSFont systemFontOfSize:13];
+    NSFont *dayFont = [NSFont systemFontOfSize:fontSize];
     
     // Font Shadow
     [shadow setShadowColor:shadowColor];
@@ -274,7 +241,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }
     
     dayOfWeekAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-    	[NSFont labelFontOfSize:11], NSFontAttributeName
+    	[NSFont labelFontOfSize:fontSize-3], NSFontAttributeName
         , dateColor, NSForegroundColorAttributeName
         , shadow, NSShadowAttributeName
         , nil];
@@ -285,7 +252,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }
     
     titleAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-        [NSFont labelFontOfSize:13], NSFontAttributeName            
+        [NSFont labelFontOfSize:(fontSize+2)], NSFontAttributeName
         , dateColor, NSForegroundColorAttributeName
         , shadow, NSShadowAttributeName
         , nil];
@@ -296,7 +263,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }    
     
     weekAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-    	[NSFont labelFontOfSize:10], NSFontAttributeName
+    	[NSFont labelFontOfSize:fontSize-4], NSFontAttributeName
         , [NSColor grayColor], NSForegroundColorAttributeName
         , shadow, NSShadowAttributeName
         , nil];
@@ -319,11 +286,24 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         currentDayAttributes = nil;
     }
     
-    currentDayAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-        dayFont, NSFontAttributeName
-        , [NSColor selectedMenuItemTextColor], NSForegroundColorAttributeName
-        , shadow, NSShadowAttributeName
-        , nil];
+    if (hiliteDay)
+    {
+        currentDayAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+            dayFont, NSFontAttributeName
+            , [NSColor redColor], NSForegroundColorAttributeName
+            , shadow, NSShadowAttributeName
+            , nil
+        ];
+    }
+    else
+    {
+        currentDayAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+            dayFont, NSFontAttributeName
+            , [NSColor selectedMenuItemTextColor], NSForegroundColorAttributeName
+            , shadow, NSShadowAttributeName
+            , nil
+        ];
+    }
     
     if (selectedDayAttributes != nil)
     {
@@ -368,7 +348,8 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     {
         reminderImage = [NSImage imageNamed:@"tinyredlighton.png"];
     }
-    
+    // draw and done.
+    [self setNeedsDisplay:YES];
 } // end of setStyle
 
 -(void) setColor:(NSColor*) color
@@ -391,21 +372,24 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     [self setStyle];
 } // end of setShadowColor
 
+-(int) dayAtPoint:(NSPoint) aPoint
+{
+    return [[self dateAtPoint:aPoint] getDay];
+} // end dayAtPoint
+
 -(NSDate*) dateAtPoint:(NSPoint) aPoint
 {
     NSRect tBounds = [self bounds];
     int tColumn, tRow;
     
-    if (aPoint.y > NSHeight(tBounds) - MZCALENDARCONTROL_WEEK_OFFSET_V 
-    	- MZCALENDARCONTROL_OFFSET_V)
+    if (aPoint.y > NSHeight(tBounds) - MZCALENDARCONTROL_OFFSET_V - dayHeight)
     {
+        // it's a control
         return nil;
     }
     
-    tRow = (NSHeight(tBounds)-aPoint.y-MZCALENDARCONTROL_WEEK_OFFSET_V 
-            - MZCALENDARCONTROL_OFFSET_V)/dayHeight;
-    
-    tColumn = (aPoint.x - MZCALENDARCONTROL_OFFSET_H-cwOffset)/dayWidth;
+    tRow = (NSHeight(tBounds) - aPoint.y - MZCALENDARCONTROL_OFFSET_V - dayHeight*2)/dayHeight;
+    tColumn = (aPoint.x - MZCALENDARCONTROL_OFFSET_H - cwOffset)/dayWidth;
     
     if (tColumn < 0)
     {
@@ -420,16 +404,32 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     {
         tRow = 0;
     }
-    else if (tRow > 6)
+    else if (tRow > 5)
     {
-        tRow = 6;
+        tRow = 5;
     }
     
     return monthView[tRow*7 + tColumn];
-}
+} // end dateAtPoint
+
+-(void) drawBox:(NSRect) rectangle isRounded:(BOOL) rounded color:(NSColor*) color
+{
+    // Draw box
+    [NSBezierPath setDefaultLineWidth:1];
+    
+    NSBezierPath* path;
+    if (rounded)
+        path = [NSBezierPath bezierPathWithRoundedRect:rectangle xRadius:5.0 yRadius:5.0];
+    else
+        path = [NSBezierPath bezierPathWithRect:rectangle];
+    [color set];
+    [path setLineJoinStyle:NSRoundLineJoinStyle];
+    [path stroke];
+} // end drawBox
 
 -(int) drawDay:(int) aDay
 {
+    float center = 0.5;
     NSRect tBounds = [self bounds];
     int tRow, tColumn;
     NSString* tString;
@@ -442,13 +442,12 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 	tString=[monthView[aDay] getDayString];
 
     tRect = NSMakeRect(
-        MZCALENDARCONTROL_OFFSET_H+dayWidth*tColumn+cwOffset -1
-        , NSHeight(tBounds) - MZCALENDARCONTROL_WEEK_OFFSET_V
-        - (tRow+1)*dayHeight - MZCALENDARCONTROL_OFFSET_V-1
+        MZCALENDARCONTROL_OFFSET_H + (dayWidth*tColumn) + cwOffset
+        , NSHeight(tBounds) - (tRow+3)*dayHeight - MZCALENDARCONTROL_OFFSET_V
         , dayWidth -1
         , dayHeight -1
-        );
-    
+    );
+    //[self drawBox:tRect isRounded:FALSE];
     // current day?
     if ([[NSDate getDateNSDate:[NSDate date]] compare:monthView[aDay]]
     	== NSOrderedSame)
@@ -465,15 +464,11 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         if (showBoxes == true)
         {
         	// Draw box
-        	[NSBezierPath setDefaultLineWidth:0.5];
-        	NSBezierPath* path = [NSBezierPath bezierPathWithRect:tRect];
-        	[path setLineJoinStyle:NSRoundLineJoinStyle];
-        	[dateColor set];
-            [path stroke];
+        	[self drawBox:tRect isRounded:TRUE color:dateColor];
     	}
         
         tSize = [tString sizeWithAttributes:currentDayAttributes];
-    	[tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width*0.5
+    	[tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width*center
             , NSMinY(tRect)+3) withAttributes:currentDayAttributes];
     }
     else if (aDay < firstDay || aDay > lastDay)
@@ -481,7 +476,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 
         // draw days not in month of current month view
     	tSize = [tString sizeWithAttributes:daysNotThisMonth];
-    	[tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width*0.5
+    	[tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width*center
     		, NSMinY(tRect)+3) withAttributes:daysNotThisMonth];
     }
     else
@@ -489,16 +484,12 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         // draw regular old day
         if (showBoxes == true)
         {
-        	// Draw boxes
-        	[NSBezierPath setDefaultLineWidth:0.5];
-        	NSBezierPath* path = [NSBezierPath bezierPathWithRect:tRect];
-        	[path setLineJoinStyle:NSRoundLineJoinStyle];
-        	[dateColor set];
-            [path stroke];
+        	// Draw box
+        	[self drawBox:tRect isRounded:TRUE color:dateColor];
     	}
         
         tSize = [tString sizeWithAttributes:normalAttributes];
-    	[tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width*0.5
+    	[tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width*center
             , NSMinY(tRect)+3) withAttributes:normalAttributes];
     }
     
@@ -506,12 +497,14 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     if ([selectedDate getDay] == [monthView[aDay] getDay]  
     	&& aDay >= firstDay && aDay <= lastDay)
     {
-        [NSBezierPath setDefaultLineWidth:1];
-        NSBezierPath* path = [NSBezierPath bezierPathWithRoundedRect:tRect
-            xRadius:5.0 yRadius:5.0];
-        [dateColor set];
-        [path setLineJoinStyle:NSRoundLineJoinStyle];
-        [path stroke];
+        // Draw box
+        NSRect selectedRect;
+        selectedRect.origin.x = tRect.origin.x+1;
+        selectedRect.origin.y = tRect.origin.y+1;
+        selectedRect.size.height = tRect.size.height-2;
+        selectedRect.size.width = tRect.size.width-2;
+        
+        [self drawBox:selectedRect isRounded:TRUE color:[NSColor selectedMenuItemColor]];
     }
     
     // check for events
@@ -544,11 +537,11 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         bool hasReminders = FALSE;
         if (useTasks == TRUE)
         {
-            hasReminders = [self HasRemindersDeprecated:monthView[aDay]];
+            hasReminders = [self HasReminders:monthView[aDay]];
         }
         else
         {
-            hasReminders = [self HasRemindersDeprecated:monthView[aDay]];
+            hasReminders = [self HasReminders:monthView[aDay]];
         }
     	if (hasReminders == true)
     	{
@@ -559,10 +552,10 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     	}
     }
     return 0;
-}
+} // end drawDay
 
 -(void) drawRect:(NSRect) aRect
-{
+{  
     int i = 0;
     NSString* dayArray[7] = {[monthView[0] getDayNameShortString]
     	, [monthView[1] getDayNameShortString]
@@ -570,7 +563,8 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         , [monthView[3] getDayNameShortString]
         , [monthView[4] getDayNameShortString]
         , [monthView[5] getDayNameShortString]
-        , [monthView[6] getDayNameShortString]};
+        , [monthView[6] getDayNameShortString]
+    };
     NSString* tString;
     NSSize tSize;
     NSRect tRect;
@@ -588,7 +582,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }
     
     dayWidth = (tBounds.size.width-2*MZCALENDARCONTROL_OFFSET_H)/nColumns;
-    dayHeight = (tBounds.size.height-20)/7;
+    dayHeight = (tBounds.size.height-2*MZCALENDARCONTROL_OFFSET_V)/NUMBER_OF_ROWS;
     
     if (showWeekNumbers == true)
     {
@@ -610,48 +604,52 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     // month + year and controls
     tString = [selectedDate getMonthYearString];
     tSize = [tString sizeWithAttributes:titleAttributes];
-    tRect = NSMakeRect(MZCALENDARCONTROL_OFFSET_H
-        , NSHeight(tBounds) - MZCALENDARCONTROL_OFFSET_V - tSize.height
-        , dayWidth*nColumns
-        , tSize.height);
+    tRect = NSMakeRect(
+        MZCALENDARCONTROL_OFFSET_H
+        , NSHeight(tBounds) - dayHeight - MZCALENDARCONTROL_OFFSET_V
+        , dayWidth*(nColumns-3) -1
+        , dayHeight -1);
+    //[self drawBox:tRect isRounded:FALSE];
     [tString drawAtPoint:NSMakePoint(NSMinX(tRect) + MZCALENDARCONTROL_OFFSET_H
-        , NSMinY(tRect)+1) withAttributes:titleAttributes];
+        , NSMinY(tRect)+2) withAttributes:titleAttributes];
     
 	tString = @"⇠";
     tSize = [tString sizeWithAttributes:titleAttributes];
-    tRect = NSMakeRect(MZCALENDARCONTROL_OFFSET_H + 4 * dayWidth+cwOffset-2
-        , NSHeight(tBounds) - MZCALENDARCONTROL_OFFSET_V - tSize.height
-        , dayWidth, dayHeight);
+    tRect = NSMakeRect(MZCALENDARCONTROL_OFFSET_H + (4*dayWidth) + cwOffset
+        , NSHeight(tBounds) - dayHeight - MZCALENDARCONTROL_OFFSET_V
+        , dayWidth -1, dayHeight -1);
+    //[self drawBox:tRect isRounded:FALSE];
     [tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width * 0.5
-        , NSMinY(tRect)) withAttributes:titleAttributes];
+        , NSMinY(tRect)+2) withAttributes:titleAttributes];
     
     tString = @"•";
     tSize = [tString sizeWithAttributes:titleAttributes];
-    tRect = NSMakeRect(MZCALENDARCONTROL_OFFSET_H + 5 * dayWidth+cwOffset-2
-        , NSHeight(tBounds) - MZCALENDARCONTROL_OFFSET_V - tSize.height
-        , dayWidth, dayHeight);
+    tRect = NSMakeRect(MZCALENDARCONTROL_OFFSET_H + (5*dayWidth) + cwOffset
+        , NSHeight(tBounds) - dayHeight - MZCALENDARCONTROL_OFFSET_V
+        , dayWidth -1, dayHeight -1);
+    //[self drawBox:tRect isRounded:FALSE];
     [tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width * 0.5
-        , NSMinY(tRect)) withAttributes:titleAttributes];
+        , NSMinY(tRect)+2) withAttributes:titleAttributes];
     
     tString = @"⇢";
     tSize = [tString sizeWithAttributes:titleAttributes];
-    tRect = NSMakeRect(MZCALENDARCONTROL_OFFSET_H + 6 * dayWidth+cwOffset-2
-        , NSHeight(tBounds) - MZCALENDARCONTROL_OFFSET_V - tSize.height
-        , dayWidth, dayHeight);
+    tRect = NSMakeRect(MZCALENDARCONTROL_OFFSET_H + (6*dayWidth) + cwOffset
+        , NSHeight(tBounds) - dayHeight - MZCALENDARCONTROL_OFFSET_V
+        , dayWidth -1, dayHeight -1);
+    //[self drawBox:tRect isRounded:FALSE];
     [tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width * 0.5
-        , NSMinY(tRect)) withAttributes:titleAttributes];
+        , NSMinY(tRect)+2) withAttributes:titleAttributes];
         
     // Draw the week header
     for(i=0; i<7; i++)
     {            
         tRect = NSMakeRect(
-            MZCALENDARCONTROL_OFFSET_H + i * dayWidth+cwOffset -1
-            , NSHeight(tBounds) - MZCALENDARCONTROL_WEEK_OFFSET_V
-            - MZCALENDARCONTROL_OFFSET_V-4
+            MZCALENDARCONTROL_OFFSET_H + (i*dayWidth) + cwOffset
+            , NSHeight(tBounds) - dayHeight*2 - MZCALENDARCONTROL_OFFSET_V
             , dayWidth -1
             , dayHeight -1
         );
-        
+        //[self drawBox:tRect isRounded:FALSE];
         tString = dayArray[i];
             
         tSize = [tString sizeWithAttributes:dayOfWeekAttributes];
@@ -669,29 +667,33 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     // Draw the week views
     if (showWeekNumbers == true)
     {
-    	for(i=0; i<7; i++)
+    	for(i=0; i<8; i++)
     	{
-        	tRect = NSMakeRect(MZCALENDARCONTROL_OFFSET_H
-            	, NSHeight(tBounds) - MZCALENDARCONTROL_WEEK_OFFSET_V 
-            	- (i)*dayHeight - MZCALENDARCONTROL_OFFSET_V-2
-            	, dayWidth, dayHeight);
-        	if (i==0)
+            
+        	tRect = NSMakeRect(
+                MZCALENDARCONTROL_OFFSET_H
+            	, NSHeight(tBounds) - (i+1)*dayHeight - MZCALENDARCONTROL_OFFSET_V
+            	, dayWidth - 1, dayHeight - 1
+            );
+
+            //[self drawBox:tRect isRounded:FALSE];
+        	if (i==1)
         	{
             	tString = @"cw";
             	[tString drawAtPoint:NSMakePoint(NSMinX(tRect)
                 	+MZCALENDARCONTROL_OFFSET_H
-                	, NSMinY(tRect)+1) withAttributes:weekAttributes];
+                	, NSMinY(tRect)+4.5) withAttributes:weekAttributes];
         	}
         	else
         	{
-            	tString = [monthView[(i-1)*7] getWeekString];
+            	tString = [monthView[(i-2)*7] getWeekString];
             	[tString drawAtPoint:NSMakePoint(NSMinX(tRect)
                 	+MZCALENDARCONTROL_OFFSET_H
         			, NSMinY(tRect)+4.5) withAttributes:weekAttributes];
         	}
     	}
     }
-}
+} // end drawRect
 
 -(void) nextMonth
 {
@@ -700,7 +702,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     NSCalendar* calendar = [NSCalendar currentCalendar];
     [self setDate:[calendar dateByAddingComponents:dateComponents 
     	toDate:selectedDate options:0]];
-}
+} // end nextMonth
 
 -(void) lastMonth
 {
@@ -709,7 +711,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     NSCalendar* calendar = [NSCalendar currentCalendar];
     [self setDate:[calendar dateByAddingComponents:dateComponents 
     	toDate:selectedDate options:0]];
-}
+} // end lastMonth
 
 -(int) controlAtPoint:(NSPoint) aPoint
 {
@@ -729,16 +731,13 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }
     
     return retval;
-}
+} // end controlAtPoint
 
-- (void) mouseDown:(NSEvent *) theEvent
+-(void) mouseDown:(NSEvent *) theEvent
 {
-	// move to date
-    NSPoint tPoint = [self convertPoint:[theEvent locationInWindow] 
-    	fromView:nil];
-    
+    NSPoint tPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
     NSDate* tDay;
-
+    
     if ((tDay = [[self dateAtPoint:tPoint] copy]) == nil)
     {
     	// not a date so check controls
@@ -772,12 +771,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         }        
         [self setNeedsDisplay:YES];
     }
-    
-    //if (target != nil && action != nil)
-    //{
-    //    [target performSelector:action  withObject:self];
-    //}
-}
+} // end mouseDown
 
 -(void) rightMouseDown:(NSEvent *)theEvent
 {
@@ -790,17 +784,12 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     {
 		[[NSWorkspace sharedWorkspace] launchApplication:@"iCal"];
     }
-}
-
-//-(void) setAction:(SEL) aAction
-//{
-//    action = aAction;
-//}
+} // end rightMouseDown
 
 -(void) setTarget:(id) aTarget
 {
     target = aTarget;
-}
+} // end setTarget
 
 
 -(bool) HasEvents:(NSDate*) date
@@ -808,7 +797,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 	bool retval = false;
 
     NSDateComponents* comps = [[NSCalendar currentCalendar]
-    	components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+    	components: NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay
         fromDate: date];
     NSDate* startDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
     NSDate* endDate = [startDate dateByAddingTimeInterval: (24*60*60)-1];
@@ -831,7 +820,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     __block bool remindersFound = FALSE;
 
     NSDateComponents* comps = [[NSCalendar currentCalendar]
-    	components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+    	components: NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay
         fromDate: date];
         
     NSDate* startDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
@@ -857,42 +846,6 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 	return remindersFound;
 } // end HasReminders
 
--(bool) HasRemindersDeprecated:(NSDate*) date
-{
-	bool retval = false;
-    
-    NSDateComponents* comps = [[NSCalendar currentCalendar]
-    	components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
-        fromDate: date];
-        
-    NSDate* startDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
-    NSDate* endDate = [startDate dateByAddingTimeInterval:(24*60*60)-1];
-    
-    NSPredicate *remindersEndingThisDay = [CalCalendarStore
-        taskPredicateWithUncompletedTasksDueBefore: endDate
-        calendars:[[CalCalendarStore defaultCalendarStore] calendars]];
-        
-   	NSArray *reminders
-    	= [[CalCalendarStore defaultCalendarStore]
-        tasksWithPredicate: remindersEndingThisDay];
-    
-    int i;
-    for (i=0; i<[reminders count]; i++)
-    {
-        NSDateComponents* tempComp = [[NSCalendar currentCalendar]
-    		components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
-        	fromDate: [[reminders objectAtIndex:i] dueDate]];
-        NSDate* dueDate = [[NSCalendar currentCalendar]
-        	dateFromComponents:tempComp];
-        if ([dueDate isEqualToDate:startDate])
-        {
-            retval = true;
-            break;
-        }
-    }
-    
-	return retval;
-}
 
 // With the observable keys set up above and the appropriate bindings in IB,
 // we can trigger UI updates just by signaling changes to the keys
@@ -902,7 +855,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     {
 		[self setNeedsDisplay:YES];
     }
-}
+} // end calendarsChanged
 
 -(void) eventsChanged:(NSNotification *)notification
 {
@@ -910,7 +863,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     {
 		[self setNeedsDisplay:YES];
     }
-}
+} // end eventsChanged
 
 -(void) tasksChanged:(NSNotification *)notification
 {
@@ -918,6 +871,6 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     {
 		[self setNeedsDisplay:YES];
     }
-}
+} // end tasksChanged
 
-@end
+@end // end MZCalendarControl

@@ -19,6 +19,7 @@
     NSColor* dateColor;
     NSColor* shadowColor;
     NSShadow* shadow;
+    int fontSize;
     
     int dayWidth;    
     int dayHeight;
@@ -36,6 +37,7 @@
     bool showReminderIndicators;
     bool showBoxes;
     bool useTasks;
+    bool hiliteDay;
 
     NSDictionary* titleAttributes;
     NSDictionary* normalAttributes;
@@ -56,6 +58,8 @@
 -(void) setShowEventIndicators:(bool) value;
 -(void) setShowReminderIndicators:(bool) value;
 -(void) setShowBoxes:(bool) value;
+-(void) setFontSize:(int) value;
+-(void) setHiliteDay:(bool) value;
 
 -(int) dayAtPoint:(NSPoint) aPoint;
 -(NSDate*) dateAtPoint:(NSPoint) aPoint;
@@ -74,7 +78,6 @@
 
 -(bool) HasEvents:(NSDate*) date;
 -(bool) HasReminders:(NSDate*) date;
--(bool) HasRemindersDeprecated:(NSDate*) date;
 
 // Handler methods for Calendar Store notifications
 - (void) calendarsChanged:(NSNotification *)notification;

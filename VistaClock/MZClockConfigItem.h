@@ -13,6 +13,8 @@
 @property (nonatomic, retain) IBOutlet NSTextField* titleConfigLabel;
 @property (nonatomic, retain) IBOutlet NSTextField* timezoneConfigLabel;
 @property (nonatomic, retain) IBOutlet NSButton* deleteButton;
+@property (nonatomic, retain) IBOutlet NSButton* upButton;
+@property (nonatomic, retain) IBOutlet NSButton* downButton;
     
 @property (nonatomic, assign) bool useSecond;
 

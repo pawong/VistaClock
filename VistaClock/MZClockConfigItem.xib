@@ -1,26 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MZClockConfigItem">
             <connections>
-                <outlet property="deleteButton" destination="cGf-iG-hRj" id="rvS-EK-tnT"/>
+                <outlet property="deleteButton" destination="Q00-EJ-BbS" id="T6x-S8-JFE"/>
+                <outlet property="downButton" destination="RwH-gd-Pdu" id="ONT-i0-Cke"/>
                 <outlet property="timezoneConfigLabel" destination="a7C-5l-IMI" id="Jyh-Re-rW6"/>
                 <outlet property="titleConfigLabel" destination="GTN-k1-2G6" id="NDf-WE-sSa"/>
+                <outlet property="upButton" destination="imT-AJ-W3k" id="IOK-Af-jzo"/>
                 <outlet property="view" destination="gNa-Rr-p0V" id="cxh-Be-nw8"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <view id="gNa-Rr-p0V" userLabel="Clock Config Item View">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="301" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <button verticalHuggingPriority="750" id="Q00-EJ-BbS" userLabel="Push Button - Delete">
+                    <rect key="frame" x="264" y="8" width="36" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="X" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNc-dZ-arN" userLabel="Button Cell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="systemBold"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeClockConfig:" target="-1" id="eVD-lV-AQB"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="imT-AJ-W3k" userLabel="Push Button - Up">
+                    <rect key="frame" x="216" y="8" width="36" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="↑" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lug-KP-wAl" userLabel="Button Cell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="systemBold"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="moveUpClockConfig:" target="-1" id="z20-Du-ula"/>
+                    </connections>
+                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="GTN-k1-2G6" userLabel="Text Field - Label">
-                    <rect key="frame" x="18" y="26" width="220" height="17"/>
+                    <rect key="frame" x="3" y="26" width="220" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Bismark, Dakota" id="MXs-O2-0wz" userLabel="Text Field Cell">
                         <font key="font" metaFont="system"/>
@@ -29,7 +53,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="a7C-5l-IMI" userLabel="Text Field - Timezone">
-                    <rect key="frame" x="18" y="7" width="220" height="17"/>
+                    <rect key="frame" x="3" y="7" width="220" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="America/North_Dakota/New_Salem" id="cUO-TM-vYL" userLabel="Text Field Cell">
                         <font key="font" metaFont="smallSystem"/>
@@ -37,22 +61,19 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="cGf-iG-hRj" userLabel="Push Button - Delete">
-                    <rect key="frame" x="242" y="8" width="44" height="32"/>
+                <button verticalHuggingPriority="750" id="RwH-gd-Pdu" userLabel="Push Button - Down">
+                    <rect key="frame" x="240" y="8" width="36" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" bezelStyle="rounded" image="delete" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aGT-tB-qYI" userLabel="Button Cell">
+                    <buttonCell key="cell" type="push" title="↓" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0ah-WM-YMQ" userLabel="Button Cell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemBold"/>
                     </buttonCell>
                     <connections>
-                        <action selector="removeClockConfig:" target="-1" id="bGH-FI-sWB"/>
+                        <action selector="moveDownClockConfig:" target="-1" id="EBO-8g-zYP"/>
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="164" y="-515"/>
+            <point key="canvasLocation" x="35" y="-477"/>
         </view>
     </objects>
-    <resources>
-        <image name="delete" width="20" height="20"/>
-    </resources>
 </document>
