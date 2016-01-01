@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MZClockItem">
@@ -17,15 +17,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView wantsLayer="YES" id="IOR-up-EBx" userLabel="Clock Item View">
-            <rect key="frame" x="0.0" y="0.0" width="128" height="188"/>
+            <rect key="frame" x="0.0" y="0.0" width="146" height="214"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <customView id="0zV-Hu-A2q" customClass="MZClockControl">
-                    <rect key="frame" x="5" y="44" width="118" height="118"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </customView>
                 <textField verticalHuggingPriority="750" id="0eu-Sn-sRG" userLabel="Text Field - Caption">
-                    <rect key="frame" x="5" y="166" width="118" height="17"/>
+                    <rect key="frame" x="0.0" y="186" width="146" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Portland, OR" id="385-gS-kcr" userLabel="Text Field Cell - Portland, OR">
                         <font key="font" metaFont="system"/>
@@ -34,7 +30,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Gql-MJ-JHY" userLabel="Text Field - Time">
-                    <rect key="frame" x="5" y="23" width="118" height="17"/>
+                    <rect key="frame" x="0.0" y="22" width="146" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="12:00:00 PM" id="kFb-Al-hLt">
                         <font key="font" metaFont="system"/>
@@ -43,7 +39,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="thC-yO-KBv" userLabel="Text Field - Day">
-                    <rect key="frame" x="5" y="6" width="118" height="14"/>
+                    <rect key="frame" x="0.0" y="7" width="146" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Monday" id="Z5g-zy-td7">
                         <font key="font" metaFont="smallSystem"/>
@@ -51,6 +47,10 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <customView id="0zV-Hu-A2q" customClass="MZClockControl">
+                    <rect key="frame" x="4" y="45" width="138" height="138"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </customView>
             </subviews>
         </customView>
     </objects>

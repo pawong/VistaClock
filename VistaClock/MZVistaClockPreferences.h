@@ -30,6 +30,7 @@
     IBOutlet NSButton* useKeepTopCB;
     IBOutlet NSButton* useShadowsCB;
     IBOutlet NSButton* useDarkThemeCB;
+    IBOutlet NSButton* useLargeFontsCB;
     
     // for later use
     IBOutlet NSButton* showMasterClockCB;
@@ -46,6 +47,8 @@
     IBOutlet NSButton* showStatusFullMonthCB;
     IBOutlet NSButton* showStatusSecondaryTimeCB;
     IBOutlet NSPopUpButton* statusTimezoneButton;
+    IBOutlet NSButton* showDateTimeCB;
+    IBOutlet NSButton* useBWIconCB;
 
     
     // clock settings

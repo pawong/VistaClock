@@ -23,6 +23,7 @@
 @property (nonatomic, assign) BOOL showOtherClocks;
 @property (nonatomic, assign) BOOL useShadows;
 @property (nonatomic, assign) BOOL useDarkTheme;
+@property (nonatomic, assign) BOOL useLargeFonts;
 
 // status item settings
 @property (nonatomic, assign) BOOL showWeekNumberIcon;
@@ -35,6 +36,8 @@
 @property (nonatomic, assign) BOOL showStatusFullMonth;
 @property (nonatomic, assign) BOOL showStatusSecondaryTime;
 @property (nonatomic, assign) NSString* statusSecondaryTimezone;
+@property (nonatomic, assign) BOOL showDateTime;
+@property (nonatomic, assign) BOOL useBWIcon;
 
 // clock panel settings
 @property (nonatomic, assign) BOOL useMilitary;

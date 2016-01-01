@@ -22,6 +22,16 @@
 #define TIME_FORMAT_MILITARY            @"HH:mm"
 #define TIME_FORMAT_MILITARY_FULL       @"HH:mm:ss"
 
+// window sizes
+#define WINDOW_WIDTH_CALENDAR           306
+#define WINDOW_HEIGHT                   266
+#define WINDOW_HEIGHT_TOOLBAR           284
+#define CLOCK_WIDTH                     146
+#define CLOCK_HEIGHT                    214
+#define CALENDAR_WIDTH                  290
+#define CALENDAR_HEIGTH                 214
+
+
 @interface MZVistaClockAppDelegate : NSObject <NSApplicationDelegate>
 {
     // status item controls
@@ -29,8 +39,6 @@
     MZStatusItemView* statusItemView;
     IBOutlet NSMenu* statusMenu;
     NSString* statusItemFormat;
-    IBOutlet NSTextField* titleTextLabel;
-    IBOutlet NSMenuItem* goDateMenuItem;
     
     // clocks
     IBOutlet NSCollectionView *clockCollectionView;
@@ -41,16 +49,21 @@
     IBOutlet MZCalendarControl* calendar;
     IBOutlet NSScrollView* clockScrollView;
     IBOutlet NSDatePicker* altcal;
-    IBOutlet NSTextField* gotoDateField;
-    IBOutlet NSTextField* doyLabel;
-    IBOutlet NSTextField* dayIntervalLabel;
     
     // timer
     NSTimer* timer;
     
     // settings
     VCSettings* settings;
-    
+
+    // toolbar
+    BOOL showToolbar;
+    BOOL toolBarChanged;
+    IBOutlet NSTextField* titleLabel;
+    IBOutlet NSTextField* gotoDateField;
+    IBOutlet NSTextField* dayDetailLabel;
+    IBOutlet NSMenuItem* toolBarMenuItem;
+
     // MISC
     NSInteger lastWeek;
     NSString* lastCal;
@@ -62,7 +75,6 @@
 @property (assign) IBOutlet NSWindow *vistaClockWindow;
 @property (strong) NSWindowController* prefsWindow;
 @property (assign) IBOutlet NSMenuItem* timeNow;
-@property (assign) IBOutlet NSDrawer* dateDrawer;
 
 
 // methods
@@ -72,7 +84,7 @@
 -(void) removeClock;
 -(void) resizeWindow;
 -(CGFloat) titleBarHeight:(NSWindow*) window;
--(CGFloat) toolbarHeight:(NSWindow*) window;
+-(CGFloat) toolBarHeight:(NSWindow*) window;
 -(NSString*) buildStatusItemDateFormatString;
 -(void) createStatusItem;
 
@@ -80,13 +92,16 @@
 -(IBAction) launchAboutBoxPanel:(id)sender;
 -(IBAction) launchDateTimePreferencePanel:(id)sender;
 -(IBAction) openPreferences:(id)sender;
--(IBAction) openDateDrawer:(id)sender;
 
 -(NSDate*) AddToDate:(NSDate*) originalDate unitType:(int) unitType units:(int) units;
 -(int) GetDays:(NSString*) inputString;
 -(int) GetWeeks:(NSString*) inputString;
 -(int) GetMonths:(NSString*) inputString;
 -(int) GetYears:(NSString*) inputString;
+
+-(void) configureToolbar:(bool) full;
+-(void) resetToolbar;
+-(IBAction) toggleToolbar:(id)sender;
 
 -(IBAction) gotoDate:(id)sender;
 -(IBAction) goToday:(id)sender;

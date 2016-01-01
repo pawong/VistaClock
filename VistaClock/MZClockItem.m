@@ -16,6 +16,7 @@
     clockFace:(NSString*) newClockFace
     darkTheme:(bool) newDarkTheme
     shadow:(bool) newShadow
+    largeFonts:(bool) newLargeFonts
     seconds:(bool) newSeconds
     militaryTime:(bool) newMilitaryTime
 {
@@ -32,6 +33,7 @@
     timezone = newZone;
     useDarkTheme = newDarkTheme;
     useShadow = newShadow;
+    useLargeFonts = newLargeFonts;
     useSeconds = newSeconds;
     [clock useSecondHand:useSeconds];
     useMilitaryTime = newMilitaryTime;
@@ -81,6 +83,20 @@
        	[day setTextColor:NSColor.blackColor];
         [day setShadow:shadow];
 	}
+
+
+    if (useLargeFonts)
+    {
+        [clockCaption setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]+2]];
+        [time setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]+2]];
+        [day setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]+1]];
+    }
+    else
+    {
+        [clockCaption setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
+        [time setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
+        [day setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+    }
     
 }
 
@@ -102,6 +118,10 @@
     useShadow = value;
 }
 
+-(void) setUseLargeFonts:(bool) value
+{
+    useLargeFonts = value;
+}
 
 -(void) setUseSeconds:(bool) value
 {

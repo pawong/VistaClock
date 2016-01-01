@@ -19,12 +19,13 @@ static VCSettings* sharedSettings = nil;
 
 // general panel options
 @synthesize useAutoLaunch, useAutoHide, useKeepTop, showOtherClocks, useShadows
-    , useDarkTheme;
+    , useDarkTheme, useLargeFonts;
 
 // status item options
 @synthesize showWeekNumberIcon, useBWWeekIcon, showStatusSeconds
     , useStatusMilitary, showStatusAMPM, showStatusWeekDay, showStatusDate
-    , showStatusFullMonth, showStatusSecondaryTime, statusSecondaryTimezone;
+    , showStatusFullMonth, showStatusSecondaryTime, statusSecondaryTimezone
+    , showDateTime, useBWIcon;
 
 // clock panel options
 @synthesize useMilitary, clockFaceName;
@@ -103,6 +104,7 @@ static VCSettings* sharedSettings = nil;
     showOtherClocks = [decoder decodeBoolForKey:@"showOtherClocks"];
     useShadows = [decoder decodeBoolForKey:@"useShadows"];
     useDarkTheme = [decoder decodeBoolForKey:@"useDarkTheme"];
+    useLargeFonts = [decoder decodeBoolForKey:@"useLargeFonts"];
     
     // status item options
     showWeekNumberIcon = [decoder decodeBoolForKey:@"showWeekNumberIcon"];
@@ -115,6 +117,8 @@ static VCSettings* sharedSettings = nil;
     showStatusFullMonth = [decoder decodeBoolForKey:@"showStatusFullMonth"];
     showStatusSecondaryTime = [decoder decodeBoolForKey:@"showStatusSecondaryTime"];
     statusSecondaryTimezone = [decoder decodeObjectForKey:@"statusSecondaryTimezone"];
+    showDateTime = [decoder decodeBoolForKey:@"showDateTime"];
+    useBWIcon = [decoder decodeBoolForKey:@"useBWIcon"];
     
     // clock panel options
     useMilitary = [decoder decodeBoolForKey:@"useMilitary"];
@@ -152,6 +156,8 @@ static VCSettings* sharedSettings = nil;
     [encoder encodeBool:showOtherClocks forKey:@"showOtherClocks"];
     [encoder encodeBool:useShadows forKey:@"useShadows"];
     [encoder encodeBool:useDarkTheme forKey:@"useDarkTheme"];
+    [encoder encodeBool:useLargeFonts forKey:@"useLargeFonts"];
+
     
     // status item options
     [encoder encodeBool:showWeekNumberIcon forKey:@"showWeekNumberIcon"];
@@ -164,6 +170,8 @@ static VCSettings* sharedSettings = nil;
     [encoder encodeBool:showStatusFullMonth forKey:@"showStatusFullMonth"];
     [encoder encodeBool:showStatusSecondaryTime forKey:@"showStatusSecondaryTime"];
     [encoder encodeObject:statusSecondaryTimezone forKey:@"statusSecondaryTimezone"];
+    [encoder encodeBool:showDateTime forKey:@"showDateTime"];
+    [encoder encodeBool:useBWIcon forKey:@"useBWIcon"];
     
     // clock options
     [encoder encodeBool:useMilitary forKey:@"useMilitary"];
@@ -192,6 +200,7 @@ static VCSettings* sharedSettings = nil;
     showOtherClocks = YES;
     useShadows = YES;
     useDarkTheme = NO;
+    useLargeFonts = NO;
 
     // status item options
     showWeekNumberIcon = YES;
@@ -204,6 +213,8 @@ static VCSettings* sharedSettings = nil;
     showStatusFullMonth = NO;
     showStatusSecondaryTime = NO;
     statusSecondaryTimezone = @"GMT";
+    showDateTime = YES;
+    useBWIcon = NO;
     
     // clock options
     useMilitary = NO;

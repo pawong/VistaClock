@@ -261,7 +261,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VistaClockLoginHelper/VistaClockLoginHelper.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Mazookie, LLC";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClockLoginHelper/VistaClockLoginHelper-Prefix.pch";
@@ -278,7 +278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VistaClockLoginHelper/VistaClockLoginHelper.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Mazookie, LLC";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClockLoginHelper/VistaClockLoginHelper-Prefix.pch";

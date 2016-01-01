@@ -81,6 +81,10 @@
 		134E3A1019BA16A6004FA01A /* mazookie_name_tiny.png in Resources */ = {isa = PBXBuildFile; fileRef = 134E3A0E19BA16A6004FA01A /* mazookie_name_tiny.png */; };
 		139ED8D819F9B7AC00181875 /* VistaClockLoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 139ED8D719F9B75700181875 /* VistaClockLoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */; };
+		13AD502E1C347AF1005C9A3A /* todayToolbarBW.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AD502D1C347AF1005C9A3A /* todayToolbarBW.png */; };
+		13AD50301C347DD1005C9A3A /* mazookieStatusIconBW.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AD502F1C347DD1005C9A3A /* mazookieStatusIconBW.png */; };
+		13AD50321C347DE5005C9A3A /* mazookieStatusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AD50311C347DE5005C9A3A /* mazookieStatusIcon.png */; };
+		13AD50341C3485E2005C9A3A /* mazookieStatusIconWB.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AD50331C3485E2005C9A3A /* mazookieStatusIconWB.png */; };
 		13BEBE1C19C8EAC6009C7B76 /* VCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +208,10 @@
 		134E3A0E19BA16A6004FA01A /* mazookie_name_tiny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazookie_name_tiny.png; sourceTree = "<group>"; };
 		139ED8D219F9B75700181875 /* VistaClockLoginHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VistaClockLoginHelper.xcodeproj; path = VistaClockLoginHelper/VistaClockLoginHelper.xcodeproj; sourceTree = "<group>"; };
 		13A4EB4E19EDA6E70031D4DE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		13AD502D1C347AF1005C9A3A /* todayToolbarBW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todayToolbarBW.png; sourceTree = "<group>"; };
+		13AD502F1C347DD1005C9A3A /* mazookieStatusIconBW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazookieStatusIconBW.png; sourceTree = "<group>"; };
+		13AD50311C347DE5005C9A3A /* mazookieStatusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazookieStatusIcon.png; sourceTree = "<group>"; };
+		13AD50331C3485E2005C9A3A /* mazookieStatusIconWB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazookieStatusIconWB.png; sourceTree = "<group>"; };
 		13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSettings.m; sourceTree = "<group>"; };
 		13BEBE1B19C8EAC6009C7B76 /* VCSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSettings.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -303,6 +311,10 @@
 		134E392619BA107B004FA01A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				13AD50331C3485E2005C9A3A /* mazookieStatusIconWB.png */,
+				13AD50311C347DE5005C9A3A /* mazookieStatusIcon.png */,
+				13AD502F1C347DD1005C9A3A /* mazookieStatusIconBW.png */,
+				13AD502D1C347AF1005C9A3A /* todayToolbarBW.png */,
 				1300F5BF19BCE700006E8FD9 /* MBVCB01.png */,
 				1313723D19C386D300B65CDE /* move.png */,
 				1313723E19C386D300B65CDE /* delete.png */,
@@ -355,8 +367,8 @@
 				134E3A0E19BA16A6004FA01A /* mazookie_name_tiny.png */,
 				134E392719BA107B004FA01A /* VistaClock-Info.plist */,
 				134E39BA19BA1388004FA01A /* statusbarIcon.png */,
-				134E392819BA107B004FA01A /* InfoPlist.strings */,
 				134E39BB19BA1388004FA01A /* statusbarIconBW.png */,
+				134E392819BA107B004FA01A /* InfoPlist.strings */,
 				134E392B19BA107B004FA01A /* main.m */,
 				134E392D19BA107B004FA01A /* VistaClock-Prefix.pch */,
 				134E392E19BA107B004FA01A /* Credits.rtf */,
@@ -418,7 +430,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MZ;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Mazookie, LLC";
 				TargetAttributes = {
 					134E391B19BA107B004FA01A = {
@@ -476,21 +488,25 @@
 				1300F5FC19BCE700006E8FD9 /* MWVCB01.png in Resources */,
 				1300F5E819BCE700006E8FD9 /* DVCW03.png in Resources */,
 				13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */,
+				13AD50321C347DE5005C9A3A /* mazookieStatusIcon.png in Resources */,
 				134E3A0619BA1388004FA01A /* statusbarIcon.png in Resources */,
 				1300F60519BCE700006E8FD9 /* SVCW05.png in Resources */,
 				1300F60819BCE700006E8FD9 /* SWVCB01.png in Resources */,
 				1332483F1BA4831800CFAA7B /* VistaClock.icns in Resources */,
 				1313723619C3552E00B65CDE /* MZVistaClockPreferences.xib in Resources */,
+				13AD50301C347DD1005C9A3A /* mazookieStatusIconBW.png in Resources */,
 				1300F60219BCE700006E8FD9 /* SVCB02.png in Resources */,
 				1300F5EF19BCE700006E8FD9 /* HVCB06.png in Resources */,
 				1300F5F219BCE700006E8FD9 /* HVCW07.png in Resources */,
 				134E3A1019BA16A6004FA01A /* mazookie_name_tiny.png in Resources */,
+				13AD50341C3485E2005C9A3A /* mazookieStatusIconWB.png in Resources */,
 				1300F61219BCE700006E8FD9 /* VCW05.png in Resources */,
 				1300F5F519BCE700006E8FD9 /* MBVCB01.png in Resources */,
 				1300F60B19BCE700006E8FD9 /* tinyredlighton.png in Resources */,
 				1300F5AC19BCB8F8006E8FD9 /* Gear_16x16x32.png in Resources */,
 				134E392A19BA107B004FA01A /* InfoPlist.strings in Resources */,
 				1300F5F119BCE700006E8FD9 /* HVCW05.png in Resources */,
+				13AD502E1C347AF1005C9A3A /* todayToolbarBW.png in Resources */,
 				1313723F19C386D300B65CDE /* MZClockConfigItem.xib in Resources */,
 				1300F5F419BCE700006E8FD9 /* HWVCB01.png in Resources */,
 				1300F60619BCE700006E8FD9 /* SVCW07.png in Resources */,
@@ -609,6 +625,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -675,6 +692,7 @@
 				GCC_PREFIX_HEADER = "VistaClock/VistaClock-Prefix.pch";
 				INFOPLIST_FILE = "VistaClock/VistaClock-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Mazookie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -693,6 +711,7 @@
 				GCC_PREFIX_HEADER = "VistaClock/VistaClock-Prefix.pch";
 				INFOPLIST_FILE = "VistaClock/VistaClock-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Mazookie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

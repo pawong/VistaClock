@@ -279,6 +279,7 @@
     [showOtherClocksCB setState:settings.showOtherClocks];
     [useShadowsCB setState:settings.useShadows];
     [useDarkThemeCB setState:settings.useDarkTheme];
+    [useLargeFontsCB setState:settings.useLargeFonts];
     
     [showWeekNumberIconCB setState:settings.showWeekNumberIcon];
     [useBWWeekIconCB setState:settings.useBWWeekIcon];
@@ -298,7 +299,10 @@
     {
         [statusTimezoneButton selectItemAtIndex:0];
     }
-    
+
+    [showDateTimeCB setState:settings.showDateTime];
+    [useBWIconCB setState:settings.useBWIcon];
+
     // clock settings
     [useMilitaryCB setState:settings.useMilitary];
     clockFaceIndex = [self getIndexClockFaceArray:settings.clockFaceName];
@@ -311,12 +315,30 @@
     [showRemindersCB setState:settings.showReminders];
     [showCalendarBoxesCB setState:settings.showCalendarBoxes];
     
-    // disable status
+    // disable status date time
+    [useBWIconCB setEnabled:!settings.showDateTime];
+    [showStatusSecondsCB setEnabled:settings.showDateTime];
+    [useStatusMilitaryCB setEnabled:settings.showDateTime];
+    [showStatusAMPMCB setEnabled:settings.showDateTime];
+    [showStatusWeekDayCB setEnabled:settings.showDateTime];
+    [showStatusDateCB setEnabled:settings.showDateTime];
+    [showStatusFullMonthCB setEnabled:settings.showDateTime];
+    [showStatusSecondaryTimeCB setEnabled:settings.showDateTime];
+    [statusTimezoneButton setEnabled:settings.showDateTime];
+    [useBWIconCB setEnabled:!settings.showWeekNumberIcon];
+
+    // always
     [useBWWeekIconCB setEnabled:settings.showWeekNumberIcon];
-    [showStatusAMPMCB setEnabled:!settings.useStatusMilitary];
-    [showStatusFullMonthCB setEnabled:settings.showStatusDate];
-    [statusTimezoneButton setEnabled:settings.showStatusSecondaryTime];
-    
+
+    // disable status options
+    if (settings.showDateTime == YES)
+    {
+        [useBWIconCB setEnabled:!settings.showDateTime];
+        [showStatusAMPMCB setEnabled:!settings.useStatusMilitary];
+        [showStatusFullMonthCB setEnabled:settings.showStatusDate];
+        [statusTimezoneButton setEnabled:settings.showStatusSecondaryTime];
+    }
+
     // disable keep on top
     [useKeepTopCB setEnabled:!settings.useAutoHide];
     
@@ -342,6 +364,7 @@
     settings.showOtherClocks = ([showOtherClocksCB state] == NSOnState)?YES:NO;
     settings.useShadows = ([useShadowsCB state] == NSOnState)?YES:NO;
     settings.useDarkTheme = ([useDarkThemeCB state] == NSOnState)?YES:NO;
+    settings.useLargeFonts = ([useLargeFontsCB state] == NSOnState)?YES:NO;
     settings.showWeekNumberIcon = ([showWeekNumberIconCB state] == NSOnState)?YES:NO;
     settings.useBWWeekIcon = ([useBWWeekIconCB state] == NSOnState)?YES:NO;
     settings.showStatusSeconds = ([showStatusSecondsCB state] == NSOnState)?YES:NO;
@@ -352,6 +375,8 @@
     settings.showStatusFullMonth = ([showStatusFullMonthCB state] == NSOnState)?YES:NO;
     settings.showStatusSecondaryTime = ([showStatusSecondaryTimeCB state] == NSOnState)?YES:NO;
     settings.statusSecondaryTimezone = [timezones objectForKey:[statusTimezoneButton titleOfSelectedItem]];
+    settings.showDateTime = ([showDateTimeCB state] == NSOnState)?YES:NO;
+    settings.useBWIcon = ([useBWIconCB state] == NSOnState)?YES:NO;
     
     // clock settings
     settings.useMilitary = ([useMilitaryCB state] == NSOnState)?YES:NO;
@@ -365,12 +390,30 @@
     settings.showCalendarBoxes = ([showCalendarBoxesCB state] == NSOnState)?YES:NO;
     
     // update view
-    // disable status options
-    [showStatusAMPMCB setEnabled:!settings.useStatusMilitary];
+    // disable status date time
+    [useBWIconCB setEnabled:!settings.showDateTime];
+    [showStatusSecondsCB setEnabled:settings.showDateTime];
+    [useStatusMilitaryCB setEnabled:settings.showDateTime];
+    [showStatusAMPMCB setEnabled:settings.showDateTime];
+    [showStatusWeekDayCB setEnabled:settings.showDateTime];
+    [showStatusDateCB setEnabled:settings.showDateTime];
+    [showStatusFullMonthCB setEnabled:settings.showDateTime];
+    [showStatusSecondaryTimeCB setEnabled:settings.showDateTime];
+    [statusTimezoneButton setEnabled:settings.showDateTime];
+    [useBWIconCB setEnabled:!settings.showWeekNumberIcon];
+
+    // always
     [useBWWeekIconCB setEnabled:settings.showWeekNumberIcon];
-    [showStatusFullMonthCB setEnabled:settings.showStatusDate];
-    [statusTimezoneButton setEnabled:settings.showStatusSecondaryTime];
-    
+
+    // disable status options
+    if (settings.showDateTime == YES)
+    {
+        [useBWIconCB setEnabled:!settings.showDateTime];
+        [showStatusAMPMCB setEnabled:!settings.useStatusMilitary];
+        [showStatusFullMonthCB setEnabled:settings.showStatusDate];
+        [statusTimezoneButton setEnabled:settings.showStatusSecondaryTime];
+    }
+
     // disable keep on top
     [useKeepTopCB setEnabled:!settings.useAutoHide];
     
@@ -379,7 +422,7 @@
     [showEventsCB setEnabled:settings.showCalendar];
     [showRemindersCB setEnabled:settings.showCalendar];
     [showCalendarBoxesCB setEnabled:settings.showCalendar];
-    
+
     // update auto launch
     [self toggleLaunchAtLogin:settings.useAutoLaunch];
     

@@ -20,6 +20,7 @@
     
     bool useDarkTheme;
     bool useShadow;
+    bool useLargeFonts;
     bool useSeconds;
     bool useMilitaryTime;
 }
@@ -29,6 +30,7 @@
     clockFace:(NSString*) newClockFace
     darkTheme:(bool) newDarkTheme
     shadow:(bool) newShadow
+    largeFonts:(bool) newLargeFonts
     seconds:(bool) newSeconds
     militaryTime:(bool) newMilitaryTime;
 
@@ -37,6 +39,8 @@
 -(void) setUseDarkTheme:(bool) value;
 
 -(void) setUseShadow:(bool) value;
+
+-(void) setUseLargeFonts:(bool) value;
 
 -(void) setUseSeconds:(bool) value;
 

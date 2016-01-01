@@ -8,10 +8,10 @@
 
 #import "MZVistaClockAppDelegate.h"
 
+
 @implementation MZVistaClockAppDelegate
 
 @synthesize prefsWindow;
-@synthesize dateDrawer;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -50,7 +50,18 @@
         //NSAppearance* appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
         //[_vistaClockWindow setAppearance:appearance];
     }
-    
+
+    // setup toolbar
+    showToolbar = FALSE;
+    if (showToolbar)
+    {
+        [self configureToolbar: TRUE];
+    }
+    else
+    {
+        [self configureToolbar: FALSE];
+    }
+
     // should be yes, but make sure
     settings.needsDisplay = YES;
  
@@ -79,6 +90,7 @@
     // keeps timer moving, even when menu has control
     [[NSRunLoop currentRunLoop] addTimer:timer 
         forMode:NSEventTrackingRunLoopMode];
+    
 } // end of applicationDidFinishLaunching
 
 
@@ -206,35 +218,59 @@
     }
     else
     {
-        // show nothing
-        [statusItemView setImage:nil];
-    }
-    
-    if (settings.showStatusSecondaryTime)
-    {
-        NSDateFormatter* title1DateFormat = [[NSDateFormatter alloc] init];
-        [title1DateFormat setDateFormat:DATE_FORMAT_TIMEZONE_DAY];
-        [title1DateFormat setTimeZone:[NSTimeZone timeZoneWithName:settings.statusSecondaryTimezone]];
-        NSString* title1 = [title1DateFormat stringFromDate:now];
-        NSDateFormatter* title2DateFormat = [[NSDateFormatter alloc] init];
-        if (settings.useStatusMilitary)
+        if (settings.showDateTime) // show time
         {
-            [title2DateFormat setDateFormat:TIME_FORMAT_MILITARY];
+            // show nothing
+            [statusItemView setImage:nil];
         }
         else
         {
-            [title2DateFormat setDateFormat:TIME_FORMAT_NORMAL];
+            if (!settings.useBWIcon) // use black and white
+            {
+                [statusItemView setImage:[[NSImage imageNamed:@"mazookieStatusIcon.png"] copy]];
+            }
+            else if ([self isDarkMenu])
+            {
+                [statusItemView setImage:[[NSImage imageNamed:@"mazookieStatusIconWB.png"] copy]];
+            }
+            else
+            {
+                [statusItemView setImage:[[NSImage imageNamed:@"mazookieStatusIconBW.png"] copy]];
+            }
         }
-        [title2DateFormat setTimeZone:[NSTimeZone timeZoneWithName:settings.statusSecondaryTimezone]];
-        NSString* title2 = [title2DateFormat stringFromDate:now];
+    }
+
+    if (settings.showDateTime) // show time
+    {
+        if (settings.showStatusSecondaryTime)
+        {
+            NSDateFormatter* title1DateFormat = [[NSDateFormatter alloc] init];
+            [title1DateFormat setDateFormat:DATE_FORMAT_TIMEZONE_DAY];
+            [title1DateFormat setTimeZone:[NSTimeZone timeZoneWithName:settings.statusSecondaryTimezone]];
+            NSString* title1 = [title1DateFormat stringFromDate:now];
+            NSDateFormatter* title2DateFormat = [[NSDateFormatter alloc] init];
+            if (settings.useStatusMilitary)
+            {
+                [title2DateFormat setDateFormat:TIME_FORMAT_MILITARY];
+            }
+            else
+            {
+                [title2DateFormat setDateFormat:TIME_FORMAT_NORMAL];
+            }
+            [title2DateFormat setTimeZone:[NSTimeZone timeZoneWithName:settings.statusSecondaryTimezone]];
+            NSString* title2 = [title2DateFormat stringFromDate:now];
         
-        [statusItemView setTitles:statusItemDate subTitle1:title1 subTitle2:title2];
+            [statusItemView setTitles:statusItemDate subTitle1:title1 subTitle2:title2];
+        }
+        else
+        {
+            [statusItemView setTitle:statusItemDate];
+        }
     }
     else
     {
-        [statusItemView setTitle:statusItemDate];
+        [statusItemView setTitle:@""];
     }
-    
     
     // only update panel when the window is visiable
     //if ([_vistaClockWindow isVisible])
@@ -246,22 +282,24 @@
         // check size of window to see if title will fit
         if (clockCollectionArray.count<1)
         {
-            [titleTextLabel setStringValue:normalFullTime];
+            [_vistaClockWindow setTitle:normalFullTime];
+            [titleLabel setStringValue:normalFullTime];
         }
         else
         {
+            [_vistaClockWindow setTitle:fullDate];
             int windowSize = _vistaClockWindow.frame.size.width;
             if (windowSize > 288)
             {
-                [titleTextLabel setStringValue:fullDate];
+                [titleLabel setStringValue:fullDate];
             }
             else if (windowSize > 150)
             {
-                [titleTextLabel setStringValue:mediumDate];
+                [titleLabel setStringValue:mediumDate];
             }
             else
             {
-                [titleTextLabel setStringValue:shortDate];
+                [titleLabel setStringValue:shortDate];
             }
         }
 
@@ -301,15 +339,13 @@
     }
     
     // update day details
-    if ([_vistaClockWindow isVisible] && (([dateDrawer state] == NSDrawerOpenState)
-        || ([dateDrawer state] == NSDrawerOpeningState)))
+    if ([_vistaClockWindow isVisible] && showToolbar)
     {
         NSDate* selectedDate = [calendar getDate];
         NSTimeInterval secondsBetween = [selectedDate timeIntervalSinceDate:[NSDate getDateNSDate:now]];
         
-        [doyLabel setStringValue:[selectedDate getDayOfYearString]];
-        [dayIntervalLabel setStringValue:[[NSString alloc] initWithFormat:@"%ld"
-            , (long)secondsBetween/86400]];
+        [dayDetailLabel setStringValue:[[NSString alloc] initWithFormat:@"%@ / %ld"
+            , [selectedDate getDayOfYearString], (long)secondsBetween/86400]];
     }
     
 } // end of updateTime
@@ -366,7 +402,6 @@
     
 } // end of createStatusItem
 
-
 // This method is called when opening the panel
 -(IBAction) openVistaClockWindow:(id)sender
 {
@@ -393,6 +428,7 @@
     [[NSApplication sharedApplication] orderFrontStandardAboutPanel:sender];
     [NSApp arrangeInFront:self];
 } // end of launchAboutBox
+
 
 // launch the date & time preference panel
 -(IBAction) launchDateTimePreferencePanel:(id)sender
@@ -437,6 +473,7 @@
     
     //[self resizeWindow];
 } // end of removeAllClocks
+
 
 -(void) configureWindow
 {
@@ -498,6 +535,15 @@
     }
     [calendar setShadowColor:shadowColor];
 
+    if (settings.useLargeFonts)
+    {
+        [calendar setFontSize:[NSFont systemFontSize]+2];
+    }
+    else
+    {
+        [calendar setFontSize:[NSFont systemFontSize]];
+    }
+
     // background color
     if (settings.useDarkTheme == YES)
     {
@@ -511,8 +557,18 @@
         [calendar setColor:[NSColor blackColor]];
     }
     
-    // resize the panel
-    [self resizeWindow];
+    // toolbar is only enabled if calendar is showing
+    if (settings.showCalendar == NO)
+    {
+        showToolbar = TRUE;
+        [self toggleToolbar:self];
+        [toolBarMenuItem setEnabled:FALSE];
+    }
+    else
+    {
+        [self resizeWindow];
+        [toolBarMenuItem setEnabled:TRUE];
+    }
     
     // add clocks from config last
     int cnt = (int)[settings clockConfigs].count;
@@ -527,38 +583,58 @@
                 clockFace:settings.clockFaceName
                 darkTheme:settings.useDarkTheme
                 shadow:settings.useShadows
+                largeFonts:settings.useLargeFonts
                 seconds:config.useSeconds
                 militaryTime:settings.useMilitary];
         }
     }
+    [clockScrollView setNeedsDisplay:YES];
 
     // done painting
     settings.needsDisplay = NO;
 } // end of configureWindow
 
+
 -(void) resizeWindow
 {
-    NSScreen* main = [NSScreen mainScreen];
-    NSRect screenRect = [main visibleFrame];
+    NSRect screenRect = [[NSScreen mainScreen] visibleFrame];
+    NSRect frame = [_vistaClockWindow frame];
     
-    int clockSize = 0;
+    int clockWidth = 0;
+    NSPoint clockOrigin;
     int maxSize = screenRect.size.width;
 
-    int windowSize = 0;
-    // show calendar?
+    int windowWidth = 0;
+
+    // is toolbar showing?
+    if (showToolbar)
+    {
+        frame.size.height = WINDOW_HEIGHT_TOOLBAR;
+        [_vistaClockWindow setTitleVisibility:NSWindowTitleVisible];
+    }
+    else
+    {
+        // adjust for wierd shift
+        if (toolBarChanged)
+        {
+            toolBarChanged = FALSE;
+            frame.origin.y -= 2;
+        }
+
+        frame.size.height = WINDOW_HEIGHT;
+        [_vistaClockWindow setTitleVisibility:NSWindowTitleHidden];
+    }
+
+    // clocks only
     if (!settings.showCalendar && [settings.clockConfigs count] > 0)
     {
-        [goDateMenuItem setEnabled:FALSE]; // disable menu item
-        [dateDrawer close];
         [calendar setHidden:TRUE];
         [altcal setHidden:TRUE];
-        [clockScrollView setFrameOrigin:NSMakePoint(8, 8)];
-        [clockScrollView setNeedsDisplay:TRUE];
-        windowSize = 16;
+        clockOrigin = NSMakePoint(8, 8);
+        windowWidth = 16;
     }
-    else // no clocks means you have to have a calendar
+    else // clock and calendar
     {
-        [goDateMenuItem setEnabled:TRUE]; // enaable menu item
         if ([lastCal compare:@"gregorian"] == NSOrderedSame)
         {
             [calendar setHidden:FALSE];
@@ -569,30 +645,27 @@
             [calendar setHidden:TRUE];
             [altcal setHidden:FALSE];
         }
-        [clockScrollView setFrameOrigin:NSMakePoint(254, 8)];
-        [clockScrollView setNeedsDisplay:TRUE];
-        [calendar setFrameOrigin:NSMakePoint(8, 8)];
-        [calendar setNeedsDisplay:TRUE];
-        windowSize = 262;
+        clockOrigin = NSMakePoint(CALENDAR_WIDTH + 8, 8);
+        windowWidth = CALENDAR_WIDTH + 16;
     }
     
     for (long i=0; i<[settings.clockConfigs count]; i++)
     {
-        if (clockSize+128+windowSize > maxSize)
+        if (clockWidth + CLOCK_WIDTH + windowWidth > maxSize)
             break;
-        clockSize+=128;
+        clockWidth += CLOCK_WIDTH;
     }
-    
-    NSRect clockFrame = [clockScrollView frame];
-    clockFrame.size.width = clockSize;
-    [clockScrollView setFrame:clockFrame];
-    
-    windowSize += clockSize;
-    
-    NSRect frame = [_vistaClockWindow frame];
-    frame.size.width = windowSize;
-    frame.size.height = 204 + [self titleBarHeight:_vistaClockWindow] + [self toolbarHeight:_vistaClockWindow]; // set always
+
+    windowWidth += clockWidth;
+    frame.size.width = windowWidth;
+
     [_vistaClockWindow setFrame:frame display:YES animate:YES];
+
+    [clockScrollView setFrameOrigin:clockOrigin];
+    [clockScrollView setFrameSize:NSMakeSize(clockWidth, CLOCK_HEIGHT)];
+    [calendar setFrameOrigin:NSMakePoint(8,8)];
+
+    //NSLog(@"Window Frame:   (%4.0f,%4.0f)(%4.0f,%4.0f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
 } // end of resizeWindow
 
 
@@ -608,20 +681,22 @@
     return titleBarHeight;
 } // titleBarHeight
 
--(CGFloat) toolbarHeight:(NSWindow*) window
+
+-(CGFloat) toolBarHeight:(NSWindow*) window
 {
     NSToolbar *toolbar = [window toolbar];
-    CGFloat toolbarHeight = 0.0;
+    CGFloat toolBarHeight = 0.0;
     NSRect windowFrame;
 
     if (toolbar && [toolbar isVisible]) {
         windowFrame = [NSWindow contentRectForFrameRect:[window frame]
                                                   styleMask:[window styleMask]];
-        toolbarHeight = NSHeight(windowFrame) - 
+        toolBarHeight = NSHeight(windowFrame) - 
                         NSHeight([[window contentView] frame]);
     }
-    return toolbarHeight;
+    return toolBarHeight;
 } // end toolbarHeight
+
 
 // build StatusItem DateFormat String
 -(NSString*) buildStatusItemDateFormatString
@@ -692,7 +767,6 @@
 } // end of buildStatusItemDateFormatString
 
 
-
 // get the current calendar
 -(NSString*) getCurrentCalendar
 {
@@ -727,17 +801,6 @@
 } // end of openPreferences
 
 
--(IBAction) openDateDrawer:(id)sender
-{
-    if (([dateDrawer state] == NSDrawerClosingState)
-        || ([dateDrawer state] == NSDrawerClosedState))
-    {
-        [dateDrawer open];
-        [gotoDateField becomeFirstResponder];
-    }
-} // end of openDateDrawer
-
-
 -(NSDate*) AddToDate:(NSDate*) originalDate unitType:(int) unitType units:(int) units
 {
 	NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
@@ -757,6 +820,54 @@
 	
 	return([currentCalendar dateByAddingComponents:dateComponents toDate:originalDate options:0]);
 } // end of AddToDate
+
+
+-(void) configureToolbar:(bool) full
+{
+    // reset toolbar;
+    [self resetToolbar];
+
+    if (full)
+    {
+        [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"DateBoxID" atIndex:0];
+        [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"GotoTodayID" atIndex:1];
+        [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"DateDetailsID" atIndex:2];
+    }
+    else
+    {
+        [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"TitleID" atIndex:0];
+    }
+
+    // redraw
+    [self resizeWindow];
+} // configureToolbar
+
+
+-(void) resetToolbar
+{
+    while (_vistaClockWindow.toolbar.items.count > 0)
+    {
+        [_vistaClockWindow.toolbar removeItemAtIndex:0];
+    }
+    [_vistaClockWindow.toolbar insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier atIndex:0];
+    [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"SettingsID" atIndex:1];
+} // resetToolbar
+
+
+-(IBAction) toggleToolbar:(id)sender
+{
+    showToolbar = !showToolbar;
+    toolBarChanged = TRUE;
+    if (showToolbar)
+    {
+        [toolBarMenuItem setTitle:@"Hide Toolbar"];
+    }
+    else
+    {
+        [toolBarMenuItem setTitle:@"Show Toolbar"];
+    }
+    [self configureToolbar: showToolbar];
+} // toggleToolbar
 
 
 -(int) GetDays:(NSString*) inputString
@@ -825,43 +936,40 @@
 
 -(IBAction) gotoDate:(id)sender
 {
-    if ([dateDrawer state] == NSDrawerOpenState)
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MM/dd/yyyy"];
+    NSDate* date = [dateFormat dateFromString:[gotoDateField stringValue]];
+    if (date != nil)
     {
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MM/dd/yyyy"];
-        NSDate* date = [dateFormat dateFromString:[gotoDateField stringValue]];
-        if (date != nil)
-        {
-            [calendar setDate:date];
-        }
-        else
-        {
-            int units = 0;
-            int unitType = 0;
+        [calendar setDate:date];
+    }
+    else
+    {
+        int units = 0;
+        int unitType = 0;
             
-            if ((units = [self GetDays:[gotoDateField stringValue]]) != 0)
-            {
-                unitType = 0; // days
-            }
-            else if ((units = [self GetWeeks:[gotoDateField stringValue]]) != 0)
-            {
-                unitType = 1; // days
-            }
-            else if ((units = [self GetMonths:[gotoDateField stringValue]]) != 0)
-            {
-                unitType = 2; // days
-            }
-            else if ((units = [self GetYears:[gotoDateField stringValue]]) != 0)
-            {
-                unitType = 3; // days
-            }
-		
-            if (units != 0)
-            {
-                NSDate* newDate = [self AddToDate:[NSDate getDateNSDate:[NSDate date]]
-                    unitType: unitType units: units];
-                [calendar setDate:newDate];
-            }
+        if ((units = [self GetDays:[gotoDateField stringValue]]) != 0)
+        {
+            unitType = 0; // days
+        }
+        else if ((units = [self GetWeeks:[gotoDateField stringValue]]) != 0)
+        {
+            unitType = 1; // days
+        }
+        else if ((units = [self GetMonths:[gotoDateField stringValue]]) != 0)
+        {
+            unitType = 2; // days
+        }
+        else if ((units = [self GetYears:[gotoDateField stringValue]]) != 0)
+        {
+            unitType = 3; // days
+        }
+
+        if (units != 0)
+        {
+            NSDate* newDate = [self AddToDate:[NSDate getDateNSDate:[NSDate date]]
+                unitType: unitType units: units];
+            [calendar setDate:newDate];
         }
     }
 } // end of gotoDate
@@ -869,6 +977,7 @@
 
 -(IBAction) goToday:(id)sender
 {
+    [gotoDateField setStringValue:@""];
     [calendar setDate:[NSDate getDateNSDate:[NSDate date]]];
 } // end of goToday
 
