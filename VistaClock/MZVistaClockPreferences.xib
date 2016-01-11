@@ -34,6 +34,7 @@
                 <outlet property="useBWIconCB" destination="4gO-Vb-KCg" id="FkL-9E-Txj"/>
                 <outlet property="useBWWeekIconCB" destination="yDE-k2-DcE" id="cIU-A7-UCc"/>
                 <outlet property="useDarkThemeCB" destination="ONb-WK-sKP" id="M0o-dv-ofn"/>
+                <outlet property="useHiliteColorCB" destination="6n0-rU-3bf" id="qh3-Ah-Tuh"/>
                 <outlet property="useKeepTopCB" destination="K0x-n0-iV0" id="I5c-XR-0o4"/>
                 <outlet property="useLargeFontsCB" destination="L7A-Nq-nn8" id="YpB-Ps-b3v"/>
                 <outlet property="useMilitaryCB" destination="ISg-uV-MvR" id="qk7-yU-NwQ"/>
@@ -47,19 +48,19 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5" userLabel="Panel - Preferences" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES"/>
-            <rect key="contentRect" x="196" y="240" width="688" height="661"/>
+            <rect key="contentRect" x="196" y="240" width="688" height="685"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="688" height="661"/>
+                <rect key="frame" x="0.0" y="0.0" width="688" height="685"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dF5-Aa-Pi8">
-                        <rect key="frame" x="14" y="607" width="171" height="46"/>
+                        <rect key="frame" x="14" y="631" width="171" height="46"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyDown" image="mazookie_name_tiny" id="7oQ-fD-LOJ"/>
                     </imageView>
                     <box autoresizesSubviews="NO" title="General" borderType="line" id="KHW-j4-Uqr">
-                        <rect key="frame" x="17" y="443" width="326" height="156"/>
+                        <rect key="frame" x="17" y="467" width="326" height="156"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="PfQ-Wl-DuB">
                             <rect key="frame" x="1" y="1" width="324" height="140"/>
@@ -137,7 +138,7 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" title="Clock Faces" borderType="line" id="Szj-km-cYq">
-                        <rect key="frame" x="345" y="549" width="326" height="104"/>
+                        <rect key="frame" x="345" y="573" width="326" height="104"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="1zh-l7-3Hd">
                             <rect key="frame" x="1" y="1" width="324" height="88"/>
@@ -186,21 +187,21 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" title="Clocks" borderType="line" id="Ub7-Kq-HMp">
-                        <rect key="frame" x="345" y="16" width="326" height="529"/>
+                        <rect key="frame" x="345" y="16" width="326" height="553"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="xSm-Od-vup">
-                            <rect key="frame" x="1" y="1" width="324" height="513"/>
+                            <rect key="frame" x="1" y="1" width="324" height="537"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="4jk-bz-3J0" userLabel="Scroll View - Clock Config Collection View">
-                                    <rect key="frame" x="12" y="88" width="301" height="415"/>
+                                    <rect key="frame" x="12" y="94" width="301" height="433"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <clipView key="contentView" id="H52-pH-nNh">
-                                        <rect key="frame" x="0.0" y="0.0" width="301" height="415"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="433"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <collectionView selectable="YES" id="klZ-O8-kYF">
-                                                <rect key="frame" x="0.0" y="0.0" width="301" height="415"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="301" height="433"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="secondaryBackgroundColor" name="controlAlternatingRowColor" catalog="System" colorSpace="catalog"/>
@@ -224,7 +225,7 @@
                                     </scroller>
                                 </scrollView>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Usb-v1-KDo">
-                                    <rect key="frame" x="16" y="36" width="42" height="17"/>
+                                    <rect key="frame" x="16" y="42" width="42" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Zone" id="79d-LP-ot1">
                                         <font key="font" metaFont="system"/>
@@ -233,7 +234,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" id="Fhg-LT-ngF" userLabel="Popup Button">
-                                    <rect key="frame" x="58" y="30" width="251" height="26"/>
+                                    <rect key="frame" x="58" y="36" width="251" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="idB-pc-TKw" userLabel="Pop Up Button Cell">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -252,7 +253,7 @@
                                     </connections>
                                 </popUpButton>
                                 <button id="Vym-by-cdd">
-                                    <rect key="frame" x="16" y="12" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="18" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use second hand" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="GyJ-KS-FxG">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -260,7 +261,7 @@
                                     </buttonCell>
                                 </button>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="pxR-4T-DfB">
-                                    <rect key="frame" x="16" y="61" width="42" height="17"/>
+                                    <rect key="frame" x="16" y="67" width="42" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="DiI-0m-yjL">
                                         <font key="font" metaFont="system"/>
@@ -269,7 +270,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="vFe-SP-fYv">
-                                    <rect key="frame" x="60" y="58" width="128" height="22"/>
+                                    <rect key="frame" x="60" y="64" width="128" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="mGL-G5-d5e">
                                         <font key="font" metaFont="system"/>
@@ -278,7 +279,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <button verticalHuggingPriority="750" id="9mB-FU-Hn7">
-                                    <rect key="frame" x="228" y="53" width="84" height="32"/>
+                                    <rect key="frame" x="228" y="59" width="84" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nir-Fz-Wup">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -294,7 +295,7 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <button verticalHuggingPriority="750" id="lv3-ZU-X7O">
-                        <rect key="frame" x="260" y="625" width="86" height="32"/>
+                        <rect key="frame" x="260" y="649" width="86" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Support" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T7c-wE-nbs">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -305,14 +306,14 @@
                         </connections>
                     </button>
                     <box autoresizesSubviews="NO" title="Calendar" borderType="line" id="IgS-ct-QCJ">
-                        <rect key="frame" x="17" y="16" width="326" height="138"/>
+                        <rect key="frame" x="17" y="16" width="326" height="162"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="Xf0-we-1rU">
-                            <rect key="frame" x="1" y="1" width="324" height="122"/>
+                            <rect key="frame" x="1" y="1" width="324" height="146"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button id="p3g-YF-Qsv">
-                                    <rect key="frame" x="16" y="54" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="78" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Event Indicators" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="maV-5r-OcP">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -323,7 +324,7 @@
                                     </connections>
                                 </button>
                                 <button id="Zui-sA-OLx" userLabel="Show Calendar">
-                                    <rect key="frame" x="16" y="96" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="120" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Calendar" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="EYg-RB-hqB">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -334,7 +335,7 @@
                                     </connections>
                                 </button>
                                 <button id="ffz-Ma-0IS">
-                                    <rect key="frame" x="16" y="33" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="57" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Reminder Indicators" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="RlB-Ba-1bG">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -345,7 +346,7 @@
                                     </connections>
                                 </button>
                                 <button id="0eS-KM-lV1">
-                                    <rect key="frame" x="16" y="12" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="36" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Boxes " bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="oIW-Rt-lt3">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -356,7 +357,7 @@
                                     </connections>
                                 </button>
                                 <button id="v0f-Ke-l35">
-                                    <rect key="frame" x="16" y="74" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="98" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Week Number column" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="KvV-7P-tgw">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -366,13 +367,24 @@
                                         <action selector="updateSettings:" target="-2" id="QgA-w9-I7h"/>
                                     </connections>
                                 </button>
+                                <button id="6n0-rU-3bf">
+                                    <rect key="frame" x="16" y="16" width="292" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Use red highlights" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="OmA-ke-UBS">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="updateSettings:" target="-2" id="1y0-kt-eG3"/>
+                                    </connections>
+                                </button>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <box autoresizesSubviews="NO" title="Menu Bar" borderType="line" id="dKj-MB-sTZ">
-                        <rect key="frame" x="17" y="158" width="326" height="281"/>
+                        <rect key="frame" x="17" y="182" width="326" height="281"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="1SM-dy-ijB">
                             <rect key="frame" x="1" y="1" width="324" height="265"/>
@@ -538,7 +550,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="40" y="-361.5"/>
+            <point key="canvasLocation" x="40" y="-349.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="EZl-eu-2ec"/>
         <dictionaryController objectClassName="_NSControllerKeyValuePair" id="F1N-m9-ZEI">

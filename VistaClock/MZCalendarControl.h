@@ -20,7 +20,8 @@
     NSColor* shadowColor;
     NSShadow* shadow;
     int fontSize;
-    
+    NSColor* hiliteColor;
+
     int dayWidth;    
     int dayHeight;
     int nColumns;
@@ -37,7 +38,6 @@
     bool showReminderIndicators;
     bool showBoxes;
     bool useTasks;
-    bool hiliteDay;
 
     NSDictionary* titleAttributes;
     NSDictionary* normalAttributes;
@@ -59,7 +59,7 @@
 -(void) setShowReminderIndicators:(bool) value;
 -(void) setShowBoxes:(bool) value;
 -(void) setFontSize:(int) value;
--(void) setHiliteDay:(bool) value;
+-(void) setHiliteColor:(NSColor*) value;
 
 -(int) dayAtPoint:(NSPoint) aPoint;
 -(NSDate*) dateAtPoint:(NSPoint) aPoint;

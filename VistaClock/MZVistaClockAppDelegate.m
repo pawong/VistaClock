@@ -62,6 +62,12 @@
         [self configureToolbar: FALSE];
     }
 
+    // set the date box place holder to locale date
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateStyle:NSDateFormatterShortStyle];
+    [dateFormat setLocale:[NSLocale currentLocale]];
+    [gotoDateField setPlaceholderString:[dateFormat dateFormat]];
+
     // should be yes, but make sure
     settings.needsDisplay = YES;
  
@@ -319,6 +325,7 @@
                 [calendar setHidden:false];
                 [altcal setHidden:true];
                 [calendar setDate:[NSDate getDateNSDate:now]];
+                [toolBarMenuItem setEnabled:TRUE];
             
             }
             else
@@ -326,6 +333,13 @@
                 [altcal setHidden:false];
                 [calendar setHidden:true];
                 [altcal setDateValue:now];
+                // toolbar is only enabled if gregorian calendar is showing
+                if (showToolbar == TRUE)
+                {
+                    [self toggleToolbar:self];
+                }
+                [toolBarMenuItem setEnabled:FALSE];
+
             }
         }
     
@@ -504,6 +518,16 @@
     
     // show boxes on calendar
     [calendar setShowBoxes:settings.showCalendarBoxes];
+
+    // use red to highlight dates?
+    if (settings.useHiliteColor)
+    {
+        [calendar setHiliteColor:[NSColor redColor]];
+    }
+    else
+    {
+        [calendar setHiliteColor:[NSColor selectedMenuItemColor]];
+    }
     
     // show calendar event indicator
     [calendar setShowEventIndicators:settings.showEvents];
@@ -801,26 +825,6 @@
 } // end of openPreferences
 
 
--(NSDate*) AddToDate:(NSDate*) originalDate unitType:(int) unitType units:(int) units
-{
-	NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-	NSCalendar *currentCalendar = [NSCalendar currentCalendar];
-	switch (unitType)
-	{
-		case 1: [dateComponents setDay: units*7]; 	// week
-			break;
-		case 2: [dateComponents setMonth: units]; 	// month
-			break;
-		case 3: [dateComponents setYear: units];	// year
-			break;
-		case 0:
-		default: [dateComponents setDay: units];	// day
-			break;
-	}
-	
-	return([currentCalendar dateByAddingComponents:dateComponents toDate:originalDate options:0]);
-} // end of AddToDate
-
 
 -(void) configureToolbar:(bool) full
 {
@@ -870,106 +874,34 @@
 } // toggleToolbar
 
 
--(int) GetDays:(NSString*) inputString
-{
-	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(-?\\d+)(d|D)"
-		options:NSRegularExpressionCaseInsensitive	error:NULL];
-	NSUInteger numberOfMatches = [regex numberOfMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
-	if (numberOfMatches) 
-	{
-		NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
-		NSRange matchRange = [textCheckingResult rangeAtIndex:1];
-		NSString *match = [inputString substringWithRange:matchRange];	
-		return [match intValue];
-	}
-	return 0;
-} // end of GetDays
-
-
--(int) GetWeeks:(NSString*) inputString
-{
-	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(-?\\d+)(w|W)"
-		options:NSRegularExpressionCaseInsensitive	error:NULL];
-	NSUInteger numberOfMatches = [regex numberOfMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
-	if (numberOfMatches) 
-	{
-		NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
-		NSRange matchRange = [textCheckingResult rangeAtIndex:1];
-		NSString *match = [inputString substringWithRange:matchRange];	
-		return [match intValue];
-	}
-	return 0;
-} // end of GetWeeks
-
-
--(int) GetMonths:(NSString*) inputString
-{
-	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(-?\\d+)(m|M)"
-		options:NSRegularExpressionCaseInsensitive	error:NULL];
-	NSUInteger numberOfMatches = [regex numberOfMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
-	if (numberOfMatches) 
-	{
-		NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
-		NSRange matchRange = [textCheckingResult rangeAtIndex:1];
-		NSString *match = [inputString substringWithRange:matchRange];	
-		return [match intValue];
-	}
-	return 0;
-} // end of GetMonths
-
-
--(int) GetYears:(NSString*) inputString
-{
-	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(-?\\d+)(y|Y)"
-		options:NSRegularExpressionCaseInsensitive	error:NULL];
-	NSUInteger numberOfMatches = [regex numberOfMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
-	if (numberOfMatches) 
-	{
-		NSTextCheckingResult *textCheckingResult = [regex firstMatchInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
-		NSRange matchRange = [textCheckingResult rangeAtIndex:1];
-		NSString *match = [inputString substringWithRange:matchRange];	
-		return [match intValue];
-	}
-	return 0;
-} // end of GetYears
-
-
 -(IBAction) gotoDate:(id)sender
 {
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"MM/dd/yyyy"];
-    NSDate* date = [dateFormat dateFromString:[gotoDateField stringValue]];
-    if (date != nil)
+    MZDateCalc* calc = [MZDateCalc alloc];
+    [calc setCalendar:calendar];
+    
+    NSArray* strings = [[gotoDateField stringValue] componentsSeparatedByString:@","];
+
+    // try to parse the date and set current date to it.
+    if ([strings count] > 1)
     {
-        [calendar setDate:date];
+        if ([calc parseDate:strings[0]])
+        {
+            // got a date
+            if (strings[1] != nil)
+            {
+                [calc moveDate:strings[1] useToday: NO];
+            }
+        }
+        else
+        {
+            [calc moveDate:strings[1] useToday: NO];
+        }
     }
     else
     {
-        int units = 0;
-        int unitType = 0;
-            
-        if ((units = [self GetDays:[gotoDateField stringValue]]) != 0)
+        if (![calc parseDate:strings[0]])
         {
-            unitType = 0; // days
-        }
-        else if ((units = [self GetWeeks:[gotoDateField stringValue]]) != 0)
-        {
-            unitType = 1; // days
-        }
-        else if ((units = [self GetMonths:[gotoDateField stringValue]]) != 0)
-        {
-            unitType = 2; // days
-        }
-        else if ((units = [self GetYears:[gotoDateField stringValue]]) != 0)
-        {
-            unitType = 3; // days
-        }
-
-        if (units != 0)
-        {
-            NSDate* newDate = [self AddToDate:[NSDate getDateNSDate:[NSDate date]]
-                unitType: unitType units: units];
-            [calendar setDate:newDate];
+            [calc moveDate:strings[0] useToday: YES];
         }
     }
 } // end of gotoDate

@@ -49,6 +49,7 @@
 @property (nonatomic, assign) BOOL showEvents;
 @property (nonatomic, assign) BOOL showReminders;
 @property (nonatomic, assign) BOOL showCalendarBoxes;
+@property (nonatomic, assign) BOOL useHiliteColor;
 
 
 +(VCSettings*) sharedSettings;

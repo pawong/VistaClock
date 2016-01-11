@@ -38,7 +38,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     showWeekNumbers = false;                // off by default
     showEventIndicators = false;            // off by default
     showReminderIndicators = false;         // off by default
-    hiliteDay = false;                      // off by default
+    hiliteColor = false;                      // off by default
     showBoxes = false; // off by default
     firstWeekday = (int)[[NSCalendar currentCalendar] firstWeekday];
     [self setDate:[NSDate getDateNSDate:[NSDate date]]];
@@ -47,6 +47,8 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     shadow = [[NSShadow alloc] init];
     fontSize = 13;
     [self setStyle];
+
+    hiliteColor = [NSColor selectedMenuItemColor];
         
     store = [[EKEventStore alloc] init];
     NSDictionary* systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:
@@ -214,13 +216,10 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }
 } // end setFontSize
 
--(void) setHiliteDay:(bool) value
+-(void) setHiliteColor:(NSColor*) value
 {
-    if (hiliteDay != value)
-    {
-        hiliteDay = value;
-        [self setStyle];
-    }
+    hiliteColor = value;
+    [self setStyle];
 } // end setHiliteDay
 
 -(void) setStyle
@@ -286,24 +285,14 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         currentDayAttributes = nil;
     }
     
-    if (hiliteDay)
-    {
-        currentDayAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-            dayFont, NSFontAttributeName
-            , [NSColor redColor], NSForegroundColorAttributeName
-            , shadow, NSShadowAttributeName
-            , nil
-        ];
-    }
-    else
-    {
-        currentDayAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-            dayFont, NSFontAttributeName
-            , [NSColor selectedMenuItemTextColor], NSForegroundColorAttributeName
-            , shadow, NSShadowAttributeName
-            , nil
-        ];
-    }
+    // current day
+    currentDayAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+        dayFont, NSFontAttributeName
+        , [NSColor selectedMenuItemTextColor], NSForegroundColorAttributeName
+        , shadow, NSShadowAttributeName
+        , nil
+    ];
+
     
     if (selectedDayAttributes != nil)
     {
@@ -312,11 +301,10 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     
     selectedDayAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
         dayFont, NSFontAttributeName
-        , [NSColor lightGrayColor]
-        , NSForegroundColorAttributeName
+        , dateColor, NSForegroundColorAttributeName
         , shadow, NSShadowAttributeName
         , nil];
-    
+
     if (normalAttributes != nil)
     {
         normalAttributes = nil;
@@ -412,10 +400,10 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     return monthView[tRow*7 + tColumn];
 } // end dateAtPoint
 
--(void) drawBox:(NSRect) rectangle isRounded:(BOOL) rounded color:(NSColor*) color
+-(void) drawBox:(NSRect) rectangle isRounded:(BOOL) rounded color:(NSColor*) color size:(int) size
 {
     // Draw box
-    [NSBezierPath setDefaultLineWidth:1];
+    [NSBezierPath setDefaultLineWidth:size];
     
     NSBezierPath* path;
     if (rounded)
@@ -447,24 +435,25 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         , dayWidth -1
         , dayHeight -1
     );
-    //[self drawBox:tRect isRounded:FALSE];
+
+    //[self drawBox:tRect isRounded:FALSE color:[NSColor blackColor] size:1];
     // current day?
     if ([[NSDate getDateNSDate:[NSDate date]] compare:monthView[aDay]]
     	== NSOrderedSame)
     {
-    	// draw current day
+    	// draw current day -----------------------------------------------------------------------
         [NSBezierPath setDefaultLineWidth:1.0];
         NSBezierPath* path = [NSBezierPath bezierPathWithRoundedRect:tRect
             xRadius:5.0 yRadius:5.0];
         
         [path setLineJoinStyle:NSRoundLineJoinStyle];
-        [[NSColor selectedMenuItemColor] set];
+        [hiliteColor set];
         [path fill];
 
-        if (showBoxes == true)
+        if ((showBoxes == true) && !(aDay < firstDay || aDay > lastDay))
         {
         	// Draw box
-        	[self drawBox:tRect isRounded:TRUE color:dateColor];
+            [self drawBox:tRect isRounded:TRUE color:dateColor size:1];
     	}
         
         tSize = [tString sizeWithAttributes:currentDayAttributes];
@@ -474,22 +463,22 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     else if (aDay < firstDay || aDay > lastDay)
     {
 
-        // draw days not in month of current month view
+        // draw days not in month of current month view -------------------------------------------
     	tSize = [tString sizeWithAttributes:daysNotThisMonth];
     	[tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width*center
     		, NSMinY(tRect)+3) withAttributes:daysNotThisMonth];
     }
     else
     {
-        // draw regular old day
+        // draw regular old day -------------------------------------------------------------------
         if (showBoxes == true)
         {
         	// Draw box
-        	[self drawBox:tRect isRounded:TRUE color:dateColor];
+            [self drawBox:tRect isRounded:TRUE color:dateColor size:1];
     	}
-        
+
         tSize = [tString sizeWithAttributes:normalAttributes];
-    	[tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width*center
+        [tString drawAtPoint:NSMakePoint(NSMidX(tRect) - tSize.width*center
             , NSMinY(tRect)+3) withAttributes:normalAttributes];
     }
     
@@ -504,7 +493,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         selectedRect.size.height = tRect.size.height-2;
         selectedRect.size.width = tRect.size.width-2;
         
-        [self drawBox:selectedRect isRounded:TRUE color:[NSColor selectedMenuItemColor]];
+        [self drawBox:selectedRect isRounded:TRUE color:hiliteColor size:2];
     }
     
     // check for events

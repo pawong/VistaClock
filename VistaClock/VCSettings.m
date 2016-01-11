@@ -32,7 +32,7 @@ static VCSettings* sharedSettings = nil;
 
 // calendar options
 @synthesize showCalendar, showWeekNumbers, showEvents, showReminders
-    , showCalendarBoxes;
+    , showCalendarBoxes, useHiliteColor;
 
 
 -(void) archive
@@ -130,6 +130,7 @@ static VCSettings* sharedSettings = nil;
     showEvents = [decoder decodeBoolForKey:@"showEvents"];
     showReminders = [decoder decodeBoolForKey:@"showReminders"];
     showCalendarBoxes = [decoder decodeBoolForKey:@"showCalendarBoxes"];
+    useHiliteColor = [decoder decodeBoolForKey:@"useHiliteColor"];
     
     needsDisplay = YES;
 
@@ -183,6 +184,7 @@ static VCSettings* sharedSettings = nil;
     [encoder encodeBool:showEvents forKey:@"showEvents"];
     [encoder encodeBool:showReminders forKey:@"showReminders"];
     [encoder encodeBool:showCalendarBoxes forKey:@"showCalendarBoxes"];
+    [encoder encodeBool:useHiliteColor forKey:@"useHiliteColor"];
 
 } // end encodeWithCoder
 
@@ -226,6 +228,7 @@ static VCSettings* sharedSettings = nil;
     showEvents = NO;
     showReminders = NO;
     showCalendarBoxes = NO;
+    useHiliteColor = NO;
     
     // clock configs
     MZClockConfig* config = [[MZClockConfig alloc] init];

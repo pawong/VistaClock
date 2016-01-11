@@ -314,6 +314,7 @@
     [showEventsCB setState:settings.showEvents];
     [showRemindersCB setState:settings.showReminders];
     [showCalendarBoxesCB setState:settings.showCalendarBoxes];
+    [useHiliteColorCB setState:settings.useHiliteColor];
     
     // disable status date time
     [useBWIconCB setEnabled:!settings.showDateTime];
@@ -347,6 +348,7 @@
     [showEventsCB setEnabled:settings.showCalendar];
     [showRemindersCB setEnabled:settings.showCalendar];
     [showCalendarBoxesCB setEnabled:settings.showCalendar];
+    [useHiliteColorCB setEnabled:settings.showCalendar];
     
     // turn off seconds, by default
     [secondsCheckbox setState:NSOffState];
@@ -388,6 +390,7 @@
     settings.showEvents = ([showEventsCB state] == NSOnState)?YES:NO;
     settings.showReminders = ([showRemindersCB state] == NSOnState)?YES:NO;
     settings.showCalendarBoxes = ([showCalendarBoxesCB state] == NSOnState)?YES:NO;
+    settings.useHiliteColor = ([useHiliteColorCB state] == NSOnState)?YES:NO;
     
     // update view
     // disable status date time
@@ -422,6 +425,7 @@
     [showEventsCB setEnabled:settings.showCalendar];
     [showRemindersCB setEnabled:settings.showCalendar];
     [showCalendarBoxesCB setEnabled:settings.showCalendar];
+    [useHiliteColorCB setEnabled:settings.showCalendar];
 
     // update auto launch
     [self toggleLaunchAtLogin:settings.useAutoLaunch];

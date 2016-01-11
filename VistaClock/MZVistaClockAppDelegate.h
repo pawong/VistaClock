@@ -14,6 +14,7 @@
 #import <ServiceManagement/ServiceManagement.h>
 #import <EventKit/EKEventStore.h>
 #import "VCSettings.h"
+#import "MZDateCalc.h"
 
 #define DATE_FORMAT_DAY_FULL            @"eeee"
 #define DATE_FORMAT_TIMEZONE_DAY        @"z ccc"
@@ -93,11 +94,6 @@
 -(IBAction) launchDateTimePreferencePanel:(id)sender;
 -(IBAction) openPreferences:(id)sender;
 
--(NSDate*) AddToDate:(NSDate*) originalDate unitType:(int) unitType units:(int) units;
--(int) GetDays:(NSString*) inputString;
--(int) GetWeeks:(NSString*) inputString;
--(int) GetMonths:(NSString*) inputString;
--(int) GetYears:(NSString*) inputString;
 
 -(void) configureToolbar:(bool) full;
 -(void) resetToolbar;

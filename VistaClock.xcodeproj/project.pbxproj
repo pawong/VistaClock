@@ -86,6 +86,7 @@
 		13AD50321C347DE5005C9A3A /* mazookieStatusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AD50311C347DE5005C9A3A /* mazookieStatusIcon.png */; };
 		13AD50341C3485E2005C9A3A /* mazookieStatusIconWB.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AD50331C3485E2005C9A3A /* mazookieStatusIconWB.png */; };
 		13BEBE1C19C8EAC6009C7B76 /* VCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */; };
+		13E9FED61C42D74A00F204A3 /* MZDateCalc.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E9FED51C42D74A00F204A3 /* MZDateCalc.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +215,8 @@
 		13AD50331C3485E2005C9A3A /* mazookieStatusIconWB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazookieStatusIconWB.png; sourceTree = "<group>"; };
 		13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSettings.m; sourceTree = "<group>"; };
 		13BEBE1B19C8EAC6009C7B76 /* VCSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSettings.h; sourceTree = "<group>"; };
+		13E9FED41C42D74A00F204A3 /* MZDateCalc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZDateCalc.h; sourceTree = "<group>"; };
+		13E9FED51C42D74A00F204A3 /* MZDateCalc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZDateCalc.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +307,8 @@
 				132E0AB019D3211E00CC9CF6 /* MZClockConfig.h */,
 				132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */,
 				134E392619BA107B004FA01A /* Supporting Files */,
+				13E9FED41C42D74A00F204A3 /* MZDateCalc.h */,
+				13E9FED51C42D74A00F204A3 /* MZDateCalc.m */,
 			);
 			path = VistaClock;
 			sourceTree = "<group>";
@@ -555,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1313724019C386D300B65CDE /* MZClockConfigItem.m in Sources */,
+				13E9FED61C42D74A00F204A3 /* MZDateCalc.m in Sources */,
 				1314945419BE071800496351 /* MZCalendarControl.m in Sources */,
 				13BEBE1C19C8EAC6009C7B76 /* VCSettings.m in Sources */,
 				134E392C19BA107B004FA01A /* main.m in Sources */,

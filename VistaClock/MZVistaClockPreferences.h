@@ -61,6 +61,7 @@
     IBOutlet NSButton* showEventsCB;
     IBOutlet NSButton* showRemindersCB;
     IBOutlet NSButton* showCalendarBoxesCB;
+    IBOutlet NSButton* useHiliteColorCB;
     
     // settings
     VCSettings* settings;
