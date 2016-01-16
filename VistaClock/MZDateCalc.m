@@ -212,6 +212,20 @@
 } // end of GetB6Days
 
 
+-(int) GetTodayShortcut:(NSString*) inputString
+{
+    // t | T
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(t|T)"
+        options:NSRegularExpressionCaseInsensitive	error:NULL];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:inputString options:0 range:NSMakeRange(0, [inputString length])];
+    if (numberOfMatches)
+    {
+        return 1;
+    }
+    return 0;
+} // end of GetTodayShortcut
+
+
 -(BOOL) parseDate:(NSString*) string
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -221,6 +235,11 @@
     if (date != nil)
     {
         [_calendar setDate:date];
+        return TRUE;
+    }
+    else if ([self GetTodayShortcut: string])
+    {
+        [_calendar setDate:[NSDate date]];
         return TRUE;
     }
 

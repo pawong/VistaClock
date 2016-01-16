@@ -15,6 +15,8 @@
 #import <EventKit/EKEventStore.h>
 #import "VCSettings.h"
 #import "MZDateCalc.h"
+#import "MZTextField.h"
+
 
 #define DATE_FORMAT_DAY_FULL            @"eeee"
 #define DATE_FORMAT_TIMEZONE_DAY        @"z ccc"
@@ -61,7 +63,7 @@
     BOOL showToolbar;
     BOOL toolBarChanged;
     IBOutlet NSTextField* titleLabel;
-    IBOutlet NSTextField* gotoDateField;
+    IBOutlet MZTextField* gotoDateField;
     IBOutlet NSTextField* dayDetailLabel;
     IBOutlet NSMenuItem* toolBarMenuItem;
 
@@ -89,7 +91,7 @@
 -(NSString*) buildStatusItemDateFormatString;
 -(void) createStatusItem;
 
--(IBAction) openVistaClockWindow:(id)sender;
+-(IBAction) toggleVistaClockWindow:(id)sender;
 -(IBAction) launchAboutBoxPanel:(id)sender;
 -(IBAction) launchDateTimePreferencePanel:(id)sender;
 -(IBAction) openPreferences:(id)sender;

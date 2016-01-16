@@ -80,7 +80,7 @@
     
     statusItemView.statusItem = statusItem;
     statusItemView.target = self;
-    statusItemView.action = @selector(openVistaClockWindow:);
+    statusItemView.action = @selector(toggleVistaClockWindow:);
     [statusItem setView:statusItemView];
 
     // get the date
@@ -417,7 +417,7 @@
 } // end of createStatusItem
 
 // This method is called when opening the panel
--(IBAction) openVistaClockWindow:(id)sender
+-(IBAction) toggleVistaClockWindow:(id)sender
 {
     if ([_vistaClockWindow isVisible] && [NSApp isActive])
     {
@@ -431,7 +431,13 @@
         [_vistaClockWindow makeKeyAndOrderFront:sender];
         [NSApp activateIgnoringOtherApps:true];
     }
-} // end of openVistaClockPanel
+} // end of toggleVistaClockWindow
+
+
+- (void)cancelOperation:(id)sender
+{
+    [self toggleVistaClockWindow:self];
+} // end of cancelOperation
 
 
 -(IBAction) launchAboutBoxPanel:(id)sender
@@ -836,10 +842,12 @@
         [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"DateBoxID" atIndex:0];
         [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"GotoTodayID" atIndex:1];
         [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"DateDetailsID" atIndex:2];
+        [_vistaClockWindow makeFirstResponder:gotoDateField];
     }
     else
     {
         [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"TitleID" atIndex:0];
+        [_vistaClockWindow makeFirstResponder:clockCollectionView];
     }
 
     // redraw

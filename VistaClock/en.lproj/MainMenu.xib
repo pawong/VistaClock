@@ -88,29 +88,79 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="78A04876-2974-434A-8C18-5CAF87815D3E" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="WER-07-xrf">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="97EF76A8-E7AF-4CEC-90AC-46650F45B01E" explicitItemIdentifier="TitleID" label="Title" paletteLabel="Title" id="P7Z-lk-nDU">
+                    <toolbarItem implicitItemIdentifier="A2A8BD18-00AA-4181-A180-A86E4E8EE92D" explicitItemIdentifier="DateBoxID" label="DateBox" paletteLabel="DateBox" selectable="YES" id="m9W-ps-O7f">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="80" height="20"/>
+                        <size key="maxSize" width="111" height="32"/>
+                        <textField key="view" focusRingType="none" verticalHuggingPriority="750" id="FDH-Dv-cZw" customClass="MZTextField">
+                            <rect key="frame" x="0.0" y="14" width="110" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" placeholderString="mm/dd/yyyy" drawsBackground="YES" id="uyo-4x-xHx">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="gotoDate:" target="Voe-Tx-rLC" id="dXF-Cz-50J"/>
+                                </connections>
+                            </textFieldCell>
+                        </textField>
+                        <connections>
+                            <action selector="gotoDate:" target="Voe-Tx-rLC" id="VKI-CW-olF"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="D9CEF547-D236-4172-9046-3C2309052A57" explicitItemIdentifier="TitleID" label="Title" paletteLabel="Title" tag="1" id="P7Z-lk-nDU">
                         <nil key="toolTip"/>
                         <size key="minSize" width="90" height="20"/>
                         <size key="maxSize" width="360" height="32"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="sb8-kn-hmr">
+                        <textField key="view" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="1" id="sb8-kn-hmr">
                             <rect key="frame" x="0.0" y="14" width="100" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" alignment="left" usesSingleLineMode="YES" id="4us-hk-hQK">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" focusRingType="none" alignment="left" usesSingleLineMode="YES" id="4us-hk-hQK">
                                 <font key="font" metaFont="systemBold"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="2C8D7B8B-B413-425C-A421-F9FB3679D28F" explicitItemIdentifier="GotoTodayID" label="" paletteLabel="GotoToday" image="todayToolbarBW" id="6FB-z6-WbR">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="16" height="20"/>
+                        <size key="maxSize" width="50" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="jc1-8J-1wb">
+                            <rect key="frame" x="21" y="14" width="22" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="todayToolbarBW" imagePosition="overlaps" alignment="center" alternateImage="todayToolbarBW" imageScaling="proportionallyUpOrDown" inset="2" id="Thd-NK-jRg">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="goToday:" target="Voe-Tx-rLC" id="wVh-qq-G8C"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="4DE49B54-66A2-4CCF-B7E9-25E912A035DD" explicitItemIdentifier="DateDetailsID" label="DateDetails" paletteLabel="DateDetails" id="aG2-xa-REO">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="90" height="20"/>
+                        <size key="maxSize" width="180" height="32"/>
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QAW-Qv-GMR">
+                            <rect key="frame" x="0.0" y="14" width="110" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="Cwx-dW-ET7">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="CSC-Ei-UEM"/>
-                    <toolbarItem implicitItemIdentifier="FB690E92-6282-4D8B-946F-A5FEF379C849" explicitItemIdentifier="SettingsID" label="Settings" paletteLabel="Settings" image="Gear_16x16x32" selectable="YES" id="ZjE-v3-8gJ">
+                    <toolbarItem implicitItemIdentifier="AD20F106-826A-4BC3-97B5-04CB93F950F1" explicitItemIdentifier="SettingsID" label="Settings" paletteLabel="Settings" image="Gear_16x16x32" selectable="YES" id="ZjE-v3-8gJ">
                         <nil key="toolTip"/>
                         <size key="minSize" width="30" height="20"/>
                         <size key="maxSize" width="50" height="32"/>
                         <popUpButton key="view" canDrawConcurrently="YES" springLoaded="YES" id="94k-L0-ZD8">
                             <rect key="frame" x="6" y="14" width="40" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" image="Gear_16x16x32" imagePosition="right" alignment="center" alternateImage="Gear_16x16x32" lineBreakMode="truncatingTail" continuous="YES" refusesFirstResponder="YES" state="on" allowsMixedState="YES" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" arrowPosition="arrowAtCenter" autoenablesItems="NO" selectedItem="tmt-GY-gXh" id="m7E-O2-HyH">
+                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" image="Gear_16x16x32" imagePosition="right" alignment="center" alternateImage="Gear_16x16x32" lineBreakMode="truncatingTail" continuous="YES" refusesFirstResponder="YES" state="on" allowsMixedState="YES" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" arrowPosition="arrowAtCenter" autoenablesItems="NO" selectedItem="PMk-g2-ycZ" id="m7E-O2-HyH">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" title="OtherViews" autoenablesItems="NO" id="r1Z-vr-xjR">
@@ -122,7 +172,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="PMk-g2-ycZ"/>
-                                        <menuItem title="Launch Calendar" keyEquivalent="c" id="IZT-di-FN1">
+                                        <menuItem title="Launch Calendar" keyEquivalent="d" id="IZT-di-FN1">
                                             <connections>
                                                 <action selector="launchCalendar:" target="Voe-Tx-rLC" id="i4C-aa-pZh"/>
                                             </connections>
@@ -154,53 +204,6 @@
                             </popUpButtonCell>
                         </popUpButton>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="48ED47B7-5331-45F3-971B-F87A282FC71D" explicitItemIdentifier="DateBoxID" label="DateBox" paletteLabel="DateBox" selectable="YES" id="m9W-ps-O7f">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="80" height="20"/>
-                        <size key="maxSize" width="100" height="32"/>
-                        <textField key="view" focusRingType="none" verticalHuggingPriority="750" id="FDH-Dv-cZw">
-                            <rect key="frame" x="0.0" y="14" width="100" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" placeholderString="mm/dd/yyyy" drawsBackground="YES" id="uyo-4x-xHx">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <action selector="gotoDate:" target="Voe-Tx-rLC" id="mmn-pn-9IF"/>
-                            </connections>
-                        </textField>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="14CD7526-CF70-4184-8495-0F7A2135BC4B" explicitItemIdentifier="GotoTodayID" label="" paletteLabel="GotoToday" image="todayToolbarBW" id="6FB-z6-WbR">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="16" height="20"/>
-                        <size key="maxSize" width="50" height="32"/>
-                        <button key="view" verticalHuggingPriority="750" id="jc1-8J-1wb">
-                            <rect key="frame" x="21" y="14" width="22" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="todayToolbarBW" imagePosition="overlaps" alignment="center" alternateImage="todayToolbarBW" imageScaling="proportionallyUpOrDown" inset="2" id="Thd-NK-jRg">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="goToday:" target="Voe-Tx-rLC" id="wVh-qq-G8C"/>
-                            </connections>
-                        </button>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="D141D72B-6C19-4F3E-8C98-9BA5D2C09B99" explicitItemIdentifier="DateDetailsID" label="DateDetails" paletteLabel="DateDetails" id="aG2-xa-REO">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="90" height="20"/>
-                        <size key="maxSize" width="180" height="32"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QAW-Qv-GMR">
-                            <rect key="frame" x="0.0" y="14" width="100" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="Cwx-dW-ET7">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="m9W-ps-O7f"/>
@@ -212,6 +215,7 @@
             </toolbar>
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="Tzp-WP-9Xo"/>
+                <outlet property="initialFirstResponder" destination="FDH-Dv-cZw" id="TpK-jj-V8q"/>
             </connections>
             <point key="canvasLocation" x="-72" y="33"/>
         </window>

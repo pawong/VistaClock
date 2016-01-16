@@ -65,6 +65,7 @@
 		1313724019C386D300B65CDE /* MZClockConfigItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1313723C19C386D300B65CDE /* MZClockConfigItem.m */; };
 		1313724119C386D300B65CDE /* move.png in Resources */ = {isa = PBXBuildFile; fileRef = 1313723D19C386D300B65CDE /* move.png */; };
 		1313724219C386D300B65CDE /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 1313723E19C386D300B65CDE /* delete.png */; };
+		1313BA141C48BAB400C36A36 /* MZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1313BA131C48BAB400C36A36 /* MZTextField.m */; };
 		1314945419BE071800496351 /* MZCalendarControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1314945119BE071800496351 /* MZCalendarControl.m */; };
 		132E0AB219D3211E00CC9CF6 /* MZClockConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */; };
 		132E0AE419D4CCF200CC9CF6 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132E0AE319D4CCF200CC9CF6 /* ServiceManagement.framework */; };
@@ -178,6 +179,8 @@
 		1313723C19C386D300B65CDE /* MZClockConfigItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZClockConfigItem.m; sourceTree = "<group>"; };
 		1313723D19C386D300B65CDE /* move.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = move.png; sourceTree = "<group>"; };
 		1313723E19C386D300B65CDE /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		1313BA121C48BAB400C36A36 /* MZTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTextField.h; sourceTree = "<group>"; };
+		1313BA131C48BAB400C36A36 /* MZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTextField.m; sourceTree = "<group>"; };
 		1314945019BE071800496351 /* MZCalendarControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCalendarControl.h; sourceTree = "<group>"; };
 		1314945119BE071800496351 /* MZCalendarControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCalendarControl.m; sourceTree = "<group>"; };
 		132E0AB019D3211E00CC9CF6 /* MZClockConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZClockConfig.h; sourceTree = "<group>"; };
@@ -309,6 +312,8 @@
 				134E392619BA107B004FA01A /* Supporting Files */,
 				13E9FED41C42D74A00F204A3 /* MZDateCalc.h */,
 				13E9FED51C42D74A00F204A3 /* MZDateCalc.m */,
+				1313BA121C48BAB400C36A36 /* MZTextField.h */,
+				1313BA131C48BAB400C36A36 /* MZTextField.m */,
 			);
 			path = VistaClock;
 			sourceTree = "<group>";
@@ -567,6 +572,7 @@
 				134E3A0519BA1388004FA01A /* MZStatusItemView.m in Sources */,
 				1300F5FF19BCE700006E8FD9 /* MZClockItem.m in Sources */,
 				1313723519C3552E00B65CDE /* MZVistaClockPreferences.m in Sources */,
+				1313BA141C48BAB400C36A36 /* MZTextField.m in Sources */,
 				132E0AB219D3211E00CC9CF6 /* MZClockConfig.m in Sources */,
 				134E393319BA107B004FA01A /* MZVistaClockAppDelegate.m in Sources */,
 				1300F5FD19BCE700006E8FD9 /* MZClockControl.m in Sources */,
