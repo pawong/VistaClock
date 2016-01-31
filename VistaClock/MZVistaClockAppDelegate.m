@@ -26,10 +26,11 @@
 	clockCollectionArray = [[NSMutableArray alloc] init];
     
     // default start
-    [_vistaClockWindow setCollectionBehavior
-        :NSWindowCollectionBehaviorCanJoinAllSpaces];
-    
-    
+    [_vistaClockWindow setCollectionBehavior: NSWindowCollectionBehaviorCanJoinAllSpaces];
+
+    // ask for calendar access
+    [self getCalendarAccess];
+
     // get the mac os x version
     NSDictionary* systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:
         @"/System/Library/CoreServices/SystemVersion.plist"];
@@ -37,12 +38,6 @@
     systemVersion = [systemVersionDictionary objectForKey:@"ProductVersion"];
     //NSLog(@"System Version = %@", systemVersion);
 
-    if ([systemVersion compare:@"10.9" options:NSNumericSearch] >= NSOrderedSame)
-    {
-        // only for 10.9 and beyond
-        // get calendar access
-        [self getCalendarAccess];
-    }
     if ([systemVersion compare:@"10.10" options:NSNumericSearch] >= NSOrderedSame)
     {
         // only for 10.10 and beyond
