@@ -34,8 +34,9 @@
     NSDictionary* systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:
         @"/System/Library/CoreServices/SystemVersion.plist"];
 
-    NSString* systemVersion =
-        [systemVersionDictionary objectForKey:@"ProductVersion"];
+    systemVersion = [systemVersionDictionary objectForKey:@"ProductVersion"];
+    //NSLog(@"System Version = %@", systemVersion);
+
     if ([systemVersion compare:@"10.9" options:NSNumericSearch] >= NSOrderedSame)
     {
         // only for 10.9 and beyond
@@ -66,7 +67,11 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateStyle:NSDateFormatterShortStyle];
     [dateFormat setLocale:[NSLocale currentLocale]];
-    [gotoDateField setPlaceholderString:[dateFormat dateFormat]];
+
+    if ([systemVersion compare:@"10.10" options:NSNumericSearch] >= NSOrderedSame)
+    {
+        [gotoDateField setPlaceholderString:[dateFormat dateFormat]];
+    }
 
     // should be yes, but make sure
     settings.needsDisplay = YES;
@@ -288,12 +293,26 @@
         // check size of window to see if title will fit
         if (clockCollectionArray.count<1)
         {
-            [_vistaClockWindow setTitle:normalFullTime];
+            if (showToolbar == TRUE)
+            {
+                [_vistaClockWindow setTitle:normalFullTime];
+            }
+            else
+            {
+                [_vistaClockWindow setTitle:@""];
+            }
             [titleLabel setStringValue:normalFullTime];
         }
         else
         {
-            [_vistaClockWindow setTitle:fullDate];
+            if (showToolbar == TRUE)
+            {
+                [_vistaClockWindow setTitle:fullDate];
+            }
+            else
+            {
+                [_vistaClockWindow setTitle:@""];
+            }
             int windowSize = _vistaClockWindow.frame.size.width;
             if (windowSize > 288)
             {
@@ -636,23 +655,27 @@
 
     int windowWidth = 0;
 
-    // is toolbar showing?
-    if (showToolbar)
+    //NSLog(@"Version = %@", systemVersion);
+    if ([systemVersion compare:@"10.10" options:NSNumericSearch] >= NSOrderedSame)
     {
-        frame.size.height = WINDOW_HEIGHT_TOOLBAR;
-        [_vistaClockWindow setTitleVisibility:NSWindowTitleVisible];
-    }
-    else
-    {
-        // adjust for wierd shift
-        if (toolBarChanged)
+        // is toolbar showing?
+        if (showToolbar)
         {
-            toolBarChanged = FALSE;
-            frame.origin.y -= 2;
+            frame.size.height = WINDOW_HEIGHT_TOOLBAR;
+            [_vistaClockWindow setTitleVisibility:NSWindowTitleVisible];
         }
+        else
+        {
+            // adjust for wierd shift
+            if (toolBarChanged)
+            {
+                toolBarChanged = FALSE;
+                frame.origin.y -= 2;
+            }
 
-        frame.size.height = WINDOW_HEIGHT;
-        [_vistaClockWindow setTitleVisibility:NSWindowTitleHidden];
+            frame.size.height = WINDOW_HEIGHT;
+            [_vistaClockWindow setTitleVisibility:NSWindowTitleHidden];
+        }
     }
 
     // clocks only

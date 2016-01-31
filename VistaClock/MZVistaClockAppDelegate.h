@@ -73,6 +73,7 @@
     NSDate* lastDate;
     bool darkMenu;
     EKEventStore* store;
+    NSString* systemVersion;
 }
 
 @property (assign) IBOutlet NSWindow *vistaClockWindow;
