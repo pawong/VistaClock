@@ -11,23 +11,31 @@
 
 +(NSDate*) getDateWithYMD:(int) year month:(int) month day:(int) day
 {
-    NSString* dateString = [NSString stringWithFormat:@"%d-%d-%d 12:00:00 +000"
-    	, year, month, day];
-    return [NSDate dateWithString:dateString];
+    NSString* dateString = [NSString stringWithFormat:@"%d-%d-%d 12:00:00 +000", year, month, day];
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
+
+    return [dateFormatter dateFromString:dateString];
 }
 
 +(NSDate*) getDateNSDate:(NSDate*) date
 {
-    NSString* dateString = [NSString stringWithFormat:@"%d-%d-%d 12:00:00 +000"
-        , [date getYear], [date getMonth], [date getDay]];
-    return [NSDate dateWithString:dateString];
+    NSString* dateString = [NSString stringWithFormat:@"%d-%d-%d 12:00:00 +000", [date getYear], [date getMonth]
+        , [date getDay]];
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
+
+    return [dateFormatter dateFromString:dateString];
 }
 
 -(NSDate*) set24Hour:(int)hour andMinute:(int)minute andSecond:(int)second;
 {
-    NSString* dateString = [NSString stringWithFormat:@"%d-%d-%d %d:%d:%d +000"
-    	, [self getYear], [self getMonth], [self getDay], hour, minute, second];
-    return [NSDate dateWithString:dateString];
+    NSString* dateString = [NSString stringWithFormat:@"%d-%d-%d %d:%d:%d +000", [self getYear], [self getMonth]
+        , [self getDay], hour, minute, second];
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
+
+    return [dateFormatter dateFromString:dateString];
 }
 
 

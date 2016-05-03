@@ -11,7 +11,7 @@
 
 @implementation MZVistaClockAppDelegate
 
-@synthesize prefsWindow;
+@synthesize prefsWindow, abox;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -31,21 +31,8 @@
     // ask for calendar access
     [self getCalendarAccess];
 
-    // get the mac os x version
-    NSDictionary* systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:
-        @"/System/Library/CoreServices/SystemVersion.plist"];
-
-    systemVersion = [systemVersionDictionary objectForKey:@"ProductVersion"];
-    //NSLog(@"System Version = %@", systemVersion);
-
-    if ([systemVersion compare:@"10.10" options:NSNumericSearch] >= NSOrderedSame)
-    {
-        // only for 10.10 and beyond
-        _vistaClockWindow.titleVisibility = NSWindowTitleHidden;
-        //_vistaClockWindow.titlebarAppearsTransparent = TRUE;
-        //NSAppearance* appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
-        //[_vistaClockWindow setAppearance:appearance];
-    }
+    // only for 10.10 and beyond
+    _vistaClockWindow.titleVisibility = NSWindowTitleHidden;
 
     // setup toolbar
     showToolbar = FALSE;
@@ -63,10 +50,8 @@
     [dateFormat setDateStyle:NSDateFormatterShortStyle];
     [dateFormat setLocale:[NSLocale currentLocale]];
 
-    if ([systemVersion compare:@"10.10" options:NSNumericSearch] >= NSOrderedSame)
-    {
-        [gotoDateField setPlaceholderString:[dateFormat dateFormat]];
-    }
+    // set the format field for the date box
+    [gotoDateField setPlaceholderString:[dateFormat dateFormat]];
 
     // should be yes, but make sure
     settings.needsDisplay = YES;
@@ -457,11 +442,32 @@
 -(IBAction) launchAboutBoxPanel:(id)sender
 {
     // hide main window
-    [_vistaClockWindow orderOut:sender];
+    //[_vistaClockWindow orderOut:sender];
     // launch about box
-    [[NSApplication sharedApplication] orderFrontStandardAboutPanel:sender];
-    [NSApp arrangeInFront:self];
+    //[[NSApplication sharedApplication] orderFrontStandardAboutPanel:sender];
+    //[NSApp arrangeInFront:self];
+    if (abox == nil) {
+        abox = [[MZAboutBox alloc] initWithWindowNibName:@"MZAboutBox"];
+        [abox setMacId:@"id466690161"];
+    }
+    [abox.window makeKeyAndOrderFront:nil];
+    [NSApp activateIgnoringOtherApps:YES];
+    [abox showWindow:self];
+    [abox forceHelp:FALSE];
 } // end of launchAboutBox
+
+
+-(IBAction) launchHelpPanel:(id)sender
+{
+    if (abox == nil) {
+        abox = [[MZAboutBox alloc] initWithWindowNibName:@"MZAboutBox"];
+        [abox setMacId:@"id466690161"];
+    }
+    [abox.window makeKeyAndOrderFront:nil];
+    [NSApp activateIgnoringOtherApps:YES];
+    [abox showWindow:self];
+    [abox forceHelp:TRUE];
+} // end of launchHelpPanel
 
 
 // launch the date & time preference panel
@@ -650,27 +656,23 @@
 
     int windowWidth = 0;
 
-    //NSLog(@"Version = %@", systemVersion);
-    if ([systemVersion compare:@"10.10" options:NSNumericSearch] >= NSOrderedSame)
+    // is toolbar showing?
+    if (showToolbar)
     {
-        // is toolbar showing?
-        if (showToolbar)
+        frame.size.height = WINDOW_HEIGHT_TOOLBAR;
+        [_vistaClockWindow setTitleVisibility:NSWindowTitleVisible];
+    }
+    else
+    {
+        // adjust for wierd shift
+        if (toolBarChanged)
         {
-            frame.size.height = WINDOW_HEIGHT_TOOLBAR;
-            [_vistaClockWindow setTitleVisibility:NSWindowTitleVisible];
+            toolBarChanged = FALSE;
+            frame.origin.y -= 2;
         }
-        else
-        {
-            // adjust for wierd shift
-            if (toolBarChanged)
-            {
-                toolBarChanged = FALSE;
-                frame.origin.y -= 2;
-            }
 
-            frame.size.height = WINDOW_HEIGHT;
-            [_vistaClockWindow setTitleVisibility:NSWindowTitleHidden];
-        }
+        frame.size.height = WINDOW_HEIGHT;
+        [_vistaClockWindow setTitleVisibility:NSWindowTitleHidden];
     }
 
     // clocks only
@@ -737,10 +739,8 @@
     NSRect windowFrame;
 
     if (toolbar && [toolbar isVisible]) {
-        windowFrame = [NSWindow contentRectForFrameRect:[window frame]
-                                                  styleMask:[window styleMask]];
-        toolBarHeight = NSHeight(windowFrame) - 
-                        NSHeight([[window contentView] frame]);
+        windowFrame = [NSWindow contentRectForFrameRect:[window frame] styleMask:[window styleMask]];
+        toolBarHeight = NSHeight(windowFrame) - NSHeight([[window contentView] frame]);
     }
     return toolBarHeight;
 } // end toolbarHeight
@@ -845,7 +845,6 @@
     [prefsWindow showWindow:self];
     [prefsWindow.window makeKeyAndOrderFront:nil];
     [NSApp activateIgnoringOtherApps:YES];
-    //[NSApp runModalForWindow:prefsWindow.window];
 } // end of openPreferences
 
 

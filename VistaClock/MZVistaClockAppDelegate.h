@@ -16,6 +16,7 @@
 #import "VCSettings.h"
 #import "MZDateCalc.h"
 #import "MZTextField.h"
+#import "MZAboutBox.h"
 
 
 #define DATE_FORMAT_DAY_FULL            @"eeee"
@@ -79,6 +80,7 @@
 @property (assign) IBOutlet NSWindow *vistaClockWindow;
 @property (strong) NSWindowController* prefsWindow;
 @property (assign) IBOutlet NSMenuItem* timeNow;
+@property (strong) MZAboutBox* abox;
 
 
 // methods
@@ -94,6 +96,7 @@
 
 -(IBAction) toggleVistaClockWindow:(id)sender;
 -(IBAction) launchAboutBoxPanel:(id)sender;
+-(IBAction) launchHelpPanel:(id)sender;
 -(IBAction) launchDateTimePreferencePanel:(id)sender;
 -(IBAction) openPreferences:(id)sender;
 

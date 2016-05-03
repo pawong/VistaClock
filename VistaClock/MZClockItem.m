@@ -87,15 +87,15 @@
 
     if (useLargeFonts)
     {
-        [clockCaption setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]+2]];
-        [time setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]+2]];
-        [day setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]+1]];
+        [clockCaption setFont:[NSFont fontWithName:@"Helvetica Neue" size:[NSFont systemFontSize]+2]];
+        [time setFont:[NSFont fontWithName:@"Helvetica Neue" size:[NSFont systemFontSize]+2]];
+        [day setFont:[NSFont fontWithName:@"Helvetica Neue" size:[NSFont smallSystemFontSize]+1]];
     }
     else
     {
-        [clockCaption setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
-        [time setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
-        [day setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+        [clockCaption setFont:[NSFont fontWithName:@"Helvetica Neue" size:[NSFont systemFontSize]]];
+        [time setFont:[NSFont fontWithName:@"Helvetica Neue" size:[NSFont systemFontSize]]];
+        [day setFont:[NSFont fontWithName:@"Helvetica Neue" size:[NSFont smallSystemFontSize]]];
     }
     
 }

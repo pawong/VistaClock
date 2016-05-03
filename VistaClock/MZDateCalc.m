@@ -15,7 +15,7 @@
 
 -(BOOL) isWeekend:(NSDate*) date isFull:(BOOL) full
 {
-    NSInteger day = [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:date] weekday];
+    NSInteger day = [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] weekday];
 
     const int kSunday = 1;
     const int kSaturday = 7;
@@ -298,8 +298,8 @@
         else if (unitType == 4 && units < 54)
         {
             NSCalendar* currentCalendar = [NSCalendar currentCalendar];
-            NSDateComponents* dateComponents = [currentCalendar components:NSYearCalendarUnit
-                | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:startDate];
+            NSDateComponents* dateComponents = [currentCalendar components:NSCalendarUnitYear | NSCalendarUnitMonth
+                | NSCalendarUnitDay fromDate:startDate];
             NSInteger year = [dateComponents year];
             NSDateComponents *newDateComponents = [[NSDateComponents alloc] init];
             [newDateComponents setYearForWeekOfYear:year];
@@ -310,8 +310,8 @@
         else if (unitType == 7 && units < 366)
         {
             NSCalendar* currentCalendar = [NSCalendar currentCalendar];
-            NSDateComponents* dateComponents = [currentCalendar components:NSYearCalendarUnit
-                | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:startDate];
+            NSDateComponents* dateComponents = [currentCalendar components:NSCalendarUnitYear | NSCalendarUnitMonth
+                | NSCalendarUnitDay fromDate:startDate];
             NSDateComponents *newDateComponents = [[NSDateComponents alloc] init];
             [newDateComponents setYear:[dateComponents year]];
             [newDateComponents setMonth:1];

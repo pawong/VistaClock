@@ -84,7 +84,5 @@
 
 -(IBAction) updateSettings:(id)sender;
 
--(IBAction) openMazookie:(id)sender;
-
 
 @end

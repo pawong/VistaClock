@@ -72,7 +72,7 @@
 -(NSDictionary*) topTitleAttributes
 {
     // Use default menu bar font size
-    NSFont *font = [NSFont systemFontOfSize:8];
+    NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:8];
     
     NSColor *foregroundColor = [self titleForegroundColor];
     
@@ -84,7 +84,7 @@
 -(NSDictionary*) bottomTitleAttributes
 {
     // Use default menu bar font size
-    NSFont *font = [NSFont systemFontOfSize:11];
+    NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:10];
     
     NSColor *foregroundColor = [self titleForegroundColor];
     
@@ -96,7 +96,7 @@
 -(NSDictionary*) titleAttributes
 {
     // Use default menu bar font size
-    NSFont *font = [NSFont menuBarFontOfSize:0];
+    NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:[[NSFont menuBarFontOfSize:-1] pointSize]];
     
     NSColor *foregroundColor = [self titleForegroundColor];
     

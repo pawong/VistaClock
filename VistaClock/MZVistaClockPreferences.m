@@ -437,14 +437,6 @@
 } // end updateSettings
 
 
-// open support page
--(IBAction) openMazookie:(id)sender
-{
-    [[NSWorkspace sharedWorkspace]
-        openURL:[NSURL URLWithString:@"http://www.mazookie.com"]];
-} // end openMazookie
-
-
 // clock face setting
 // get the clock face files files
 -(void) getClockFaceNames
@@ -523,14 +515,12 @@
     if (mode == NSOnState)
     { 	// ON
     	// Turn on launch at login
-        SMLoginItemSetEnabled((CFStringRef)@"com.Mazookie.VistaClockLoginHelper"
-        	, YES);
+        SMLoginItemSetEnabled((CFStringRef)@"com.Mazookie.VistaClockLoginHelper", YES);
     }
     else
     { 	// OFF
         // Turn off launch at login
-       	SMLoginItemSetEnabled((CFStringRef)@"com.Mazookie.VistaClockLoginHelper"
-        	, NO);
+       	SMLoginItemSetEnabled((CFStringRef)@"com.Mazookie.VistaClockLoginHelper", NO);
     }
 } // end of toggleLaunchAtLogin
 

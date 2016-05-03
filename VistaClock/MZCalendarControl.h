@@ -37,7 +37,6 @@
     bool showEventIndicators;
     bool showReminderIndicators;
     bool showBoxes;
-    bool useTasks;
 
     NSDictionary* titleAttributes;
     NSDictionary* normalAttributes;

@@ -1,0 +1,87 @@
+//
+//  MZAboutBox.m
+//  NCal
+//
+//  Created by Paul Wong on 4/10/16.
+//  Copyright © 2016 Mazookie, LLC. All rights reserved.
+//
+
+#import "MZAboutBox.h"
+
+@implementation MZAboutBox
+
+-(void) windowDidLoad
+{
+    [super windowDidLoad];
+
+    // first time
+    isHelpVisible = true;
+    [self toggleHelp:nil];
+
+    // Load variables
+    NSDictionary *bundleDict = [[NSBundle mainBundle] infoDictionary];
+    [self->appTitle setStringValue:[bundleDict objectForKey:@"CFBundleName"]];
+    [self->appVersion setStringValue:[NSString stringWithFormat:NSLocalizedString(@"Version %@ (Build %@)"
+        , @"Version %@ (Build %@), displayed in the about window")
+        , [bundleDict objectForKey:@"CFBundleShortVersionString"], [bundleDict objectForKey:@"CFBundleVersion"]]];
+    [self->appCopyright setStringValue:[bundleDict objectForKey:@"NSHumanReadableCopyright"]];
+    [self->appIcon setImage:[NSApp applicationIconImage]];
+
+    // set help
+    NSString *helpString = [[NSBundle mainBundle] pathForResource:@"help" ofType:@"rtfd"];
+    [[self->helpTextView textStorage] appendAttributedString:[[NSAttributedString alloc]
+        initWithPath:helpString documentAttributes:nil]];
+
+    // Set acknowledgements
+    NSString *acknowledgmentsString = [[NSBundle mainBundle] pathForResource:@"acknowledgments" ofType:@"rtf"];
+    [[self->acknowledgmentsTextView textStorage] appendAttributedString:[[NSAttributedString alloc]
+        initWithPath:acknowledgmentsString documentAttributes:nil]];
+} // end of windowDidLoad
+
+-(IBAction) reviewApp:(id)sender
+{
+    NSString* urlString = [NSString stringWithFormat:@"macappstore://itunes.apple.com/app/%@?mt=12", self->macId];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:urlString]];
+} // end of reviewApp
+
+-(IBAction) visitWebsite:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.mazookie.com/"]];
+} // end of visitWebsite
+
+
+-(IBAction) toggleHelp:(id)sender
+{
+    if (self->isHelpVisible == true) {
+        // show about
+        self->isHelpVisible = false;
+        [self->helpView setHidden:true];
+        [self->aboutView setHidden:false];
+        [self->helpButton setTitle:@"Help"];
+    }
+    else {
+        // show help
+        self->isHelpVisible = true;
+        [self->helpView setHidden:false];
+        [self->aboutView setHidden:true];
+        [self->helpButton setTitle:@"About"];
+    }
+} // end of toggleHelp
+
+-(void) forceHelp:(bool)force
+{
+    if (force == true) {
+        self->isHelpVisible = false;
+    }
+    else {
+        self->isHelpVisible = true;
+    }
+    [self toggleHelp:nil];
+} // end of forceHelp
+
+-(void) setMacId:(NSString*) newMacId
+{
+    macId = [NSString stringWithString:newMacId];
+} // end of setMacId
+
+@end

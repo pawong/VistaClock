@@ -2,7 +2,7 @@
 
 #define MZCALENDARCONTROL_OFFSET_H              4
 #define MZCALENDARCONTROL_OFFSET_V              6
-#define MZINDICATOR_X_OFFSET                    5.0
+#define MZINDICATOR_X_OFFSET                    6.0
 #define MZINDICATOR_Y_OFFSET                    5.0
 #define NUMBER_OF_ROWS                          8
 
@@ -51,37 +51,22 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     hiliteColor = [NSColor selectedMenuItemColor];
         
     store = [[EKEventStore alloc] init];
-    NSDictionary* systemVersionDictionary = [NSDictionary dictionaryWithContentsOfFile:
-        @"/System/Library/CoreServices/SystemVersion.plist"];
-    NSString* systemVersion =
-        [systemVersionDictionary objectForKey:@"ProductVersion"];
-
-    if ([systemVersion compare:@"10.9" options:NSNumericSearch] == NSOrderedDescending)
-    {
-        // Register for notifications on calendars, events and tasks so we can
-        // update the GUI to reflect any changes beneath us
-        [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
-            if (granted) {
-                [[NSNotificationCenter defaultCenter] addObserver:self
-                    selector:@selector(calendarsChanged:)
-                    name:EKEventStoreChangedNotification
-                    object:nil];
-            }
-        }];
-        [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {
-            if (granted) {
-                [[NSNotificationCenter defaultCenter] addObserver:self
-                    selector:@selector(tasksChanged:)
-                    name:EKEventStoreChangedNotification
-                    object:nil];
-            }
-        }];
-        useTasks = FALSE;
-    }
-    else
-    {
-        useTasks = TRUE;
-    }
+    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        if (granted) {
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                selector:@selector(calendarsChanged:)
+                name:EKEventStoreChangedNotification
+            object:nil];
+        }
+    }];
+    [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {
+        if (granted) {
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                selector:@selector(tasksChanged:)
+                name:EKEventStoreChangedNotification
+                object:nil];
+        }
+    }];
 } // end awakeFromNib
 
 -(void) setDate:(NSDate*) aDate
@@ -225,7 +210,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 -(void) setStyle
 {
     // Calendar Fonts
-    //NSFont *dayFont = [NSFont fontWithName:@"Andale Mono" size:13];
+    //NSFont *dayFont = [NSFont fontWithName:@"Helvetica Neue" size:fontSize];
     NSFont *dayFont = [NSFont systemFontOfSize:fontSize];
     
     // Font Shadow
@@ -240,7 +225,9 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }
     
     dayOfWeekAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-    	[NSFont labelFontOfSize:fontSize-3], NSFontAttributeName
+    	//[NSFont fontWithName:@"Helvetica Neue" size:fontSize-3]
+        [NSFont systemFontOfSize:(fontSize-3)]
+        , NSFontAttributeName
         , dateColor, NSForegroundColorAttributeName
         , shadow, NSShadowAttributeName
         , nil];
@@ -251,7 +238,9 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }
     
     titleAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-        [NSFont labelFontOfSize:(fontSize+2)], NSFontAttributeName
+        //[NSFont fontWithName:@"Helvetica Neue" size:(fontSize+2)]
+        [NSFont systemFontOfSize:(fontSize+2)]
+        , NSFontAttributeName
         , dateColor, NSForegroundColorAttributeName
         , shadow, NSShadowAttributeName
         , nil];
@@ -262,7 +251,9 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     }    
     
     weekAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-    	[NSFont labelFontOfSize:fontSize-4], NSFontAttributeName
+    	//[NSFont fontWithName:@"Helvetica Neue" size:fontSize-4]
+        [NSFont systemFontOfSize:(fontSize-4)]
+        , NSFontAttributeName
         , [NSColor grayColor], NSForegroundColorAttributeName
         , shadow, NSShadowAttributeName
         , nil];
@@ -524,14 +515,9 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     if (showReminderIndicators)
     {
         bool hasReminders = FALSE;
-        if (useTasks == TRUE)
-        {
-            hasReminders = [self HasReminders:monthView[aDay]];
-        }
-        else
-        {
-            hasReminders = [self HasReminders:monthView[aDay]];
-        }
+
+        hasReminders = [self HasReminders:monthView[aDay]];
+
     	if (hasReminders == true)
     	{
         	[reminderImage drawAtPoint:
@@ -592,7 +578,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     // draw header
     // month + year and controls
     tString = [selectedDate getMonthYearString];
-    tSize = [tString sizeWithAttributes:titleAttributes];
+    //tSize = [tString sizeWithAttributes:titleAttributes];
     tRect = NSMakeRect(
         MZCALENDARCONTROL_OFFSET_H
         , NSHeight(tBounds) - dayHeight - MZCALENDARCONTROL_OFFSET_V
