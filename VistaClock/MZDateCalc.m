@@ -15,7 +15,7 @@
 
 -(BOOL) isWeekend:(NSDate*) date isFull:(BOOL) full
 {
-    NSInteger day = [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:date] weekday];
+    NSInteger day = [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:date] weekday];
 
     const int kSunday = 1;
     const int kSaturday = 7;
