@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -55,9 +54,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dF5-Aa-Pi8">
-                        <rect key="frame" x="14" y="631" width="171" height="46"/>
+                        <rect key="frame" x="0.0" y="631" width="340" height="54"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyDown" image="mazookie_name_tiny" id="7oQ-fD-LOJ"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyDown" image="Mazookie_name_logo_small" id="7oQ-fD-LOJ"/>
                     </imageView>
                     <box autoresizesSubviews="NO" title="General" borderType="line" id="KHW-j4-Uqr">
                         <rect key="frame" x="17" y="467" width="326" height="156"/>
@@ -555,6 +554,6 @@
         <viewController nibName="MZClockConfigItem" id="p0u-AW-ecg" customClass="MZClockConfigItem"/>
     </objects>
     <resources>
-        <image name="mazookie_name_tiny" width="175" height="50"/>
+        <image name="Mazookie_name_logo_small" width="256" height="53"/>
     </resources>
 </document>

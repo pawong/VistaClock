@@ -185,7 +185,7 @@
             {
                 x = 4;
             }
-            NSPoint p = {x, 2};
+            NSPoint p = {x, 1};
             [weekImage lockFocus];
             
             // switch font color for dark menus?
@@ -216,17 +216,21 @@
         }
         else
         {
-            if (!settings.useBWIcon) // use black and white
+
+            if (settings.useBWIcon) // use black and white
             {
-                [statusItemView setImage:[[NSImage imageNamed:@"mazookieStatusIcon.png"] copy]];
-            }
-            else if ([self isDarkMenu])
-            {
-                [statusItemView setImage:[[NSImage imageNamed:@"mazookieStatusIconWB.png"] copy]];
+                if ([self isDarkMenu])
+                {
+                    [statusItemView setImage:[[NSImage imageNamed:@"MazookieStatusIconBWW.png"] copy]];
+                }
+                else
+                {
+                    [statusItemView setImage:[[NSImage imageNamed:@"MazookieStatusIconBWB.png"] copy]];
+                }
             }
             else
             {
-                [statusItemView setImage:[[NSImage imageNamed:@"mazookieStatusIconBW.png"] copy]];
+                [statusItemView setImage:[[NSImage imageNamed:@"MazookieStatusIconC.png"] copy]];
             }
         }
     }
