@@ -67,6 +67,7 @@
 		1313724219C386D300B65CDE /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 1313723E19C386D300B65CDE /* delete.png */; };
 		1313BA141C48BAB400C36A36 /* MZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1313BA131C48BAB400C36A36 /* MZTextField.m */; };
 		1314945419BE071800496351 /* MZCalendarControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1314945119BE071800496351 /* MZCalendarControl.m */; };
+		131C418C1D14D9FD00DFFB70 /* Mazookie_name_logo_sticker_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 131C418B1D14D9FD00DFFB70 /* Mazookie_name_logo_sticker_small.png */; };
 		132E0AB219D3211E00CC9CF6 /* MZClockConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */; };
 		132E0AE419D4CCF200CC9CF6 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132E0AE319D4CCF200CC9CF6 /* ServiceManagement.framework */; };
 		132E0AE619D4CD0000CC9CF6 /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132E0AE519D4CD0000CC9CF6 /* CalendarStore.framework */; };
@@ -90,7 +91,6 @@
 		13BBAEBD1CCF2E460070558B /* MZAboutBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13BBAEBB1CCF2E460070558B /* MZAboutBox.xib */; };
 		13BBAEC01CCF2E810070558B /* acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 13BBAEBF1CCF2E810070558B /* acknowledgments.rtf */; };
 		13BEBE1C19C8EAC6009C7B76 /* VCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */; };
-		13E06C141CF252A60026DC3D /* Mazookie_name_logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 13E06C131CF252A60026DC3D /* Mazookie_name_logo_small.png */; };
 		13E9FED61C42D74A00F204A3 /* MZDateCalc.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E9FED51C42D74A00F204A3 /* MZDateCalc.m */; };
 /* End PBXBuildFile section */
 
@@ -187,6 +187,7 @@
 		1313BA131C48BAB400C36A36 /* MZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTextField.m; sourceTree = "<group>"; };
 		1314945019BE071800496351 /* MZCalendarControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCalendarControl.h; sourceTree = "<group>"; };
 		1314945119BE071800496351 /* MZCalendarControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCalendarControl.m; sourceTree = "<group>"; };
+		131C418B1D14D9FD00DFFB70 /* Mazookie_name_logo_sticker_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mazookie_name_logo_sticker_small.png; sourceTree = "<group>"; };
 		132E0AB019D3211E00CC9CF6 /* MZClockConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZClockConfig.h; sourceTree = "<group>"; };
 		132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZClockConfig.m; sourceTree = "<group>"; };
 		132E0AE319D4CCF200CC9CF6 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
@@ -226,7 +227,6 @@
 		13BBAEBF1CCF2E810070558B /* acknowledgments.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = acknowledgments.rtf; sourceTree = "<group>"; };
 		13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSettings.m; sourceTree = "<group>"; };
 		13BEBE1B19C8EAC6009C7B76 /* VCSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSettings.h; sourceTree = "<group>"; };
-		13E06C131CF252A60026DC3D /* Mazookie_name_logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mazookie_name_logo_small.png; sourceTree = "<group>"; };
 		13E9FED41C42D74A00F204A3 /* MZDateCalc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZDateCalc.h; sourceTree = "<group>"; };
 		13E9FED51C42D74A00F204A3 /* MZDateCalc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZDateCalc.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -333,7 +333,7 @@
 		134E392619BA107B004FA01A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				13E06C131CF252A60026DC3D /* Mazookie_name_logo_small.png */,
+				131C418B1D14D9FD00DFFB70 /* Mazookie_name_logo_sticker_small.png */,
 				13A4B4BC1CFB5A450097B123 /* MazookieStatusIconBWB.png */,
 				13A4B4BD1CFB5A450097B123 /* MazookieStatusIconBWW.png */,
 				13A4B4C01CFB5A6F0097B123 /* MazookieStatusIconC.png */,
@@ -543,6 +543,7 @@
 				1300F5E519BCE700006E8FD9 /* DBVCB01.png in Resources */,
 				1300F5E619BCE700006E8FD9 /* DVCB02.png in Resources */,
 				1300F5F719BCE700006E8FD9 /* MVCB06.png in Resources */,
+				131C418C1D14D9FD00DFFB70 /* Mazookie_name_logo_sticker_small.png in Resources */,
 				1300F60719BCE700006E8FD9 /* SVCW08.png in Resources */,
 				13A4B4C31CFB5B6D0097B123 /* todayToolbarBW.png in Resources */,
 				1300F5EA19BCE700006E8FD9 /* DVCW07.png in Resources */,
@@ -567,7 +568,6 @@
 				1300F60119BCE700006E8FD9 /* SBVCB01.png in Resources */,
 				1300F5F319BCE700006E8FD9 /* HVCW08.png in Resources */,
 				13A4B4C71CFB5B970097B123 /* statusbarIconBW.png in Resources */,
-				13E06C141CF252A60026DC3D /* Mazookie_name_logo_small.png in Resources */,
 				1300F5F919BCE700006E8FD9 /* MVCW05.png in Resources */,
 				1300F60E19BCE700006E8FD9 /* VCB06.png in Resources */,
 				1300F60319BCE700006E8FD9 /* SVCB06.png in Resources */,

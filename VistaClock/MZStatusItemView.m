@@ -124,7 +124,7 @@
         , (int32_t)1e100) options:(int32_t)0 attributes:[self bottomTitleAttributes]];
     retval = (top.size.width > bottom.size.width) ? top : bottom;
     return retval;
-} // end of titleBoundingRect
+} // end of subTitleBoundingRect
 
 
 // sets the status items title
@@ -134,8 +134,9 @@
         
     // Update status item size (which will also update this view's bounds)
     NSRect titleBounds = [self titleBoundingRect];
-    currentWidth = (int)titleBounds.size.width 
-        + (int)(2*StatusItemViewPaddingWidth);
+    currentWidth = (int)titleBounds.size.width + (int)(StatusItemViewPaddingWidth);
+    if ((int)titleBounds.size.width)
+        currentWidth = currentWidth + (int)(StatusItemViewPaddingWidth);
     titleWidth = currentWidth;
     if (image != nil)
     {
@@ -223,21 +224,30 @@
 -(void) drawRect:(NSRect)rect 
 {
     // Draw status bar background, highlighted if menu is showing
-    [statusItem drawStatusBarBackgroundInRect:[self bounds]
-        withHighlight:isMenuVisible];
-    
+    [statusItem drawStatusBarBackgroundInRect:[self bounds] withHighlight:isMenuVisible];
+
+    // draw box around the status item
+    /*{
+        // Draw box
+        [NSBezierPath setDefaultLineWidth:1];
+
+        NSBezierPath* path;
+        path = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(rect.origin.x+1, rect.origin.y+1
+            , rect.size.width-2, rect.size.height-2) xRadius:5.0 yRadius:5.0];
+        [[NSColor whiteColor] set];
+        [path setLineJoinStyle:NSRoundLineJoinStyle];
+        [path fill];
+    }*/
+
     // Draw title string
-    NSPoint origin = NSMakePoint(StatusItemViewPaddingWidth,
-        StatusItemViewPaddingHeight);
-    [title drawAtPoint:origin
-        withAttributes:[self titleAttributes]];
+    NSPoint origin = NSMakePoint(StatusItemViewPaddingWidth, StatusItemViewPaddingHeight);
+    [title drawAtPoint:origin withAttributes:[self titleAttributes]];
     
     // use icon?
     if (image != nil)
     {
-        NSPoint p = {titleWidth, 2};
-        [image drawAtPoint:p fromRect:[self bounds] 
-            operation:NSCompositeSourceOver fraction:1.0];
+        NSPoint p = {titleWidth, 1};
+        [image drawAtPoint:p fromRect:[self bounds] operation:NSCompositeSourceOver fraction:1.0];
     }
     
     // add subtitles?

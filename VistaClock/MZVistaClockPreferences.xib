@@ -54,9 +54,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dF5-Aa-Pi8">
-                        <rect key="frame" x="0.0" y="631" width="340" height="54"/>
+                        <rect key="frame" x="7" y="631" width="333" height="54"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyDown" image="Mazookie_name_logo_small" id="7oQ-fD-LOJ"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyDown" image="Mazookie_name_logo_sticker_small" id="7oQ-fD-LOJ"/>
                     </imageView>
                     <box autoresizesSubviews="NO" title="General" borderType="line" id="KHW-j4-Uqr">
                         <rect key="frame" x="17" y="467" width="326" height="156"/>
@@ -554,6 +554,6 @@
         <viewController nibName="MZClockConfigItem" id="p0u-AW-ecg" customClass="MZClockConfigItem"/>
     </objects>
     <resources>
-        <image name="Mazookie_name_logo_small" width="256" height="53"/>
+        <image name="Mazookie_name_logo_sticker_small" width="300" height="63"/>
     </resources>
 </document>
