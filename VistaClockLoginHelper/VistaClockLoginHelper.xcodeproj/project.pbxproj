@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		133248411BA4839800CFAA7B /* mazookie_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 133248401BA4839800CFAA7B /* mazookie_icon.icns */; };
+		13404CAD1D5679920091DBF8 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13404CAC1D5679920091DBF8 /* Media.xcassets */; };
 		13785DC015D5385F00D9D1D3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13785DBF15D5385F00D9D1D3 /* Cocoa.framework */; };
 		13785DCA15D5385F00D9D1D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 13785DC815D5385F00D9D1D3 /* InfoPlist.strings */; };
 		13785DCC15D5385F00D9D1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13785DCB15D5385F00D9D1D3 /* main.m */; };
@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		133248401BA4839800CFAA7B /* mazookie_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = mazookie_icon.icns; sourceTree = "<group>"; };
+		13404CAC1D5679920091DBF8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		13785DBB15D5385F00D9D1D3 /* VistaClockLoginHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VistaClockLoginHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13785DBF15D5385F00D9D1D3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		13785DC215D5385F00D9D1D3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -49,7 +49,6 @@
 		13785DB015D5385F00D9D1D3 = {
 			isa = PBXGroup;
 			children = (
-				133248401BA4839800CFAA7B /* mazookie_icon.icns */,
 				13785DC515D5385F00D9D1D3 /* VistaClockLoginHelper */,
 				13785DBE15D5385F00D9D1D3 /* Frameworks */,
 				13785DBC15D5385F00D9D1D3 /* Products */,
@@ -98,6 +97,7 @@
 		13785DC615D5385F00D9D1D3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				13404CAC1D5679920091DBF8 /* Media.xcassets */,
 				13785DC715D5385F00D9D1D3 /* VistaClockLoginHelper-Info.plist */,
 				13785DC815D5385F00D9D1D3 /* InfoPlist.strings */,
 				13785DCB15D5385F00D9D1D3 /* main.m */,
@@ -136,6 +136,11 @@
 				CLASSPREFIX = MZ;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Mazookie, LLC";
+				TargetAttributes = {
+					13785DBA15D5385F00D9D1D3 = {
+						DevelopmentTeam = 6DK6LM2ETN;
+					};
+				};
 			};
 			buildConfigurationList = 13785DB515D5385F00D9D1D3 /* Build configuration list for PBXProject "VistaClockLoginHelper" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -159,9 +164,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				133248411BA4839800CFAA7B /* mazookie_icon.icns in Resources */,
 				13785DCA15D5385F00D9D1D3 /* InfoPlist.strings in Resources */,
 				13785DD015D5385F00D9D1D3 /* Credits.rtf in Resources */,
+				13404CAD1D5679920091DBF8 /* Media.xcassets in Resources */,
 				13785DD615D5385F00D9D1D3 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,9 +265,11 @@
 		13785DDA15D5385F00D9D1D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VistaClockLoginHelper/VistaClockLoginHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6DK6LM2ETN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClockLoginHelper/VistaClockLoginHelper-Prefix.pch";
 				INFOPLIST_FILE = "VistaClockLoginHelper/VistaClockLoginHelper-Info.plist";
@@ -277,9 +284,11 @@
 		13785DDB15D5385F00D9D1D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VistaClockLoginHelper/VistaClockLoginHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6DK6LM2ETN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClockLoginHelper/VistaClockLoginHelper-Prefix.pch";
 				INFOPLIST_FILE = "VistaClockLoginHelper/VistaClockLoginHelper-Info.plist";

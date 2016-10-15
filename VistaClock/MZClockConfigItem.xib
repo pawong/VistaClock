@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MZClockConfigItem">
@@ -21,8 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="301" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" id="Q00-EJ-BbS" userLabel="Push Button - Delete">
-                    <rect key="frame" x="264" y="8" width="36" height="32"/>
+                <button verticalHuggingPriority="750" misplaced="YES" id="Q00-EJ-BbS" userLabel="Push Button - Delete">
+                    <rect key="frame" x="264" y="8" width="38" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="X" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNc-dZ-arN" userLabel="Button Cell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -32,8 +31,8 @@
                         <action selector="removeClockConfig:" target="-1" id="eVD-lV-AQB"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" id="imT-AJ-W3k" userLabel="Push Button - Up">
-                    <rect key="frame" x="216" y="8" width="36" height="32"/>
+                <button verticalHuggingPriority="750" misplaced="YES" id="imT-AJ-W3k" userLabel="Push Button - Up">
+                    <rect key="frame" x="216" y="8" width="38" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="↑" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lug-KP-wAl" userLabel="Button Cell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -61,8 +60,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="RwH-gd-Pdu" userLabel="Push Button - Down">
-                    <rect key="frame" x="240" y="8" width="36" height="32"/>
+                <button verticalHuggingPriority="750" misplaced="YES" id="RwH-gd-Pdu" userLabel="Push Button - Down">
+                    <rect key="frame" x="240" y="8" width="38" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="↓" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0ah-WM-YMQ" userLabel="Button Cell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -73,7 +72,7 @@
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="35" y="-477"/>
+            <point key="canvasLocation" x="-50" y="-482"/>
         </view>
     </objects>
 </document>

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1300F5AC19BCB8F8006E8FD9 /* Gear_16x16x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5AB19BCB8F8006E8FD9 /* Gear_16x16x32.png */; };
-		1300F5E419BCE700006E8FD9 /* bg-texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5AD19BCE700006E8FD9 /* bg-texture.png */; };
 		1300F5E519BCE700006E8FD9 /* DBVCB01.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5AE19BCE700006E8FD9 /* DBVCB01.png */; };
 		1300F5E619BCE700006E8FD9 /* DVCB02.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5AF19BCE700006E8FD9 /* DVCB02.png */; };
 		1300F5E719BCE700006E8FD9 /* DVCB06.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5B019BCE700006E8FD9 /* DVCB06.png */; };
@@ -45,9 +43,6 @@
 		1300F60619BCE700006E8FD9 /* SVCW07.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5D419BCE700006E8FD9 /* SVCW07.png */; };
 		1300F60719BCE700006E8FD9 /* SVCW08.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5D519BCE700006E8FD9 /* SVCW08.png */; };
 		1300F60819BCE700006E8FD9 /* SWVCB01.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5D619BCE700006E8FD9 /* SWVCB01.png */; };
-		1300F60919BCE700006E8FD9 /* tinybluelighton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5D719BCE700006E8FD9 /* tinybluelighton.png */; };
-		1300F60A19BCE700006E8FD9 /* tinygreylighton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5D819BCE700006E8FD9 /* tinygreylighton.png */; };
-		1300F60B19BCE700006E8FD9 /* tinyredlighton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5D919BCE700006E8FD9 /* tinyredlighton.png */; };
 		1300F60C19BCE700006E8FD9 /* VCB01.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5DA19BCE700006E8FD9 /* VCB01.png */; };
 		1300F60D19BCE700006E8FD9 /* VCB02.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5DB19BCE700006E8FD9 /* VCB02.png */; };
 		1300F60E19BCE700006E8FD9 /* VCB06.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5DC19BCE700006E8FD9 /* VCB06.png */; };
@@ -63,15 +58,12 @@
 		1313723619C3552E00B65CDE /* MZVistaClockPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1313723419C3552E00B65CDE /* MZVistaClockPreferences.xib */; };
 		1313723F19C386D300B65CDE /* MZClockConfigItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1313723A19C386D300B65CDE /* MZClockConfigItem.xib */; };
 		1313724019C386D300B65CDE /* MZClockConfigItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1313723C19C386D300B65CDE /* MZClockConfigItem.m */; };
-		1313724119C386D300B65CDE /* move.png in Resources */ = {isa = PBXBuildFile; fileRef = 1313723D19C386D300B65CDE /* move.png */; };
-		1313724219C386D300B65CDE /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 1313723E19C386D300B65CDE /* delete.png */; };
 		1313BA141C48BAB400C36A36 /* MZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1313BA131C48BAB400C36A36 /* MZTextField.m */; };
 		1314945419BE071800496351 /* MZCalendarControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1314945119BE071800496351 /* MZCalendarControl.m */; };
-		131C418C1D14D9FD00DFFB70 /* Mazookie_name_logo_sticker_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 131C418B1D14D9FD00DFFB70 /* Mazookie_name_logo_sticker_small.png */; };
 		132E0AB219D3211E00CC9CF6 /* MZClockConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */; };
 		132E0AE419D4CCF200CC9CF6 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132E0AE319D4CCF200CC9CF6 /* ServiceManagement.framework */; };
 		132E0AE619D4CD0000CC9CF6 /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132E0AE519D4CD0000CC9CF6 /* CalendarStore.framework */; };
-		1332483F1BA4831800CFAA7B /* VistaClock.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1332483E1BA4831800CFAA7B /* VistaClock.icns */; };
+		13404CB01D567A540091DBF8 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13404CAF1D567A540091DBF8 /* Media.xcassets */; };
 		134E392019BA107B004FA01A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 134E391F19BA107B004FA01A /* Cocoa.framework */; };
 		134E392A19BA107B004FA01A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 134E392819BA107B004FA01A /* InfoPlist.strings */; };
 		134E392C19BA107B004FA01A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E392B19BA107B004FA01A /* main.m */; };
@@ -80,12 +72,6 @@
 		134E3A0519BA1388004FA01A /* MZStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E39B919BA1388004FA01A /* MZStatusItemView.m */; };
 		139877141CD321A3003007F5 /* help.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 139877131CD321A3003007F5 /* help.rtfd */; };
 		139ED8D819F9B7AC00181875 /* VistaClockLoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 139ED8D719F9B75700181875 /* VistaClockLoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		13A4B4BE1CFB5A450097B123 /* MazookieStatusIconBWB.png in Resources */ = {isa = PBXBuildFile; fileRef = 13A4B4BC1CFB5A450097B123 /* MazookieStatusIconBWB.png */; };
-		13A4B4BF1CFB5A450097B123 /* MazookieStatusIconBWW.png in Resources */ = {isa = PBXBuildFile; fileRef = 13A4B4BD1CFB5A450097B123 /* MazookieStatusIconBWW.png */; };
-		13A4B4C11CFB5A700097B123 /* MazookieStatusIconC.png in Resources */ = {isa = PBXBuildFile; fileRef = 13A4B4C01CFB5A6F0097B123 /* MazookieStatusIconC.png */; };
-		13A4B4C31CFB5B6D0097B123 /* todayToolbarBW.png in Resources */ = {isa = PBXBuildFile; fileRef = 13A4B4C21CFB5B6D0097B123 /* todayToolbarBW.png */; };
-		13A4B4C61CFB5B970097B123 /* statusbarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 13A4B4C41CFB5B970097B123 /* statusbarIcon.png */; };
-		13A4B4C71CFB5B970097B123 /* statusbarIconBW.png in Resources */ = {isa = PBXBuildFile; fileRef = 13A4B4C51CFB5B970097B123 /* statusbarIconBW.png */; };
 		13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */; };
 		13BBAEBC1CCF2E460070558B /* MZAboutBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BBAEBA1CCF2E460070558B /* MZAboutBox.m */; };
 		13BBAEBD1CCF2E460070558B /* MZAboutBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13BBAEBB1CCF2E460070558B /* MZAboutBox.xib */; };
@@ -118,8 +104,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1300F5AB19BCB8F8006E8FD9 /* Gear_16x16x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear_16x16x32.png; sourceTree = "<group>"; };
-		1300F5AD19BCE700006E8FD9 /* bg-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-texture.png"; sourceTree = "<group>"; };
 		1300F5AE19BCE700006E8FD9 /* DBVCB01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DBVCB01.png; sourceTree = "<group>"; };
 		1300F5AF19BCE700006E8FD9 /* DVCB02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DVCB02.png; sourceTree = "<group>"; };
 		1300F5B019BCE700006E8FD9 /* DVCB06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DVCB06.png; sourceTree = "<group>"; };
@@ -161,9 +145,6 @@
 		1300F5D419BCE700006E8FD9 /* SVCW07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SVCW07.png; sourceTree = "<group>"; };
 		1300F5D519BCE700006E8FD9 /* SVCW08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SVCW08.png; sourceTree = "<group>"; };
 		1300F5D619BCE700006E8FD9 /* SWVCB01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SWVCB01.png; sourceTree = "<group>"; };
-		1300F5D719BCE700006E8FD9 /* tinybluelighton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tinybluelighton.png; sourceTree = "<group>"; };
-		1300F5D819BCE700006E8FD9 /* tinygreylighton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tinygreylighton.png; sourceTree = "<group>"; };
-		1300F5D919BCE700006E8FD9 /* tinyredlighton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tinyredlighton.png; sourceTree = "<group>"; };
 		1300F5DA19BCE700006E8FD9 /* VCB01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VCB01.png; sourceTree = "<group>"; };
 		1300F5DB19BCE700006E8FD9 /* VCB02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VCB02.png; sourceTree = "<group>"; };
 		1300F5DC19BCE700006E8FD9 /* VCB06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VCB06.png; sourceTree = "<group>"; };
@@ -181,19 +162,16 @@
 		1313723A19C386D300B65CDE /* MZClockConfigItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MZClockConfigItem.xib; sourceTree = "<group>"; };
 		1313723B19C386D300B65CDE /* MZClockConfigItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZClockConfigItem.h; sourceTree = "<group>"; };
 		1313723C19C386D300B65CDE /* MZClockConfigItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZClockConfigItem.m; sourceTree = "<group>"; };
-		1313723D19C386D300B65CDE /* move.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = move.png; sourceTree = "<group>"; };
-		1313723E19C386D300B65CDE /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		1313BA121C48BAB400C36A36 /* MZTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTextField.h; sourceTree = "<group>"; };
 		1313BA131C48BAB400C36A36 /* MZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTextField.m; sourceTree = "<group>"; };
 		1314945019BE071800496351 /* MZCalendarControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCalendarControl.h; sourceTree = "<group>"; };
 		1314945119BE071800496351 /* MZCalendarControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCalendarControl.m; sourceTree = "<group>"; };
-		131C418B1D14D9FD00DFFB70 /* Mazookie_name_logo_sticker_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mazookie_name_logo_sticker_small.png; sourceTree = "<group>"; };
 		132E0AB019D3211E00CC9CF6 /* MZClockConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZClockConfig.h; sourceTree = "<group>"; };
 		132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZClockConfig.m; sourceTree = "<group>"; };
 		132E0AE319D4CCF200CC9CF6 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		132E0AE519D4CD0000CC9CF6 /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
 		132E0AE719D4CDA600CC9CF6 /* VistaClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VistaClock.entitlements; sourceTree = "<group>"; };
-		1332483E1BA4831800CFAA7B /* VistaClock.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = VistaClock.icns; sourceTree = "<group>"; };
+		13404CAF1D567A540091DBF8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		134E391C19BA107B004FA01A /* VistaClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VistaClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		134E391F19BA107B004FA01A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		134E392219BA107B004FA01A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -214,12 +192,6 @@
 		134E39B919BA1388004FA01A /* MZStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZStatusItemView.m; sourceTree = "<group>"; };
 		139877131CD321A3003007F5 /* help.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = help.rtfd; sourceTree = "<group>"; };
 		139ED8D219F9B75700181875 /* VistaClockLoginHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VistaClockLoginHelper.xcodeproj; path = VistaClockLoginHelper/VistaClockLoginHelper.xcodeproj; sourceTree = "<group>"; };
-		13A4B4BC1CFB5A450097B123 /* MazookieStatusIconBWB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MazookieStatusIconBWB.png; sourceTree = "<group>"; };
-		13A4B4BD1CFB5A450097B123 /* MazookieStatusIconBWW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MazookieStatusIconBWW.png; sourceTree = "<group>"; };
-		13A4B4C01CFB5A6F0097B123 /* MazookieStatusIconC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MazookieStatusIconC.png; sourceTree = "<group>"; };
-		13A4B4C21CFB5B6D0097B123 /* todayToolbarBW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = todayToolbarBW.png; sourceTree = "<group>"; };
-		13A4B4C41CFB5B970097B123 /* statusbarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusbarIcon.png; sourceTree = "<group>"; };
-		13A4B4C51CFB5B970097B123 /* statusbarIconBW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statusbarIconBW.png; sourceTree = "<group>"; };
 		13A4EB4E19EDA6E70031D4DE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13BBAEB91CCF2E460070558B /* MZAboutBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZAboutBox.h; sourceTree = "<group>"; };
 		13BBAEBA1CCF2E460070558B /* MZAboutBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZAboutBox.m; sourceTree = "<group>"; };
@@ -248,7 +220,6 @@
 		134E391319BA107A004FA01A = {
 			isa = PBXGroup;
 			children = (
-				1332483E1BA4831800CFAA7B /* VistaClock.icns */,
 				139ED8D219F9B75700181875 /* VistaClockLoginHelper.xcodeproj */,
 				134E392519BA107B004FA01A /* VistaClock */,
 				134E394319BA107B004FA01A /* VistaClockTests */,
@@ -333,18 +304,10 @@
 		134E392619BA107B004FA01A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				131C418B1D14D9FD00DFFB70 /* Mazookie_name_logo_sticker_small.png */,
-				13A4B4BC1CFB5A450097B123 /* MazookieStatusIconBWB.png */,
-				13A4B4BD1CFB5A450097B123 /* MazookieStatusIconBWW.png */,
-				13A4B4C01CFB5A6F0097B123 /* MazookieStatusIconC.png */,
-				13A4B4C21CFB5B6D0097B123 /* todayToolbarBW.png */,
-				13A4B4C41CFB5B970097B123 /* statusbarIcon.png */,
-				13A4B4C51CFB5B970097B123 /* statusbarIconBW.png */,
+				13404CAF1D567A540091DBF8 /* Media.xcassets */,
 				139877131CD321A3003007F5 /* help.rtfd */,
 				13BBAEBF1CCF2E810070558B /* acknowledgments.rtf */,
 				1300F5BF19BCE700006E8FD9 /* MBVCB01.png */,
-				1313723D19C386D300B65CDE /* move.png */,
-				1313723E19C386D300B65CDE /* delete.png */,
 				1300F5CF19BCE700006E8FD9 /* SBVCB01.png */,
 				1300F5D019BCE700006E8FD9 /* SVCB02.png */,
 				1300F5D119BCE700006E8FD9 /* SVCB06.png */,
@@ -353,9 +316,6 @@
 				1300F5D419BCE700006E8FD9 /* SVCW07.png */,
 				1300F5D519BCE700006E8FD9 /* SVCW08.png */,
 				1300F5D619BCE700006E8FD9 /* SWVCB01.png */,
-				1300F5D719BCE700006E8FD9 /* tinybluelighton.png */,
-				1300F5D819BCE700006E8FD9 /* tinygreylighton.png */,
-				1300F5D919BCE700006E8FD9 /* tinyredlighton.png */,
 				1300F5DA19BCE700006E8FD9 /* VCB01.png */,
 				1300F5DB19BCE700006E8FD9 /* VCB02.png */,
 				1300F5DC19BCE700006E8FD9 /* VCB06.png */,
@@ -373,7 +333,6 @@
 				1300F5C419BCE700006E8FD9 /* MVCW07.png */,
 				1300F5C519BCE700006E8FD9 /* MVCW08.png */,
 				1300F5C619BCE700006E8FD9 /* MWVCB01.png */,
-				1300F5AD19BCE700006E8FD9 /* bg-texture.png */,
 				1300F5AE19BCE700006E8FD9 /* DBVCB01.png */,
 				1300F5AF19BCE700006E8FD9 /* DVCB02.png */,
 				1300F5B019BCE700006E8FD9 /* DVCB06.png */,
@@ -390,7 +349,6 @@
 				1300F5BB19BCE700006E8FD9 /* HVCW07.png */,
 				1300F5BC19BCE700006E8FD9 /* HVCW08.png */,
 				1300F5BD19BCE700006E8FD9 /* HWVCB01.png */,
-				1300F5AB19BCB8F8006E8FD9 /* Gear_16x16x32.png */,
 				134E392719BA107B004FA01A /* VistaClock-Info.plist */,
 				134E392819BA107B004FA01A /* InfoPlist.strings */,
 				134E392B19BA107B004FA01A /* main.m */,
@@ -454,7 +412,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MZ;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Mazookie, LLC";
 				TargetAttributes = {
 					134E391B19BA107B004FA01A = {
@@ -505,60 +463,47 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13A4B4BF1CFB5A450097B123 /* MazookieStatusIconBWW.png in Resources */,
-				1300F60919BCE700006E8FD9 /* tinybluelighton.png in Resources */,
 				1300F61019BCE700006E8FD9 /* VCW03.png in Resources */,
 				1300F5F019BCE700006E8FD9 /* HVCW03.png in Resources */,
 				1300F5FA19BCE700006E8FD9 /* MVCW07.png in Resources */,
 				1300F5FC19BCE700006E8FD9 /* MWVCB01.png in Resources */,
-				13A4B4BE1CFB5A450097B123 /* MazookieStatusIconBWB.png in Resources */,
 				1300F5E819BCE700006E8FD9 /* DVCW03.png in Resources */,
 				13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */,
 				1300F60519BCE700006E8FD9 /* SVCW05.png in Resources */,
 				13BBAEBD1CCF2E460070558B /* MZAboutBox.xib in Resources */,
 				1300F60819BCE700006E8FD9 /* SWVCB01.png in Resources */,
-				1332483F1BA4831800CFAA7B /* VistaClock.icns in Resources */,
 				1313723619C3552E00B65CDE /* MZVistaClockPreferences.xib in Resources */,
 				1300F60219BCE700006E8FD9 /* SVCB02.png in Resources */,
 				1300F5EF19BCE700006E8FD9 /* HVCB06.png in Resources */,
 				1300F5F219BCE700006E8FD9 /* HVCW07.png in Resources */,
+				13404CB01D567A540091DBF8 /* Media.xcassets in Resources */,
 				1300F61219BCE700006E8FD9 /* VCW05.png in Resources */,
 				1300F5F519BCE700006E8FD9 /* MBVCB01.png in Resources */,
-				1300F60B19BCE700006E8FD9 /* tinyredlighton.png in Resources */,
-				1300F5AC19BCB8F8006E8FD9 /* Gear_16x16x32.png in Resources */,
 				134E392A19BA107B004FA01A /* InfoPlist.strings in Resources */,
 				1300F5F119BCE700006E8FD9 /* HVCW05.png in Resources */,
 				1313723F19C386D300B65CDE /* MZClockConfigItem.xib in Resources */,
 				1300F5F419BCE700006E8FD9 /* HWVCB01.png in Resources */,
 				1300F60619BCE700006E8FD9 /* SVCW07.png in Resources */,
 				1300F61319BCE700006E8FD9 /* VCW06.png in Resources */,
-				13A4B4C11CFB5A700097B123 /* MazookieStatusIconC.png in Resources */,
 				13BBAEC01CCF2E810070558B /* acknowledgments.rtf in Resources */,
-				1300F60A19BCE700006E8FD9 /* tinygreylighton.png in Resources */,
 				1300F61119BCE700006E8FD9 /* VCW04.png in Resources */,
 				1300F5F619BCE700006E8FD9 /* MVCB02.png in Resources */,
 				1300F5EC19BCE700006E8FD9 /* DWVCB01.png in Resources */,
-				1300F5E419BCE700006E8FD9 /* bg-texture.png in Resources */,
 				1300F61419BCE700006E8FD9 /* VCW07.png in Resources */,
 				1300F5E519BCE700006E8FD9 /* DBVCB01.png in Resources */,
 				1300F5E619BCE700006E8FD9 /* DVCB02.png in Resources */,
 				1300F5F719BCE700006E8FD9 /* MVCB06.png in Resources */,
-				131C418C1D14D9FD00DFFB70 /* Mazookie_name_logo_sticker_small.png in Resources */,
 				1300F60719BCE700006E8FD9 /* SVCW08.png in Resources */,
-				13A4B4C31CFB5B6D0097B123 /* todayToolbarBW.png in Resources */,
 				1300F5EA19BCE700006E8FD9 /* DVCW07.png in Resources */,
 				1300F60419BCE700006E8FD9 /* SVCW03.png in Resources */,
 				1300F5ED19BCE700006E8FD9 /* HBVCB01.png in Resources */,
 				1300F60D19BCE700006E8FD9 /* VCB02.png in Resources */,
-				1313724119C386D300B65CDE /* move.png in Resources */,
-				13A4B4C61CFB5B970097B123 /* statusbarIcon.png in Resources */,
 				1300F5E919BCE700006E8FD9 /* DVCW05.png in Resources */,
 				134E393019BA107B004FA01A /* Credits.rtf in Resources */,
 				1300F5EB19BCE700006E8FD9 /* DVCW08.png in Resources */,
 				1300F5E719BCE700006E8FD9 /* DVCB06.png in Resources */,
 				1300F61719BCE9A5006E8FD9 /* MZClockItem.xib in Resources */,
 				1300F5EE19BCE700006E8FD9 /* HVCB02.png in Resources */,
-				1313724219C386D300B65CDE /* delete.png in Resources */,
 				1300F5FB19BCE700006E8FD9 /* MVCW08.png in Resources */,
 				1300F5F819BCE700006E8FD9 /* MVCW03.png in Resources */,
 				1300F61519BCE700006E8FD9 /* VCW08.png in Resources */,
@@ -567,7 +512,6 @@
 				1300F60C19BCE700006E8FD9 /* VCB01.png in Resources */,
 				1300F60119BCE700006E8FD9 /* SBVCB01.png in Resources */,
 				1300F5F319BCE700006E8FD9 /* HVCW08.png in Resources */,
-				13A4B4C71CFB5B970097B123 /* statusbarIconBW.png in Resources */,
 				1300F5F919BCE700006E8FD9 /* MVCW05.png in Resources */,
 				1300F60E19BCE700006E8FD9 /* VCB06.png in Resources */,
 				1300F60319BCE700006E8FD9 /* SVCB06.png in Resources */,
@@ -650,15 +594,20 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -690,15 +639,20 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -713,11 +667,13 @@
 		134E394E19BA107B004FA01A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VistaClock/VistaClock.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 6DK6LM2ETN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClock/VistaClock-Prefix.pch";
 				INFOPLIST_FILE = "VistaClock/VistaClock-Info.plist";
@@ -732,11 +688,13 @@
 		134E394F19BA107B004FA01A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VistaClock/VistaClock.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 6DK6LM2ETN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClock/VistaClock-Prefix.pch";
 				INFOPLIST_FILE = "VistaClock/VistaClock-Info.plist";

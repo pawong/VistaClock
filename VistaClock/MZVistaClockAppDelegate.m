@@ -169,11 +169,11 @@
             NSImage* weekImage;
             if (settings.useBWWeekIcon == TRUE)
             {
-                weekImage = [[NSImage imageNamed:@"statusbarIconBW.png"] copy];
+                weekImage = [[NSImage imageNamed:@"bw_calendar"] copy];
             }
             else
             {
-                weekImage = [[NSImage imageNamed:@"statusbarIcon.png"] copy];
+                weekImage = [[NSImage imageNamed:@"c_calendar"] copy];
             }
                 
             int x;
@@ -221,16 +221,23 @@
             {
                 if ([self isDarkMenu])
                 {
-                    [statusItemView setImage:[[NSImage imageNamed:@"MazookieStatusIconBWW.png"] copy]];
+                    [statusItemView setImage:[[NSImage imageNamed:@"bw_w_mazookie"] copy]];
                 }
                 else
                 {
-                    [statusItemView setImage:[[NSImage imageNamed:@"MazookieStatusIconBWB.png"] copy]];
+                    [statusItemView setImage:[[NSImage imageNamed:@"bw_b_mazookie"] copy]];
                 }
             }
             else
             {
-                [statusItemView setImage:[[NSImage imageNamed:@"MazookieStatusIconC.png"] copy]];
+                if ([self isDarkMenu])
+                {
+                    [statusItemView setImage:[[NSImage imageNamed:@"c_w_mazookie"] copy]];
+                }
+                else
+                {
+                    [statusItemView setImage:[[NSImage imageNamed:@"c_b_mazookie"] copy]];
+                }
             }
         }
     }
@@ -602,7 +609,7 @@
     if (settings.useDarkTheme == YES)
     {
         [_vistaClockWindow setBackgroundColor:[NSColor colorWithPatternImage:
-            [NSImage imageNamed:@"bg-texture.png"]]];
+            [NSImage imageNamed:@"bg-texture"]]];
         [calendar setColor:[NSColor whiteColor]];
     }
     else

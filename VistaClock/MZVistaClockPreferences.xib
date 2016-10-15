@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -53,12 +53,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="688" height="685"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dF5-Aa-Pi8">
-                        <rect key="frame" x="7" y="631" width="333" height="54"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyDown" image="Mazookie_name_logo_sticker_small" id="7oQ-fD-LOJ"/>
-                    </imageView>
-                    <box autoresizesSubviews="NO" title="General" borderType="line" id="KHW-j4-Uqr">
+                    <box autoresizesSubviews="NO" borderType="line" title="General" id="KHW-j4-Uqr">
                         <rect key="frame" x="17" y="467" width="326" height="156"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="PfQ-Wl-DuB">
@@ -133,10 +128,8 @@
                                 </button>
                             </subviews>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <box autoresizesSubviews="NO" title="Clock Faces" borderType="line" id="Szj-km-cYq">
+                    <box autoresizesSubviews="NO" borderType="line" title="Clock Faces" id="Szj-km-cYq">
                         <rect key="frame" x="345" y="573" width="326" height="104"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="1zh-l7-3Hd">
@@ -182,10 +175,8 @@
                                 </button>
                             </subviews>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <box autoresizesSubviews="NO" title="Clocks" borderType="line" id="Ub7-Kq-HMp">
+                    <box autoresizesSubviews="NO" borderType="line" title="Clocks" id="Ub7-Kq-HMp">
                         <rect key="frame" x="345" y="16" width="326" height="553"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="xSm-Od-vup">
@@ -212,7 +203,6 @@
                                                 </connections>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </clipView>
                                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Wd3-lF-XIo">
                                         <rect key="frame" x="1" y="144" width="233" height="15"/>
@@ -290,10 +280,8 @@
                                 </button>
                             </subviews>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <box autoresizesSubviews="NO" title="Calendar" borderType="line" id="IgS-ct-QCJ">
+                    <box autoresizesSubviews="NO" borderType="line" title="Calendar" id="IgS-ct-QCJ">
                         <rect key="frame" x="17" y="16" width="326" height="162"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="Xf0-we-1rU">
@@ -368,10 +356,8 @@
                                 </button>
                             </subviews>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <box autoresizesSubviews="NO" title="Menu Bar" borderType="line" id="dKj-MB-sTZ">
+                    <box autoresizesSubviews="NO" borderType="line" title="Menu Bar" id="dKj-MB-sTZ">
                         <rect key="frame" x="17" y="182" width="326" height="281"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="1SM-dy-ijB">
@@ -530,9 +516,12 @@
                                 </button>
                             </subviews>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dF5-Aa-Pi8">
+                        <rect key="frame" x="10" y="631" width="330" height="54"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyUpOrDown" image="mazookie_name_logo_sticker_small" id="7oQ-fD-LOJ"/>
+                    </imageView>
                 </subviews>
             </view>
             <connections>
@@ -554,6 +543,6 @@
         <viewController nibName="MZClockConfigItem" id="p0u-AW-ecg" customClass="MZClockConfigItem"/>
     </objects>
     <resources>
-        <image name="Mazookie_name_logo_sticker_small" width="300" height="63"/>
+        <image name="mazookie_name_logo_sticker_small" width="150" height="32"/>
     </resources>
 </document>

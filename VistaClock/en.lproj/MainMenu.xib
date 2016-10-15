@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -72,7 +72,6 @@
                                     </connections>
                                 </collectionView>
                             </subviews>
-                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ceW-iA-MbX">
                             <rect key="frame" x="0.0" y="172" width="128" height="16"/>
@@ -121,14 +120,14 @@
                             </textFieldCell>
                         </textField>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="2C8D7B8B-B413-425C-A421-F9FB3679D28F" explicitItemIdentifier="GotoTodayID" label="" paletteLabel="GotoToday" image="todayToolbarBW" id="6FB-z6-WbR">
+                    <toolbarItem implicitItemIdentifier="2C8D7B8B-B413-425C-A421-F9FB3679D28F" explicitItemIdentifier="GotoTodayID" label="" paletteLabel="GotoToday" image="bw_today" id="6FB-z6-WbR">
                         <nil key="toolTip"/>
                         <size key="minSize" width="16" height="20"/>
                         <size key="maxSize" width="50" height="32"/>
                         <button key="view" verticalHuggingPriority="750" id="jc1-8J-1wb">
                             <rect key="frame" x="21" y="14" width="22" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="todayToolbarBW" imagePosition="overlaps" alignment="center" alternateImage="todayToolbarBW" imageScaling="proportionallyUpOrDown" inset="2" id="Thd-NK-jRg">
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="bw_today" imagePosition="overlaps" alignment="center" alternateImage="bw_today" imageScaling="proportionallyUpOrDown" inset="2" id="Thd-NK-jRg">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -152,19 +151,19 @@
                         </textField>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="CSC-Ei-UEM"/>
-                    <toolbarItem implicitItemIdentifier="AD20F106-826A-4BC3-97B5-04CB93F950F1" explicitItemIdentifier="SettingsID" label="Settings" paletteLabel="Settings" image="Gear_16x16x32" selectable="YES" id="ZjE-v3-8gJ">
+                    <toolbarItem implicitItemIdentifier="AD20F106-826A-4BC3-97B5-04CB93F950F1" explicitItemIdentifier="SettingsID" label="Settings" paletteLabel="Settings" image="mazookie_gear" selectable="YES" id="ZjE-v3-8gJ">
                         <nil key="toolTip"/>
                         <size key="minSize" width="30" height="20"/>
                         <size key="maxSize" width="50" height="32"/>
                         <popUpButton key="view" canDrawConcurrently="YES" id="94k-L0-ZD8">
                             <rect key="frame" x="6" y="14" width="40" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="right" alignment="center" alternateImage="Gear_16x16x32" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" id="m7E-O2-HyH">
+                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" image="mazookie_gear" imagePosition="right" alignment="center" alternateImage="mazookie_gear" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" id="m7E-O2-HyH">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" title="OtherViews" id="r1Z-vr-xjR">
                                     <items>
-                                        <menuItem state="on" image="Gear_16x16x32" hidden="YES" enabled="NO" id="tmt-GY-gXh"/>
+                                        <menuItem state="on" image="mazookie_gear" hidden="YES" enabled="NO" id="tmt-GY-gXh"/>
                                         <menuItem title="Show Toolbar" keyEquivalent="t" id="mmw-vF-IrW">
                                             <connections>
                                                 <action selector="toggleToolbar:" target="Voe-Tx-rLC" id="qcd-KL-b7j"/>
@@ -267,7 +266,7 @@
         <collectionViewItem nibName="MZClockItem" id="k8k-gd-YvX" userLabel="Clock Item" customClass="MZClockItem"/>
     </objects>
     <resources>
-        <image name="Gear_16x16x32" width="16" height="16"/>
-        <image name="todayToolbarBW" width="22" height="22"/>
+        <image name="bw_today" width="26" height="24"/>
+        <image name="mazookie_gear" width="16" height="16"/>
     </resources>
 </document>

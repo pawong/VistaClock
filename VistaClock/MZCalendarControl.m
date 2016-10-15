@@ -315,17 +315,17 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     // load event indicators
     if (eventImage == nil)
     {
-        eventImage = [NSImage imageNamed:@"tinybluelighton.png"];
+        eventImage = [NSImage imageNamed:@"tiny_blue_on"];
     }
     
     if (altEventImage == nil)
     {
-        altEventImage = [NSImage imageNamed:@"tinygreylighton.png"];
+        altEventImage = [NSImage imageNamed:@"tiny_grey_on"];
     }
     
     if (reminderImage == nil)
     {
-        reminderImage = [NSImage imageNamed:@"tinyredlighton.png"];
+        reminderImage = [NSImage imageNamed:@"tiny_red_on"];
     }
     // draw and done.
     [self setNeedsDisplay:YES];
