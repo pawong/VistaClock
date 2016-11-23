@@ -66,6 +66,44 @@
     }
 } // end of titleForegroundColor
 
+// set status item color
+-(void) setTitleColors
+{
+    if (isMenuVisible)
+    {
+        foregroundColor = [NSColor whiteColor];
+        backgroundColor = [NSColor selectedMenuItemColor];
+    }
+    else
+    {
+        if (useDarkTheme)
+        {
+            if (useInverseTitle)
+            {
+                foregroundColor = [NSColor blackColor];
+                backgroundColor = [NSColor whiteColor];
+            }
+            else
+            {
+                foregroundColor = [NSColor whiteColor];
+                backgroundColor = [NSColor blackColor];
+            }
+        }
+        else
+        {
+            if (useInverseTitle)
+            {
+                foregroundColor = [NSColor whiteColor];
+                backgroundColor = [NSColor blackColor];
+            }
+            else
+            {
+                foregroundColor = [NSColor blackColor];
+                backgroundColor = [NSColor whiteColor];
+            }
+        }
+    }
+} // end of setTitleColors
 
 // style of status item
 // subTitle1
@@ -74,10 +112,10 @@
     // Use default menu bar font size
     NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:8];
     
-    NSColor *foregroundColor = [self titleForegroundColor];
+    NSColor *fColor = [self titleForegroundColor];
     
     return [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName
-        , foregroundColor, NSForegroundColorAttributeName, nil];
+        , fColor, NSForegroundColorAttributeName, nil];
 } // end of topTitleAttributes
 
 // subtitle2
@@ -86,10 +124,10 @@
     // Use default menu bar font size
     NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:10];
     
-    NSColor *foregroundColor = [self titleForegroundColor];
+    NSColor *fColor = [self titleForegroundColor];
     
     return [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName
-            , foregroundColor, NSForegroundColorAttributeName, nil];
+            , fColor, NSForegroundColorAttributeName, nil];
 } // end of bottomTitleAttributes
 
 // main title
@@ -98,7 +136,7 @@
     // Use default menu bar font size
     NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:[[NSFont menuBarFontOfSize:-1] pointSize]];
     
-    NSColor *foregroundColor = [self titleForegroundColor];
+    [self setTitleColors];
     
     return [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName
         , foregroundColor, NSForegroundColorAttributeName, nil];
@@ -164,8 +202,7 @@
     
     // Update status item size (which will also update this view's bounds)
     NSRect titleBounds = [self titleBoundingRect];
-    currentWidth = (int)titleBounds.size.width
-        + (int)(2*StatusItemViewPaddingWidth);
+    currentWidth = (int)titleBounds.size.width + (int)(2*StatusItemViewPaddingWidth);
     titleWidth = currentWidth;
     
     // add subtitles?
@@ -226,22 +263,23 @@
     // Draw status bar background, highlighted if menu is showing
     [statusItem drawStatusBarBackgroundInRect:[self bounds] withHighlight:isMenuVisible];
 
-    // draw box around the status item
-    /*{
-        // Draw box
-        [NSBezierPath setDefaultLineWidth:1];
+    // set text origin
+    NSPoint textOrigin = NSMakePoint(StatusItemViewPaddingWidth, StatusItemViewPaddingHeight);
 
-        NSBezierPath* path;
-        path = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(rect.origin.x+1, rect.origin.y+1
-            , rect.size.width-2, rect.size.height-2) xRadius:5.0 yRadius:5.0];
-        [[NSColor whiteColor] set];
+    // Draw boarder
+    if (useInverseTitle && !isMenuVisible && [title length] != 0)
+    {
+        NSRect titleRect = [self titleBoundingRect];
+        NSRect newRect = NSMakeRect(textOrigin.x-2, textOrigin.y-1, titleRect.size.width+4, titleRect.size.height-2);
+        [NSBezierPath setDefaultLineWidth:1.0];
+        NSBezierPath* path = [NSBezierPath bezierPathWithRoundedRect:newRect xRadius:5.0 yRadius:5.0];
         [path setLineJoinStyle:NSRoundLineJoinStyle];
+        [backgroundColor set];
         [path fill];
-    }*/
+    }
 
     // Draw title string
-    NSPoint origin = NSMakePoint(StatusItemViewPaddingWidth, StatusItemViewPaddingHeight);
-    [title drawAtPoint:origin withAttributes:[self titleAttributes]];
+    [title drawAtPoint:textOrigin withAttributes:[self titleAttributes]];
     
     // use icon?
     if (image != nil)
@@ -268,6 +306,10 @@
     useDarkTheme = use;
 } // end of setDarkTheme
 
+-(void) setUseInverseTitle:(BOOL) use
+{
+    useInverseTitle = use;
+} // end of setInverseColors
 
 @end
 

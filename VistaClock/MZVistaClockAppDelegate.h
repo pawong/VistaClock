@@ -17,6 +17,7 @@
 #import "MZDateCalc.h"
 #import "MZTextField.h"
 #import "MZAboutBox.h"
+#import "MZPoster.h"
 
 
 #define DATE_FORMAT_DAY_FULL            @"eeee"

@@ -23,19 +23,23 @@
 
     NSImage* image;
     BOOL useDarkTheme;
+    BOOL useInverseTitle;
     
     //id target;
     SEL action;
     BOOL isMenuVisible;
     int currentWidth;
+
+    NSColor* foregroundColor;
+    NSColor* backgroundColor;
 }
 
 -(void) setImage:(NSImage*) newImage;
 -(void) setTitle:(NSString*) newTitle;
--(void) setTitles:(NSString*) newTitle subTitle1:(NSString*) newSubTitle1
-    subTitle2:(NSString*) newSubTitle2;
+-(void) setTitles:(NSString*) newTitle subTitle1:(NSString*) newSubTitle1 subTitle2:(NSString*) newSubTitle2;
 -(void) setDarkTheme:(BOOL) use;
-
+-(void) setUseInverseTitle:(BOOL) use;
+-(void) setTitleColors;
 
 
 @property (retain, nonatomic) NSStatusItem* statusItem;

@@ -70,6 +70,7 @@
 		134E393019BA107B004FA01A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 134E392E19BA107B004FA01A /* Credits.rtf */; };
 		134E393319BA107B004FA01A /* MZVistaClockAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E393219BA107B004FA01A /* MZVistaClockAppDelegate.m */; };
 		134E3A0519BA1388004FA01A /* MZStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E39B919BA1388004FA01A /* MZStatusItemView.m */; };
+		137B91691DB2F1A6003EAA80 /* MZPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = 137B91681DB2F1A6003EAA80 /* MZPoster.m */; };
 		139877141CD321A3003007F5 /* help.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 139877131CD321A3003007F5 /* help.rtfd */; };
 		139ED8D819F9B7AC00181875 /* VistaClockLoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 139ED8D719F9B75700181875 /* VistaClockLoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */; };
@@ -190,6 +191,8 @@
 		134E394919BA107B004FA01A /* VistaClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VistaClockTests.m; sourceTree = "<group>"; };
 		134E39B819BA1388004FA01A /* MZStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZStatusItemView.h; sourceTree = "<group>"; };
 		134E39B919BA1388004FA01A /* MZStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZStatusItemView.m; sourceTree = "<group>"; };
+		137B91671DB2F1A6003EAA80 /* MZPoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZPoster.h; sourceTree = "<group>"; };
+		137B91681DB2F1A6003EAA80 /* MZPoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZPoster.m; sourceTree = "<group>"; };
 		139877131CD321A3003007F5 /* help.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = help.rtfd; sourceTree = "<group>"; };
 		139ED8D219F9B75700181875 /* VistaClockLoginHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VistaClockLoginHelper.xcodeproj; path = VistaClockLoginHelper/VistaClockLoginHelper.xcodeproj; sourceTree = "<group>"; };
 		13A4EB4E19EDA6E70031D4DE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 		134E392519BA107B004FA01A /* VistaClock */ = {
 			isa = PBXGroup;
 			children = (
+				137B91671DB2F1A6003EAA80 /* MZPoster.h */,
+				137B91681DB2F1A6003EAA80 /* MZPoster.m */,
 				13BBAEB91CCF2E460070558B /* MZAboutBox.h */,
 				13BBAEBA1CCF2E460070558B /* MZAboutBox.m */,
 				13BBAEBB1CCF2E460070558B /* MZAboutBox.xib */,
@@ -534,6 +539,7 @@
 				134E3A0519BA1388004FA01A /* MZStatusItemView.m in Sources */,
 				1300F5FF19BCE700006E8FD9 /* MZClockItem.m in Sources */,
 				1313723519C3552E00B65CDE /* MZVistaClockPreferences.m in Sources */,
+				137B91691DB2F1A6003EAA80 /* MZPoster.m in Sources */,
 				1313BA141C48BAB400C36A36 /* MZTextField.m in Sources */,
 				132E0AB219D3211E00CC9CF6 /* MZClockConfig.m in Sources */,
 				134E393319BA107B004FA01A /* MZVistaClockAppDelegate.m in Sources */,

@@ -289,6 +289,7 @@
     [showStatusWeekDayCB setState:settings.showStatusWeekDay];
     [showStatusDateCB setState:settings.showStatusDate];
     [showStatusFullMonthCB setState:settings.showStatusFullMonth];
+    [useInverseTitleCB setState:settings.useInverseTitle];
     [showStatusSecondaryTimeCB setState:settings.showStatusSecondaryTime];
     NSArray* tz = [timezones allKeysForObject:settings.statusSecondaryTimezone];
     if ([tz count] > 0)
@@ -337,6 +338,7 @@
         [useBWIconCB setEnabled:!settings.showDateTime];
         [showStatusAMPMCB setEnabled:!settings.useStatusMilitary];
         [showStatusFullMonthCB setEnabled:settings.showStatusDate];
+        [useInverseTitleCB setEnabled:settings.showStatusDate];
         [statusTimezoneButton setEnabled:settings.showStatusSecondaryTime];
     }
 
@@ -375,10 +377,12 @@
     settings.showStatusWeekDay = ([showStatusWeekDayCB state] == NSOnState)?YES:NO;
     settings.showStatusDate = ([showStatusDateCB state] == NSOnState)?YES:NO;
     settings.showStatusFullMonth = ([showStatusFullMonthCB state] == NSOnState)?YES:NO;
+    settings.useInverseTitle = ([useInverseTitleCB state] == NSOnState)?YES:NO;
     settings.showStatusSecondaryTime = ([showStatusSecondaryTimeCB state] == NSOnState)?YES:NO;
     settings.statusSecondaryTimezone = [timezones objectForKey:[statusTimezoneButton titleOfSelectedItem]];
     settings.showDateTime = ([showDateTimeCB state] == NSOnState)?YES:NO;
     settings.useBWIcon = ([useBWIconCB state] == NSOnState)?YES:NO;
+
     
     // clock settings
     settings.useMilitary = ([useMilitaryCB state] == NSOnState)?YES:NO;
@@ -401,6 +405,7 @@
     [showStatusWeekDayCB setEnabled:settings.showDateTime];
     [showStatusDateCB setEnabled:settings.showDateTime];
     [showStatusFullMonthCB setEnabled:settings.showDateTime];
+    [useInverseTitleCB setEnabled:settings.showDateTime];
     [showStatusSecondaryTimeCB setEnabled:settings.showDateTime];
     [statusTimezoneButton setEnabled:settings.showDateTime];
     [useBWIconCB setEnabled:!settings.showWeekNumberIcon];
@@ -414,6 +419,7 @@
         [useBWIconCB setEnabled:!settings.showDateTime];
         [showStatusAMPMCB setEnabled:!settings.useStatusMilitary];
         [showStatusFullMonthCB setEnabled:settings.showStatusDate];
+        [useInverseTitleCB setEnabled:settings.showDateTime];
         [statusTimezoneButton setEnabled:settings.showStatusSecondaryTime];
     }
 

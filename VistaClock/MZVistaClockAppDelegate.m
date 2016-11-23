@@ -73,10 +73,14 @@
 
     // dark menu, init
     darkMenu = FALSE;
-    
+
+    // report home
+    MZPoster* report = [[MZPoster alloc] init];
+    [report sendPost];
+
     // launch the timer last
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self 
-        selector:@selector(fireTimer:) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(fireTimer:)
+        userInfo:nil repeats:YES];
         
     // keeps timer moving, even when menu has control
     [[NSRunLoop currentRunLoop] addTimer:timer 
@@ -155,6 +159,9 @@
  
     //[dateFormatter setDateFormat:TIME_FORMAT_MILITARY_FULL];
     //NSString* militaryFullTime = [dateFormatter stringFromDate:now];
+
+    // inverse title
+    [statusItemView setUseInverseTitle:settings.useInverseTitle];
 
     // update status item
     if (settings.showWeekNumberIcon == YES)

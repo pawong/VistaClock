@@ -25,7 +25,7 @@ static VCSettings* sharedSettings = nil;
 @synthesize showWeekNumberIcon, useBWWeekIcon, showStatusSeconds
     , useStatusMilitary, showStatusAMPM, showStatusWeekDay, showStatusDate
     , showStatusFullMonth, showStatusSecondaryTime, statusSecondaryTimezone
-    , showDateTime, useBWIcon;
+    , showDateTime, useBWIcon, useInverseTitle;
 
 // clock panel options
 @synthesize useMilitary, clockFaceName;
@@ -48,7 +48,7 @@ static VCSettings* sharedSettings = nil;
     insist(paths && [paths count]);
     NSString* programName = [NSString stringWithFormat:@"%@.cfg",
         [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey]
-        ];
+    ];
     return [[paths objectAtIndex:0] stringByAppendingPathComponent:programName];
 } // end archivePath
 
@@ -119,6 +119,7 @@ static VCSettings* sharedSettings = nil;
     statusSecondaryTimezone = [decoder decodeObjectForKey:@"statusSecondaryTimezone"];
     showDateTime = [decoder decodeBoolForKey:@"showDateTime"];
     useBWIcon = [decoder decodeBoolForKey:@"useBWIcon"];
+    useInverseTitle = [decoder decodeBoolForKey:@"useInverseTitle"];
     
     // clock panel options
     useMilitary = [decoder decodeBoolForKey:@"useMilitary"];
@@ -173,6 +174,7 @@ static VCSettings* sharedSettings = nil;
     [encoder encodeObject:statusSecondaryTimezone forKey:@"statusSecondaryTimezone"];
     [encoder encodeBool:showDateTime forKey:@"showDateTime"];
     [encoder encodeBool:useBWIcon forKey:@"useBWIcon"];
+    [encoder encodeBool:useInverseTitle forKey:@"useInverseTitle"];
     
     // clock options
     [encoder encodeBool:useMilitary forKey:@"useMilitary"];
@@ -217,6 +219,7 @@ static VCSettings* sharedSettings = nil;
     statusSecondaryTimezone = @"GMT";
     showDateTime = YES;
     useBWIcon = NO;
+    useInverseTitle = YES;
     
     // clock options
     useMilitary = NO;

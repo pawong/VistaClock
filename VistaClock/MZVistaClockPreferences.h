@@ -49,6 +49,7 @@
     IBOutlet NSPopUpButton* statusTimezoneButton;
     IBOutlet NSButton* showDateTimeCB;
     IBOutlet NSButton* useBWIconCB;
+    IBOutlet NSButton* useInverseTitleCB;
 
     
     // clock settings
