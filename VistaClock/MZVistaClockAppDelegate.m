@@ -21,7 +21,7 @@
     
     // process the command line
     [self processCommandLine];
-    
+
     // init eventArray
 	clockCollectionArray = [[NSMutableArray alloc] init];
     
@@ -216,7 +216,7 @@
     }
     else
     {
-        if (settings.showDateTime) // show time
+        if (settings.showDateTime && (settings.showTime || settings.showDate)) // show time
         {
             // show nothing
             [statusItemView setImage:nil];
@@ -251,7 +251,7 @@
 
     if (settings.showDateTime) // show time
     {
-        if (settings.showStatusSecondaryTime)
+        if (settings.showStatusSecondaryTime && settings.showTime)
         {
             NSDateFormatter* title1DateFormat = [[NSDateFormatter alloc] init];
             [title1DateFormat setDateFormat:DATE_FORMAT_TIMEZONE_DAY];
@@ -772,11 +772,11 @@
     
     buildString = [buildString stringByAppendingString:@""];
 
-    if (settings.showStatusWeekDay)
+    if (settings.showStatusWeekDay && settings.showDate)
     {
-        buildString = [buildString stringByAppendingString:@"EEE "];
+        buildString = [buildString stringByAppendingString:@"EEE"];
     }
-    if (settings.showStatusDate)
+    if (settings.showDate)
     {
     	NSDateFormatter *format = [[NSDateFormatter alloc] init];
         [format setDateStyle:NSDateFormatterLongStyle];
@@ -785,51 +785,62 @@
         	withString:@""];
         dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"," 
         	withString:@""];
-        if (!settings.showStatusFullMonth)
+        if (!settings.showMonth)
+        {
+            dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"MMMM"
+                withString:@""];
+        }
+        else if (!settings.showStatusFullMonth)
         {
             dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"MMMM"
                 withString:@"MMM"];
         }
+
+        buildString = [buildString stringByAppendingString:@" "];
         buildString = [buildString stringByAppendingString:dateFormat];
     }
-    if (settings.useStatusMilitary)
+    if (settings.showTime)
     {
-        if (settings.showStatusSeconds)
-        {
-            buildString = [buildString stringByAppendingString:@" HH:mm:ss"];
-        }
-        else
-        {
-            buildString = [buildString stringByAppendingString:@" HH:mm"];
-        }
-    }
-    else
-    {
-        if (settings.showStatusAMPM)
+        if (settings.useStatusMilitary)
         {
             if (settings.showStatusSeconds)
             {
-                buildString = [buildString stringByAppendingString:@" h:mm:ss a"];
+                buildString = [buildString stringByAppendingString:@" HH:mm:ss"];
             }
             else
             {
-                buildString = [buildString stringByAppendingString:@" h:mm a"];
+                buildString = [buildString stringByAppendingString:@" HH:mm"];
             }
         }
         else
         {
-            if (settings.showStatusSeconds)
+            if (settings.showStatusAMPM)
             {
-                buildString = [buildString stringByAppendingString:@" h:mm:ss"];
+                if (settings.showStatusSeconds)
+                {
+                    buildString = [buildString stringByAppendingString:@" h:mm:ss a"];
+                }
+                else
+                {
+                    buildString = [buildString stringByAppendingString:@" h:mm a"];
+                }
             }
             else
             {
-                buildString = [buildString stringByAppendingString:@" h:mm"];
+                if (settings.showStatusSeconds)
+                {
+                    buildString = [buildString stringByAppendingString:@" h:mm:ss"];
+                }
+                else
+                {
+                    buildString = [buildString stringByAppendingString:@" h:mm"];
+                }
             }
         }
     }
-    
-    return buildString;
+    NSString *trimmedString = [buildString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+    return trimmedString;
 } // end of buildStatusItemDateFormatString
 
 

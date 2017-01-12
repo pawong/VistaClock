@@ -1,23 +1,30 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf760
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Cambria;}
-{\colortbl;\red255\green255\blue255;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;}
 {\info
 {\author Paul Wong}}\margl1440\margr1440\vieww30200\viewh18160\viewkind0
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ri-2158\pardirnatural\partightenfactor0
 
 \f0\fs24 \cf0 \
-{{\NeXTGraphic Mazookie_full_logo_small.png \width6000 \height1760
-}¬}          
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ri-2158\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Mazookie_full_logo_small.png \width6000 \height1760
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ri-2158\pardirnatural\partightenfactor0
+\cf0           
 \f1\b\fs48 VistaClock
 \fs28 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
 
 \b0 \cf0 \
-The panel shows the default configuration, calendar and one clock.  It also shows the toolbar, which can be selected from the settings button.\
+The panel shows the default configuration, calendar and one clock.  It also shows the toolbar, which can be selected from the settings button. A note about time zones.  
+\f0 \cf2 \expnd0\expndtw0\kerning0
+VistaClock uses the IANA Time Zone Database. This database contains every timezone in the world. It's just a matter of finding it. The easiest way is to look for the GMT offset of the timezone you want. And then you search for that number in the list and find a city in your timezone that corresponds to it. For example, India has *one* timezone, GMT+5.5. Looking in the list delivers "Asia/Kolkata +5.5" which is indeed the correct timezone for all of India.
+\f1 \cf0 \kerning1\expnd0\expndtw0 \
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\pardirnatural\partightenfactor0
 \cf0 {{\NeXTGraphic vistaclock.png \width9800 \height6600
-}¬}\
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\pardirnatural\partightenfactor0
+\cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
 \cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
@@ -46,7 +53,7 @@ And lastly is the settings button.\
 
 \b0 \cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\pardirnatural\partightenfactor0
-\cf0 {{\NeXTGraphic preferences.png \width11600 \height11900
+\cf0 {{\NeXTGraphic preferences.png \width11600 \height10240
 }¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\pardirnatural\partightenfactor0
 \cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
@@ -100,7 +107,31 @@ Show Date Time
 \b0  \'96 If showing the week number icon, make it black and white.\
 \
 
-\b Display the time with seconds
+\b Use Inverse Color
+\b0  \'96 Use inverse color for text on the menu bar.
+\b \
+\
+Show Date
+\b0  \'96 Enable Date options.\
+\
+
+\b Show Month
+\b0  \'96 Show the month on menu bar.\
+\
+
+\b Show full month name
+\b0  \'96 Use the full month name in the date on the menu bar.\
+\
+
+\b Show the day of the week
+\b0  \'96 Show the day of week on the menu bar.\
+
+\b \
+Show Time
+\b0  \'96 Show the time on the menu bar.
+\b \
+\
+Display with seconds
 \b0  \'96 Show seconds on the menu bar clock.\
 \
 
@@ -110,18 +141,6 @@ Show Date Time
 
 \b Show AM/PM
 \b0  \'96 Show AM/PM indicator on the menu bar.\
-\
-
-\b Show the day of the week
-\b0  \'96 Show the day of week on the menu bar.\
-\
-
-\b Show date
-\b0  \'96 Show the date on the menu bar.\
-\
-
-\b Show full month name
-\b0  \'96 Use the full month name in the date on the menu bar.\
 \
 
 \b Show secondary clock
@@ -164,30 +183,23 @@ Show Date Time
 \b0  \'96 Force the highlight colors to be red instead of the menu item color.\
 \
 \
-
-\b Clock Faces \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
-
-\b0 \cf0 \
-Use this selector to choose which clock face to use on the panel.\
-\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
-
-\b \cf0 Use a 24-hour clock
-\b0  \'96 Force the panel clocks to use 24-hour style text.\
-\
 \
 
-\b\fs48 Clocks
-\fs28 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
-
-\b0 \cf0 \
+\b\fs48 Clock
+\b0\fs28 \
+\
 This is the list of clocks to be shown on the panel.  There are buttons for reordering the clocks and also a button to remove it from the list.\
 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
 
-\b \cf0 Label
+\b Clock Faces
+\b0  - Use this selector to choose which clock face to use on the panel.\
+\
+
+\b Use a 24-hour clock
+\b0  \'96 Force the panel clocks to use 24-hour style text.\
+\
+
+\b Label
 \b0  \'96 You can label the clocks, as you like.  Pick a city or pick something meaning for you like a name.\
 \
 

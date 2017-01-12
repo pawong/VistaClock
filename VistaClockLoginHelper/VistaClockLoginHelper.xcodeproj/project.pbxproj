@@ -139,6 +139,7 @@
 				TargetAttributes = {
 					13785DBA15D5385F00D9D1D3 = {
 						DevelopmentTeam = 6DK6LM2ETN;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -276,6 +277,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -295,6 +297,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -18,14 +18,14 @@ static VCSettings* sharedSettings = nil;
 @synthesize needsDisplay, floatRight, clockConfigs;
 
 // general panel options
-@synthesize useAutoLaunch, useAutoHide, useKeepTop, showOtherClocks, useShadows
+@synthesize useAutoLaunch, useAutoHide, useKeepTop, useShadows, showDockIcon
     , useDarkTheme, useLargeFonts;
 
 // status item options
 @synthesize showWeekNumberIcon, useBWWeekIcon, showStatusSeconds
-    , useStatusMilitary, showStatusAMPM, showStatusWeekDay, showStatusDate
-    , showStatusFullMonth, showStatusSecondaryTime, statusSecondaryTimezone
-    , showDateTime, useBWIcon, useInverseTitle;
+    , useStatusMilitary, showStatusAMPM, showStatusWeekDay, showDate
+    , showStatusFullMonth, showStatusSecondaryTime, statusSecondaryTimezone, showTime
+    , showDateTime, useBWIcon, useInverseTitle, showMonth;
 
 // clock panel options
 @synthesize useMilitary, clockFaceName;
@@ -92,38 +92,39 @@ static VCSettings* sharedSettings = nil;
     // decode
     // others
     floatRight = [decoder decodeBoolForKey:@"floatRight"];
-    
-    // clock configs array
-    clockConfigs = [[decoder decodeObjectForKey:@"clockConfigs"] mutableCopy];
-    
+
     // clock panel options
     useAutoLaunch = [decoder decodeBoolForKey:@"useAutoLaunch"];
     useAutoHide = [decoder decodeBoolForKey:@"useAutoHide"];
     useKeepTop = [decoder decodeBoolForKey:@"useKeepTop"];
-
-    showOtherClocks = [decoder decodeBoolForKey:@"showOtherClocks"];
     useShadows = [decoder decodeBoolForKey:@"useShadows"];
     useDarkTheme = [decoder decodeBoolForKey:@"useDarkTheme"];
     useLargeFonts = [decoder decodeBoolForKey:@"useLargeFonts"];
+    showDockIcon = [decoder decodeBoolForKey:@"showDockIcon"];
     
     // status item options
+    showDateTime = [decoder decodeBoolForKey:@"showDateTime"];
+    useBWIcon = [decoder decodeBoolForKey:@"useBWIcon"];
     showWeekNumberIcon = [decoder decodeBoolForKey:@"showWeekNumberIcon"];
     useBWWeekIcon = [decoder decodeBoolForKey:@"useBWWeekIcon"];
+    useInverseTitle = [decoder decodeBoolForKey:@"useInverseTitle"];
+
+    showDate = [decoder decodeBoolForKey:@"showDate"];
+    showMonth = [decoder decodeBoolForKey:@"showMonth"];
+    showStatusFullMonth = [decoder decodeBoolForKey:@"showStatusFullMonth"];
+    showStatusWeekDay = [decoder decodeBoolForKey:@"showStatusWeekDay"];
+
+    showTime = [decoder decodeBoolForKey:@"showTime"];
     showStatusSeconds = [decoder decodeBoolForKey:@"showStatusSeconds"];
     useStatusMilitary = [decoder decodeBoolForKey:@"useStatusMilitary"];
     showStatusAMPM = [decoder decodeBoolForKey:@"showStatusAMPM"];
-    showStatusWeekDay = [decoder decodeBoolForKey:@"showStatusWeekDay"];
-    showStatusDate = [decoder decodeBoolForKey:@"showStatusDate"];
-    showStatusFullMonth = [decoder decodeBoolForKey:@"showStatusFullMonth"];
     showStatusSecondaryTime = [decoder decodeBoolForKey:@"showStatusSecondaryTime"];
     statusSecondaryTimezone = [decoder decodeObjectForKey:@"statusSecondaryTimezone"];
-    showDateTime = [decoder decodeBoolForKey:@"showDateTime"];
-    useBWIcon = [decoder decodeBoolForKey:@"useBWIcon"];
-    useInverseTitle = [decoder decodeBoolForKey:@"useInverseTitle"];
-    
+
     // clock panel options
     useMilitary = [decoder decodeBoolForKey:@"useMilitary"];
     clockFaceName = [decoder decodeObjectForKey:@"clockFace"];
+    clockConfigs = [[decoder decodeObjectForKey:@"clockConfigs"] mutableCopy];
     
     // calendar options
     showCalendar = [decoder decodeBoolForKey:@"showCalendar"];
@@ -154,28 +155,34 @@ static VCSettings* sharedSettings = nil;
     [encoder encodeBool:useAutoLaunch forKey:@"useAutoLaunch"];
     [encoder encodeBool:useAutoHide forKey:@"useAutoHide"];
     [encoder encodeBool:useKeepTop forKey:@"useKeepTop"];
+    [encoder encodeBool:useInverseTitle forKey:@"useInverseTitle"];
 
-    [encoder encodeBool:showOtherClocks forKey:@"showOtherClocks"];
     [encoder encodeBool:useShadows forKey:@"useShadows"];
     [encoder encodeBool:useDarkTheme forKey:@"useDarkTheme"];
     [encoder encodeBool:useLargeFonts forKey:@"useLargeFonts"];
+    [encoder encodeBool:showDockIcon forKey:@"showDockIcon"];
 
     
     // status item options
+    [encoder encodeBool:showDateTime forKey:@"showDateTime"];
+    [encoder encodeBool:useBWIcon forKey:@"useBWIcon"];
     [encoder encodeBool:showWeekNumberIcon forKey:@"showWeekNumberIcon"];
     [encoder encodeBool:useBWWeekIcon forKey:@"useBWWeekIcon"];
+
+    [encoder encodeBool:showDate forKey:@"showDate"];
+    [encoder encodeBool:showMonth forKey:@"showMonth"];
+    [encoder encodeBool:showStatusFullMonth forKey:@"showStatusFullMonth"];
+    [encoder encodeBool:showStatusWeekDay forKey:@"showStatusWeekDay"];
+
+
+    [encoder encodeBool:showTime forKey:@"showTime"];
     [encoder encodeBool:showStatusSeconds forKey:@"showStatusSeconds"];
     [encoder encodeBool:useStatusMilitary forKey:@"useStatusMilitary"];
     [encoder encodeBool:showStatusAMPM forKey:@"showStatusAMPM"];
-    [encoder encodeBool:showStatusWeekDay forKey:@"showStatusWeekDay"];
-    [encoder encodeBool:showStatusDate forKey:@"showStatusDate"];
-    [encoder encodeBool:showStatusFullMonth forKey:@"showStatusFullMonth"];
     [encoder encodeBool:showStatusSecondaryTime forKey:@"showStatusSecondaryTime"];
     [encoder encodeObject:statusSecondaryTimezone forKey:@"statusSecondaryTimezone"];
-    [encoder encodeBool:showDateTime forKey:@"showDateTime"];
-    [encoder encodeBool:useBWIcon forKey:@"useBWIcon"];
-    [encoder encodeBool:useInverseTitle forKey:@"useInverseTitle"];
-    
+
+
     // clock options
     [encoder encodeBool:useMilitary forKey:@"useMilitary"];
     [encoder encodeObject:clockFaceName forKey:@"clockFace"];
@@ -196,35 +203,35 @@ static VCSettings* sharedSettings = nil;
     // other shared things
     needsDisplay = YES;
     floatRight = NO;
-    
+
+
     // clock panel options
     useAutoLaunch = NO;
     useAutoHide = YES;
     useKeepTop = NO;
-    showOtherClocks = YES;
     useShadows = YES;
     useDarkTheme = NO;
     useLargeFonts = NO;
+    useInverseTitle = NO;
 
     // status item options
+    showDateTime = YES;
+    useBWIcon = NO;
     showWeekNumberIcon = YES;
     useBWWeekIcon = NO;
+
+    showDate = YES;
+    showMonth = YES;
+    showStatusFullMonth = NO;
+    showStatusWeekDay = NO;
+
+    showTime = YES;
     showStatusSeconds = NO;
     useStatusMilitary = NO;
     showStatusAMPM = YES;
-    showStatusWeekDay = NO;
-    showStatusDate = NO;
-    showStatusFullMonth = NO;
     showStatusSecondaryTime = NO;
     statusSecondaryTimezone = @"GMT";
-    showDateTime = YES;
-    useBWIcon = NO;
-    useInverseTitle = YES;
-    
-    // clock options
-    useMilitary = NO;
-    clockFaceName = @"VCB01.png";
-    
+ 
     // calendar options
     showCalendar = YES;
     showWeekNumbers = NO;
@@ -232,7 +239,11 @@ static VCSettings* sharedSettings = nil;
     showReminders = NO;
     showCalendarBoxes = NO;
     useHiliteColor = NO;
-    
+
+    // clock options
+    useMilitary = NO;
+    clockFaceName = @"VCB01.png";
+
     // clock configs
     MZClockConfig* config = [[MZClockConfig alloc] init];
     config.title = @"Portland, OR";

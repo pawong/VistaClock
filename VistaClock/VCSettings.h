@@ -14,35 +14,39 @@
 // other settings
 @property (nonatomic, assign) BOOL needsDisplay;
 @property (nonatomic, assign) BOOL floatRight;
-@property (nonatomic, retain) NSMutableArray* clockConfigs;
 
 // general panel settings
 @property (nonatomic, assign) BOOL useAutoLaunch;
 @property (nonatomic, assign) BOOL useAutoHide;
 @property (nonatomic, assign) BOOL useKeepTop;
-@property (nonatomic, assign) BOOL showOtherClocks;
 @property (nonatomic, assign) BOOL useShadows;
 @property (nonatomic, assign) BOOL useDarkTheme;
 @property (nonatomic, assign) BOOL useLargeFonts;
+@property (nonatomic, assign) BOOL showDockIcon;
 
 // menubar panel settings
+@property (nonatomic, assign) BOOL showDateTime;
+@property (nonatomic, assign) BOOL useBWIcon;
 @property (nonatomic, assign) BOOL showWeekNumberIcon;
 @property (nonatomic, assign) BOOL useBWWeekIcon;
+@property (nonatomic, assign) BOOL useInverseTitle;
+
+@property (nonatomic, assign) BOOL showDate;
+@property (nonatomic, assign) BOOL showMonth;
+@property (nonatomic, assign) BOOL showStatusFullMonth;
+@property (nonatomic, assign) BOOL showStatusWeekDay;
+
+@property (nonatomic, assign) BOOL showTime;
 @property (nonatomic, assign) BOOL showStatusSeconds;
 @property (nonatomic, assign) BOOL useStatusMilitary;
 @property (nonatomic, assign) BOOL showStatusAMPM;
-@property (nonatomic, assign) BOOL showStatusWeekDay;
-@property (nonatomic, assign) BOOL showStatusDate;
-@property (nonatomic, assign) BOOL showStatusFullMonth;
 @property (nonatomic, assign) BOOL showStatusSecondaryTime;
 @property (nonatomic, assign) NSString* statusSecondaryTimezone;
-@property (nonatomic, assign) BOOL showDateTime;
-@property (nonatomic, assign) BOOL useBWIcon;
-@property (nonatomic, assign) BOOL useInverseTitle;
 
-// clock panel settings
+// clock settings
 @property (nonatomic, assign) BOOL useMilitary;
 @property (nonatomic, retain) NSString* clockFaceName;
+@property (nonatomic, retain) NSMutableArray* clockConfigs;
 
 // calendar settings
 @property (nonatomic, assign) BOOL showCalendar;

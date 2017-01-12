@@ -31,27 +31,26 @@
     IBOutlet NSButton* useShadowsCB;
     IBOutlet NSButton* useDarkThemeCB;
     IBOutlet NSButton* useLargeFontsCB;
-    
-    // for later use
-    IBOutlet NSButton* showMasterClockCB;
-    IBOutlet NSButton* showOtherClocksCB;
 
     // menu bar
+    IBOutlet NSButton* showDateTimeCB;
+    IBOutlet NSButton* useBWIconCB;
     IBOutlet NSButton* showWeekNumberIconCB;
     IBOutlet NSButton* useBWWeekIconCB;
+    IBOutlet NSButton* useInverseTitleCB;
+
+    IBOutlet NSButton* showDateCB;
+    IBOutlet NSButton* showMonthCB;
+    IBOutlet NSButton* showStatusFullMonthCB;
+    IBOutlet NSButton* showStatusWeekDayCB;
+
+    IBOutlet NSButton* showTimeCB;
     IBOutlet NSButton* showStatusSecondsCB;
     IBOutlet NSButton* useStatusMilitaryCB;
     IBOutlet NSButton* showStatusAMPMCB;
-    IBOutlet NSButton* showStatusWeekDayCB;
-    IBOutlet NSButton* showStatusDateCB;
-    IBOutlet NSButton* showStatusFullMonthCB;
     IBOutlet NSButton* showStatusSecondaryTimeCB;
     IBOutlet NSPopUpButton* statusTimezoneButton;
-    IBOutlet NSButton* showDateTimeCB;
-    IBOutlet NSButton* useBWIconCB;
-    IBOutlet NSButton* useInverseTitleCB;
 
-    
     // clock settings
     IBOutlet NSButton* useMilitaryCB;
     IBOutlet NSButton* addClockButton;
@@ -84,6 +83,7 @@
 -(void) updateClockConfigArray;
 
 -(IBAction) updateSettings:(id)sender;
+-(void) setEnabledItems;
 
 
 @end

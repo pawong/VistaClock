@@ -116,6 +116,9 @@
     [dict setObject:[info objectForKey:@"CFBundleShortVersionString"] forKey:@"version"];
     [dict setObject:[info objectForKey:@"CFBundleVersion"] forKey:@"build"];
 
+    NSString* version = [[NSProcessInfo processInfo] operatingSystemVersionString];
+    [dict setObject:version forKey:@"os_version"];
+
     [dict setObject:[self getMacAddress] forKey:@"mac_address"];
 
     [dict setObject:[self sha256HashFor:[program_name stringByAppendingString:date]] forKey:@"key"];
