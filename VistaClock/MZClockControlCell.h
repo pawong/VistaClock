@@ -23,8 +23,6 @@
     NSImage* minuteHandImage;
     NSImage* hourHandImage;
     NSImage* dotImage;
-    
-    NSView* myView;
 }
 
 
@@ -34,5 +32,6 @@
 -(void) useSecondHand:(bool)on;
 -(void) useWhiteHands:(bool)on;
 -(void) setClockFaceName:(NSString*)name;
+-(NSImage*) getImage;
 
 @end

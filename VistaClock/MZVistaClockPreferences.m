@@ -277,7 +277,7 @@
     [useDarkThemeCB setState:settings.useDarkTheme];
     [useShadowsCB setState:settings.useShadows];
     [useLargeFontsCB setState:settings.useLargeFonts];
-
+    [showDockIconCB setState:settings.showDockIcon];
 
     [showDateTimeCB setState:settings.showDateTime];
     [useBWIconCB setState:settings.useBWIcon];
@@ -335,6 +335,7 @@
     settings.useShadows = ([useShadowsCB state] == NSOnState)?YES:NO;
     settings.useDarkTheme = ([useDarkThemeCB state] == NSOnState)?YES:NO;
     settings.useLargeFonts = ([useLargeFontsCB state] == NSOnState)?YES:NO;
+    settings.showDockIcon = ([showDockIconCB state] == NSOnState)?YES:NO;
 
     settings.showDateTime = ([showDateTimeCB state] == NSOnState)?YES:NO;
     settings.useBWIcon = ([useBWIconCB state] == NSOnState)?YES:NO;
@@ -376,6 +377,17 @@
     
     // update clocks
     [self updateSettingsClockArray];
+
+    // show dock icon
+    if (settings.showDockIcon) {
+        ProcessSerialNumber psn = { 0, kCurrentProcess };
+        TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+    } else {
+        //[self.window setCanHide:NO];
+        ProcessSerialNumber psn = { 0, kCurrentProcess };
+        TransformProcessType(&psn, kProcessTransformToUIElementApplication);
+        //[self.window close];
+    }
 
     settings.needsDisplay = YES;
 } // end updateSettings

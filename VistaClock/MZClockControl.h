@@ -10,5 +10,6 @@
 -(void) useSecondHand:(bool)on;
 -(void) useWhiteHands:(bool)on;
 -(void) setClockFace:(NSString*)name;
+-(NSImage*) getImage;
 
 @end

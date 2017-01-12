@@ -76,6 +76,7 @@
     bool darkMenu;
     EKEventStore* store;
     NSString* systemVersion;
+    NSImage* dockClockImage;
 }
 
 @property (assign) IBOutlet NSWindow *vistaClockWindow;

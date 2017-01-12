@@ -50,4 +50,6 @@
 
 -(void) update:(NSDate*) now;
 
+-(NSImage*) getImage;
+
 @end

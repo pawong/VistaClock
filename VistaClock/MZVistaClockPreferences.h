@@ -31,6 +31,7 @@
     IBOutlet NSButton* useShadowsCB;
     IBOutlet NSButton* useDarkThemeCB;
     IBOutlet NSButton* useLargeFontsCB;
+    IBOutlet NSButton* showDockIconCB;
 
     // menu bar
     IBOutlet NSButton* showDateTimeCB;

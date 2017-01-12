@@ -318,6 +318,10 @@
 } // end drawWithFrame
 
 
-
+-(NSImage*) getImage
+{
+    NSData* data = [self.controlView dataWithPDFInsideRect:[self.controlView bounds]];
+    return [[NSImage alloc] initWithData:data];
+} // end of getImage
 
 @end

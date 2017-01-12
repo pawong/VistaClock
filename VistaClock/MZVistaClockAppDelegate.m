@@ -22,6 +22,12 @@
     // process the command line
     [self processCommandLine];
 
+    // show dock icon
+    if (settings.showDockIcon) {
+        ProcessSerialNumber psn = { 0, kCurrentProcess };
+        TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+    }
+
     // init eventArray
 	clockCollectionArray = [[NSMutableArray alloc] init];
     
@@ -326,12 +332,15 @@
             }
         }
 
-        // update secondary clocks
+        // update clocks
         MZClockItem* item;
         for (long i=0; i<clockCollectionArray.count; i++)
         {
             item = (MZClockItem*)[clockCollectionView itemAtIndex:i];
             [item update:now];
+            if (i == 0 && settings.showDockIcon) {
+                [NSApp setApplicationIconImage: [item getImage]];
+            }
         }
         
         // update calendar
@@ -378,7 +387,6 @@
         [dayDetailLabel setStringValue:[[NSString alloc] initWithFormat:@"%@ / %ld"
             , [selectedDate getDayOfYearString], (long)secondsBetween/86400]];
     }
-    
 } // end of updateTime
 
 
@@ -874,6 +882,7 @@
     [prefsWindow showWindow:self];
     [prefsWindow.window makeKeyAndOrderFront:nil];
     [NSApp activateIgnoringOtherApps:YES];
+    [prefsWindow.window setCanHide:NO];
 } // end of openPreferences
 
 

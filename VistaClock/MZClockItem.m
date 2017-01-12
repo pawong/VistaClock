@@ -188,7 +188,12 @@
             sinceDate:now];
     [clock setTime:tempDate];
 
-}
+} // end of update
+
+-(NSImage*) getImage
+{
+    return [clock getImage];
+} // end of getImage
 
 
 @end

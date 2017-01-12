@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MZClockConfigItem">
@@ -16,27 +17,33 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <view id="gNa-Rr-p0V" userLabel="Clock Config Item View">
+        <view wantsLayer="YES" id="gNa-Rr-p0V" userLabel="Clock Config Item View">
             <rect key="frame" x="0.0" y="0.0" width="301" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" misplaced="YES" id="Q00-EJ-BbS" userLabel="Push Button - Delete">
-                    <rect key="frame" x="264" y="8" width="38" height="32"/>
+                    <rect key="frame" x="265" y="9" width="36" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="X" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNc-dZ-arN" userLabel="Button Cell">
+                    <shadow key="shadow">
+                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </shadow>
+                    <buttonCell key="cell" type="push" title="X" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" controlSize="small" scrollable="YES" lineBreakMode="clipping" truncatesLastVisibleLine="YES" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNc-dZ-arN" userLabel="Button Cell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="systemBold"/>
+                        <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
                         <action selector="removeClockConfig:" target="-1" id="eVD-lV-AQB"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" misplaced="YES" id="imT-AJ-W3k" userLabel="Push Button - Up">
-                    <rect key="frame" x="216" y="8" width="38" height="32"/>
+                    <rect key="frame" x="213" y="9" width="36" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="↑" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lug-KP-wAl" userLabel="Button Cell">
+                    <shadow key="shadow">
+                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </shadow>
+                    <buttonCell key="cell" type="push" title="↑" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lug-KP-wAl" userLabel="Button Cell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="systemBold"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="moveUpClockConfig:" target="-1" id="z20-Du-ula"/>
@@ -61,11 +68,14 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" misplaced="YES" id="RwH-gd-Pdu" userLabel="Push Button - Down">
-                    <rect key="frame" x="240" y="8" width="38" height="32"/>
+                    <rect key="frame" x="239" y="9" width="36" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="↓" bezelStyle="rounded" imagePosition="overlaps" alignment="justified" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0ah-WM-YMQ" userLabel="Button Cell">
+                    <shadow key="shadow">
+                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </shadow>
+                    <buttonCell key="cell" type="push" title="↓" bezelStyle="rounded" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0ah-WM-YMQ" userLabel="Button Cell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="systemBold"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="moveDownClockConfig:" target="-1" id="EBO-8g-zYP"/>

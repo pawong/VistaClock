@@ -212,6 +212,7 @@ static VCSettings* sharedSettings = nil;
     useShadows = YES;
     useDarkTheme = NO;
     useLargeFonts = NO;
+    showDockIcon = NO;
     useInverseTitle = NO;
 
     // status item options

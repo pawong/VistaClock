@@ -56,6 +56,11 @@
     return [[self cell] getTime];
 } // end getTime
 
+-(NSImage*) getImage
+{
+    return [[self cell] getImage];
+} // end of getImage
+
 @end
 
 // -----------------------------------------------------------------------------

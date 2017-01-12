@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -33,7 +34,7 @@
             <windowPositionMask key="initialPositionMask" rightStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="1600" y="1080" width="452" height="230"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" id="EiT-Mj-1SZ">
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="452" height="230"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -50,7 +51,7 @@
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         </datePickerCell>
                     </datePicker>
-                    <customView id="VjI-6X-CtF" customClass="MZCalendarControl">
+                    <customView wantsLayer="YES" id="VjI-6X-CtF" customClass="MZCalendarControl">
                         <rect key="frame" x="8" y="8" width="290" height="214"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -266,7 +267,7 @@
         <collectionViewItem nibName="MZClockItem" id="k8k-gd-YvX" userLabel="Clock Item" customClass="MZClockItem"/>
     </objects>
     <resources>
-        <image name="bw_today" width="26" height="24"/>
+        <image name="bw_today" width="22" height="20"/>
         <image name="mazookie_gear" width="16" height="16"/>
     </resources>
 </document>
