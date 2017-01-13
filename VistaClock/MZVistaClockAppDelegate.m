@@ -109,7 +109,7 @@
     if (settings.needsDisplay == YES)
     {
         [self configureWindow];
-        [self toggleVistaClockWindow:self];
+        [NSApp activateIgnoringOtherApps:true];
     }
 
     // use dark menus, and then force to update
@@ -445,9 +445,18 @@
 // This method is called when opening the panel
 -(IBAction) toggleVistaClockWindow:(id)sender
 {
-    // show window
-    [_vistaClockWindow makeKeyAndOrderFront:sender];
-    [NSApp activateIgnoringOtherApps:true];
+    if ([_vistaClockWindow isVisible] && [NSApp isActive])
+    {
+        // hide window
+        [_vistaClockWindow orderOut:self];
+        [NSApp activateIgnoringOtherApps:false];
+    }
+    else
+    {
+        // show window
+        [_vistaClockWindow makeKeyAndOrderFront:sender];
+        [NSApp activateIgnoringOtherApps:true];
+    }
 } // end of toggleVistaClockWindow
 
 
