@@ -383,10 +383,8 @@
         ProcessSerialNumber psn = { 0, kCurrentProcess };
         TransformProcessType(&psn, kProcessTransformToForegroundApplication);
     } else {
-        //[self.window setCanHide:NO];
         ProcessSerialNumber psn = { 0, kCurrentProcess };
         TransformProcessType(&psn, kProcessTransformToUIElementApplication);
-        //[self.window close];
     }
 
     settings.needsDisplay = YES;

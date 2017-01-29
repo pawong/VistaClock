@@ -477,7 +477,7 @@
                                 <button misplaced="YES" id="F6Z-kD-Wpc" userLabel="Show Week Number">
                                     <rect key="frame" x="16" y="308" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Show Date Time" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Xvk-tN-YGf" userLabel="Show Week Number">
+                                    <buttonCell key="cell" type="check" title="Enable Date Time Options" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Xvk-tN-YGf" userLabel="Show Week Number">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>

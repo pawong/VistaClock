@@ -32,7 +32,7 @@
 	clockCollectionArray = [[NSMutableArray alloc] init];
     
     // default start
-    [_vistaClockWindow setCollectionBehavior: NSWindowCollectionBehaviorCanJoinAllSpaces];
+    [_vistaClockWindow setCollectionBehavior: NSWindowCollectionBehaviorMoveToActiveSpace];
 
     // ask for calendar access
     [self getCalendarAccess];
@@ -457,6 +457,8 @@
         [_vistaClockWindow makeKeyAndOrderFront:sender];
         [NSApp activateIgnoringOtherApps:true];
     }
+
+    [_vistaClockWindow setCollectionBehavior: NSWindowCollectionBehaviorMoveToActiveSpace];
 } // end of toggleVistaClockWindow
 
 
