@@ -30,6 +30,7 @@
 @property (nonatomic, assign) BOOL showWeekNumberIcon;
 @property (nonatomic, assign) BOOL useBWWeekIcon;
 @property (nonatomic, assign) BOOL useInverseTitle;
+@property (nonatomic, assign) BOOL useFuzzyTime;
 
 @property (nonatomic, assign) BOOL showDate;
 @property (nonatomic, assign) BOOL showMonth;

@@ -8,7 +8,6 @@
 
 #import "MZVistaClockAppDelegate.h"
 
-
 @implementation MZVistaClockAppDelegate
 
 @synthesize prefsWindow, abox;
@@ -82,7 +81,10 @@
 
     // report home
     MZPoster* report = [[MZPoster alloc] init];
-    [report sendPost];
+    // add clock info for the Princess Kendellyn
+    NSMutableDictionary* addDict = [NSMutableDictionary new];
+    [addDict setObject:settings.clockFaceName forKey:@"clock_face_name"];
+    [report sendPost:addDict];
 
     // launch the timer last
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(fireTimer:)
@@ -258,7 +260,11 @@
 
     if (settings.showDateTime) // show time
     {
-        if (settings.showStatusSecondaryTime && settings.showTime)
+        if (settings.useFuzzyTime && settings.showTime)
+        {
+            [statusItemView setTitle:[self getFuzzyTime:now]];
+        }
+        else if (settings.showStatusSecondaryTime && settings.showTime)
         {
             NSDateFormatter* title1DateFormat = [[NSDateFormatter alloc] init];
             [title1DateFormat setDateFormat:DATE_FORMAT_TIMEZONE_DAY];
@@ -389,6 +395,61 @@
             , [selectedDate getDayOfYearString], (long)secondsBetween/86400]];
     }
 } // end of updateTime
+
+
+-(NSString*) getFuzzyTime:(NSDate*) now
+{
+    int index = 0;
+
+    NSString* HOUR_NAMES[] = {
+        @"One",
+        @"Two",
+        @"Three",
+        @"Four",
+        @"Five",
+        @"Six",
+        @"Seven",
+        @"Eight",
+        @"Nine",
+        @"Ten",
+        @"Eleven",
+        @"Twelve",
+    };
+
+    NSString* FUZZY_MSG[] = {
+        @"%@ o'clock",
+        @"Five past %@",
+        @"Ten past %@",
+        @"Quarter past %@",
+        @"Twenty past %@",
+        @"Twenty Five past %@",
+        @"Half past %@",
+        @"Twenty Five to %@",
+        @"Twenty to %@",
+        @"Quarter to %@",
+        @"Ten to %@",
+        @"Five to %@",
+    };
+
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:now];
+    NSInteger hours = [components hour];
+    NSInteger minutes = [components minute];
+    
+    if (minutes > 2) {
+        index = (int)((minutes - 3) / 5) + 1;
+    }
+    if (hours < 1) {
+        hours = 12;
+    }
+    if (minutes > 30) {
+        hours++;
+    }
+
+    NSString* word_time = [NSString stringWithFormat:FUZZY_MSG[index % 12], HOUR_NAMES[(hours - 1) % 12]];
+
+    return word_time;
+} // end of getFuzzyTime
 
 
 // process command line arguments
@@ -567,6 +628,7 @@
     
     // turn on auto hide
     [_vistaClockWindow setHidesOnDeactivate:settings.useAutoHide];
+    [self setAutoHideMenutItem];
     
     // show week numbers on calendar
     [calendar setShowWeekNumbers:settings.showWeekNumbers];
@@ -922,6 +984,27 @@
     [_vistaClockWindow.toolbar insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier atIndex:0];
     [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"SettingsID" atIndex:1];
 } // resetToolbar
+
+
+-(IBAction) toggleAutoHide:(id)sender
+{
+    settings.useAutoHide = !settings.useAutoHide;
+    [_vistaClockWindow setHidesOnDeactivate:settings.useAutoHide];
+    [self setAutoHideMenutItem];
+} // toggleAutoHide
+
+
+-(void) setAutoHideMenutItem
+{
+    if (settings.useAutoHide)
+    {
+        [autoHideMenuItem setTitle:@"Pin to Desktop"];
+    }
+    else
+    {
+        [autoHideMenuItem setTitle:@"Unpin from Desktop"];
+    }
+} // setAutoHideMenutItem
 
 
 -(IBAction) toggleToolbar:(id)sender

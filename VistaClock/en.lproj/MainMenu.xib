@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,6 +16,7 @@
         <customObject id="Voe-Tx-rLC" customClass="MZVistaClockAppDelegate">
             <connections>
                 <outlet property="altcal" destination="voP-wI-1NQ" id="nho-BC-Qjq"/>
+                <outlet property="autoHideMenuItem" destination="CWE-C3-Ay5" id="GNt-0i-0VM"/>
                 <outlet property="calendar" destination="VjI-6X-CtF" id="P6v-AE-GMn"/>
                 <outlet property="clockArrayController" destination="n32-YG-z2q" id="ZrS-BT-nJj"/>
                 <outlet property="clockCollectionView" destination="LE1-6V-Mkx" id="WHX-UI-SHT"/>
@@ -29,11 +31,11 @@
             </connections>
         </customObject>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" unifiedTitleAndToolbar="YES"/>
+            <windowStyleMask key="styleMask" titled="YES"/>
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES"/>
             <windowPositionMask key="initialPositionMask" rightStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="1600" y="1080" width="452" height="230"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="452" height="230"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -43,10 +45,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <datePickerCell key="cell" alignment="left" datePickerStyle="clockAndCalendar" id="HJa-S2-5zt">
                             <font key="font" metaFont="system"/>
-                            <calendarDate key="date" timeIntervalSinceReferenceDate="-595929600" calendarFormat="%Y-%m-%d %H:%M:%S %z">
-                                <!--1982-02-12 08:00:00 -0800-->
-                                <timeZone key="timeZone" name="US/Pacific"/>
-                            </calendarDate>
+                            <date key="date" timeIntervalSinceReferenceDate="-595929600">
+                                <!--1982-02-12 16:00:00 +0000-->
+                            </date>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         </datePickerCell>
@@ -91,7 +92,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="80" height="20"/>
                         <size key="maxSize" width="111" height="32"/>
-                        <textField key="view" focusRingType="none" verticalHuggingPriority="750" id="FDH-Dv-cZw" customClass="MZTextField">
+                        <textField key="view" focusRingType="none" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="FDH-Dv-cZw" customClass="MZTextField">
                             <rect key="frame" x="0.0" y="14" width="110" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" placeholderString="" drawsBackground="YES" id="uyo-4x-xHx">
@@ -111,7 +112,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="90" height="20"/>
                         <size key="maxSize" width="360" height="32"/>
-                        <textField key="view" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="1" id="sb8-kn-hmr">
+                        <textField key="view" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="1" allowsCharacterPickerTouchBarItem="YES" id="sb8-kn-hmr">
                             <rect key="frame" x="0.0" y="14" width="100" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" focusRingType="none" alignment="left" usesSingleLineMode="YES" id="4us-hk-hQK">
@@ -141,7 +142,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="90" height="20"/>
                         <size key="maxSize" width="180" height="32"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="QAW-Qv-GMR">
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="QAW-Qv-GMR">
                             <rect key="frame" x="0.0" y="14" width="110" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="Cwx-dW-ET7">
@@ -155,19 +156,24 @@
                     <toolbarItem implicitItemIdentifier="AD20F106-826A-4BC3-97B5-04CB93F950F1" explicitItemIdentifier="SettingsID" label="Settings" paletteLabel="Settings" image="mazookie_gear" selectable="YES" id="ZjE-v3-8gJ">
                         <nil key="toolTip"/>
                         <size key="minSize" width="30" height="20"/>
-                        <size key="maxSize" width="50" height="32"/>
+                        <size key="maxSize" width="62" height="32"/>
                         <popUpButton key="view" canDrawConcurrently="YES" id="94k-L0-ZD8">
                             <rect key="frame" x="6" y="14" width="40" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" image="mazookie_gear" imagePosition="right" alignment="center" alternateImage="mazookie_gear" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" id="m7E-O2-HyH">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
+                                <font key="font" metaFont="system"/>
                                 <menu key="menu" title="OtherViews" id="r1Z-vr-xjR">
                                     <items>
                                         <menuItem state="on" image="mazookie_gear" hidden="YES" enabled="NO" id="tmt-GY-gXh"/>
                                         <menuItem title="Show Toolbar" keyEquivalent="t" id="mmw-vF-IrW">
                                             <connections>
                                                 <action selector="toggleToolbar:" target="Voe-Tx-rLC" id="qcd-KL-b7j"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Pin to Desktop" keyEquivalent="p" id="CWE-C3-Ay5" userLabel="Pin to Desktop">
+                                            <connections>
+                                                <action selector="toggleAutoHide:" target="Voe-Tx-rLC" id="c73-c4-cZA"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="PMk-g2-ycZ"/>

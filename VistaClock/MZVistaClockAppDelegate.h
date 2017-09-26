@@ -68,6 +68,7 @@
     IBOutlet MZTextField* gotoDateField;
     IBOutlet NSTextField* dayDetailLabel;
     IBOutlet NSMenuItem* toolBarMenuItem;
+    IBOutlet NSMenuItem* autoHideMenuItem;
 
     // MISC
     NSInteger lastWeek;
@@ -88,6 +89,7 @@
 // methods
 -(void) fireTimer: NSTimer;
 -(void) updateTime;
+-(NSString*) getFuzzyTime:(NSDate*) now;
 -(int) addClock;
 -(void) removeClock;
 -(void) resizeWindow;
@@ -101,11 +103,14 @@
 -(IBAction) launchHelpPanel:(id)sender;
 -(IBAction) launchDateTimePreferencePanel:(id)sender;
 -(IBAction) openPreferences:(id)sender;
+-(IBAction) toggleAutoHide:(id)sender;
+-(void) setAutoHideMenutItem;
 
 
 -(void) configureToolbar:(bool) full;
 -(void) resetToolbar;
 -(IBAction) toggleToolbar:(id)sender;
+
 
 -(IBAction) gotoDate:(id)sender;
 -(IBAction) goToday:(id)sender;

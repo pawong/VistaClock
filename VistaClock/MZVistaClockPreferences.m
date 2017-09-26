@@ -284,6 +284,7 @@
     [showWeekNumberIconCB setState:settings.showWeekNumberIcon];
     [useBWWeekIconCB setState:settings.useBWWeekIcon];
     [useInverseTitleCB setState:settings.useInverseTitle];
+    [useFuzzyTimeCB setState:settings.useFuzzyTime];
 
     [showDateCB setState:settings.showDate];
     [showMonthCB setState:settings.showMonth];
@@ -342,6 +343,7 @@
     settings.showWeekNumberIcon = ([showWeekNumberIconCB state] == NSOnState)?YES:NO;
     settings.useBWWeekIcon = ([useBWWeekIconCB state] == NSOnState)?YES:NO;
     settings.useInverseTitle = ([useInverseTitleCB state] == NSOnState)?YES:NO;
+    settings.useFuzzyTime = ([useFuzzyTimeCB state] == NSOnState)?YES:NO;
 
     settings.showDate = ([showDateCB state] == NSOnState)?YES:NO;
     settings.showMonth = ([showMonthCB state] == NSOnState)?YES:NO;
@@ -399,19 +401,20 @@
     [useBWIconCB setEnabled:!settings.showDateTime && !settings.showWeekNumberIcon];
 
     [useInverseTitleCB setEnabled:settings.showDateTime];
+    [useFuzzyTimeCB setEnabled:settings.showDateTime];
 
-    [showDateCB setEnabled:settings.showDateTime];
-    [showMonthCB setEnabled:settings.showDateTime && settings.showDate];
-    [showStatusFullMonthCB setEnabled:settings.showDateTime && settings.showDate];
-    [showStatusWeekDayCB setEnabled:settings.showDateTime && settings.showDate];
+    [showDateCB setEnabled:settings.showDateTime && !settings.useFuzzyTime];
+    [showMonthCB setEnabled:settings.showDateTime && settings.showDate && !settings.useFuzzyTime];
+    [showStatusFullMonthCB setEnabled:settings.showDateTime && settings.showDate && !settings.useFuzzyTime];
+    [showStatusWeekDayCB setEnabled:settings.showDateTime && settings.showDate && !settings.useFuzzyTime];
 
-    [showTimeCB setEnabled:settings.showDateTime];
-    [showStatusSecondsCB setEnabled:settings.showDateTime && settings.showTime];
-    [useStatusMilitaryCB setEnabled:settings.showDateTime && settings.showTime];
-    [showStatusAMPMCB setEnabled:settings.showDateTime && settings.showTime];
+    [showTimeCB setEnabled:settings.showDateTime && !settings.useFuzzyTime];
+    [showStatusSecondsCB setEnabled:settings.showDateTime && settings.showTime && !settings.useFuzzyTime];
+    [useStatusMilitaryCB setEnabled:settings.showDateTime && settings.showTime && !settings.useFuzzyTime];
+    [showStatusAMPMCB setEnabled:settings.showDateTime && settings.showTime && !settings.useFuzzyTime];
 
-    [showStatusSecondaryTimeCB setEnabled:settings.showDateTime && settings.showTime];
-    [statusTimezoneButton setEnabled:settings.showDateTime && settings.showTime];
+    [showStatusSecondaryTimeCB setEnabled:settings.showDateTime && settings.showTime && !settings.useFuzzyTime];
+    [statusTimezoneButton setEnabled:settings.showDateTime && settings.showTime && !settings.useFuzzyTime];
 
     // always
     [useBWWeekIconCB setEnabled:settings.showWeekNumberIcon];
@@ -419,11 +422,11 @@
     // disable status options
     if (settings.showDateTime == YES)
     {
-        [useBWIconCB setEnabled:!settings.showDateTime || (!settings.showDate && !settings.showTime)];
-        [showStatusAMPMCB setEnabled:!settings.useStatusMilitary && settings.showTime];
-        [showStatusFullMonthCB setEnabled:settings.showMonth && settings.showDateTime && settings.showDate];
-        [useInverseTitleCB setEnabled:settings.showDate || settings.showTime];
-        [statusTimezoneButton setEnabled:settings.showStatusSecondaryTime];
+        [useBWIconCB setEnabled:!settings.showDateTime || (!settings.showDate && !settings.showTime && !settings.useFuzzyTime)];
+        [showStatusAMPMCB setEnabled:!settings.useStatusMilitary && settings.showTime && !settings.useFuzzyTime];
+        [showStatusFullMonthCB setEnabled:settings.showMonth && settings.showDateTime && settings.showDate && !settings.useFuzzyTime];
+        [useInverseTitleCB setEnabled:settings.showDate || settings.showTime || settings.useFuzzyTime];
+        [statusTimezoneButton setEnabled:settings.showStatusSecondaryTime && !settings.useFuzzyTime];
     }
 
     // disable keep on top

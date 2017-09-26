@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,6 +38,7 @@
                 <outlet property="useBWIconCB" destination="4gO-Vb-KCg" id="FkL-9E-Txj"/>
                 <outlet property="useBWWeekIconCB" destination="yDE-k2-DcE" id="cIU-A7-UCc"/>
                 <outlet property="useDarkThemeCB" destination="ONb-WK-sKP" id="M0o-dv-ofn"/>
+                <outlet property="useFuzzyTimeCB" destination="6Xs-aW-sVC" id="llO-Jf-E4i"/>
                 <outlet property="useHiliteColorCB" destination="6n0-rU-3bf" id="qh3-Ah-Tuh"/>
                 <outlet property="useInverseTitleCB" destination="PvL-4g-erG" id="0Mo-1K-xi5"/>
                 <outlet property="useKeepTopCB" destination="K0x-n0-iV0" id="I5c-XR-0o4"/>
@@ -52,14 +54,14 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5" userLabel="Panel - Preferences" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES"/>
-            <rect key="contentRect" x="196" y="240" width="688" height="609"/>
+            <rect key="contentRect" x="196" y="240" width="688" height="623"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" misplaced="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="688" height="609"/>
+                <rect key="frame" x="0.0" y="0.0" width="688" height="623"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="General" id="KHW-j4-Uqr">
-                        <rect key="frame" x="17" y="371" width="326" height="176"/>
+                        <rect key="frame" x="17" y="385" width="326" height="176"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="PfQ-Wl-DuB">
                             <rect key="frame" x="1" y="1" width="324" height="160"/>
@@ -76,7 +78,7 @@
                                         <action selector="updateSettings:" target="-2" id="IgD-BT-wKH"/>
                                     </connections>
                                 </button>
-                                <button id="K0x-n0-iV0">
+                                <button misplaced="YES" id="K0x-n0-iV0">
                                     <rect key="frame" x="16" y="94" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Keep on Top" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="V2t-7a-IjH">
@@ -87,7 +89,7 @@
                                         <action selector="updateSettings:" target="-2" id="STR-cF-hM0"/>
                                     </connections>
                                 </button>
-                                <button id="UvR-hq-60Q">
+                                <button misplaced="YES" id="UvR-hq-60Q">
                                     <rect key="frame" x="16" y="114" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Automatically Hide VistaClock" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="29v-Hu-5eo">
@@ -98,7 +100,7 @@
                                         <action selector="updateSettings:" target="-2" id="MwD-re-52n"/>
                                     </connections>
                                 </button>
-                                <button id="Asg-fC-tmY" userLabel="Check Box - Use shadows">
+                                <button misplaced="YES" id="Asg-fC-tmY" userLabel="Check Box - Use shadows">
                                     <rect key="frame" x="16" y="54" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use Shadows" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="glG-ff-mnK" userLabel="Button Cell - Use shadows">
@@ -109,7 +111,7 @@
                                         <action selector="updateSettings:" target="-2" id="Fwh-gS-Jpb"/>
                                     </connections>
                                 </button>
-                                <button id="ONb-WK-sKP">
+                                <button misplaced="YES" id="ONb-WK-sKP">
                                     <rect key="frame" x="16" y="74" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use Dark Theme" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="bG5-9g-7Fq">
@@ -120,7 +122,7 @@
                                         <action selector="updateSettings:" target="-2" id="L0H-bd-fBT"/>
                                     </connections>
                                 </button>
-                                <button id="L7A-Nq-nn8" userLabel="Check Box - Use shadows">
+                                <button misplaced="YES" id="L7A-Nq-nn8" userLabel="Check Box - Use shadows">
                                     <rect key="frame" x="16" y="34" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use Large Fonts" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="vss-QZ-mTd" userLabel="Button Cell - Use shadows">
@@ -146,12 +148,12 @@
                         </view>
                     </box>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dF5-Aa-Pi8">
-                        <rect key="frame" x="10" y="555" width="330" height="54"/>
+                        <rect key="frame" x="10" y="569" width="330" height="54"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="proportionallyUpOrDown" image="mazookie_name_logo_sticker_small" id="7oQ-fD-LOJ"/>
                     </imageView>
                     <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="Calendar" id="IgS-ct-QCJ">
-                        <rect key="frame" x="345" y="427" width="326" height="162"/>
+                        <rect key="frame" x="345" y="441" width="326" height="162"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="Xf0-we-1rU">
                             <rect key="frame" x="1" y="1" width="324" height="146"/>
@@ -227,14 +229,14 @@
                         </view>
                     </box>
                     <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="Clock" id="Ub7-Kq-HMp">
-                        <rect key="frame" x="345" y="16" width="326" height="407"/>
+                        <rect key="frame" x="345" y="16" width="326" height="421"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="xSm-Od-vup">
-                            <rect key="frame" x="1" y="1" width="324" height="391"/>
+                            <rect key="frame" x="1" y="1" width="324" height="405"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" misplaced="YES" id="bjx-X1-Gkv">
-                                    <rect key="frame" x="6" y="334" width="42" height="32"/>
+                                    <rect key="frame" x="6" y="348" width="42" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="⇠" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RIl-aI-MK3">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -245,11 +247,11 @@
                                     </connections>
                                 </button>
                                 <customView wantsLayer="YES" misplaced="YES" id="8k7-4f-EfK" customClass="MZClockControl">
-                                    <rect key="frame" x="47" y="320" width="64" height="64"/>
+                                    <rect key="frame" x="47" y="334" width="64" height="64"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 </customView>
                                 <button verticalHuggingPriority="750" misplaced="YES" id="D8s-kp-X2o">
-                                    <rect key="frame" x="108" y="334" width="42" height="32"/>
+                                    <rect key="frame" x="108" y="348" width="42" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="⇢" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bub-Bh-Bzz">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -260,7 +262,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="QxK-Uh-Mqe">
-                                    <rect key="frame" x="164" y="342" width="151" height="18"/>
+                                    <rect key="frame" x="164" y="356" width="151" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use a 24-hour clock" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="sLo-2i-yT3">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -271,14 +273,14 @@
                                     </connections>
                                 </button>
                                 <scrollView wantsLayer="YES" misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="4jk-bz-3J0" userLabel="Scroll View - Clock Config Collection View">
-                                    <rect key="frame" x="12" y="100" width="301" height="212"/>
+                                    <rect key="frame" x="12" y="100" width="301" height="226"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <clipView key="contentView" wantsLayer="YES" drawsBackground="NO" id="H52-pH-nNh">
-                                        <rect key="frame" x="0.0" y="0.0" width="301" height="212"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="226"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <collectionView wantsLayer="YES" selectable="YES" id="klZ-O8-kYF">
-                                                <rect key="frame" x="0.0" y="0.0" width="301" height="212"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="301" height="226"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="secondaryBackgroundColor" name="controlAlternatingRowColor" catalog="System" colorSpace="catalog"/>
@@ -319,7 +321,7 @@
                                         <binding destination="F1N-m9-ZEI" name="contentValues" keyPath="arrangedObjects.key" previousBinding="x4k-kG-5tJ" id="HWk-bf-dKa"/>
                                     </connections>
                                 </popUpButton>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="pxR-4T-DfB">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="pxR-4T-DfB">
                                     <rect key="frame" x="18" y="72" width="42" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="DiI-0m-yjL">
@@ -328,7 +330,7 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="vFe-SP-fYv">
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="vFe-SP-fYv">
                                     <rect key="frame" x="60" y="70" width="128" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="mGL-G5-d5e">
@@ -348,7 +350,7 @@
                                         <action selector="addClockConfig:" target="-2" id="9pp-l4-573"/>
                                     </connections>
                                 </button>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="Usb-v1-KDo">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Usb-v1-KDo">
                                     <rect key="frame" x="18" y="44" width="42" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Zone" id="79d-LP-ot1">
@@ -369,14 +371,14 @@
                         </view>
                     </box>
                     <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="Menu Bar" id="dKj-MB-sTZ">
-                        <rect key="frame" x="17" y="16" width="326" height="351"/>
+                        <rect key="frame" x="17" y="16" width="326" height="365"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="1SM-dy-ijB">
-                            <rect key="frame" x="1" y="1" width="324" height="335"/>
+                            <rect key="frame" x="1" y="1" width="324" height="349"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button misplaced="YES" id="4gO-Vb-KCg">
-                                    <rect key="frame" x="16" y="288" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="302" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use Black &amp; White Icon" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="WeJ-9q-Ccd">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -387,7 +389,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="574-t2-NB2">
-                                    <rect key="frame" x="16" y="108" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="102" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Display With Seconds" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="KNv-Qp-rZy">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -398,7 +400,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="9b2-Eb-jKo">
-                                    <rect key="frame" x="16" y="88" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="82" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use a 24-hour Clock" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Oy9-xA-Sgy">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -409,7 +411,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="mR9-kC-f2K">
-                                    <rect key="frame" x="16" y="68" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="62" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show AM/PM" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="8B9-fx-Ngd">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -420,7 +422,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="O0W-JZ-Vyp" userLabel="Show secondary clock">
-                                    <rect key="frame" x="16" y="48" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="42" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Secondary Clock" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="SsQ-hK-PuK" userLabel="Show secondary clock">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -431,7 +433,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="hYx-jZ-HBH" userLabel="Show full month name">
-                                    <rect key="frame" x="16" y="168" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="162" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Full Month Name" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="FA2-7r-oRo" userLabel="Show full month name">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -442,7 +444,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="FUG-bG-tDv">
-                                    <rect key="frame" x="16" y="208" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="202" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Date" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="cdQ-dg-EVc">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -453,7 +455,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="yDE-k2-DcE">
-                                    <rect key="frame" x="16" y="248" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="262" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use Black &amp; White Week Number Icon" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Woo-cN-CSt">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -464,7 +466,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="OOm-jc-yQv" userLabel="Show Week Number">
-                                    <rect key="frame" x="16" y="268" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="282" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Week Number Icon" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="lsf-Dz-hYm" userLabel="Show Week Number">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -475,7 +477,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="F6Z-kD-Wpc" userLabel="Show Week Number">
-                                    <rect key="frame" x="16" y="308" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="322" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Enable Date Time Options" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Xvk-tN-YGf" userLabel="Show Week Number">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -486,7 +488,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="PvL-4g-erG">
-                                    <rect key="frame" x="16" y="228" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="222" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use Inverse Color" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="krg-tB-qXn">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -497,7 +499,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="FAQ-TS-i7f" userLabel="Show full month name">
-                                    <rect key="frame" x="16" y="188" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="182" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Month" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Fyi-Cg-7B9" userLabel="Show full month name">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -508,7 +510,7 @@
                                     </connections>
                                 </button>
                                 <button misplaced="YES" id="hkX-Cj-Ahr">
-                                    <rect key="frame" x="16" y="148" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="142" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Day of the Week" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Fdr-I1-fMF">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -518,8 +520,8 @@
                                         <action selector="updateSettings:" target="-2" id="ltt-fC-oVn"/>
                                     </connections>
                                 </button>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="8Vo-u5-mRj">
-                                    <rect key="frame" x="16" y="22" width="42" height="17"/>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="8Vo-u5-mRj">
+                                    <rect key="frame" x="16" y="19" width="42" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Zone" id="Jhv-yi-UAf">
                                         <font key="font" metaFont="system"/>
@@ -528,7 +530,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" misplaced="YES" id="fL9-zl-SGg" userLabel="Popup Button">
-                                    <rect key="frame" x="58" y="17" width="251" height="26"/>
+                                    <rect key="frame" x="58" y="14" width="251" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="4ji-Qp-Q9h" userLabel="Pop Up Button Cell">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -548,7 +550,7 @@
                                     </connections>
                                 </popUpButton>
                                 <button misplaced="YES" id="vL1-UV-JNW">
-                                    <rect key="frame" x="16" y="128" width="292" height="18"/>
+                                    <rect key="frame" x="16" y="122" width="292" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Show Time" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="YUu-nE-FPG">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -556,6 +558,17 @@
                                     </buttonCell>
                                     <connections>
                                         <action selector="updateSettings:" target="-2" id="7os-C7-VRD"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" id="6Xs-aW-sVC">
+                                    <rect key="frame" x="16" y="242" width="292" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Use Fuzzy Time" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="EGb-UY-N1g">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="updateSettings:" target="-2" id="pcO-1a-qCy"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -566,7 +579,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="345" y="-401.5"/>
+            <point key="canvasLocation" x="420" y="-469"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="EZl-eu-2ec"/>
         <dictionaryController objectClassName="_NSControllerKeyValuePair" id="F1N-m9-ZEI">

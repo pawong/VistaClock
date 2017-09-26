@@ -97,10 +97,14 @@
 } // end of sha256HashFor
 
 
--(NSString*) buildPost
+-(NSString*) buildPost:(NSDictionary*) addDict
 {
     NSString* jsonString = NULL;
     NSMutableDictionary* dict = [NSMutableDictionary new];
+    if (addDict != NULL)
+    {
+        [dict addEntriesFromDictionary:addDict];
+    }
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS ZZZ"];
     NSString* date = [dateFormatter stringFromDate:[NSDate date]];
@@ -135,9 +139,9 @@
 } // end of buildReport
 
 
--(void) sendPost
+-(void) sendPost:(NSDictionary*) addDict
 {
-    NSString* rawString = [self buildPost];
+    NSString* rawString = [self buildPost:addDict];
     NSData* postData = [rawString dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
 
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];

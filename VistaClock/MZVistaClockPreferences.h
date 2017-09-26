@@ -39,6 +39,7 @@
     IBOutlet NSButton* showWeekNumberIconCB;
     IBOutlet NSButton* useBWWeekIconCB;
     IBOutlet NSButton* useInverseTitleCB;
+    IBOutlet NSButton* useFuzzyTimeCB;
 
     IBOutlet NSButton* showDateCB;
     IBOutlet NSButton* showMonthCB;

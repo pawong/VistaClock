@@ -22,7 +22,7 @@ static VCSettings* sharedSettings = nil;
     , useDarkTheme, useLargeFonts;
 
 // status item options
-@synthesize showWeekNumberIcon, useBWWeekIcon, showStatusSeconds
+@synthesize useFuzzyTime, showWeekNumberIcon, useBWWeekIcon, showStatusSeconds
     , useStatusMilitary, showStatusAMPM, showStatusWeekDay, showDate
     , showStatusFullMonth, showStatusSecondaryTime, statusSecondaryTimezone, showTime
     , showDateTime, useBWIcon, useInverseTitle, showMonth;
@@ -108,6 +108,7 @@ static VCSettings* sharedSettings = nil;
     showWeekNumberIcon = [decoder decodeBoolForKey:@"showWeekNumberIcon"];
     useBWWeekIcon = [decoder decodeBoolForKey:@"useBWWeekIcon"];
     useInverseTitle = [decoder decodeBoolForKey:@"useInverseTitle"];
+    useFuzzyTime = [decoder decodeBoolForKey:@"useFuzzyTime"];
 
     showDate = [decoder decodeBoolForKey:@"showDate"];
     showMonth = [decoder decodeBoolForKey:@"showMonth"];
@@ -168,6 +169,7 @@ static VCSettings* sharedSettings = nil;
     [encoder encodeBool:useBWIcon forKey:@"useBWIcon"];
     [encoder encodeBool:showWeekNumberIcon forKey:@"showWeekNumberIcon"];
     [encoder encodeBool:useBWWeekIcon forKey:@"useBWWeekIcon"];
+    [encoder encodeBool:useFuzzyTime forKey:@"useFuzzyTime"];
 
     [encoder encodeBool:showDate forKey:@"showDate"];
     [encoder encodeBool:showMonth forKey:@"showMonth"];
@@ -220,6 +222,7 @@ static VCSettings* sharedSettings = nil;
     useBWIcon = NO;
     showWeekNumberIcon = YES;
     useBWWeekIcon = NO;
+    useFuzzyTime = NO;
 
     showDate = YES;
     showMonth = YES;

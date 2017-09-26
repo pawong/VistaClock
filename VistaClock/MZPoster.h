@@ -14,7 +14,7 @@ static NSString* const SERVER_URL = @"http://home.mazookie.com/api/deployments";
 
 -(NSString*) getMacAddress;
 -(NSString*) sha256HashFor:(NSString*)input;
--(NSString*) buildPost;
--(void) sendPost;
+-(NSString*) buildPost:(NSDictionary*) addDict;
+-(void) sendPost:(NSDictionary*) addDict;
 
 @end
