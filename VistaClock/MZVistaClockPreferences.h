@@ -84,6 +84,7 @@
 -(void) updateSettingsClockArray;
 -(void) updateClockConfigArray;
 
+-(void) updateWindowControls;
 -(IBAction) updateSettings:(id)sender;
 -(void) setEnabledItems;
 

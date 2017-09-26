@@ -1004,6 +1004,7 @@
     {
         [autoHideMenuItem setTitle:@"Unpin from Desktop"];
     }
+    [prefsWindow updateWindowControls];
 } // setAutoHideMenutItem
 
 

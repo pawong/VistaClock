@@ -40,8 +40,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="452" height="230"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <datePicker verticalHuggingPriority="750" id="voP-wI-1NQ">
-                        <rect key="frame" x="76" y="40" width="139" height="148"/>
+                    <datePicker verticalHuggingPriority="750" misplaced="YES" id="voP-wI-1NQ">
+                        <rect key="frame" x="83" y="41" width="139" height="148"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <datePickerCell key="cell" alignment="left" datePickerStyle="clockAndCalendar" id="HJa-S2-5zt">
                             <font key="font" metaFont="system"/>
@@ -52,7 +52,7 @@
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         </datePickerCell>
                     </datePicker>
-                    <customView wantsLayer="YES" id="VjI-6X-CtF" customClass="MZCalendarControl">
+                    <customView wantsLayer="YES" misplaced="YES" id="VjI-6X-CtF" customClass="MZCalendarControl">
                         <rect key="frame" x="8" y="8" width="290" height="214"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -171,7 +171,7 @@
                                                 <action selector="toggleToolbar:" target="Voe-Tx-rLC" id="qcd-KL-b7j"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Pin to Desktop" keyEquivalent="p" id="CWE-C3-Ay5" userLabel="Pin to Desktop">
+                                        <menuItem title="Pin to Desktop" keyEquivalent="p" id="CWE-C3-Ay5">
                                             <connections>
                                                 <action selector="toggleAutoHide:" target="Voe-Tx-rLC" id="c73-c4-cZA"/>
                                             </connections>
