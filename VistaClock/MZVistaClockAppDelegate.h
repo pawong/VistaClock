@@ -81,7 +81,7 @@
 }
 
 @property (assign) IBOutlet NSWindow *vistaClockWindow;
-@property (strong) NSWindowController* prefsWindow;
+@property (strong) MZVistaClockPreferences* prefsWindow;
 @property (assign) IBOutlet NSMenuItem* timeNow;
 @property (strong) MZAboutBox* abox;
 

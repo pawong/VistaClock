@@ -171,7 +171,7 @@
                                                 <action selector="toggleToolbar:" target="Voe-Tx-rLC" id="qcd-KL-b7j"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Pin to Desktop" keyEquivalent="p" id="CWE-C3-Ay5" userLabel="Pin to Desktop">
+                                        <menuItem title="Pin to Desktop" keyEquivalent="p" id="CWE-C3-Ay5">
                                             <connections>
                                                 <action selector="toggleAutoHide:" target="Voe-Tx-rLC" id="c73-c4-cZA"/>
                                             </connections>

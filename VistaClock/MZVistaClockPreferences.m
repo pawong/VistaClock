@@ -260,6 +260,17 @@
 // init the shared settings
 -(void) initSettings
 {
+    // update window controls
+    [self updateWindowControls];
+
+    // enable options
+    [self setEnabledItems];
+
+} // end initSettings
+
+
+-(void) updateWindowControls
+{
     // check auto launch
     if ([self isLaunchAtLogin] == TRUE)
     {
@@ -311,7 +322,7 @@
     [useMilitaryCB setState:settings.useMilitary];
     clockFaceIndex = [self getIndexClockFaceArray:settings.clockFaceName];
     [self updateClockPicker];
-    
+
     // calendar settings
     [showCalendarCB setState:settings.showCalendar];
     [showWeekNumbersCB setState:settings.showWeekNumbers];
@@ -319,12 +330,7 @@
     [showRemindersCB setState:settings.showReminders];
     [showCalendarBoxesCB setState:settings.showCalendarBoxes];
     [useHiliteColorCB setState:settings.useHiliteColor];
-
-    // enable options
-    [self setEnabledItems];
-
-} // end initSettings
-
+} // end updateWindowControls
 
 // update the shared settings
 -(IBAction) updateSettings:(id)sender
