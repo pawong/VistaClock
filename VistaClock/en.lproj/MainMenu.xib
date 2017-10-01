@@ -160,13 +160,13 @@
                         <popUpButton key="view" canDrawConcurrently="YES" id="94k-L0-ZD8">
                             <rect key="frame" x="6" y="14" width="40" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" image="mazookie_gear" imagePosition="right" alignment="center" alternateImage="mazookie_gear" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" id="m7E-O2-HyH">
+                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" image="mazookie_gear" imagePosition="right" alignment="center" alternateImage="mazookie_gear" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" autoenablesItems="NO" id="m7E-O2-HyH">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                                <menu key="menu" title="OtherViews" id="r1Z-vr-xjR">
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" title="OtherViews" autoenablesItems="NO" id="r1Z-vr-xjR">
                                     <items>
                                         <menuItem state="on" image="mazookie_gear" hidden="YES" enabled="NO" id="tmt-GY-gXh"/>
-                                        <menuItem title="Show Toolbar" keyEquivalent="t" id="mmw-vF-IrW">
+                                        <menuItem title="Show Toolbar" enabled="NO" keyEquivalent="t" id="mmw-vF-IrW">
                                             <connections>
                                                 <action selector="toggleToolbar:" target="Voe-Tx-rLC" id="qcd-KL-b7j"/>
                                             </connections>

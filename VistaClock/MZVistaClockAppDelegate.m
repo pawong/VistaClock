@@ -351,14 +351,13 @@
         }
         
         // update calendar
-        if ([self isCalendarChanged] == TRUE && settings.showCalendar == TRUE)
+        if ([self isCalendarChanged] == TRUE && (settings.showCalendar == TRUE || [settings.clockConfigs count] < 1))
         {
             if ([lastCal compare:@"gregorian"] == NSOrderedSame)
             {
                 [calendar setHidden:false];
                 [altcal setHidden:true];
                 [calendar setDate:[NSDate getDateNSDate:now]];
-                [toolBarMenuItem setEnabled:TRUE];
             
             }
             else
@@ -371,11 +370,9 @@
                 {
                     [self toggleToolbar:self];
                 }
-                [toolBarMenuItem setEnabled:FALSE];
-
             }
         }
-    
+
         // move to current date if changed
         if ([lastDate compare:[NSDate getDateNSDate:now]]
             != NSOrderedSame)
@@ -699,18 +696,18 @@
     }
     
     // toolbar is only enabled if calendar is showing
-    if (settings.showCalendar == NO)
+    if (settings.showCalendar == YES || [settings.clockConfigs count] < 1)
     {
-        showToolbar = TRUE;
-        [self toggleToolbar:self];
-        [toolBarMenuItem setEnabled:FALSE];
+        [self resizeWindow];
+        [toolBarMenuItem setEnabled:YES];
     }
     else
     {
-        [self resizeWindow];
-        [toolBarMenuItem setEnabled:TRUE];
+        showToolbar = TRUE;
+        [self toggleToolbar:self];
+        [toolBarMenuItem setEnabled:NO];
     }
-    
+
     // add clocks from config last
     int cnt = (int)[settings clockConfigs].count;
     for (int i=0; i<cnt; i++)
