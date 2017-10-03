@@ -439,10 +439,11 @@
     if (hours < 1) {
         hours = 12;
     }
-    if (minutes > 30) {
+    if (minutes > 32) {
         hours++;
     }
 
+    //NSLog(@"%@", HOUR_NAMES[(hours - 1) % 12]);
     NSString* word_time = [NSString stringWithFormat:FUZZY_MSG[index % 12], HOUR_NAMES[(hours - 1) % 12]];
 
     return word_time;
