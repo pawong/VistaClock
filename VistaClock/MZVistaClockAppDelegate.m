@@ -52,8 +52,8 @@
 
     // set the date box place holder to locale date
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [dateFormat setDateStyle:NSDateFormatterShortStyle];
-    [dateFormat setLocale:[NSLocale currentLocale]];
 
     // set the format field for the date box
     [gotoDateField setPlaceholderString:[dateFormat dateFormat]];
@@ -132,7 +132,8 @@
     NSDate* now = [NSDate date];
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
+
     // Date formats
     [dateFormatter setDateFormat:statusItemFormat];
     NSString* statusItemDate = [dateFormatter stringFromDate:now];
@@ -175,10 +176,18 @@
     // update status item
     if (settings.showWeekNumberIcon == YES)
     {
-        NSDateFormatter* weekFormat = [[NSDateFormatter alloc] init];
-        [weekFormat setDateFormat:@"w"];
-        NSString* weekString = [weekFormat stringFromDate:now];
-        NSInteger thisWeek = [weekString integerValue];
+        NSInteger thisWeek;
+        NSString* weekString;
+        if ([[self getCurrentCalendar] compare:@"iso8601"] == NSOrderedSame)
+        {
+            weekString = [now getIsoWeekNumberString];
+            thisWeek = [now getIsoWeekNumber];
+        }
+        else
+        {
+            weekString = [now getWeekNumberString];
+            thisWeek = [now getWeekNumber];
+        }
         if (lastWeek != thisWeek)
         {
             // create and set the image
@@ -267,10 +276,12 @@
         else if (settings.showStatusSecondaryTime && settings.showTime)
         {
             NSDateFormatter* title1DateFormat = [[NSDateFormatter alloc] init];
+            title1DateFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
             [title1DateFormat setDateFormat:DATE_FORMAT_TIMEZONE_DAY];
             [title1DateFormat setTimeZone:[NSTimeZone timeZoneWithName:settings.statusSecondaryTimezone]];
             NSString* title1 = [title1DateFormat stringFromDate:now];
             NSDateFormatter* title2DateFormat = [[NSDateFormatter alloc] init];
+            title2DateFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
             if (settings.useStatusMilitary)
             {
                 [title2DateFormat setDateFormat:TIME_FORMAT_MILITARY];
@@ -353,12 +364,12 @@
         // update calendar
         if ([self isCalendarChanged] == TRUE && (settings.showCalendar == TRUE || [settings.clockConfigs count] < 1))
         {
-            if ([lastCal compare:@"gregorian"] == NSOrderedSame)
+            if ([lastCal compare:@"gregorian"] == NSOrderedSame || [lastCal compare:@"iso8601"] == NSOrderedSame)
             {
                 [calendar setHidden:false];
                 [altcal setHidden:true];
-                [calendar setDate:[NSDate getDateNSDate:now]];
-            
+                [calendar setDate:[calendar getDate]];
+                [toolBarMenuItem setEnabled:YES];
             }
             else
             {
@@ -370,6 +381,7 @@
                 {
                     [self toggleToolbar:self];
                 }
+                [toolBarMenuItem setEnabled:NO];
             }
         }
 
@@ -641,7 +653,12 @@
     }
     else
     {
-        [calendar setHiliteColor:[NSColor selectedMenuItemColor]];
+        if (@available(macOS 10.14, *)) {
+            [calendar setHiliteColor:[NSColor controlAccentColor]];
+        } else {
+            // Fallback on earlier versions
+            [calendar setHiliteColor:[NSColor selectedMenuItemColor]];
+        }
     }
     
     // show calendar event indicator
@@ -652,27 +669,10 @@
     
     // set theme elements
     // Font Shadow this code should move into calendar at some point
-    NSColor* shadowColor;
     NSShadow* shadow = [[NSShadow alloc] init];
     [shadow setShadowOffset:NSMakeSize( 1, 1 )];
     [shadow setShadowBlurRadius:1.5];
-    
-    if (settings.useShadows)
-    {
-        if (settings.useDarkTheme) // use dark theme
-        {
-            shadowColor = [NSColor blackColor];
-        }
-        else
-        {
-            shadowColor = [NSColor lightGrayColor];
-        }
-    }
-    else
-    {
-        shadowColor = NULL;
-    }
-    [calendar setShadowColor:shadowColor];
+    [calendar setUseShadow:settings.useShadows];
 
     if (settings.useLargeFonts)
     {
@@ -683,19 +683,6 @@
         [calendar setFontSize:[NSFont systemFontSize]];
     }
 
-    // background color
-    if (settings.useDarkTheme == YES)
-    {
-        [_vistaClockWindow setBackgroundColor:[NSColor colorWithPatternImage:
-            [NSImage imageNamed:@"bg-texture"]]];
-        [calendar setColor:[NSColor whiteColor]];
-    }
-    else
-    {
-        [_vistaClockWindow setBackgroundColor:[NSColor windowBackgroundColor]];
-        [calendar setColor:[NSColor blackColor]];
-    }
-    
     // toolbar is only enabled if calendar is showing
     if (settings.showCalendar == YES || [settings.clockConfigs count] < 1)
     {
@@ -720,8 +707,7 @@
             [item configureClockItem:config.title
                 zone:[NSTimeZone timeZoneWithName:config.timezoneName]
                 clockFace:settings.clockFaceName
-                darkTheme:settings.useDarkTheme
-                shadow:settings.useShadows
+                useShadow:settings.useShadows
                 largeFonts:settings.useLargeFonts
                 seconds:config.useSeconds
                 militaryTime:settings.useMilitary];
@@ -774,7 +760,7 @@
     }
     else // clock and calendar
     {
-        if ([lastCal compare:@"gregorian"] == NSOrderedSame)
+        if ([lastCal compare:@"gregorian"] == NSOrderedSame || [lastCal compare:@"iso8601"] == NSOrderedSame)
         {
             [calendar setHidden:FALSE];
             [altcal setHidden:TRUE];
@@ -784,6 +770,7 @@
             [calendar setHidden:TRUE];
             [altcal setHidden:FALSE];
         }
+
         clockOrigin = NSMakePoint(CALENDAR_WIDTH + 8, 8);
         windowWidth = CALENDAR_WIDTH + 16;
     }
@@ -850,12 +837,11 @@
     if (settings.showDate)
     {
     	NSDateFormatter *format = [[NSDateFormatter alloc] init];
+        format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
         [format setDateStyle:NSDateFormatterLongStyle];
         NSString *dateFormat = [format dateFormat];
-        dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"y" 
-        	withString:@""];
-        dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"," 
-        	withString:@""];
+        dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"y" withString:@""];
+        dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"," withString:@""];
         if (!settings.showMonth)
         {
             dateFormat = [dateFormat stringByReplacingOccurrencesOfString:@"MMMM"

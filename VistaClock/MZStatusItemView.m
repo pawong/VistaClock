@@ -53,18 +53,6 @@
     [self setNeedsDisplay:YES];
 }
 
-// set status item color
--(NSColor*) titleForegroundColor
-{
-    if (isMenuVisible || useDarkTheme)
-    {
-        return [NSColor whiteColor];
-    }
-    else 
-    {
-        return [NSColor blackColor];
-    }
-} // end of titleForegroundColor
 
 // set status item color
 -(void) setTitleColors
@@ -112,10 +100,8 @@
     // Use default menu bar font size
     NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:8];
     
-    NSColor *fColor = [self titleForegroundColor];
-    
     return [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName
-        , fColor, NSForegroundColorAttributeName, nil];
+        , [NSColor textColor], NSForegroundColorAttributeName, nil];
 } // end of topTitleAttributes
 
 // subtitle2
@@ -123,11 +109,9 @@
 {
     // Use default menu bar font size
     NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:10];
-    
-    NSColor *fColor = [self titleForegroundColor];
-    
+
     return [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName
-            , fColor, NSForegroundColorAttributeName, nil];
+            , [NSColor textColor], NSForegroundColorAttributeName, nil];
 } // end of bottomTitleAttributes
 
 // main title
@@ -135,11 +119,17 @@
 {
     // Use default menu bar font size
     NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:[[NSFont menuBarFontOfSize:-1] pointSize]];
-    
-    [self setTitleColors];
-    
-    return [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName
-        , foregroundColor, NSForegroundColorAttributeName, nil];
+
+    if (useInverseTitle)
+    {
+        return [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName
+            , [NSColor textBackgroundColor], NSForegroundColorAttributeName, nil];
+    }
+    else
+    {
+        return [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName
+            , [NSColor textColor], NSForegroundColorAttributeName, nil];
+    }
 } // end of titleAttributes
 
 
@@ -274,7 +264,7 @@
         [NSBezierPath setDefaultLineWidth:1.0];
         NSBezierPath* path = [NSBezierPath bezierPathWithRoundedRect:newRect xRadius:5.0 yRadius:5.0];
         [path setLineJoinStyle:NSRoundLineJoinStyle];
-        [backgroundColor set];
+        [[NSColor textColor] set];
         [path fill];
     }
 
@@ -285,7 +275,7 @@
     if (image != nil)
     {
         NSPoint p = {titleWidth, 1};
-        [image drawAtPoint:p fromRect:[self bounds] operation:NSCompositeSourceOver fraction:1.0];
+        [image drawAtPoint:p fromRect:[self bounds] operation:NSCompositingOperationSourceOver fraction:1.0];
     }
     
     // add subtitles?
@@ -299,7 +289,6 @@
         [subTitle2 drawAtPoint:originBottom withAttributes:[self bottomTitleAttributes]];
     }
 } // end of drawRect
-
 
 -(void) setDarkTheme:(BOOL) use
 {

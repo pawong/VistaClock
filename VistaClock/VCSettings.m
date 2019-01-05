@@ -19,7 +19,7 @@ static VCSettings* sharedSettings = nil;
 
 // general panel options
 @synthesize useAutoLaunch, useAutoHide, useKeepTop, useShadows, showDockIcon
-    , useDarkTheme, useLargeFonts;
+    , useLargeFonts;
 
 // status item options
 @synthesize useFuzzyTime, showWeekNumberIcon, useBWWeekIcon, showStatusSeconds
@@ -98,7 +98,6 @@ static VCSettings* sharedSettings = nil;
     useAutoHide = [decoder decodeBoolForKey:@"useAutoHide"];
     useKeepTop = [decoder decodeBoolForKey:@"useKeepTop"];
     useShadows = [decoder decodeBoolForKey:@"useShadows"];
-    useDarkTheme = [decoder decodeBoolForKey:@"useDarkTheme"];
     useLargeFonts = [decoder decodeBoolForKey:@"useLargeFonts"];
     showDockIcon = [decoder decodeBoolForKey:@"showDockIcon"];
     
@@ -159,7 +158,6 @@ static VCSettings* sharedSettings = nil;
     [encoder encodeBool:useInverseTitle forKey:@"useInverseTitle"];
 
     [encoder encodeBool:useShadows forKey:@"useShadows"];
-    [encoder encodeBool:useDarkTheme forKey:@"useDarkTheme"];
     [encoder encodeBool:useLargeFonts forKey:@"useLargeFonts"];
     [encoder encodeBool:showDockIcon forKey:@"showDockIcon"];
 
@@ -212,7 +210,6 @@ static VCSettings* sharedSettings = nil;
     useAutoHide = YES;
     useKeepTop = NO;
     useShadows = YES;
-    useDarkTheme = NO;
     useLargeFonts = NO;
     showDockIcon = NO;
     useInverseTitle = NO;

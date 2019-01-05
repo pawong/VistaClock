@@ -21,7 +21,9 @@
 -(int) getMinutes;
 -(int) getSeconds;
 -(int) getDayOfWeek;
--(int) getWeek;
+-(int) getUSDayOfWeek;
+-(int) getWeekNumber;
+-(int) getIsoWeekNumber;
 
 -(NSString*) getMonthString;
 -(NSString*) getDayOfWeekString;
@@ -31,7 +33,8 @@
 -(NSString*) getMonthYearString;
 -(NSString*) getDateTimeString;
 -(NSString*) getDateString;
--(NSString*) getWeekString;
+-(NSString*) getWeekNumberString;
+-(NSString*) getIsoWeekNumberString;
 -(NSString*) getDayNameShortString;
 -(NSString*) getDayString;
 -(NSString*) getDayOfYearString;

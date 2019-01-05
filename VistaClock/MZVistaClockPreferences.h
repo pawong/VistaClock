@@ -29,7 +29,6 @@
     IBOutlet NSButton* useAutoHideCB;
     IBOutlet NSButton* useKeepTopCB;
     IBOutlet NSButton* useShadowsCB;
-    IBOutlet NSButton* useDarkThemeCB;
     IBOutlet NSButton* useLargeFontsCB;
     IBOutlet NSButton* showDockIconCB;
 

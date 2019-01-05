@@ -18,25 +18,22 @@
     
     NSTimeZone* timezone;
     
-    bool useDarkTheme;
     bool useShadow;
     bool useLargeFonts;
     bool useSeconds;
     bool useMilitaryTime;
 }
 
--(void) configureClockItem:(NSString*) newCaption
+-(void) configureClockItem:
+    (NSString*) newCaption
     zone:(NSTimeZone*) newZone
     clockFace:(NSString*) newClockFace
-    darkTheme:(bool) newDarkTheme
-    shadow:(bool) newShadow
+    useShadow:(bool) newShadow
     largeFonts:(bool) newLargeFonts
     seconds:(bool) newSeconds
     militaryTime:(bool) newMilitaryTime;
 
 -(void) setUseMilitaryTime:(bool) value;
-
--(void) setUseDarkTheme:(bool) value;
 
 -(void) setUseShadow:(bool) value;
 

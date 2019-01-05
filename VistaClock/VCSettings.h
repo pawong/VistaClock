@@ -20,7 +20,6 @@
 @property (nonatomic, assign) BOOL useAutoHide;
 @property (nonatomic, assign) BOOL useKeepTop;
 @property (nonatomic, assign) BOOL useShadows;
-@property (nonatomic, assign) BOOL useDarkTheme;
 @property (nonatomic, assign) BOOL useLargeFonts;
 @property (nonatomic, assign) BOOL showDockIcon;
 

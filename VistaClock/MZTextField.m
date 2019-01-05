@@ -12,7 +12,7 @@
 @implementation MZTextField
 
 - (BOOL)performKeyEquivalent:(NSEvent *)event {
-    if (([event modifierFlags] & NSDeviceIndependentModifierFlagsMask) == NSCommandKeyMask) {
+    if (([event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask) == NSEventModifierFlagCommand) {
         if ([[event charactersIgnoringModifiers] isEqualToString:@"x"]) {
             // Map Command-X to Cut
             return [NSApp sendAction:@selector(cut:) to:[[self window] firstResponder] from:self];

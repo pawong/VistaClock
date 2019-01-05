@@ -28,14 +28,20 @@
     [self->appIcon setImage:[NSApp applicationIconImage]];
 
     // set help
-    NSString *helpString = [[NSBundle mainBundle] pathForResource:@"help" ofType:@"rtfd"];
-    [[self->helpTextView textStorage] appendAttributedString:[[NSAttributedString alloc]
-        initWithPath:helpString documentAttributes:nil]];
+    NSURL* fileURL = [[NSBundle mainBundle] URLForResource:@"help" withExtension:@"rtfd"];
+    [[self->helpTextView textStorage] appendAttributedString:[
+        [NSAttributedString alloc]
+            initWithURL: fileURL
+            options: @{ NSDocumentTypeDocumentAttribute: NSRTFDTextDocumentType }
+            documentAttributes: nil
+            error: nil
+    ]];
 
     // Set acknowledgements
-    NSString *acknowledgmentsString = [[NSBundle mainBundle] pathForResource:@"acknowledgments" ofType:@"rtf"];
-    [[self->acknowledgmentsTextView textStorage] appendAttributedString:[[NSAttributedString alloc]
-        initWithPath:acknowledgmentsString documentAttributes:nil]];
+    fileURL = [[NSBundle mainBundle] URLForResource:@"acknowledgments" withExtension:@"txt"];
+    [self->acknowledgmentsTextView setString:[
+        [NSString alloc]initWithContentsOfFile:fileURL.path encoding:NSUTF8StringEncoding error:nil]
+    ];
 } // end of windowDidLoad
 
 -(IBAction) reviewApp:(id)sender

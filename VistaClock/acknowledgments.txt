@@ -1,0 +1,1 @@
+A replacement for the Mac OSX build in menu bar clock. VistaClock not only gives you the time and optional week number icon display, but when you click on it, a dialog with calendar and analog clock opens up. Optionally you can add additional clocks with time zones.

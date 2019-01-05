@@ -72,7 +72,6 @@
 		134E392019BA107B004FA01A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 134E391F19BA107B004FA01A /* Cocoa.framework */; };
 		134E392A19BA107B004FA01A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 134E392819BA107B004FA01A /* InfoPlist.strings */; };
 		134E392C19BA107B004FA01A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E392B19BA107B004FA01A /* main.m */; };
-		134E393019BA107B004FA01A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 134E392E19BA107B004FA01A /* Credits.rtf */; };
 		134E393319BA107B004FA01A /* MZVistaClockAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E393219BA107B004FA01A /* MZVistaClockAppDelegate.m */; };
 		134E3A0519BA1388004FA01A /* MZStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E39B919BA1388004FA01A /* MZStatusItemView.m */; };
 		137B91691DB2F1A6003EAA80 /* MZPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = 137B91681DB2F1A6003EAA80 /* MZPoster.m */; };
@@ -81,7 +80,7 @@
 		13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */; };
 		13BBAEBC1CCF2E460070558B /* MZAboutBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BBAEBA1CCF2E460070558B /* MZAboutBox.m */; };
 		13BBAEBD1CCF2E460070558B /* MZAboutBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13BBAEBB1CCF2E460070558B /* MZAboutBox.xib */; };
-		13BBAEC01CCF2E810070558B /* acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 13BBAEBF1CCF2E810070558B /* acknowledgments.rtf */; };
+		13BCFF96215CA15500DFAD8E /* acknowledgments.txt in Resources */ = {isa = PBXBuildFile; fileRef = 13BCFF94215CA15400DFAD8E /* acknowledgments.txt */; };
 		13BEBE1C19C8EAC6009C7B76 /* VCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */; };
 		13E9FED61C42D74A00F204A3 /* MZDateCalc.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E9FED51C42D74A00F204A3 /* MZDateCalc.m */; };
 /* End PBXBuildFile section */
@@ -192,7 +191,6 @@
 		134E392919BA107B004FA01A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		134E392B19BA107B004FA01A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		134E392D19BA107B004FA01A /* VistaClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VistaClock-Prefix.pch"; sourceTree = "<group>"; };
-		134E392F19BA107B004FA01A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		134E393119BA107B004FA01A /* MZVistaClockAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MZVistaClockAppDelegate.h; sourceTree = "<group>"; };
 		134E393219BA107B004FA01A /* MZVistaClockAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MZVistaClockAppDelegate.m; sourceTree = "<group>"; };
 		134E39B819BA1388004FA01A /* MZStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZStatusItemView.h; sourceTree = "<group>"; };
@@ -205,7 +203,7 @@
 		13BBAEB91CCF2E460070558B /* MZAboutBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZAboutBox.h; sourceTree = "<group>"; };
 		13BBAEBA1CCF2E460070558B /* MZAboutBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZAboutBox.m; sourceTree = "<group>"; };
 		13BBAEBB1CCF2E460070558B /* MZAboutBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MZAboutBox.xib; sourceTree = "<group>"; };
-		13BBAEBF1CCF2E810070558B /* acknowledgments.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = acknowledgments.rtf; sourceTree = "<group>"; };
+		13BCFF94215CA15400DFAD8E /* acknowledgments.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acknowledgments.txt; sourceTree = "<group>"; };
 		13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSettings.m; sourceTree = "<group>"; };
 		13BEBE1B19C8EAC6009C7B76 /* VCSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSettings.h; sourceTree = "<group>"; };
 		13E9FED41C42D74A00F204A3 /* MZDateCalc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZDateCalc.h; sourceTree = "<group>"; };
@@ -313,13 +311,13 @@
 		134E392619BA107B004FA01A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				13BCFF94215CA15400DFAD8E /* acknowledgments.txt */,
 				132C79471E22FCDA00F38952 /* SVCW09.png */,
 				132C79481E22FCDA00F38952 /* DVCW09.png */,
 				132C79491E22FCDA00F38952 /* HVCW09.png */,
 				132C794A1E22FCDA00F38952 /* MVCW09.png */,
 				13404CAF1D567A540091DBF8 /* Media.xcassets */,
 				139877131CD321A3003007F5 /* help.rtfd */,
-				13BBAEBF1CCF2E810070558B /* acknowledgments.rtf */,
 				1300F5BF19BCE700006E8FD9 /* MBVCB01.png */,
 				1300F5CF19BCE700006E8FD9 /* SBVCB01.png */,
 				1300F5D019BCE700006E8FD9 /* SVCB02.png */,
@@ -367,7 +365,6 @@
 				134E392819BA107B004FA01A /* InfoPlist.strings */,
 				134E392B19BA107B004FA01A /* main.m */,
 				134E392D19BA107B004FA01A /* VistaClock-Prefix.pch */,
-				134E392E19BA107B004FA01A /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -483,7 +480,6 @@
 				1300F5F419BCE700006E8FD9 /* HWVCB01.png in Resources */,
 				1300F60619BCE700006E8FD9 /* SVCW07.png in Resources */,
 				1300F61319BCE700006E8FD9 /* VCW06.png in Resources */,
-				13BBAEC01CCF2E810070558B /* acknowledgments.rtf in Resources */,
 				1300F61119BCE700006E8FD9 /* VCW04.png in Resources */,
 				1300F5F619BCE700006E8FD9 /* MVCB02.png in Resources */,
 				1300F5EC19BCE700006E8FD9 /* DWVCB01.png in Resources */,
@@ -498,7 +494,6 @@
 				1313B0501E0DBA800006B403 /* VCW09.png in Resources */,
 				1300F60D19BCE700006E8FD9 /* VCB02.png in Resources */,
 				1300F5E919BCE700006E8FD9 /* DVCW05.png in Resources */,
-				134E393019BA107B004FA01A /* Credits.rtf in Resources */,
 				1300F5EB19BCE700006E8FD9 /* DVCW08.png in Resources */,
 				1300F5E719BCE700006E8FD9 /* DVCB06.png in Resources */,
 				1300F61719BCE9A5006E8FD9 /* MZClockItem.xib in Resources */,
@@ -513,6 +508,7 @@
 				1300F60119BCE700006E8FD9 /* SBVCB01.png in Resources */,
 				132C794B1E22FCDA00F38952 /* SVCW09.png in Resources */,
 				1300F5F319BCE700006E8FD9 /* HVCW08.png in Resources */,
+				13BCFF96215CA15500DFAD8E /* acknowledgments.txt in Resources */,
 				1300F5F919BCE700006E8FD9 /* MVCW05.png in Resources */,
 				1300F60E19BCE700006E8FD9 /* VCB06.png in Resources */,
 				1300F60319BCE700006E8FD9 /* SVCB06.png in Resources */,
@@ -555,14 +551,6 @@
 				134E392919BA107B004FA01A /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		134E392E19BA107B004FA01A /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				134E392F19BA107B004FA01A /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */ = {

@@ -229,6 +229,7 @@
 -(BOOL) parseDate:(NSString*) string
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [dateFormat setDateStyle:NSDateFormatterShortStyle];
     [dateFormat setLocale:[NSLocale currentLocale]];
     NSDate* date = [dateFormat dateFromString:string];

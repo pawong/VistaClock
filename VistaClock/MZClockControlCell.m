@@ -247,7 +247,7 @@
     [NSGraphicsContext saveGraphicsState];
     [transformh concat];
     [hourHandImage drawAtPoint:NSZeroPoint fromRect:NSZeroRect
-        operation:NSCompositeSourceOver fraction:1.0];
+        operation:NSCompositingOperationSourceOver fraction:1.0];
     [NSGraphicsContext restoreGraphicsState];
     
     // Draw the minute hand.
@@ -259,7 +259,7 @@
     [NSGraphicsContext saveGraphicsState];
     [transform concat];
     [minuteHandImage drawAtPoint:NSZeroPoint fromRect:NSZeroRect
-        operation:NSCompositeSourceOver fraction:0.95];
+                       operation:NSCompositingOperationSourceOver fraction:0.95];
     [NSGraphicsContext restoreGraphicsState];
 
     // Draw the second hand.
@@ -273,7 +273,7 @@
         [NSGraphicsContext saveGraphicsState];
         [transform concat];
         [secondHandImage drawAtPoint:NSZeroPoint fromRect:NSZeroRect
-            operation:NSCompositeSourceOver fraction:0.9];
+                           operation:NSCompositingOperationSourceOver fraction:0.9];
         [NSGraphicsContext restoreGraphicsState];
     }
     
@@ -286,7 +286,7 @@
     [NSGraphicsContext saveGraphicsState];
     [transformd concat];
     [dotImage drawAtPoint:NSZeroPoint fromRect:NSZeroRect
-                       operation:NSCompositeSourceOver fraction:0.85];
+                operation:NSCompositingOperationSourceOver fraction:0.85];
     [NSGraphicsContext restoreGraphicsState];    
 } // end drawClockHandsForTime
 
@@ -299,8 +299,9 @@
     [clockFaceImage drawInRect:NSMakeRect(NSMinX(cellFrame), NSMinY(cellFrame)
         , clockDiameter, clockDiameter) fromRect:NSMakeRect( 0, 0
         , [clockFaceImage size].width
-        , [clockFaceImage size].height) operation:NSCompositeSourceOver
-        fraction:1.0];
+        , [clockFaceImage size].height) operation:NSCompositingOperationSourceOver
+        fraction:1.0
+    ];
         
     //scale hands
     float scaleFactor = clockDiameter/dotImage.size.height;

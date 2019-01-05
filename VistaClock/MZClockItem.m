@@ -11,17 +11,16 @@
 @implementation MZClockItem
 
 
--(void) configureClockItem:(NSString*) newCaption
+-(void) configureClockItem:
+    (NSString*) newCaption
     zone:(NSTimeZone*) newZone
     clockFace:(NSString*) newClockFace
-    darkTheme:(bool) newDarkTheme
-    shadow:(bool) newShadow
+    useShadow: (bool) newUseShadow
     largeFonts:(bool) newLargeFonts
     seconds:(bool) newSeconds
     militaryTime:(bool) newMilitaryTime
 {
     // Font Shadow
-    NSColor* shadowColor;
     NSShadow* shadow = [[NSShadow alloc] init];
     [shadow setShadowOffset:NSMakeSize( 1, 1 )];
     [shadow setShadowBlurRadius:1.5];
@@ -31,8 +30,7 @@
     [clock setClockFace:newClockFace];
 
     timezone = newZone;
-    useDarkTheme = newDarkTheme;
-    useShadow = newShadow;
+    useShadow = newUseShadow;
     useLargeFonts = newLargeFonts;
     useSeconds = newSeconds;
     [clock useSecondHand:useSeconds];
@@ -41,49 +39,19 @@
     // use new config values
     if (useShadow)
     {
-        if (useDarkTheme)
-        {
-            shadowColor = [NSColor blackColor];
-        }
-        else
-        {
-            shadowColor = [NSColor lightGrayColor];
-        }
-    }
-    else
-    {
-        shadowColor = NULL;
-    }
-    
-    if (useDarkTheme)
-    {
         // Shadow color
-        [shadow setShadowColor:shadowColor];
-        
-        [clockCaption setTextColor:NSColor.whiteColor];
-        [clockCaption setShadow:shadow];
-        
-        [time setTextColor:NSColor.whiteColor];
-        [time setShadow:shadow];
-        
-       	[day setTextColor:NSColor.whiteColor];
-        [day setShadow:shadow];
-    }
-    else
-    {
-        // Shadow color
-        [shadow setShadowColor:shadowColor];
-        
-        [clockCaption setTextColor:NSColor.blackColor];
-        [clockCaption setShadow:shadow];
-        
-        [time setTextColor:NSColor.blackColor];
-        [time setShadow:shadow];
-        
-       	[day setTextColor:NSColor.blackColor];
-        [day setShadow:shadow];
-	}
+        [shadow setShadowColor:[NSColor shadowColor]];
 
+        [clockCaption setShadow:shadow];
+        [time setShadow:shadow];
+        [day setShadow:shadow];
+    }
+    else
+    {
+        [clockCaption setShadow:NULL];
+        [time setShadow:NULL];
+        [day setShadow:NULL];
+    }
 
     if (useLargeFonts)
     {
@@ -105,13 +73,6 @@
 {
     useMilitaryTime = value;
 }
-
-
--(void) setUseDarkTheme:(bool) value
-{
-    useDarkTheme = value;
-}
-
 
 -(void) setUseShadow:(bool) value
 {
@@ -146,6 +107,7 @@
 {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:timezone.name]];
         
     if (useMilitaryTime)

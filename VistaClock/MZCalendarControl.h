@@ -16,8 +16,7 @@
     int lastDay;
     NSDate* monthView[42];
     int firstWeekday;
-    NSColor* dateColor;
-    NSColor* shadowColor;
+    BOOL useShadow;
     NSShadow* shadow;
     int fontSize;
     NSColor* hiliteColor;
@@ -65,8 +64,7 @@
 -(int) drawDay:(int) aDay;
 -(int) controlAtPoint:(NSPoint) aPoint;
 
--(void) setColor:(NSColor*) color;
--(void) setShadowColor:(NSColor*) color;
+-(void) setUseShadow:(BOOL) value;
 -(void) setStyle;
 
 -(void) nextMonth;
@@ -82,5 +80,7 @@
 - (void) calendarsChanged:(NSNotification *)notification;
 - (void) eventsChanged:(NSNotification *)notification;
 - (void) tasksChanged:(NSNotification *)notification;
+
+- (NSString*) getCurrentCalendar;
 
 @end

@@ -18,6 +18,7 @@
 #import "MZTextField.h"
 #import "MZAboutBox.h"
 #import "MZPoster.h"
+#import "NSDate+Tools.h"
 
 
 #define DATE_FORMAT_DAY_FULL            @"eeee"

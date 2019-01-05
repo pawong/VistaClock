@@ -271,21 +271,10 @@
 
 -(void) updateWindowControls
 {
-    // check auto launch
-    if ([self isLaunchAtLogin] == TRUE)
-    {
-        settings.useAutoLaunch = YES;
-    }
-    else
-    {
-        settings.useAutoLaunch = NO;
-    }
-
     // general settings
     [useAutoLaunchCB setState:settings.useAutoLaunch];
     [useAutoHideCB setState:settings.useAutoHide];
     [useKeepTopCB setState:settings.useKeepTop];
-    [useDarkThemeCB setState:settings.useDarkTheme];
     [useShadowsCB setState:settings.useShadows];
     [useLargeFontsCB setState:settings.useLargeFonts];
     [showDockIconCB setState:settings.showDockIcon];
@@ -340,7 +329,6 @@
     settings.useAutoHide = ([useAutoHideCB state] == NSOnState)?YES:NO;
     settings.useKeepTop = ([useKeepTopCB state] == NSOnState)?YES:NO;
     settings.useShadows = ([useShadowsCB state] == NSOnState)?YES:NO;
-    settings.useDarkTheme = ([useDarkThemeCB state] == NSOnState)?YES:NO;
     settings.useLargeFonts = ([useLargeFontsCB state] == NSOnState)?YES:NO;
     settings.showDockIcon = ([showDockIconCB state] == NSOnState)?YES:NO;
 
@@ -522,6 +510,14 @@
 // set helper app to launch at login
 -(void) toggleLaunchAtLogin:(NSInteger)mode
 {
+    NSURL *helperURL = [[[NSBundle mainBundle] bundleURL]
+        URLByAppendingPathComponent: @"Contents/Library/LoginItems/VistaClockLoginHelper.app"
+        isDirectory: YES
+    ];
+    OSStatus status = LSRegisterURL((__bridge CFURLRef)helperURL, YES);
+    if (status != noErr) {
+        NSLog(@"Failed to LSRegisterURL '%@': %jd", helperURL, (intmax_t)status);
+    }
     if (mode == NSOnState)
     { 	// ON
     	// Turn on launch at login
@@ -533,32 +529,6 @@
        	SMLoginItemSetEnabled((CFStringRef)@"com.Mazookie.VistaClockLoginHelper", NO);
     }
 } // end of toggleLaunchAtLogin
-
-
-// check if the helper app is in the login items
--(BOOL) isLaunchAtLogin
-{
-	BOOL isEnabled  = NO;
-    
-    // the easy and sane method (SMJobCopyDictionary) can pose problems when sandboxed. -_-
-    CFArrayRef cfJobDicts = SMCopyAllJobDictionaries(kSMDomainUserLaunchd);
-    NSArray* jobDicts = CFBridgingRelease(cfJobDicts);
-    
-    if (jobDicts && [jobDicts count] > 0)
-    {
-        for (NSDictionary* job in jobDicts)
-        {
-            if ([@"com.Mazookie.VistaClockLoginHelper"
-                 isEqualToString:[job objectForKey:@"Label"]])
-            {
-                isEnabled = [[job objectForKey:@"OnDemand"] boolValue];
-                break;
-            }
-        }
-    }
-    
-    return isEnabled;
-} // end of isLaunchAtLogin
 
 
 // collection view stuff

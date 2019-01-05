@@ -39,8 +39,6 @@
 -(void) setTitles:(NSString*) newTitle subTitle1:(NSString*) newSubTitle1 subTitle2:(NSString*) newSubTitle2;
 -(void) setDarkTheme:(BOOL) use;
 -(void) setUseInverseTitle:(BOOL) use;
--(void) setTitleColors;
-
 
 @property (retain, nonatomic) NSStatusItem* statusItem;
 @property (assign) id target;

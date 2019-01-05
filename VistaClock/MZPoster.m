@@ -106,6 +106,7 @@
         [dict addEntriesFromDictionary:addDict];
     }
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS ZZZ"];
     NSString* date = [dateFormatter stringFromDate:[NSDate date]];
 
@@ -153,14 +154,23 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
 
-   // NSLog(@"request = %@", [[NSString alloc] initWithData:postData encoding:NSASCIIStringEncoding]);
+    //NSLog(@"request = %@", [[NSString alloc] initWithData:postData encoding:NSASCIIStringEncoding]);
 
-    NSURLResponse* response;
-    NSError* error = nil;
+    //NSURLResponse* response;
+    //NSError* error = nil;
 
     //Capturing server response
     //NSData* result =
-    [NSURLConnection sendSynchronousRequest:request  returningResponse:&response error:&error];
+    //[NSURLConnection sendSynchronousRequest:request  returningResponse:&response error:&error];
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithRequest: request
+        completionHandler:^(NSData *data,
+            NSURLResponse *response,
+            NSError *error) {
+                // handle response
+            }
+    ] resume];
+
 
     //NSLog(@"result = %@", [[NSString alloc] initWithData:result encoding:NSASCIIStringEncoding]);
 } // end of sendReport
