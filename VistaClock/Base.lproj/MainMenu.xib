@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,17 +30,17 @@
                 <outlet property="vistaClockWindow" destination="QvC-M9-y7g" id="gGz-wa-Rv1"/>
             </connections>
         </customObject>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" visibleAtLaunch="NO" animationBehavior="default" toolbarStyle="expanded" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES"/>
             <windowPositionMask key="initialPositionMask" rightStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="1600" y="1080" width="452" height="230"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <rect key="screenRect" x="-465" y="1120" width="2560" height="1415"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="452" height="230"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <datePicker verticalHuggingPriority="750" id="voP-wI-1NQ">
+                    <datePicker verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="voP-wI-1NQ">
                         <rect key="frame" x="83" y="41" width="139" height="148"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <datePickerCell key="cell" alignment="left" datePickerStyle="clockAndCalendar" id="HJa-S2-5zt">
@@ -52,18 +52,18 @@
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         </datePickerCell>
                     </datePicker>
-                    <customView wantsLayer="YES" id="VjI-6X-CtF" customClass="MZCalendarControl">
+                    <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VjI-6X-CtF" customClass="MZCalendarControl">
                         <rect key="frame" x="8" y="8" width="290" height="214"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <scrollView wantsLayer="YES" focusRingType="none" placeholderIntrinsicWidth="128" placeholderIntrinsicHeight="188" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" id="FM0-Ss-wrg">
+                    <scrollView wantsLayer="YES" focusRingType="none" fixedFrame="YES" placeholderIntrinsicWidth="128" placeholderIntrinsicHeight="188" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="FM0-Ss-wrg">
                         <rect key="frame" x="298" y="8" width="146" height="214"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="9AM-xQ-3zb">
                             <rect key="frame" x="0.0" y="0.0" width="146" height="214"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <collectionView canDrawConcurrently="YES" focusRingType="none" selectable="YES" maxNumberOfRows="1" id="LE1-6V-Mkx">
+                                <collectionView focusRingType="none" selectable="YES" maxNumberOfRows="1" id="LE1-6V-Mkx">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="214"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <color key="primaryBackgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -86,7 +86,7 @@
                     </scrollView>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="78A04876-2974-434A-8C18-5CAF87815D3E" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="WER-07-xrf">
+            <toolbar key="toolbar" implicitIdentifier="78A04876-2974-434A-8C18-5CAF87815D3E" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="small" id="WER-07-xrf">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="A2A8BD18-00AA-4181-A180-A86E4E8EE92D" explicitItemIdentifier="DateBoxID" label="DateBox" paletteLabel="DateBox" selectable="YES" id="m9W-ps-O7f">
                         <nil key="toolTip"/>
@@ -110,13 +110,13 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="D9CEF547-D236-4172-9046-3C2309052A57" explicitItemIdentifier="TitleID" label="Title" paletteLabel="Title" tag="1" autovalidates="NO" id="P7Z-lk-nDU">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="104" height="16"/>
-                        <size key="maxSize" width="300" height="18"/>
+                        <size key="minSize" width="104" height="18"/>
+                        <size key="maxSize" width="300" height="20"/>
                         <textField key="view" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="1" textCompletion="NO" id="sb8-kn-hmr">
                             <rect key="frame" x="0.0" y="14" width="104" height="18"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" focusRingType="none" usesSingleLineMode="YES" id="4us-hk-hQK">
-                                <font key="font" metaFont="system" size="14"/>
+                                <font key="font" metaFont="label" size="14"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -157,12 +157,12 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="34" height="16"/>
                         <size key="maxSize" width="40" height="25"/>
-                        <popUpButton key="view" canDrawConcurrently="YES" springLoaded="YES" id="94k-L0-ZD8">
+                        <popUpButton key="view" springLoaded="YES" id="94k-L0-ZD8">
                             <rect key="frame" x="9" y="14" width="34" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" autoenablesItems="NO" id="m7E-O2-HyH">
+                            <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" image="mazookie_gear" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" autoenablesItems="NO" id="m7E-O2-HyH">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="menu"/>
                                 <menu key="menu" title="OtherViews" autoenablesItems="NO" id="r1Z-vr-xjR">
                                     <items>
                                         <menuItem state="on" image="mazookie_gear" hidden="YES" enabled="NO" id="tmt-GY-gXh"/>
@@ -264,6 +264,7 @@
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="bWx-fm-8fM"/>
             </connections>
+            <point key="canvasLocation" x="-117" y="290"/>
         </menu>
         <arrayController id="n32-YG-z2q">
             <connections>

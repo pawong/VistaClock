@@ -262,7 +262,7 @@
         NSRect titleRect = [self titleBoundingRect];
         NSRect newRect = NSMakeRect(textOrigin.x-2, textOrigin.y-1, titleRect.size.width+4, titleRect.size.height-2);
         [NSBezierPath setDefaultLineWidth:1.0];
-        NSBezierPath* path = [NSBezierPath bezierPathWithRoundedRect:newRect xRadius:5.0 yRadius:5.0];
+        NSBezierPath* path = [NSBezierPath bezierPathWithRoundedRect:newRect xRadius:2.0 yRadius:2.0];
         [path setLineJoinStyle:NSRoundLineJoinStyle];
         [[NSColor textColor] set];
         [path fill];

@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.3.3</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>MZVC</string>
 	<key>CFBundleVersion</key>
-	<string>82</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
@@ -46,7 +46,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs Calendar access to display events indicators</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2011-2018  Mazookie, LLC. All rights reserved.</string>
+	<string>Copyright © 2011-2019  Mazookie, LLC. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

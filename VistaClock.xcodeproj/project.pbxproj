@@ -181,6 +181,7 @@
 		132E0AE319D4CCF200CC9CF6 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		132E0AE519D4CD0000CC9CF6 /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
 		132E0AE719D4CDA600CC9CF6 /* VistaClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VistaClock.entitlements; sourceTree = "<group>"; };
+		1333123222DA917400D21E7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13404CAF1D567A540091DBF8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		134E391C19BA107B004FA01A /* VistaClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VistaClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		134E391F19BA107B004FA01A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -199,7 +200,6 @@
 		137B91681DB2F1A6003EAA80 /* MZPoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZPoster.m; sourceTree = "<group>"; };
 		139877131CD321A3003007F5 /* help.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = help.rtfd; sourceTree = "<group>"; };
 		139ED8D219F9B75700181875 /* VistaClockLoginHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VistaClockLoginHelper.xcodeproj; path = VistaClockLoginHelper/VistaClockLoginHelper.xcodeproj; sourceTree = "<group>"; };
-		13A4EB4E19EDA6E70031D4DE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13BBAEB91CCF2E460070558B /* MZAboutBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZAboutBox.h; sourceTree = "<group>"; };
 		13BBAEBA1CCF2E460070558B /* MZAboutBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZAboutBox.m; sourceTree = "<group>"; };
 		13BBAEBB1CCF2E460070558B /* MZAboutBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MZAboutBox.xib; sourceTree = "<group>"; };
@@ -405,7 +405,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MZ;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Mazookie, LLC";
 				TargetAttributes = {
 					134E391B19BA107B004FA01A = {
@@ -421,10 +421,11 @@
 			};
 			buildConfigurationList = 134E391719BA107A004FA01A /* Build configuration list for PBXProject "VistaClock" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 134E391319BA107A004FA01A;
 			productRefGroup = 134E391D19BA107B004FA01A /* Products */;
@@ -556,7 +557,7 @@
 		13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				13A4EB4E19EDA6E70031D4DE /* en */,
+				1333123222DA917400D21E7B /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -576,12 +577,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -627,12 +630,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -672,8 +677,10 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 85;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 6DK6LM2ETN;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClock/VistaClock-Prefix.pch";
@@ -681,6 +688,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "VistaClock/VistaClock-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Mazookie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -702,7 +710,9 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 85;
 				DEVELOPMENT_TEAM = 6DK6LM2ETN;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClock/VistaClock-Prefix.pch";
@@ -710,6 +720,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "VistaClock/VistaClock-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Mazookie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

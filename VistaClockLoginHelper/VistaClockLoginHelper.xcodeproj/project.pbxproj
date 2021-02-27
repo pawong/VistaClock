@@ -17,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1333123122DA917400D21E7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13404CAC1D5679920091DBF8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		13785DBB15D5385F00D9D1D3 /* VistaClockLoginHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VistaClockLoginHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13785DBF15D5385F00D9D1D3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -30,7 +31,6 @@
 		13785DCF15D5385F00D9D1D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		13785DD115D5385F00D9D1D3 /* MZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MZAppDelegate.h; sourceTree = "<group>"; };
 		13785DD215D5385F00D9D1D3 /* MZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MZAppDelegate.m; sourceTree = "<group>"; };
-		13785DD515D5385F00D9D1D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13785DE315D53B9E00D9D1D3 /* VistaClockLoginHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VistaClockLoginHelper.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,7 +134,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MZ;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Mazookie, LLC";
 				TargetAttributes = {
 					13785DBA15D5385F00D9D1D3 = {
@@ -145,10 +145,11 @@
 			};
 			buildConfigurationList = 13785DB515D5385F00D9D1D3 /* Build configuration list for PBXProject "VistaClockLoginHelper" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 13785DB015D5385F00D9D1D3;
 			productRefGroup = 13785DBC15D5385F00D9D1D3 /* Products */;
@@ -206,7 +207,7 @@
 		13785DD415D5385F00D9D1D3 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				13785DD515D5385F00D9D1D3 /* en */,
+				1333123122DA917400D21E7B /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -313,6 +314,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6DK6LM2ETN;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClockLoginHelper/VistaClockLoginHelper-Prefix.pch";
 				INFOPLIST_FILE = "VistaClockLoginHelper/VistaClockLoginHelper-Info.plist";
@@ -335,6 +337,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6DK6LM2ETN;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VistaClockLoginHelper/VistaClockLoginHelper-Prefix.pch";
 				INFOPLIST_FILE = "VistaClockLoginHelper/VistaClockLoginHelper-Info.plist";

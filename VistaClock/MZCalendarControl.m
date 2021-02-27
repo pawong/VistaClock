@@ -6,7 +6,6 @@
 #define MZINDICATOR_Y_OFFSET                    5.0
 #define NUMBER_OF_ROWS                          8
 
-
 #define MZMONTH_VIEW_DAYS                       42
 
 static NSImage* _gCalendarBackground_ = nil;
@@ -651,7 +650,11 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
             );
 
             //[self drawBox:tRect isRounded:FALSE];
-        	if (i==1)
+            if (i==0)
+            {
+                // pass
+            }
+        	else if (i==1)
         	{
             	tString = @"cw";
             	[tString drawAtPoint:NSMakePoint(NSMinX(tRect)
