@@ -17,12 +17,12 @@
             <connections>
                 <outlet property="altcal" destination="voP-wI-1NQ" id="nho-BC-Qjq"/>
                 <outlet property="autoHideMenuItem" destination="CWE-C3-Ay5" id="GNt-0i-0VM"/>
-                <outlet property="calendar" destination="VjI-6X-CtF" id="P6v-AE-GMn"/>
                 <outlet property="clockArrayController" destination="n32-YG-z2q" id="ZrS-BT-nJj"/>
                 <outlet property="clockCollectionView" destination="LE1-6V-Mkx" id="WHX-UI-SHT"/>
                 <outlet property="clockScrollView" destination="FM0-Ss-wrg" id="bcU-gq-8kU"/>
                 <outlet property="dayDetailLabel" destination="QAW-Qv-GMR" id="CwM-35-1jF"/>
                 <outlet property="gotoDateField" destination="FDH-Dv-cZw" id="Lyv-cf-qXI"/>
+                <outlet property="mainCalendar" destination="VjI-6X-CtF" id="P6v-AE-GMn"/>
                 <outlet property="statusMenu" destination="XSr-wM-FQN" id="Ijs-x2-yPY"/>
                 <outlet property="timeNow" destination="umV-W3-GU5" id="gg3-AF-MbB"/>
                 <outlet property="titleLabel" destination="sb8-kn-hmr" id="WY1-4F-Dc0"/>

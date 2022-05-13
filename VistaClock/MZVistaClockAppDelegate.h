@@ -52,7 +52,7 @@
 	NSMutableArray* clockCollectionArray;
     
     // calendar
-    IBOutlet MZCalendarControl* calendar;
+    IBOutlet MZCalendarControl* mainCalendar;
     IBOutlet NSScrollView* clockScrollView;
     IBOutlet NSDatePicker* altcal;
     

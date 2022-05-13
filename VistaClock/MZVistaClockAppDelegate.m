@@ -366,15 +366,15 @@
         {
             if ([lastCal compare:@"gregorian"] == NSOrderedSame || [lastCal compare:@"iso8601"] == NSOrderedSame)
             {
-                [calendar setHidden:false];
+                [mainCalendar setHidden:false];
                 [altcal setHidden:true];
-                [calendar setDate:[calendar getDate]];
+                [mainCalendar setDate:[mainCalendar getDate]];
                 [toolBarMenuItem setEnabled:YES];
             }
             else
             {
                 [altcal setHidden:false];
-                [calendar setHidden:true];
+                [mainCalendar setHidden:true];
                 [altcal setDateValue:now];
                 // toolbar is only enabled if gregorian calendar is showing
                 if (showToolbar == TRUE)
@@ -390,14 +390,14 @@
             != NSOrderedSame)
         {
             lastDate = [[NSDate getDateNSDate:now] copy];
-            [calendar setDate:lastDate];
+            [mainCalendar setDate:lastDate];
         }
     }
     
     // update day details
     if ([_vistaClockWindow isVisible] && showToolbar)
     {
-        NSDate* selectedDate = [calendar getDate];
+        NSDate* selectedDate = [mainCalendar getDate];
         NSTimeInterval secondsBetween = [selectedDate timeIntervalSinceDate:[NSDate getDateNSDate:now]];
         
         [dayDetailLabel setStringValue:[[NSString alloc] initWithFormat:@"%@ / %ld"
@@ -641,46 +641,46 @@
     [self setAutoHideMenutItem];
     
     // show week numbers on calendar
-    [calendar setShowWeekNumbers:settings.showWeekNumbers];
+    [mainCalendar setShowWeekNumbers:settings.showWeekNumbers];
     
     // show boxes on calendar
-    [calendar setShowBoxes:settings.showCalendarBoxes];
+    [mainCalendar setShowBoxes:settings.showCalendarBoxes];
 
     // use red to highlight dates?
     if (settings.useHiliteColor)
     {
-        [calendar setHiliteColor:[NSColor redColor]];
+        [mainCalendar setHiliteColor:[NSColor redColor]];
     }
     else
     {
         if (@available(macOS 10.14, *)) {
-            [calendar setHiliteColor:[NSColor controlAccentColor]];
+            [mainCalendar setHiliteColor:[NSColor controlAccentColor]];
         } else {
             // Fallback on earlier versions
-            [calendar setHiliteColor:[NSColor selectedMenuItemColor]];
+            [mainCalendar setHiliteColor:[NSColor selectedMenuItemColor]];
         }
     }
     
     // show calendar event indicator
-    [calendar setShowEventIndicators:settings.showEvents];
+    [mainCalendar setShowEventIndicators:settings.showEvents];
     
     // show calendar reminder indicator
-    [calendar setShowReminderIndicators:settings.showReminders];
+    [mainCalendar setShowReminderIndicators:settings.showReminders];
     
     // set theme elements
     // Font Shadow this code should move into calendar at some point
     NSShadow* shadow = [[NSShadow alloc] init];
     [shadow setShadowOffset:NSMakeSize( 1, 1 )];
     [shadow setShadowBlurRadius:1.5];
-    [calendar setUseShadow:settings.useShadows];
+    [mainCalendar setUseShadow:settings.useShadows];
 
     if (settings.useLargeFonts)
     {
-        [calendar setFontSize:[NSFont systemFontSize]+2];
+        [mainCalendar setFontSize:[NSFont systemFontSize]+2];
     }
     else
     {
-        [calendar setFontSize:[NSFont systemFontSize]];
+        [mainCalendar setFontSize:[NSFont systemFontSize]];
     }
 
     // toolbar is only enabled if calendar is showing
@@ -753,7 +753,7 @@
     // clocks only
     if (!settings.showCalendar && [settings.clockConfigs count] > 0)
     {
-        [calendar setHidden:TRUE];
+        [mainCalendar setHidden:TRUE];
         [altcal setHidden:TRUE];
         clockOrigin = NSMakePoint(8, 8);
         windowWidth = 16;
@@ -762,12 +762,12 @@
     {
         if ([lastCal compare:@"gregorian"] == NSOrderedSame || [lastCal compare:@"iso8601"] == NSOrderedSame)
         {
-            [calendar setHidden:FALSE];
+            [mainCalendar setHidden:FALSE];
             [altcal setHidden:TRUE];
         }
         else
         {
-            [calendar setHidden:TRUE];
+            [mainCalendar setHidden:TRUE];
             [altcal setHidden:FALSE];
         }
 
@@ -789,7 +789,7 @@
 
     [clockScrollView setFrameOrigin:clockOrigin];
     [clockScrollView setFrameSize:NSMakeSize(clockWidth, CLOCK_HEIGHT)];
-    [calendar setFrameOrigin:NSMakePoint(8,8)];
+    [mainCalendar setFrameOrigin:NSMakePoint(8,8)];
 
     //NSLog(@"Window Frame:   (%4.0f,%4.0f)(%4.0f,%4.0f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
 } // end of resizeWindow
@@ -1011,7 +1011,7 @@
 -(IBAction) gotoDate:(id)sender
 {
     MZDateCalc* calc = [MZDateCalc alloc];
-    [calc setCalendar:calendar];
+    [calc setCalendar:mainCalendar];
     
     NSArray* strings = [[gotoDateField stringValue] componentsSeparatedByString:@","];
 
@@ -1044,7 +1044,7 @@
 -(IBAction) goToday:(id)sender
 {
     [gotoDateField setStringValue:@""];
-    [calendar setDate:[NSDate getDateNSDate:[NSDate date]]];
+    [mainCalendar setDate:[NSDate getDateNSDate:[NSDate date]]];
 } // end of goToday
 
 
