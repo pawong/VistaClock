@@ -36,11 +36,11 @@ Features:
 
 **Bugs and requests?**  Please use the project's [issue tracker].
 
-[![Issues](http://img.shields.io/github/issues/pawong/VistaClock.svg)](https://github.com/pawong/VistaClock/issues)
+[![Issues](http://img.shields.io/github/issues/pawong/VistaClock.svg?style=plastic&logo=github)](https://github.com/pawong/VistaClock/issues)
 
 **Want to contribute?**  Please fork this repository and open a pull request with your new changes.
 
-[![Pull requests](http://img.shields.io/github/issues-pr/pawong/VistaClock.svg?maxAge=3600)](https://github.com/pawong/VistaClock/pulls)
+[![Pull requests](http://img.shields.io/github/issues-pr/pawong/VistaClock.svg?maxAge=3600&style=plastic&logo=github)](https://github.com/pawong/VistaClock/pulls)
 
 **Do you like it?**  Support the project by starring the repository or [tweet] about it.
 
