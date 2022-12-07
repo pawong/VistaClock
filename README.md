@@ -45,7 +45,7 @@ Features:
 **Do you like it?**  Support the project by starring the repository or [tweet] about it.
 
 ## Thanks for looking!
-*If you like what you see* [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/pawong)
+*If you like what you see* [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/pawong) or don't. ```¯\_(ツ)_/¯```
 
 **NextEvent** © 2022, Mazookie, LLC. Released under the [MIT License](LICENSE).
 
