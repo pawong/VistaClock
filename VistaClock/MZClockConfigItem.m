@@ -1,9 +1,14 @@
+#if !defined(__aarch64__)
+#error "This application is supported only on Apple Silicon (arm64)."
+#endif
+
+#if defined(__aarch64__)
 //
 //  MZClockConfigItem.m
 //  VistaClock
 //
 //  Created by Paul Wong on 5/27/14.
-//  Copyright (c) 2014 Mazookie, LLC. All rights reserved.
+//  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
 //
 
 #import "MZClockConfigItem.h"
@@ -38,3 +43,5 @@
 
 
 @end
+#endif // defined(__aarch64__)
+

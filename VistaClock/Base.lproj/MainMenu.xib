@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24765" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24765"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,12 +29,12 @@
                 <outlet property="vistaClockWindow" destination="QvC-M9-y7g" id="gGz-wa-Rv1"/>
             </connections>
         </customObject>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" visibleAtLaunch="NO" animationBehavior="default" toolbarStyle="expanded" id="QvC-M9-y7g">
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" visibleAtLaunch="NO" animationBehavior="default" toolbarStyle="expanded" titleVisibility="hidden" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES"/>
             <windowPositionMask key="initialPositionMask" rightStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="1600" y="1080" width="452" height="230"/>
-            <rect key="screenRect" x="-465" y="1120" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3360" height="1387"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="452" height="230"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,7 +62,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="146" height="214"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <collectionView focusRingType="none" selectable="YES" maxNumberOfRows="1" id="LE1-6V-Mkx">
+                                <collectionView focusRingType="none" maxNumberOfRows="1" selectable="YES" id="LE1-6V-Mkx">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="214"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <color key="primaryBackgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
@@ -86,7 +85,7 @@
                     </scrollView>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="78A04876-2974-434A-8C18-5CAF87815D3E" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="small" id="WER-07-xrf">
+            <toolbar key="toolbar" implicitIdentifier="78A04876-2974-434A-8C18-5CAF87815D3E" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="WER-07-xrf">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="A2A8BD18-00AA-4181-A180-A86E4E8EE92D" explicitItemIdentifier="DateBoxID" label="DateBox" paletteLabel="DateBox" selectable="YES" id="m9W-ps-O7f">
                         <nil key="toolTip"/>
@@ -116,7 +115,7 @@
                             <rect key="frame" x="0.0" y="14" width="104" height="18"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" allowsUndo="NO" focusRingType="none" usesSingleLineMode="YES" id="4us-hk-hQK">
-                                <font key="font" metaFont="label" size="14"/>
+                                <font key="font" metaFont="systemSemibold" size="13"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -140,11 +139,11 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="4DE49B54-66A2-4CCF-B7E9-25E912A035DD" explicitItemIdentifier="DateDetailsID" label="DateDetails" paletteLabel="DateDetails" id="aG2-xa-REO">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="90" height="20"/>
+                        <size key="minSize" width="90" height="12"/>
                         <size key="maxSize" width="180" height="25"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="QAW-Qv-GMR">
+                        <textField key="view" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="QAW-Qv-GMR">
                             <rect key="frame" x="0.0" y="14" width="114" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="Cwx-dW-ET7">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -162,7 +161,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" image="mazookie_gear" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyUpOrDown" inset="2" pullsDown="YES" autoenablesItems="NO" id="m7E-O2-HyH">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
+                                <font key="font" metaFont="message"/>
                                 <menu key="menu" title="OtherViews" autoenablesItems="NO" id="r1Z-vr-xjR">
                                     <items>
                                         <menuItem state="on" image="mazookie_gear" hidden="YES" enabled="NO" id="tmt-GY-gXh"/>
@@ -227,7 +226,7 @@
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="Tzp-WP-9Xo"/>
                 <outlet property="initialFirstResponder" destination="FDH-Dv-cZw" id="TpK-jj-V8q"/>
             </connections>
-            <point key="canvasLocation" x="-72" y="33"/>
+            <point key="canvasLocation" x="-27" y="6"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="DgO-bJ-VFY"/>
         <menu id="XSr-wM-FQN" userLabel="StatusItemMenu">

@@ -3,10 +3,13 @@
 //  VistaClock
 //
 //  Created by Paul Wong on 9/12/14.
-//  Copyright (c) 2014 Mazookie, LLC. All rights reserved.
+//  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
 //
 
 #import "MZVistaClockPreferences.h"
+#import <ServiceManagement/ServiceManagement.h>
+#import <ServiceManagement/SMAppService.h>
+#import "VistaClock-Swift.h"
 
 @implementation MZVistaClockPreferences
 
@@ -83,16 +86,16 @@
 	[clockConfigController insertObject:
         [NSDictionary dictionaryWithObjectsAndKeys:titleField.stringValue, @"Name"
         , [timezones objectForKey:[timezoneButton titleOfSelectedItem]], @"Timezone"
-        , (([secondsCheckbox state] == NSOnState) ? @"YES" : @"NO"), @"Seconds", nil]
+         , (([secondsCheckbox state] == NSControlStateValueOn) ? @"YES" : @"NO"), @"Seconds", nil]
         atArrangedObjectIndex:index];
     MZClockConfigItem* item = (MZClockConfigItem*)[clockConfigView itemAtIndex:index];
     
     [item.titleConfigLabel setStringValue:titleField.stringValue];
     [item.timezoneConfigLabel setStringValue:[timezones objectForKey:[timezoneButton titleOfSelectedItem]]];
-    item.useSecond = ([secondsCheckbox state] == NSOnState);
+    item.useSecond = ([secondsCheckbox state] == NSControlStateValueOn);
     
     // added so now turn off seconds by default
-    [secondsCheckbox setState:NSOffState];
+    [secondsCheckbox setState:NSControlStateValueOff];
     
     [self updateSettings:nil];
 } // end addClockConfig
@@ -325,45 +328,45 @@
 -(IBAction) updateSettings:(id)sender
 {
     // general settings
-    settings.useAutoLaunch = ([useAutoLaunchCB state] == NSOnState)?YES:NO;
-    settings.useAutoHide = ([useAutoHideCB state] == NSOnState)?YES:NO;
-    settings.useKeepTop = ([useKeepTopCB state] == NSOnState)?YES:NO;
-    settings.useShadows = ([useShadowsCB state] == NSOnState)?YES:NO;
-    settings.useLargeFonts = ([useLargeFontsCB state] == NSOnState)?YES:NO;
-    settings.showDockIcon = ([showDockIconCB state] == NSOnState)?YES:NO;
+    settings.useAutoLaunch = ([useAutoLaunchCB state] == NSControlStateValueOn)?YES:NO;
+    settings.useAutoHide = ([useAutoHideCB state] == NSControlStateValueOn)?YES:NO;
+    settings.useKeepTop = ([useKeepTopCB state] == NSControlStateValueOn)?YES:NO;
+    settings.useShadows = ([useShadowsCB state] == NSControlStateValueOn)?YES:NO;
+    settings.useLargeFonts = ([useLargeFontsCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showDockIcon = ([showDockIconCB state] == NSControlStateValueOn)?YES:NO;
 
-    settings.showDateTime = ([showDateTimeCB state] == NSOnState)?YES:NO;
-    settings.useBWIcon = ([useBWIconCB state] == NSOnState)?YES:NO;
-    settings.showWeekNumberIcon = ([showWeekNumberIconCB state] == NSOnState)?YES:NO;
-    settings.useBWWeekIcon = ([useBWWeekIconCB state] == NSOnState)?YES:NO;
-    settings.useInverseTitle = ([useInverseTitleCB state] == NSOnState)?YES:NO;
-    settings.useFuzzyTime = ([useFuzzyTimeCB state] == NSOnState)?YES:NO;
+    settings.showDateTime = ([showDateTimeCB state] == NSControlStateValueOn)?YES:NO;
+    settings.useBWIcon = ([useBWIconCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showWeekNumberIcon = ([showWeekNumberIconCB state] == NSControlStateValueOn)?YES:NO;
+    settings.useBWWeekIcon = ([useBWWeekIconCB state] == NSControlStateValueOn)?YES:NO;
+    settings.useInverseTitle = ([useInverseTitleCB state] == NSControlStateValueOn)?YES:NO;
+    settings.useFuzzyTime = ([useFuzzyTimeCB state] == NSControlStateValueOn)?YES:NO;
 
-    settings.showDate = ([showDateCB state] == NSOnState)?YES:NO;
-    settings.showMonth = ([showMonthCB state] == NSOnState)?YES:NO;
-    settings.showStatusFullMonth = ([showStatusFullMonthCB state] == NSOnState)?YES:NO;
-    settings.showStatusWeekDay = ([showStatusWeekDayCB state] == NSOnState)?YES:NO;
+    settings.showDate = ([showDateCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showMonth = ([showMonthCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showStatusFullMonth = ([showStatusFullMonthCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showStatusWeekDay = ([showStatusWeekDayCB state] == NSControlStateValueOn)?YES:NO;
 
-    settings.showTime = ([showTimeCB state] == NSOnState)?YES:NO;
-    settings.showStatusSeconds = ([showStatusSecondsCB state] == NSOnState)?YES:NO;
-    settings.useStatusMilitary = ([useStatusMilitaryCB state] == NSOnState)?YES:NO;
-    settings.showStatusAMPM = ([showStatusAMPMCB state] == NSOnState)?YES:NO;
+    settings.showTime = ([showTimeCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showStatusSeconds = ([showStatusSecondsCB state] == NSControlStateValueOn)?YES:NO;
+    settings.useStatusMilitary = ([useStatusMilitaryCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showStatusAMPM = ([showStatusAMPMCB state] == NSControlStateValueOn)?YES:NO;
 
-    settings.showStatusSecondaryTime = ([showStatusSecondaryTimeCB state] == NSOnState)?YES:NO;
+    settings.showStatusSecondaryTime = ([showStatusSecondaryTimeCB state] == NSControlStateValueOn)?YES:NO;
     settings.statusSecondaryTimezone = [timezones objectForKey:[statusTimezoneButton titleOfSelectedItem]];
 
 
     // clock settings
-    settings.useMilitary = ([useMilitaryCB state] == NSOnState)?YES:NO;
+    settings.useMilitary = ([useMilitaryCB state] == NSControlStateValueOn)?YES:NO;
     settings.clockFaceName = [clockFaceArray objectAtIndex:clockFaceIndex];
     
     // calendar settings
-    settings.showCalendar = ([showCalendarCB state] == NSOnState)?YES:NO;
-    settings.showWeekNumbers = ([showWeekNumbersCB state] == NSOnState)?YES:NO;
-    settings.showEvents = ([showEventsCB state] == NSOnState)?YES:NO;
-    settings.showReminders = ([showRemindersCB state] == NSOnState)?YES:NO;
-    settings.showCalendarBoxes = ([showCalendarBoxesCB state] == NSOnState)?YES:NO;
-    settings.useHiliteColor = ([useHiliteColorCB state] == NSOnState)?YES:NO;
+    settings.showCalendar = ([showCalendarCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showWeekNumbers = ([showWeekNumbersCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showEvents = ([showEventsCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showReminders = ([showRemindersCB state] == NSControlStateValueOn)?YES:NO;
+    settings.showCalendarBoxes = ([showCalendarBoxesCB state] == NSControlStateValueOn)?YES:NO;
+    settings.useHiliteColor = ([useHiliteColorCB state] == NSControlStateValueOn)?YES:NO;
 
     // enable options
     [self setEnabledItems];
@@ -518,15 +521,42 @@
     if (status != noErr) {
         NSLog(@"Failed to LSRegisterURL '%@': %jd", helperURL, (intmax_t)status);
     }
-    if (mode == NSOnState)
-    { 	// ON
-    	// Turn on launch at login
-        SMLoginItemSetEnabled((CFStringRef)@"com.Mazookie.VistaClockLoginHelper", YES);
-    }
-    else
-    { 	// OFF
-        // Turn off launch at login
-       	SMLoginItemSetEnabled((CFStringRef)@"com.Mazookie.VistaClockLoginHelper", NO);
+    if (@available(macOS 13.0, *)) {
+        // Prefer SMAppService on macOS 13+
+        NSError *error = nil;
+        static NSString * const kLoginItemIdentifier = @"com.Mazookie.VistaClockLoginHelper";
+
+        SMAppService *loginItemService = [SMAppService loginItemServiceWithIdentifier:kLoginItemIdentifier];
+        SMAppServiceStatus currentStatus = loginItemService.status;
+        if (mode == NSControlStateValueOn) {
+            if (currentStatus != SMAppServiceStatusEnabled) {
+                if (![loginItemService registerAndReturnError:&error]) {
+                    NSLog(@"Failed to enable login item: %@", error);
+                }
+            }
+        } else {
+            if (currentStatus == SMAppServiceStatusEnabled) {
+                if (![loginItemService unregisterAndReturnError:&error]) {
+                    NSLog(@"Failed to disable login item: %@", error);
+                }
+            }
+        }
+    } else {
+#if !__has_feature(attribute_availability_macOS_app_extension)
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        // Fallback for macOS versions prior to 13.0 using SMLoginItemSetEnabled
+        CFStringRef identifier = CFSTR("com.Mazookie.VistaClockLoginHelper");
+        if (mode == NSControlStateValueOn) {
+            SMLoginItemSetEnabled(identifier, YES);
+        } else {
+            SMLoginItemSetEnabled(identifier, NO);
+        }
+    #pragma clang diagnostic pop
+#else
+        // In app extensions, login item management is unavailable prior to macOS 13
+        (void)mode;
+#endif
     }
 } // end of toggleLaunchAtLogin
 
@@ -565,3 +595,8 @@
 }
 */
 @end
+
+
+
+
+

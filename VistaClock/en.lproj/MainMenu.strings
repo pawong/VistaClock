@@ -1,0 +1,69 @@
+
+/* Class = "NSToolbarItem"; paletteLabel = "GotoToday"; ObjectID = "6FB-z6-WbR"; */
+"6FB-z6-WbR.paletteLabel" = "GotoToday";
+
+/* Class = "NSMenuItem"; title = "Help..."; ObjectID = "7C8-DM-V5a"; */
+"7C8-DM-V5a.title" = "Help...";
+
+/* Class = "NSMenuItem"; title = "Pin to Desktop"; ObjectID = "CWE-C3-Ay5"; */
+"CWE-C3-Ay5.title" = "Pin to Desktop";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "HDk-XD-tQi"; */
+"HDk-XD-tQi.title" = "Quit";
+
+/* Class = "NSMenuItem"; title = "Launch Calendar"; ObjectID = "IZT-di-FN1"; */
+"IZT-di-FN1.title" = "Launch Calendar";
+
+/* Class = "NSToolbarItem"; label = "Title"; ObjectID = "P7Z-lk-nDU"; */
+"P7Z-lk-nDU.label" = "Title";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Title"; ObjectID = "P7Z-lk-nDU"; */
+"P7Z-lk-nDU.paletteLabel" = "Title";
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "RWT-xR-hd4"; */
+"RWT-xR-hd4.title" = "Quit";
+
+/* Class = "NSToolbarItem"; label = "Settings"; ObjectID = "ZjE-v3-8gJ"; */
+"ZjE-v3-8gJ.label" = "Settings";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Settings"; ObjectID = "ZjE-v3-8gJ"; */
+"ZjE-v3-8gJ.paletteLabel" = "Settings";
+
+/* Class = "NSToolbarItem"; label = "DateDetails"; ObjectID = "aG2-xa-REO"; */
+"aG2-xa-REO.label" = "DateDetails";
+
+/* Class = "NSToolbarItem"; paletteLabel = "DateDetails"; ObjectID = "aG2-xa-REO"; */
+"aG2-xa-REO.paletteLabel" = "DateDetails";
+
+/* Class = "NSMenuItem"; title = "About"; ObjectID = "fFX-OE-me3"; */
+"fFX-OE-me3.title" = "About";
+
+/* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "lil-8S-hR0"; */
+"lil-8S-hR0.title" = "Preferences...";
+
+/* Class = "NSToolbarItem"; label = "DateBox"; ObjectID = "m9W-ps-O7f"; */
+"m9W-ps-O7f.label" = "DateBox";
+
+/* Class = "NSToolbarItem"; paletteLabel = "DateBox"; ObjectID = "m9W-ps-O7f"; */
+"m9W-ps-O7f.paletteLabel" = "DateBox";
+
+/* Class = "NSMenuItem"; title = "Show Toolbar"; ObjectID = "mmw-vF-IrW"; */
+"mmw-vF-IrW.title" = "Show Toolbar";
+
+/* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "nIr-GR-sI3"; */
+"nIr-GR-sI3.title" = "Preferences...";
+
+/* Class = "NSMenuItem"; title = "Date & Time Preferences..."; ObjectID = "qTD-JZ-Fq2"; */
+"qTD-JZ-Fq2.title" = "Date & Time Preferences...";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "r1Z-vr-xjR"; */
+"r1Z-vr-xjR.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "Date & Time Preferences..."; ObjectID = "sHG-fL-zYi"; */
+"sHG-fL-zYi.title" = "Date & Time Preferences...";
+
+/* Class = "NSMenuItem"; title = "TimeNow"; ObjectID = "umV-W3-GU5"; */
+"umV-W3-GU5.title" = "TimeNow";
+
+/* Class = "NSMenuItem"; title = "Launch Reminders"; ObjectID = "yfm-BH-ZgX"; */
+"yfm-BH-ZgX.title" = "Launch Reminders";

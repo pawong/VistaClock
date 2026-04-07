@@ -28,16 +28,33 @@
     return self;
 }
 
--(void) rightMouseDown:(NSEvent *)event 
+- (void)rightMouseDown:(NSEvent *)event 
 {
-    [[self menu] setDelegate:(id <NSMenuDelegate>)self];
-    [statusItem popUpStatusItemMenu:[self menu]];
-    [self setNeedsDisplay:YES];
+    if ([self menu]) {
+        NSRect statusItemFrame = [self.window convertRectToScreen:self.frame];
+        // Try to center the menu under the status item (horizontal positioning)
+        CGFloat menuX = NSMidX(statusItemFrame) - 150; // Approximate center offset (tweak as needed)
+        if (menuX < 0) menuX = 0;
+        NSPoint menuOrigin = NSMakePoint(menuX, NSMinY(statusItemFrame) - 2);
+        NSEvent *menuEvent = [NSEvent mouseEventWithType:NSEventTypeRightMouseDown
+                                                location:menuOrigin
+                                           modifierFlags:0
+                                               timestamp:0
+                                            windowNumber:self.window.windowNumber
+                                                 context:nil
+                                             eventNumber:0
+                                              clickCount:1
+                                                pressure:1];
+        [NSMenu popUpContextMenu:self.menu withEvent:menuEvent forView:self];
+    }
 }
 
--(void) mouseDown:(NSEvent *)event 
+- (void)mouseDown:(NSEvent *)event 
 {
-    [NSApp sendAction:self.action to:self.target from:self];
+    // Only perform the action on left-click
+    if ((event.type == NSEventTypeLeftMouseDown) && self.target && self.action) {
+        [NSApp sendAction:self.action to:self.target from:self];
+    }
 }
 
 -(void) menuWillOpen:(NSMenu *)menu 
@@ -60,7 +77,7 @@
     if (isMenuVisible)
     {
         foregroundColor = [NSColor whiteColor];
-        backgroundColor = [NSColor selectedMenuItemColor];
+        backgroundColor = [NSColor highlightColor];
     }
     else
     {
@@ -251,7 +268,21 @@
 -(void) drawRect:(NSRect)rect 
 {
     // Draw status bar background, highlighted if menu is showing
-    [statusItem drawStatusBarBackgroundInRect:[self bounds] withHighlight:isMenuVisible];
+    // Avoid deprecated drawStatusBarBackgroundInRect:withHighlight:. When using the modern
+    // NSStatusBarButton, the system handles highlight drawing automatically. If this custom
+    // view is still used as a fallback, draw a minimal highlight using system colors.
+    if ([statusItem respondsToSelector:@selector(button)] && [statusItem button] != nil) {
+    	// Nothing to do: background/highlight handled by NSStatusBarButton.
+    } else {
+    	// Fallback background for legacy custom view usage.
+    	[[NSColor clearColor] setFill];
+    	NSRectFill([self bounds]);
+    	if (isMenuVisible) {
+    		[[NSColor controlAccentColor] setFill];
+    		NSBezierPath* highlightPath = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect([self bounds], 1, 1) xRadius:3 yRadius:3];
+    		[highlightPath fill];
+    	}
+    }
 
     // set text origin
     NSPoint textOrigin = NSMakePoint(StatusItemViewPaddingWidth, StatusItemViewPaddingHeight);
@@ -263,7 +294,7 @@
         NSRect newRect = NSMakeRect(textOrigin.x-2, textOrigin.y-1, titleRect.size.width+4, titleRect.size.height-2);
         [NSBezierPath setDefaultLineWidth:1.0];
         NSBezierPath* path = [NSBezierPath bezierPathWithRoundedRect:newRect xRadius:2.0 yRadius:2.0];
-        [path setLineJoinStyle:NSRoundLineJoinStyle];
+        [path setLineJoinStyle:NSLineJoinStyleRound];
         [[NSColor textColor] set];
         [path fill];
     }
@@ -301,6 +332,13 @@
 } // end of setInverseColors
 
 @end
+
+
+
+
+
+
+
 
 
 

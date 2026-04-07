@@ -1,9 +1,14 @@
+#if !defined(__aarch64__)
+#error "This application is supported only on Apple Silicon (arm64)."
+#endif
+
+#if defined(__aarch64__)
 //
 //  MZAboutBox.m
 //  NCal
 //
 //  Created by Paul Wong on 4/10/16.
-//  Copyright © 2016 Mazookie, LLC. All rights reserved.
+//  Copyright © 2026 Mazookie, LLC. All rights reserved.
 //
 
 #import "MZAboutBox.h"
@@ -91,3 +96,5 @@
 } // end of setMacId
 
 @end
+#endif // defined(__aarch64__)
+

@@ -45,10 +45,10 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     fontSize = 13;
     [self setStyle];
 
-    hiliteColor = [NSColor selectedMenuItemColor];
+    hiliteColor = [NSColor highlightColor];
         
     store = [[EKEventStore alloc] init];
-    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+    [store requestFullAccessToEventsWithCompletion:^(BOOL granted, NSError *error) {
         if (granted) {
             [[NSNotificationCenter defaultCenter] addObserver:self
                 selector:@selector(calendarsChanged:)
@@ -56,7 +56,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
             object:nil];
         }
     }];
-    [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {
+    [store requestFullAccessToRemindersWithCompletion:^(BOOL granted, NSError *error) {
         if (granted) {
             [[NSNotificationCenter defaultCenter] addObserver:self
                 selector:@selector(tasksChanged:)
@@ -399,7 +399,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
     else
         path = [NSBezierPath bezierPathWithRect:rectangle];
     [color set];
-    [path setLineJoinStyle:NSRoundLineJoinStyle];
+    [path setLineJoinStyle:NSLineJoinStyleRound];
     [path stroke];
 } // end drawBox
 
@@ -434,7 +434,7 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
         NSBezierPath* path = [NSBezierPath bezierPathWithRoundedRect:tRect
             xRadius:5.0 yRadius:5.0];
         
-        [path setLineJoinStyle:NSRoundLineJoinStyle];
+        [path setLineJoinStyle:NSLineJoinStyleRound];
         [hiliteColor set];
         [path fill];
 
@@ -760,14 +760,27 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 
 -(void) rightMouseDown:(NSEvent *)theEvent
 {
-	// if control key pressed
+    NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+    NSWorkspaceOpenConfiguration *config = [NSWorkspaceOpenConfiguration configuration];
+
+    NSURL *appURL = nil;
     if (theEvent.modifierFlags & NSEventModifierFlagControl)
     {
-       	[[NSWorkspace sharedWorkspace] launchApplication:@"Reminders"]; 
+        // Open Reminders.app
+        appURL = [NSURL fileURLWithPath:@"/System/Applications/Reminders.app"]; // standard location on modern macOS
     }
     else
     {
-		[[NSWorkspace sharedWorkspace] launchApplication:@"iCal"];
+        // Open Calendar.app (formerly iCal)
+        appURL = [NSURL fileURLWithPath:@"/System/Applications/Calendar.app"]; // standard location on modern macOS
+    }
+
+    if (appURL != nil) {
+        [workspace openApplicationAtURL:appURL configuration:config completionHandler:^(NSRunningApplication * _Nullable app, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Failed to open application at %@: %@", appURL, error);
+            }
+        }];
     }
 } // end rightMouseDown
 
@@ -867,3 +880,4 @@ static int numberOfDayInMonthForYear(int aMonth, int aYear)
 } // end of getCurrentCalendar
 
 @end // end MZCalendarControl
+

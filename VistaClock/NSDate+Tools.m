@@ -1,9 +1,14 @@
+#if !defined(__aarch64__)
+#error "This application is supported only on Apple Silicon (arm64)."
+#endif
+
+#if defined(__aarch64__)
 //
-//  NSDate+Tools.m
-//
-//  Created by Paul Wong on 1/22/12.
-//  Copyright (c) 2012 Mazookie, LLC. All rights reserved.
-//
+/* 
+  NSDate+Tools.m
+  Created by Paul Wong on 1/22/12.
+  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
+*/
 
 #import "NSDate+Tools.h"
 
@@ -269,3 +274,5 @@
     return retval;
 }
 @end
+#endif // defined(__aarch64__)
+

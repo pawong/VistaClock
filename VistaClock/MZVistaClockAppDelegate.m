@@ -1,12 +1,21 @@
+#if !defined(__aarch64__)
+#error "This application is supported only on Apple Silicon (arm64)."
+#endif
+
+#if defined(__aarch64__)
 //
-//  MZVistaClockAppDelegate.m
-//  VistaClock
-//
-//  Created by Paul Wong on 9/5/14.
-//  Copyright (c) 2014 Mazookie, LLC. All rights reserved.
-//
+ //  MZVistaClockAppDelegate.m
+ //  VistaClock
+ //
+ //  Created by Paul Wong on 9/5/14.
+ //  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
+ //
 
 #import "MZVistaClockAppDelegate.h"
+
+
+// Removed MZStatusBarButton subclass since no longer needed for right-click handling.
+
 
 @implementation MZVistaClockAppDelegate
 
@@ -15,6 +24,31 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    // Validate MainMenu.xib outlet connections (non-fatal warnings)
+    #define LOG_OUTLET_WARNING(name) if (!(name)) { NSLog(@"[MainMenu] WARNING: Outlet '%s' is not connected in MainMenu.xib", #name); }
+    LOG_OUTLET_WARNING(_vistaClockWindow);
+    LOG_OUTLET_WARNING(statusMenu);
+    LOG_OUTLET_WARNING(clockCollectionView);
+    LOG_OUTLET_WARNING(clockArrayController);
+    LOG_OUTLET_WARNING(mainCalendar);
+    LOG_OUTLET_WARNING(clockScrollView);
+    LOG_OUTLET_WARNING(altcal);
+    LOG_OUTLET_WARNING(titleLabel);
+    LOG_OUTLET_WARNING(gotoDateField);
+    LOG_OUTLET_WARNING(dayDetailLabel);
+    LOG_OUTLET_WARNING(toolBarMenuItem);
+    LOG_OUTLET_WARNING(autoHideMenuItem);
+    LOG_OUTLET_WARNING(_timeNow);
+    
+    // Ensure these views use frames, not Auto Layout constraints
+    [clockScrollView setTranslatesAutoresizingMaskIntoConstraints:YES];
+    [mainCalendar setTranslatesAutoresizingMaskIntoConstraints:YES];
+    [clockCollectionView setTranslatesAutoresizingMaskIntoConstraints:YES];
+    [altcal setTranslatesAutoresizingMaskIntoConstraints:YES];
+    [titleLabel setTranslatesAutoresizingMaskIntoConstraints:YES];
+    [gotoDateField setTranslatesAutoresizingMaskIntoConstraints:YES];
+    [dayDetailLabel setTranslatesAutoresizingMaskIntoConstraints:YES];
+    
     // get settings first thing
     settings = [VCSettings sharedSettings];
     
@@ -65,26 +99,23 @@
     // set status item to the right.
     [self createStatusItem];
     
-    statusItemView = [[MZStatusItemView alloc] init];
-    [statusItemView setMenu:statusMenu];
-    
-    statusItemView.statusItem = statusItem;
-    statusItemView.target = self;
-    statusItemView.action = @selector(toggleVistaClockWindow:);
-    [statusItem setView:statusItemView];
+    // Use NSStatusBarButton directly instead of custom statusItemView
+    NSStatusBarButton *button = statusItem.button;
+    button.target = self;
+    button.action = @selector(statusItemButtonClicked:);
+    // Add right-click (secondary click) handling to the button:
+    [button sendActionOn:NSEventMaskLeftMouseUp | NSEventMaskRightMouseUp];
+    // Do NOT assign statusItem.button.menu to allow manual right-click handling
 
     // get the date
     lastDate = [[NSDate getDateNSDate:[NSDate date]] copy];
 
     // dark menu, init
     darkMenu = FALSE;
-
-    // report home
-    MZPoster* report = [[MZPoster alloc] init];
+    
     // add clock info for the Princess Kendellyn
     NSMutableDictionary* addDict = [NSMutableDictionary new];
     [addDict setObject:settings.clockFaceName forKey:@"clock_face_name"];
-    [report sendPost:addDict];
 
     // launch the timer last
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(fireTimer:)
@@ -119,14 +150,7 @@
     {
         lastWeek = -1; // force redraw
         darkMenu = [self isDarkMenu];
-        if (darkMenu)
-        {
-            [statusItemView setDarkTheme:TRUE];
-        }
-        else
-        {
-            [statusItemView setDarkTheme:FALSE];
-        }
+        // NSStatusBarButton does not support dark theme natively, so skip setDarkTheme calls
     }
 
     NSDate* now = [NSDate date];
@@ -170,10 +194,10 @@
     //[dateFormatter setDateFormat:TIME_FORMAT_MILITARY_FULL];
     //NSString* militaryFullTime = [dateFormatter stringFromDate:now];
 
-    // inverse title
-    [statusItemView setUseInverseTitle:settings.useInverseTitle];
+    // NSStatusBarButton does not support inverse title, so skip setUseInverseTitle
 
     // update status item
+    NSStatusBarButton *button = statusItem.button;
     if (settings.showWeekNumberIcon == YES)
     {
         NSInteger thisWeek;
@@ -227,8 +251,8 @@
             }
             [weekImage unlockFocus];
             
-            // update image
-            [statusItemView setImage:weekImage];
+            // update image on status item button
+            button.image = weekImage;
             lastWeek = thisWeek;
         }
     }
@@ -237,31 +261,30 @@
         if (settings.showDateTime && (settings.showTime || settings.showDate)) // show time
         {
             // show nothing
-            [statusItemView setImage:nil];
+            button.image = nil;
         }
         else
         {
-
             if (settings.useBWIcon) // use black and white
             {
                 if ([self isDarkMenu])
                 {
-                    [statusItemView setImage:[[NSImage imageNamed:@"bw_w_mazookie"] copy]];
+                    button.image = [[NSImage imageNamed:@"bw_w_mazookie"] copy];
                 }
                 else
                 {
-                    [statusItemView setImage:[[NSImage imageNamed:@"bw_b_mazookie"] copy]];
+                    button.image = [[NSImage imageNamed:@"bw_b_mazookie"] copy];
                 }
             }
             else
             {
                 if ([self isDarkMenu])
                 {
-                    [statusItemView setImage:[[NSImage imageNamed:@"c_w_mazookie"] copy]];
+                    button.image = [[NSImage imageNamed:@"c_w_mazookie"] copy];
                 }
                 else
                 {
-                    [statusItemView setImage:[[NSImage imageNamed:@"c_b_mazookie"] copy]];
+                    button.image = [[NSImage imageNamed:@"c_b_mazookie"] copy];
                 }
             }
         }
@@ -271,7 +294,7 @@
     {
         if (settings.useFuzzyTime && settings.showTime)
         {
-            [statusItemView setTitle:[self getFuzzyTime:now]];
+            button.title = [self getFuzzyTime:now];
         }
         else if (settings.showStatusSecondaryTime && settings.showTime)
         {
@@ -292,17 +315,18 @@
             }
             [title2DateFormat setTimeZone:[NSTimeZone timeZoneWithName:settings.statusSecondaryTimezone]];
             NSString* title2 = [title2DateFormat stringFromDate:now];
-        
-            [statusItemView setTitles:statusItemDate subTitle1:title1 subTitle2:title2];
+            
+            // NSStatusBarButton does not support multiple subtitles, combine titles
+            button.title = [NSString stringWithFormat:@"%@ | %@ | %@", statusItemDate, title1, title2];
         }
         else
         {
-            [statusItemView setTitle:statusItemDate];
+            button.title = statusItemDate;
         }
     }
     else
     {
-        [statusItemView setTitle:@""];
+        button.title = @"";
     }
     
     // only update panel when the window is visiable
@@ -504,7 +528,7 @@
         priority = INT32_MAX;
     }
     
-    // Create the item with 0 length and the change it.
+    // Create the item with 0 length and then change it.
     if (!statusItem) 
     {
         statusItem = [bar _statusItemWithLength:0 withPriority:priority];
@@ -513,22 +537,31 @@
     
 } // end of createStatusItem
 
+// Handle left and right clicks for the status item button
+-(void) statusItemButtonClicked:(id)sender {
+    NSEvent *event = [NSApp currentEvent];
+    NSStatusBarButton *button = statusItem.button;
+    if (event.type == NSEventTypeRightMouseUp) {
+        [statusMenu popUpMenuPositioningItem:nil atLocation:NSMakePoint(0, button.bounds.size.height) inView:button];
+    } else if (event.type == NSEventTypeLeftMouseUp) {
+        [self toggleVistaClockWindow:sender];
+    }
+} // end of statusItemButtonClicked
+
+
 // This method is called when opening the panel
 -(IBAction) toggleVistaClockWindow:(id)sender
 {
     if ([_vistaClockWindow isVisible] && [NSApp isActive])
     {
-        // hide window
         [_vistaClockWindow orderOut:self];
         [NSApp activateIgnoringOtherApps:false];
     }
     else
     {
-        // show window
         [_vistaClockWindow makeKeyAndOrderFront:sender];
         [NSApp activateIgnoringOtherApps:true];
     }
-
     [_vistaClockWindow setCollectionBehavior: NSWindowCollectionBehaviorMoveToActiveSpace];
 } // end of toggleVistaClockWindow
 
@@ -573,8 +606,8 @@
 // launch the date & time preference panel
 -(IBAction) launchDateTimePreferencePanel:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] 
-        openFile:@"/System/Library/PreferencePanes/DateAndTime.prefPane"];
+    NSURL *prefPaneURL = [NSURL fileURLWithPath:@"/System/Library/PreferencePanes/DateAndTime.prefPane"];
+    [[NSWorkspace sharedWorkspace] openURL:prefPaneURL];
 } // end of launchDateTimePreferencePanel
 
 
@@ -657,7 +690,7 @@
             [mainCalendar setHiliteColor:[NSColor controlAccentColor]];
         } else {
             // Fallback on earlier versions
-            [mainCalendar setHiliteColor:[NSColor selectedMenuItemColor]];
+            [mainCalendar setHiliteColor:[NSColor highlightColor]];
         }
     }
     
@@ -734,7 +767,7 @@
     // is toolbar showing?
     if (showToolbar)
     {
-        frame.size.height = WINDOW_HEIGHT_TOOLBAR;
+        //frame.size.height = WINDOW_HEIGHT_TOOLBAR;
         [_vistaClockWindow setTitleVisibility:NSWindowTitleVisible];
     }
     else
@@ -743,10 +776,10 @@
         if (toolBarChanged)
         {
             toolBarChanged = FALSE;
-            frame.origin.y -= 2;
+            //frame.origin.y -= 2;
         }
 
-        frame.size.height = WINDOW_HEIGHT;
+        //frame.size.height = WINDOW_HEIGHT;
         [_vistaClockWindow setTitleVisibility:NSWindowTitleHidden];
     }
 
@@ -1053,41 +1086,60 @@
     // get calendar access do in main init.
     store = [[EKEventStore alloc] init]; 
         
-    BOOL needsToRequestAccessToEventStore = NO; // iOS 5 behavior
-    EKAuthorizationStatus authorizationStatus = EKAuthorizationStatusAuthorized; // iOS 5 behavior
+    BOOL needsToRequestAccessToEventStore = NO;
+    EKAuthorizationStatus eventStatus = EKAuthorizationStatusNotDetermined;
+    EKAuthorizationStatus reminderStatus = EKAuthorizationStatusNotDetermined;
     if ([[EKEventStore class] respondsToSelector:@selector(authorizationStatusForEntityType:)])
     {
-        authorizationStatus = ([EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent] 
-            & [EKEventStore authorizationStatusForEntityType:EKEntityTypeReminder]);
-        needsToRequestAccessToEventStore = (authorizationStatus == EKAuthorizationStatusNotDetermined);
+        eventStatus = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
+        reminderStatus = [EKEventStore authorizationStatusForEntityType:EKEntityTypeReminder];
+        needsToRequestAccessToEventStore = (eventStatus == EKAuthorizationStatusNotDetermined || reminderStatus == EKAuthorizationStatusNotDetermined);
     }
+
+    BOOL hasEventAccess = (eventStatus == EKAuthorizationStatusFullAccess || eventStatus == EKAuthorizationStatusWriteOnly);
+    BOOL hasReminderAccess = (reminderStatus == EKAuthorizationStatusFullAccess || reminderStatus == EKAuthorizationStatusWriteOnly);
 
     if (needsToRequestAccessToEventStore)
     {
-        // events
-        [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error)
-        {
-            if (granted)
-            {
-                dispatch_async(dispatch_get_main_queue(),
-                ^{
-                    // You can use the event store now
-                });
-            }
-        }];
-        // reminders
-        [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error)
-        {
-            if (granted)
-            {
-                dispatch_async(dispatch_get_main_queue(),
-                ^{
-                    // You can use the event store now
-                });
-            }
-        }];
+        if (@available(macOS 14.0, *)) {
+            // Request full access to events
+            [store requestFullAccessToEventsWithCompletion:^(BOOL granted, NSError *error) {
+                if (granted) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // You can use the event store now
+                    });
+                }
+            }];
+            // Request full access to reminders
+            [store requestFullAccessToRemindersWithCompletion:^(BOOL granted, NSError *error) {
+                if (granted) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // You can use the event store now
+                    });
+                }
+            }];
+        } else {
+            // Fallback on earlier versions (macOS < 14.0)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+                if (granted) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // You can use the event store now
+                    });
+                }
+            }];
+            [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {
+                if (granted) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // You can use the event store now
+                    });
+                }
+            }];
+#pragma clang diagnostic pop
+        }
     }
-    else if (authorizationStatus != EKAuthorizationStatusAuthorized)
+    else if (!hasEventAccess || !hasReminderAccess)
     {
         // Access denied
         NSAlert *alert = [[NSAlert alloc] init];
@@ -1102,13 +1154,33 @@
 
 -(IBAction)launchCalendar:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] launchApplication:@"iCal"];
+    NSURL *calendarURL = [[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:@"com.apple.iCal"];
+    if (calendarURL) {
+        NSWorkspaceOpenConfiguration *config = [NSWorkspaceOpenConfiguration configuration];
+        [[NSWorkspace sharedWorkspace] openApplicationAtURL:calendarURL configuration:config completionHandler:^(NSRunningApplication * _Nullable app, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Failed to launch Calendar: %@", error);
+            }
+        }];
+    } else {
+        NSLog(@"Calendar app not found");
+    }
 } // end of launchCalendar
 
 
--(IBAction)launchReminders:(id)sender;
+-(IBAction)launchReminders:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] launchApplication:@"Reminders"];
+    NSURL *remindersURL = [[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:@"com.apple.reminders"];
+    if (remindersURL) {
+        NSWorkspaceOpenConfiguration *config = [NSWorkspaceOpenConfiguration configuration];
+        [[NSWorkspace sharedWorkspace] openApplicationAtURL:remindersURL configuration:config completionHandler:^(NSRunningApplication * _Nullable app, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Failed to launch Reminders: %@", error);
+            }
+        }];
+    } else {
+        NSLog(@"Reminders app not found");
+    }
 } // end of launchReminders
 
 
@@ -1129,3 +1201,5 @@
 } // end of isDarkMenu
 
 @end
+
+#endif // defined(__aarch64__)
