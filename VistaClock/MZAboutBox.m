@@ -3,7 +3,7 @@
 //  NCal
 //
 //  Created by Paul Wong on 4/10/16.
-//  Copyright © 2016 Mazookie, LLC. All rights reserved.
+//  Copyright © 2026 Mazookie, LLC. All rights reserved.
 //
 
 #import "MZAboutBox.h"

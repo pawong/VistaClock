@@ -3,7 +3,7 @@
 //  VistaClock
 //
 //  Created by Paul Wong on 5/27/14.
-//  Copyright (c) 2014 Mazookie, LLC. All rights reserved.
+//  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

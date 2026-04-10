@@ -3,7 +3,7 @@
 //  VistaClock
 //
 //  Created by Paul Wong on 1/14/16.
-//  Copyright © 2016 Mazookie, LLC. All rights reserved.
+//  Copyright © 2026 Mazookie, LLC. All rights reserved.
 //
 
 #import "MZTextField.h"

@@ -3,7 +3,7 @@
 //  VistaClock
 //
 //  Created by Paul Wong on 9/12/14.
-//  Copyright (c) 2014 Mazookie, LLC. All rights reserved.
+//  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
 //
 
 #import "VCSettings.h"
@@ -37,7 +37,17 @@ static VCSettings* sharedSettings = nil;
 
 -(void) archive
 {
-    [NSKeyedArchiver archiveRootObject:self toFile:[VCSettings archivePath]];
+    NSError *error = nil;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:NO error:&error];
+    if (error) {
+        NSLog(@"Failed to archive VCSettings: %@", error);
+        return;
+    }
+    NSURL *url = [NSURL fileURLWithPath:[VCSettings archivePath]];
+    BOOL success = [data writeToURL:url options:NSDataWritingAtomic error:&error];
+    if (!success || error) {
+        NSLog(@"Failed to write VCSettings to disk: %@", error);
+    }
 } // end archive
 
 
@@ -69,10 +79,15 @@ static VCSettings* sharedSettings = nil;
         
         if ([fileManager fileExistsAtPath:[VCSettings archivePath]])
         {
-            sharedSettings = [NSKeyedUnarchiver unarchiveObjectWithFile:
-                [VCSettings archivePath]];
-            [sharedSettings initTransient];
-            return sharedSettings;
+            NSData *data = [NSData dataWithContentsOfFile:[VCSettings archivePath]];
+            NSError *unarchiveError = nil;
+            sharedSettings = [NSKeyedUnarchiver unarchivedObjectOfClass:[VCSettings class] fromData:data error:&unarchiveError];
+            if (unarchiveError || sharedSettings == nil) {
+                NSLog(@"Failed to unarchive VCSettings: %@", unarchiveError);
+            } else {
+                [sharedSettings initTransient];
+                return sharedSettings;
+            }
         }
         
         // alloc new one and init it

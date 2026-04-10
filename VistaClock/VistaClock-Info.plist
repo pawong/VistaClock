@@ -32,21 +32,11 @@
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>home.mazookie.com</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSIncludeSubdomains</key>
-				<true/>
-			</dict>
-		</dict>
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs Calendar access to display events indicators</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2011-2019  Mazookie, LLC. All rights reserved.</string>
+	<string>Copyright © 2011-2026  Mazookie, LLC. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

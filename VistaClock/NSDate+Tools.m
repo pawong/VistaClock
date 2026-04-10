@@ -1,9 +1,9 @@
 //
-//  NSDate+Tools.m
-//
-//  Created by Paul Wong on 1/22/12.
-//  Copyright (c) 2012 Mazookie, LLC. All rights reserved.
-//
+/* 
+  NSDate+Tools.m
+  Created by Paul Wong on 1/22/12.
+  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
+*/
 
 #import "NSDate+Tools.h"
 
@@ -11,9 +11,9 @@
 
 +(NSDate*) getDateWithYMD:(int) year month:(int) month day:(int) day
 {
-    NSString* dateString = [NSString stringWithFormat:@"%d-%d-%d 12:00:00 +000", year, month, day];
+    NSString* dateString = [NSString stringWithFormat:@"%04d-%02d-%02d 12:00:00 +000", year, month, day];
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 
     return [dateFormatter dateFromString:dateString];
@@ -21,21 +21,19 @@
 
 +(NSDate*) getDateNSDate:(NSDate*) date
 {
-    NSString* dateString = [NSString stringWithFormat:@"%d-%d-%d 12:00:00 +000", [date getYear], [date getMonth]
-        , [date getDay]];
+    NSString* dateString = [NSString stringWithFormat:@"%04d-%02d-%02d 12:00:00 +000", [date getYear], [date getMonth], [date getDay]];
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 
     return [dateFormatter dateFromString:dateString];
 }
 
--(NSDate*) set24Hour:(int)hour andMinute:(int)minute andSecond:(int)second;
+-(NSDate*) set24Hour:(int)hour andMinute:(int)minute andSecond:(int)second
 {
-    NSString* dateString = [NSString stringWithFormat:@"%d-%d-%d %d:%d:%d +000", [self getYear], [self getMonth]
-        , [self getDay], hour, minute, second];
+    NSString* dateString = [NSString stringWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d +000", [self getYear], [self getMonth], [self getDay], hour, minute, second];
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 
     return [dateFormatter dateFromString:dateString];
@@ -48,7 +46,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"yyyy"];
-    retval = [[format stringFromDate:(NSDate*)self] intValue];
+    retval = [[format stringFromDate:self] intValue];
     return retval;
 }
 
@@ -58,7 +56,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"M"];
-    retval = [[format stringFromDate:(NSDate*)self] intValue];
+    retval = [[format stringFromDate:self] intValue];
     return retval;
 }
 
@@ -68,7 +66,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"MMMM"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval;    
 }
 
@@ -78,7 +76,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"d"];
-    retval = [[format stringFromDate:(NSDate*)self] intValue];
+    retval = [[format stringFromDate:self] intValue];
     return retval;
 }
 
@@ -88,7 +86,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"EEEE"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval;    
 }
 
@@ -98,7 +96,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"h:mm:ss a"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval;     
 }
 
@@ -108,7 +106,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"HH:mm:ss"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval;     
 }
 
@@ -118,7 +116,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"a"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval;     
 }
 
@@ -128,7 +126,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"MMMM yyyy"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval;     
 }
 
@@ -138,7 +136,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"EEEE MMMM d, yyyy h:mm:ss a"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval;     
 }
 
@@ -148,7 +146,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"EEEE  MMMM d, yyyy"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval;     
 }
 
@@ -158,7 +156,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"w"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval;  
 }
 
@@ -175,8 +173,8 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"EEEEE"];
-    retval = [format stringFromDate:(NSDate*)self];
-    //retval = [[format stringFromDate:(NSDate*)self] substringWithRange:
+    retval = [format stringFromDate:self];
+    //retval = [[format stringFromDate:self] substringWithRange:
     //	NSMakeRange(0,2)];
     return retval; 
 }
@@ -187,7 +185,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"d"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval; 
 }
 
@@ -197,7 +195,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"D"];
-    retval = [format stringFromDate:(NSDate*)self];
+    retval = [format stringFromDate:self];
     return retval; 
 }
 
@@ -207,7 +205,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"h"];
-    retval = [[format stringFromDate:(NSDate*)self] intValue];
+    retval = [[format stringFromDate:self] intValue];
     return retval;     
 }
 
@@ -217,7 +215,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"m"];
-    retval = [[format stringFromDate:(NSDate*)self] intValue];
+    retval = [[format stringFromDate:self] intValue];
     return retval;     
 }
 
@@ -227,7 +225,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"s"];
-    retval = [[format stringFromDate:(NSDate*)self] intValue];
+    retval = [[format stringFromDate:self] intValue];
     return retval;     
 }
 
@@ -237,7 +235,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"e"];
-    retval = [[format stringFromDate:(NSDate*)self] intValue];
+    retval = [[format stringFromDate:self] intValue];
     return retval;
 }
 
@@ -247,7 +245,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     [format setDateFormat:@"e"];
-    retval = [[format stringFromDate:(NSDate*)self] intValue];
+    retval = [[format stringFromDate:self] intValue];
     return retval;
 }
 
@@ -257,7 +255,7 @@
     NSDateFormatter* format = [[NSDateFormatter alloc] init];
     format.locale = [[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]];
     [format setDateFormat:@"w"];
-    retval = [[format stringFromDate:(NSDate*)self] intValue];
+    retval = [[format stringFromDate:self] intValue];
     return retval;     
 }
 
@@ -265,7 +263,8 @@
 {
     int retval;
     NSCalendar *iso8601Calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierISO8601];
-    retval = (int)[iso8601Calendar component: NSCalendarUnitWeekOfYear fromDate: (NSDate*)self];
+    retval = (int)[iso8601Calendar component: NSCalendarUnitWeekOfYear fromDate:self];
     return retval;
 }
 @end
+

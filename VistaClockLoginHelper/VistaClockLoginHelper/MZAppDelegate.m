@@ -3,7 +3,7 @@
 //  VistaClockLoginHelper
 //
 //  Created by pwong on 8/10/12.
-//  Copyright (c) 2012 Mazookie, LLC. All rights reserved.
+//  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
 //
 
 #import "MZAppDelegate.h"
@@ -41,10 +41,17 @@
         [pathComponents addObject:@"MacOS"];
         [pathComponents addObject:@"VistaClock"];
         NSString *newPath = [NSString pathWithComponents:pathComponents];
-        [[NSWorkspace sharedWorkspace] launchApplication:newPath];
+        NSURL *appURL = [NSURL fileURLWithPath:newPath];
+        NSWorkspaceOpenConfiguration *config = [NSWorkspaceOpenConfiguration configuration];
+        [[NSWorkspace sharedWorkspace] openApplicationAtURL:appURL configuration:config completionHandler:^(NSRunningApplication * _Nullable app, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Failed to launch app at %@: %@", appURL, error);
+            }
+        }];
     }
     [NSApp terminate:nil];
 }
 
 
 @end
+

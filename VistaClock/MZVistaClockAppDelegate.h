@@ -3,7 +3,7 @@
 //  VistaClock
 //
 //  Created by Paul Wong on 9/5/14.
-//  Copyright (c) 2014 Mazookie, LLC. All rights reserved.
+//  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -17,7 +17,6 @@
 #import "MZDateCalc.h"
 #import "MZTextField.h"
 #import "MZAboutBox.h"
-#import "MZPoster.h"
 #import "NSDate+Tools.h"
 
 

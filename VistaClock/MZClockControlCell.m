@@ -3,7 +3,7 @@
 //  VistaClock2
 //
 //  Created by Paul Wong on 6/7/14.
-//  Copyright (c) 2014 Paul Wong. All rights reserved.
+//  Copyright (c) 2026 Paul Wong. All rights reserved.
 //
 
 #import "MZClockControlCell.h"
