@@ -1,8 +1,3 @@
-#if !defined(__aarch64__)
-#error "This application is supported only on Apple Silicon (arm64)."
-#endif
-
-#if defined(__aarch64__)
 //
 //  MZAboutBox.m
 //  NCal
@@ -96,5 +91,3 @@
 } // end of setMacId
 
 @end
-#endif // defined(__aarch64__)
-

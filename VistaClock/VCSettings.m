@@ -1,8 +1,3 @@
-#if !defined(__aarch64__)
-#error "This application is supported only on Apple Silicon (arm64)."
-#endif
-
-#if defined(__aarch64__)
 //
 //  Settings.m
 //  VistaClock
@@ -307,5 +302,3 @@ static VCSettings* sharedSettings = nil;
 
 
 @end
-
-#endif // defined(__aarch64__)

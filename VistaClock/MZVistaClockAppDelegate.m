@@ -1,15 +1,10 @@
-#if !defined(__aarch64__)
-#error "This application is supported only on Apple Silicon (arm64)."
-#endif
-
-#if defined(__aarch64__)
 //
- //  MZVistaClockAppDelegate.m
- //  VistaClock
- //
- //  Created by Paul Wong on 9/5/14.
- //  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
- //
+//  MZVistaClockAppDelegate.m
+//  VistaClock
+//
+//  Created by Paul Wong on 9/5/14.
+//  Copyright (c) 2026 Mazookie, LLC. All rights reserved.
+//
 
 #import "MZVistaClockAppDelegate.h"
 
@@ -976,14 +971,52 @@
 
     if (full)
     {
+        // Insert DateBoxID
         [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"DateBoxID" atIndex:0];
+        NSToolbarItem *dateBoxItem = [_vistaClockWindow.toolbar items][0];
+        if (dateBoxItem.view) {
+            // Modern: Let system measure toolbar item view using constraints.
+            dateBoxItem.view.translatesAutoresizingMaskIntoConstraints = NO;
+            // Add constraints to let the toolbar size the item properly
+            [dateBoxItem.view.widthAnchor constraintEqualToConstant:120].active = YES;
+            [dateBoxItem.view.heightAnchor constraintEqualToConstant:24].active = YES;
+        }
+
+        // Insert GotoTodayID
         [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"GotoTodayID" atIndex:1];
+        NSToolbarItem *gotoTodayItem = [_vistaClockWindow.toolbar items][1];
+        if (gotoTodayItem.view) {
+            // Modern: Let system measure toolbar item view using constraints.
+            gotoTodayItem.view.translatesAutoresizingMaskIntoConstraints = NO;
+            // Add constraints as appropriate; example fixed size:
+            [gotoTodayItem.view.widthAnchor constraintEqualToConstant:80].active = YES;
+            [gotoTodayItem.view.heightAnchor constraintEqualToConstant:24].active = YES;
+        }
+
+        // Insert DateDetailsID
         [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"DateDetailsID" atIndex:2];
+        NSToolbarItem *dateDetailsItem = [_vistaClockWindow.toolbar items][2];
+        if (dateDetailsItem.view) {
+            // Modern: Let system measure toolbar item view using constraints.
+            dateDetailsItem.view.translatesAutoresizingMaskIntoConstraints = NO;
+            // Add constraints as appropriate; example fixed size:
+            [dateDetailsItem.view.widthAnchor constraintEqualToConstant:100].active = YES;
+            [dateDetailsItem.view.heightAnchor constraintEqualToConstant:24].active = YES;
+        }
+
         [_vistaClockWindow makeFirstResponder:gotoDateField];
     }
     else
     {
         [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"TitleID" atIndex:0];
+        NSToolbarItem *titleItem = [_vistaClockWindow.toolbar items][0];
+        if (titleItem.view) {
+            // Modern: Let system measure toolbar item view using constraints.
+            titleItem.view.translatesAutoresizingMaskIntoConstraints = NO;
+            // Add constraints as appropriate; example fixed size:
+            [titleItem.view.widthAnchor constraintEqualToConstant:200].active = YES;
+            [titleItem.view.heightAnchor constraintEqualToConstant:24].active = YES;
+        }
         [_vistaClockWindow makeFirstResponder:clockCollectionView];
     }
 
@@ -1000,6 +1033,9 @@
     }
     [_vistaClockWindow.toolbar insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier atIndex:0];
     [_vistaClockWindow.toolbar insertItemWithItemIdentifier:@"SettingsID" atIndex:1];
+
+    // Note: No longer setting minSize or maxSize on toolbar items.
+    // Modern Auto Layout and intrinsicContentSize will determine toolbar item sizes.
 } // resetToolbar
 
 
@@ -1201,5 +1237,3 @@
 } // end of isDarkMenu
 
 @end
-
-#endif // defined(__aarch64__)
