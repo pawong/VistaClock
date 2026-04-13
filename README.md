@@ -28,7 +28,7 @@ Rather than loading a time consuming calendar to simply get the date for next Tu
 >    Changes:
 >    - Works with Intel and Silicon chip sets
 
->[2.2.3](builds/VistaClock_v2.4.0/VistaClock.zip)
+>[2.4.0](builds/VistaClock_v2.4.0/VistaClock.zip)
 >
 >    Changes:
 >    - Opensourced code
