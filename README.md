@@ -1,6 +1,6 @@
 # VistaClock ![](VistaClock/Media.xcassets/AppIcon.appiconset/icon_32x32@2x.png)
 
-**VistaClock** is a quick and easy way to show a calendar and analog clock with second hand. It's the missing Windows task clock for Mac OS X.
+**VistaClock** is a quick and easy way to show a calendar and analog clock with second hand. It's the missing Windows task clock for MacOS.
 
 Rather than loading a time consuming calendar to simply get the date for next Tuesday, Vista Clock is just a click away.
 
