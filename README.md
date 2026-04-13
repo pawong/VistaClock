@@ -4,7 +4,7 @@
 
 Rather than loading a time consuming calendar to simply get the date for next Tuesday, Vista Clock is just a click away.
 
-Features:
+**Features**:
 
 - Quick access to calendar and analog clock with second hand.
 - Start on Login option.
