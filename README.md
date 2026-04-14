@@ -31,8 +31,9 @@ Rather than loading a time consuming calendar to simply get the date for next Tu
 >[2.4.0](builds/VistaClock_v2.4.0/VistaClock.zip)
 >
 >    Changes:
->    - Opensourced code
+>    - Open sourced code
 >    - Update to support latest MacOS
+>    - Updated for Silicon only
 >
 >    Issues:
 >    - Untested
