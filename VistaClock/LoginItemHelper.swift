@@ -1,19 +1,22 @@
 import Foundation
 import ServiceManagement
 
-@objc public class LoginItemHelper: NSObject {
-    @objc public static func setLoginItemEnabled(_ enabled: Bool) {
-        if #available(macOS 13.0, *) {
-            do {
-                let appService = SMAppService.loginItem(identifier: "com.Mazookie.VistaClockLoginHelper")
-                if enabled {
-                    try appService.register()
-                } else {
-                    try appService.unregister()
+/// Registers or removes the bundled login helper app that launches VistaClock at login.
+enum LoginItemHelper {
+    private static let helperIdentifier = "com.Mazookie.VistaClockLoginHelper"
+
+    static func setLoginItemEnabled(_ enabled: Bool) {
+        let service = SMAppService.loginItem(identifier: helperIdentifier)
+        do {
+            if enabled {
+                if service.status != .enabled {
+                    try service.register()
                 }
-            } catch {
-                NSLog("Failed to change login item state: %@", String(describing: error))
+            } else if service.status == .enabled {
+                try service.unregister()
             }
+        } catch {
+            NSLog("Failed to change login item state: %@", String(describing: error))
         }
     }
 }
