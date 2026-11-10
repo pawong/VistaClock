@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -31,10 +31,6 @@
 		1300F5FA19BCE700006E8FD9 /* MVCW07.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5C419BCE700006E8FD9 /* MVCW07.png */; };
 		1300F5FB19BCE700006E8FD9 /* MVCW08.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5C519BCE700006E8FD9 /* MVCW08.png */; };
 		1300F5FC19BCE700006E8FD9 /* MWVCB01.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5C619BCE700006E8FD9 /* MWVCB01.png */; };
-		1300F5FD19BCE700006E8FD9 /* MZClockControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1300F5C819BCE700006E8FD9 /* MZClockControl.m */; };
-		1300F5FE19BCE700006E8FD9 /* MZClockControlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1300F5CA19BCE700006E8FD9 /* MZClockControlCell.m */; };
-		1300F5FF19BCE700006E8FD9 /* MZClockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1300F5CC19BCE700006E8FD9 /* MZClockItem.m */; };
-		1300F60019BCE700006E8FD9 /* NSDate+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1300F5CE19BCE700006E8FD9 /* NSDate+Tools.m */; };
 		1300F60119BCE700006E8FD9 /* SBVCB01.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5CF19BCE700006E8FD9 /* SBVCB01.png */; };
 		1300F60219BCE700006E8FD9 /* SVCB02.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5D019BCE700006E8FD9 /* SVCB02.png */; };
 		1300F60319BCE700006E8FD9 /* SVCB06.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5D119BCE700006E8FD9 /* SVCB06.png */; };
@@ -53,36 +49,30 @@
 		1300F61319BCE700006E8FD9 /* VCW06.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5E119BCE700006E8FD9 /* VCW06.png */; };
 		1300F61419BCE700006E8FD9 /* VCW07.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5E219BCE700006E8FD9 /* VCW07.png */; };
 		1300F61519BCE700006E8FD9 /* VCW08.png in Resources */ = {isa = PBXBuildFile; fileRef = 1300F5E319BCE700006E8FD9 /* VCW08.png */; };
-		1300F61719BCE9A5006E8FD9 /* MZClockItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1300F61619BCE9A5006E8FD9 /* MZClockItem.xib */; };
-		1313723519C3552E00B65CDE /* MZVistaClockPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 1313723319C3552E00B65CDE /* MZVistaClockPreferences.m */; };
-		1313723619C3552E00B65CDE /* MZVistaClockPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1313723419C3552E00B65CDE /* MZVistaClockPreferences.xib */; };
-		1313723F19C386D300B65CDE /* MZClockConfigItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1313723A19C386D300B65CDE /* MZClockConfigItem.xib */; };
-		1313724019C386D300B65CDE /* MZClockConfigItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1313723C19C386D300B65CDE /* MZClockConfigItem.m */; };
 		1313B0501E0DBA800006B403 /* VCW09.png in Resources */ = {isa = PBXBuildFile; fileRef = 1313B04F1E0DBA800006B403 /* VCW09.png */; };
-		1313BA141C48BAB400C36A36 /* MZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1313BA131C48BAB400C36A36 /* MZTextField.m */; };
-		1314945419BE071800496351 /* MZCalendarControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1314945119BE071800496351 /* MZCalendarControl.m */; };
 		132C794B1E22FCDA00F38952 /* SVCW09.png in Resources */ = {isa = PBXBuildFile; fileRef = 132C79471E22FCDA00F38952 /* SVCW09.png */; };
 		132C794C1E22FCDA00F38952 /* DVCW09.png in Resources */ = {isa = PBXBuildFile; fileRef = 132C79481E22FCDA00F38952 /* DVCW09.png */; };
 		132C794D1E22FCDA00F38952 /* HVCW09.png in Resources */ = {isa = PBXBuildFile; fileRef = 132C79491E22FCDA00F38952 /* HVCW09.png */; };
 		132C794E1E22FCDA00F38952 /* MVCW09.png in Resources */ = {isa = PBXBuildFile; fileRef = 132C794A1E22FCDA00F38952 /* MVCW09.png */; };
-		132E0AB219D3211E00CC9CF6 /* MZClockConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */; };
 		132E0AE419D4CCF200CC9CF6 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132E0AE319D4CCF200CC9CF6 /* ServiceManagement.framework */; };
 		132E0AE619D4CD0000CC9CF6 /* CalendarStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132E0AE519D4CD0000CC9CF6 /* CalendarStore.framework */; };
 		13404CB01D567A540091DBF8 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13404CAF1D567A540091DBF8 /* Media.xcassets */; };
 		134E392019BA107B004FA01A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 134E391F19BA107B004FA01A /* Cocoa.framework */; };
 		134E392A19BA107B004FA01A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 134E392819BA107B004FA01A /* InfoPlist.strings */; };
-		134E392C19BA107B004FA01A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E392B19BA107B004FA01A /* main.m */; };
-		134E393319BA107B004FA01A /* MZVistaClockAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E393219BA107B004FA01A /* MZVistaClockAppDelegate.m */; };
-		134E3A0519BA1388004FA01A /* MZStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 134E39B919BA1388004FA01A /* MZStatusItemView.m */; };
 		139877141CD321A3003007F5 /* help.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 139877131CD321A3003007F5 /* help.rtfd */; };
 		139ED8D819F9B7AC00181875 /* VistaClockLoginHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 139ED8D719F9B75700181875 /* VistaClockLoginHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */; };
-		13BBAEBC1CCF2E460070558B /* MZAboutBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BBAEBA1CCF2E460070558B /* MZAboutBox.m */; };
-		13BBAEBD1CCF2E460070558B /* MZAboutBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13BBAEBB1CCF2E460070558B /* MZAboutBox.xib */; };
 		13BCFF96215CA15500DFAD8E /* acknowledgments.txt in Resources */ = {isa = PBXBuildFile; fileRef = 13BCFF94215CA15400DFAD8E /* acknowledgments.txt */; };
-		13BEBE1C19C8EAC6009C7B76 /* VCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */; };
 		13C386642F6DBCAE00693428 /* LoginItemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C386632F6DBCAE00693428 /* LoginItemHelper.swift */; };
-		13E9FED61C42D74A00F204A3 /* MZDateCalc.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E9FED51C42D74A00F204A3 /* MZDateCalc.m */; };
+		EA8BAEAB30A3B51200C34F26 /* Date+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BAEAA30A3B51200C34F26 /* Date+Tools.swift */; };
+		EA8BAEAE30A3B52400C34F26 /* VCSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BAEAD30A3B52400C34F26 /* VCSettings.swift */; };
+		EA8BAEB030A3B53300C34F26 /* MZDateCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BAEAF30A3B53300C34F26 /* MZDateCalc.swift */; };
+		EA8BAEB230A3B54000C34F26 /* MZClockControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BAEB130A3B54000C34F26 /* MZClockControl.swift */; };
+		EA8BAEB430A3B56500C34F26 /* MZCalendarControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BAEB330A3B56500C34F26 /* MZCalendarControl.swift */; };
+		EA8BAEB630A3B57800C34F26 /* MZClockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BAEB530A3B57800C34F26 /* MZClockItem.swift */; };
+		EA8BAEB830A3B57B00C34F26 /* MZTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BAEB730A3B57B00C34F26 /* MZTextField.swift */; };
+		EA8BAEBA30A3B58C00C34F26 /* MZAboutBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BAEB930A3B58C00C34F26 /* MZAboutBox.swift */; };
+		EA8BAEBC30A3B5CB00C34F26 /* MZVistaClockPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BAEBB30A3B5CB00C34F26 /* MZVistaClockPreferences.swift */; };
+		EA8BAEBE30A3B63B00C34F26 /* MZVistaClockAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BAEBD30A3B63B00C34F26 /* MZVistaClockAppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +82,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 13785DBB15D5385F00D9D1D3;
 			remoteInfo = VistaClockLoginHelper;
+		};
+		EA8BAED130A3CB8C00C34F26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 134E391419BA107A004FA01A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 134E391B19BA107B004FA01A;
+			remoteInfo = VistaClock;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -125,7 +122,6 @@
 		1300F5BB19BCE700006E8FD9 /* HVCW07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HVCW07.png; sourceTree = "<group>"; };
 		1300F5BC19BCE700006E8FD9 /* HVCW08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HVCW08.png; sourceTree = "<group>"; };
 		1300F5BD19BCE700006E8FD9 /* HWVCB01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HWVCB01.png; sourceTree = "<group>"; };
-		1300F5BE19BCE700006E8FD9 /* MathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUtils.h; sourceTree = "<group>"; };
 		1300F5BF19BCE700006E8FD9 /* MBVCB01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MBVCB01.png; sourceTree = "<group>"; };
 		1300F5C019BCE700006E8FD9 /* MVCB02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MVCB02.png; sourceTree = "<group>"; };
 		1300F5C119BCE700006E8FD9 /* MVCB06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MVCB06.png; sourceTree = "<group>"; };
@@ -134,14 +130,6 @@
 		1300F5C419BCE700006E8FD9 /* MVCW07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MVCW07.png; sourceTree = "<group>"; };
 		1300F5C519BCE700006E8FD9 /* MVCW08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MVCW08.png; sourceTree = "<group>"; };
 		1300F5C619BCE700006E8FD9 /* MWVCB01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MWVCB01.png; sourceTree = "<group>"; };
-		1300F5C719BCE700006E8FD9 /* MZClockControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZClockControl.h; sourceTree = "<group>"; };
-		1300F5C819BCE700006E8FD9 /* MZClockControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZClockControl.m; sourceTree = "<group>"; };
-		1300F5C919BCE700006E8FD9 /* MZClockControlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZClockControlCell.h; sourceTree = "<group>"; };
-		1300F5CA19BCE700006E8FD9 /* MZClockControlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZClockControlCell.m; sourceTree = "<group>"; };
-		1300F5CB19BCE700006E8FD9 /* MZClockItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZClockItem.h; sourceTree = "<group>"; };
-		1300F5CC19BCE700006E8FD9 /* MZClockItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZClockItem.m; sourceTree = "<group>"; };
-		1300F5CD19BCE700006E8FD9 /* NSDate+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Tools.h"; sourceTree = "<group>"; };
-		1300F5CE19BCE700006E8FD9 /* NSDate+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Tools.m"; sourceTree = "<group>"; };
 		1300F5CF19BCE700006E8FD9 /* SBVCB01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SBVCB01.png; sourceTree = "<group>"; };
 		1300F5D019BCE700006E8FD9 /* SVCB02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SVCB02.png; sourceTree = "<group>"; };
 		1300F5D119BCE700006E8FD9 /* SVCB06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SVCB06.png; sourceTree = "<group>"; };
@@ -160,28 +148,14 @@
 		1300F5E119BCE700006E8FD9 /* VCW06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VCW06.png; sourceTree = "<group>"; };
 		1300F5E219BCE700006E8FD9 /* VCW07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VCW07.png; sourceTree = "<group>"; };
 		1300F5E319BCE700006E8FD9 /* VCW08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VCW08.png; sourceTree = "<group>"; };
-		1300F61619BCE9A5006E8FD9 /* MZClockItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MZClockItem.xib; sourceTree = "<group>"; };
-		1313723219C3552E00B65CDE /* MZVistaClockPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZVistaClockPreferences.h; sourceTree = "<group>"; };
-		1313723319C3552E00B65CDE /* MZVistaClockPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZVistaClockPreferences.m; sourceTree = "<group>"; };
-		1313723419C3552E00B65CDE /* MZVistaClockPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MZVistaClockPreferences.xib; sourceTree = "<group>"; };
-		1313723A19C386D300B65CDE /* MZClockConfigItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MZClockConfigItem.xib; sourceTree = "<group>"; };
-		1313723B19C386D300B65CDE /* MZClockConfigItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZClockConfigItem.h; sourceTree = "<group>"; };
-		1313723C19C386D300B65CDE /* MZClockConfigItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZClockConfigItem.m; sourceTree = "<group>"; };
 		1313B04F1E0DBA800006B403 /* VCW09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VCW09.png; sourceTree = "<group>"; };
-		1313BA121C48BAB400C36A36 /* MZTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTextField.h; sourceTree = "<group>"; };
-		1313BA131C48BAB400C36A36 /* MZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTextField.m; sourceTree = "<group>"; };
-		1314945019BE071800496351 /* MZCalendarControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCalendarControl.h; sourceTree = "<group>"; };
-		1314945119BE071800496351 /* MZCalendarControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCalendarControl.m; sourceTree = "<group>"; };
 		132C79471E22FCDA00F38952 /* SVCW09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SVCW09.png; sourceTree = "<group>"; };
 		132C79481E22FCDA00F38952 /* DVCW09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DVCW09.png; sourceTree = "<group>"; };
 		132C79491E22FCDA00F38952 /* HVCW09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HVCW09.png; sourceTree = "<group>"; };
 		132C794A1E22FCDA00F38952 /* MVCW09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MVCW09.png; sourceTree = "<group>"; };
-		132E0AB019D3211E00CC9CF6 /* MZClockConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZClockConfig.h; sourceTree = "<group>"; };
-		132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZClockConfig.m; sourceTree = "<group>"; };
 		132E0AE319D4CCF200CC9CF6 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		132E0AE519D4CD0000CC9CF6 /* CalendarStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CalendarStore.framework; path = System/Library/Frameworks/CalendarStore.framework; sourceTree = SDKROOT; };
 		132E0AE719D4CDA600CC9CF6 /* VistaClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VistaClock.entitlements; sourceTree = "<group>"; };
-		1333123222DA917400D21E7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13404CAF1D567A540091DBF8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		134E391C19BA107B004FA01A /* VistaClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VistaClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		134E391F19BA107B004FA01A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -190,24 +164,26 @@
 		134E392419BA107B004FA01A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		134E392719BA107B004FA01A /* VistaClock-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VistaClock-Info.plist"; sourceTree = "<group>"; };
 		134E392919BA107B004FA01A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		134E392B19BA107B004FA01A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		134E392D19BA107B004FA01A /* VistaClock-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VistaClock-Prefix.pch"; sourceTree = "<group>"; };
-		134E393119BA107B004FA01A /* MZVistaClockAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MZVistaClockAppDelegate.h; sourceTree = "<group>"; };
-		134E393219BA107B004FA01A /* MZVistaClockAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MZVistaClockAppDelegate.m; sourceTree = "<group>"; };
-		134E39B819BA1388004FA01A /* MZStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZStatusItemView.h; sourceTree = "<group>"; };
-		134E39B919BA1388004FA01A /* MZStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZStatusItemView.m; sourceTree = "<group>"; };
 		139877131CD321A3003007F5 /* help.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = help.rtfd; sourceTree = "<group>"; };
 		139ED8D219F9B75700181875 /* VistaClockLoginHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VistaClockLoginHelper.xcodeproj; path = VistaClockLoginHelper/VistaClockLoginHelper.xcodeproj; sourceTree = "<group>"; };
-		13BBAEB91CCF2E460070558B /* MZAboutBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZAboutBox.h; sourceTree = "<group>"; };
-		13BBAEBA1CCF2E460070558B /* MZAboutBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZAboutBox.m; sourceTree = "<group>"; };
-		13BBAEBB1CCF2E460070558B /* MZAboutBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MZAboutBox.xib; sourceTree = "<group>"; };
 		13BCFF94215CA15400DFAD8E /* acknowledgments.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acknowledgments.txt; sourceTree = "<group>"; };
-		13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSettings.m; sourceTree = "<group>"; };
-		13BEBE1B19C8EAC6009C7B76 /* VCSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSettings.h; sourceTree = "<group>"; };
 		13C386632F6DBCAE00693428 /* LoginItemHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemHelper.swift; sourceTree = "<group>"; };
-		13E9FED41C42D74A00F204A3 /* MZDateCalc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZDateCalc.h; sourceTree = "<group>"; };
-		13E9FED51C42D74A00F204A3 /* MZDateCalc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZDateCalc.m; sourceTree = "<group>"; };
+		EA8BAEAA30A3B51200C34F26 /* Date+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Tools.swift"; sourceTree = "<group>"; };
+		EA8BAEAD30A3B52400C34F26 /* VCSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCSettings.swift; sourceTree = "<group>"; };
+		EA8BAEAF30A3B53300C34F26 /* MZDateCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZDateCalc.swift; sourceTree = "<group>"; };
+		EA8BAEB130A3B54000C34F26 /* MZClockControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZClockControl.swift; sourceTree = "<group>"; };
+		EA8BAEB330A3B56500C34F26 /* MZCalendarControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZCalendarControl.swift; sourceTree = "<group>"; };
+		EA8BAEB530A3B57800C34F26 /* MZClockItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZClockItem.swift; sourceTree = "<group>"; };
+		EA8BAEB730A3B57B00C34F26 /* MZTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZTextField.swift; sourceTree = "<group>"; };
+		EA8BAEB930A3B58C00C34F26 /* MZAboutBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAboutBox.swift; sourceTree = "<group>"; };
+		EA8BAEBB30A3B5CB00C34F26 /* MZVistaClockPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZVistaClockPreferences.swift; sourceTree = "<group>"; };
+		EA8BAEBD30A3B63B00C34F26 /* MZVistaClockAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZVistaClockAppDelegate.swift; sourceTree = "<group>"; };
+		EA8BAEC830A3CB8C00C34F26 /* VistaClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VistaClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		EA8BAEC930A3CB8C00C34F26 /* VistaClockTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VistaClockTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		134E391919BA107B004FA01A /* Frameworks */ = {
@@ -220,6 +196,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA8BAEC530A3CB8C00C34F26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -228,6 +211,7 @@
 			children = (
 				139ED8D219F9B75700181875 /* VistaClockLoginHelper.xcodeproj */,
 				134E392519BA107B004FA01A /* VistaClock */,
+				EA8BAEC930A3CB8C00C34F26 /* VistaClockTests */,
 				134E391E19BA107B004FA01A /* Frameworks */,
 				134E391D19BA107B004FA01A /* Products */,
 			);
@@ -237,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				134E391C19BA107B004FA01A /* VistaClock.app */,
+				EA8BAEC830A3CB8C00C34F26 /* VistaClockTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,43 +250,19 @@
 		134E392519BA107B004FA01A /* VistaClock */ = {
 			isa = PBXGroup;
 			children = (
-				13BBAEB91CCF2E460070558B /* MZAboutBox.h */,
-				13BBAEBA1CCF2E460070558B /* MZAboutBox.m */,
-				13BBAEBB1CCF2E460070558B /* MZAboutBox.xib */,
 				132E0AE719D4CDA600CC9CF6 /* VistaClock.entitlements */,
-				1314945019BE071800496351 /* MZCalendarControl.h */,
-				1314945119BE071800496351 /* MZCalendarControl.m */,
-				1300F5BE19BCE700006E8FD9 /* MathUtils.h */,
-				1300F5C719BCE700006E8FD9 /* MZClockControl.h */,
-				1300F5C819BCE700006E8FD9 /* MZClockControl.m */,
-				1300F5C919BCE700006E8FD9 /* MZClockControlCell.h */,
-				1300F5CA19BCE700006E8FD9 /* MZClockControlCell.m */,
-				1300F5CD19BCE700006E8FD9 /* NSDate+Tools.h */,
-				1300F5CE19BCE700006E8FD9 /* NSDate+Tools.m */,
-				134E39B819BA1388004FA01A /* MZStatusItemView.h */,
-				134E39B919BA1388004FA01A /* MZStatusItemView.m */,
-				134E393119BA107B004FA01A /* MZVistaClockAppDelegate.h */,
-				134E393219BA107B004FA01A /* MZVistaClockAppDelegate.m */,
-				13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */,
-				1300F5CB19BCE700006E8FD9 /* MZClockItem.h */,
-				1300F5CC19BCE700006E8FD9 /* MZClockItem.m */,
-				1300F61619BCE9A5006E8FD9 /* MZClockItem.xib */,
-				13BEBE1B19C8EAC6009C7B76 /* VCSettings.h */,
-				13BEBE1A19C8EAC6009C7B76 /* VCSettings.m */,
-				1313723219C3552E00B65CDE /* MZVistaClockPreferences.h */,
-				1313723319C3552E00B65CDE /* MZVistaClockPreferences.m */,
-				1313723419C3552E00B65CDE /* MZVistaClockPreferences.xib */,
-				1313723B19C386D300B65CDE /* MZClockConfigItem.h */,
-				1313723C19C386D300B65CDE /* MZClockConfigItem.m */,
-				1313723A19C386D300B65CDE /* MZClockConfigItem.xib */,
-				132E0AB019D3211E00CC9CF6 /* MZClockConfig.h */,
-				132E0AB119D3211E00CC9CF6 /* MZClockConfig.m */,
-				13E9FED41C42D74A00F204A3 /* MZDateCalc.h */,
-				13E9FED51C42D74A00F204A3 /* MZDateCalc.m */,
-				1313BA121C48BAB400C36A36 /* MZTextField.h */,
-				1313BA131C48BAB400C36A36 /* MZTextField.m */,
 				134E392619BA107B004FA01A /* Supporting Files */,
 				13C386632F6DBCAE00693428 /* LoginItemHelper.swift */,
+				EA8BAEAA30A3B51200C34F26 /* Date+Tools.swift */,
+				EA8BAEAD30A3B52400C34F26 /* VCSettings.swift */,
+				EA8BAEAF30A3B53300C34F26 /* MZDateCalc.swift */,
+				EA8BAEB130A3B54000C34F26 /* MZClockControl.swift */,
+				EA8BAEB330A3B56500C34F26 /* MZCalendarControl.swift */,
+				EA8BAEB530A3B57800C34F26 /* MZClockItem.swift */,
+				EA8BAEB730A3B57B00C34F26 /* MZTextField.swift */,
+				EA8BAEB930A3B58C00C34F26 /* MZAboutBox.swift */,
+				EA8BAEBB30A3B5CB00C34F26 /* MZVistaClockPreferences.swift */,
+				EA8BAEBD30A3B63B00C34F26 /* MZVistaClockAppDelegate.swift */,
 			);
 			path = VistaClock;
 			sourceTree = "<group>";
@@ -361,8 +322,6 @@
 				1300F5BD19BCE700006E8FD9 /* HWVCB01.png */,
 				134E392719BA107B004FA01A /* VistaClock-Info.plist */,
 				134E392819BA107B004FA01A /* InfoPlist.strings */,
-				134E392B19BA107B004FA01A /* main.m */,
-				134E392D19BA107B004FA01A /* VistaClock-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -396,6 +355,29 @@
 			productReference = 134E391C19BA107B004FA01A /* VistaClock.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EA8BAEC730A3CB8C00C34F26 /* VistaClockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA8BAECF30A3CB8C00C34F26 /* Build configuration list for PBXNativeTarget "VistaClockTests" */;
+			buildPhases = (
+				EA8BAEC430A3CB8C00C34F26 /* Sources */,
+				EA8BAEC530A3CB8C00C34F26 /* Frameworks */,
+				EA8BAEC630A3CB8C00C34F26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA8BAED230A3CB8C00C34F26 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				EA8BAEC930A3CB8C00C34F26 /* VistaClockTests */,
+			);
+			name = VistaClockTests;
+			packageProductDependencies = (
+			);
+			productName = VistaClockTests;
+			productReference = EA8BAEC830A3CB8C00C34F26 /* VistaClockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -404,6 +386,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = MZ;
+				LastSwiftUpdateCheck = 2720;
 				LastUpgradeCheck = 2640;
 				ORGANIZATIONNAME = "Mazookie, LLC";
 				TargetAttributes = {
@@ -414,6 +397,9 @@
 								enabled = 1;
 							};
 						};
+					};
+					EA8BAEC730A3CB8C00C34F26 = {
+						CreatedOnToolsVersion = 27.2;
 					};
 				};
 			};
@@ -437,6 +423,7 @@
 			projectRoot = "";
 			targets = (
 				134E391B19BA107B004FA01A /* VistaClock */,
+				EA8BAEC730A3CB8C00C34F26 /* VistaClockTests */,
 			);
 		};
 /* End PBXProject section */
@@ -461,12 +448,9 @@
 				1300F5FA19BCE700006E8FD9 /* MVCW07.png in Resources */,
 				1300F5FC19BCE700006E8FD9 /* MWVCB01.png in Resources */,
 				1300F5E819BCE700006E8FD9 /* DVCW03.png in Resources */,
-				13A4EB4F19EDA6E70031D4DE /* MainMenu.xib in Resources */,
 				132C794D1E22FCDA00F38952 /* HVCW09.png in Resources */,
 				1300F60519BCE700006E8FD9 /* SVCW05.png in Resources */,
-				13BBAEBD1CCF2E460070558B /* MZAboutBox.xib in Resources */,
 				1300F60819BCE700006E8FD9 /* SWVCB01.png in Resources */,
-				1313723619C3552E00B65CDE /* MZVistaClockPreferences.xib in Resources */,
 				1300F60219BCE700006E8FD9 /* SVCB02.png in Resources */,
 				1300F5EF19BCE700006E8FD9 /* HVCB06.png in Resources */,
 				1300F5F219BCE700006E8FD9 /* HVCW07.png in Resources */,
@@ -475,7 +459,6 @@
 				1300F5F519BCE700006E8FD9 /* MBVCB01.png in Resources */,
 				134E392A19BA107B004FA01A /* InfoPlist.strings in Resources */,
 				1300F5F119BCE700006E8FD9 /* HVCW05.png in Resources */,
-				1313723F19C386D300B65CDE /* MZClockConfigItem.xib in Resources */,
 				1300F5F419BCE700006E8FD9 /* HWVCB01.png in Resources */,
 				1300F60619BCE700006E8FD9 /* SVCW07.png in Resources */,
 				1300F61319BCE700006E8FD9 /* VCW06.png in Resources */,
@@ -495,7 +478,6 @@
 				1300F5E919BCE700006E8FD9 /* DVCW05.png in Resources */,
 				1300F5EB19BCE700006E8FD9 /* DVCW08.png in Resources */,
 				1300F5E719BCE700006E8FD9 /* DVCB06.png in Resources */,
-				1300F61719BCE9A5006E8FD9 /* MZClockItem.xib in Resources */,
 				132C794E1E22FCDA00F38952 /* MVCW09.png in Resources */,
 				1300F5EE19BCE700006E8FD9 /* HVCB02.png in Resources */,
 				1300F5FB19BCE700006E8FD9 /* MVCW08.png in Resources */,
@@ -515,6 +497,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EA8BAEC630A3CB8C00C34F26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -522,26 +511,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1313724019C386D300B65CDE /* MZClockConfigItem.m in Sources */,
-				13E9FED61C42D74A00F204A3 /* MZDateCalc.m in Sources */,
-				1314945419BE071800496351 /* MZCalendarControl.m in Sources */,
-				13BEBE1C19C8EAC6009C7B76 /* VCSettings.m in Sources */,
-				134E392C19BA107B004FA01A /* main.m in Sources */,
-				13BBAEBC1CCF2E460070558B /* MZAboutBox.m in Sources */,
-				134E3A0519BA1388004FA01A /* MZStatusItemView.m in Sources */,
-				1300F5FF19BCE700006E8FD9 /* MZClockItem.m in Sources */,
+				EA8BAEBE30A3B63B00C34F26 /* MZVistaClockAppDelegate.swift in Sources */,
+				EA8BAEBA30A3B58C00C34F26 /* MZAboutBox.swift in Sources */,
 				13C386642F6DBCAE00693428 /* LoginItemHelper.swift in Sources */,
-				1313723519C3552E00B65CDE /* MZVistaClockPreferences.m in Sources */,
-				1313BA141C48BAB400C36A36 /* MZTextField.m in Sources */,
-				132E0AB219D3211E00CC9CF6 /* MZClockConfig.m in Sources */,
-				134E393319BA107B004FA01A /* MZVistaClockAppDelegate.m in Sources */,
-				1300F5FD19BCE700006E8FD9 /* MZClockControl.m in Sources */,
-				1300F60019BCE700006E8FD9 /* NSDate+Tools.m in Sources */,
-				1300F5FE19BCE700006E8FD9 /* MZClockControlCell.m in Sources */,
+				EA8BAEAE30A3B52400C34F26 /* VCSettings.swift in Sources */,
+				EA8BAEB030A3B53300C34F26 /* MZDateCalc.swift in Sources */,
+				EA8BAEAB30A3B51200C34F26 /* Date+Tools.swift in Sources */,
+				EA8BAEB630A3B57800C34F26 /* MZClockItem.swift in Sources */,
+				EA8BAEB830A3B57B00C34F26 /* MZTextField.swift in Sources */,
+				EA8BAEB430A3B56500C34F26 /* MZCalendarControl.swift in Sources */,
+				EA8BAEBC30A3B5CB00C34F26 /* MZVistaClockPreferences.swift in Sources */,
+				EA8BAEB230A3B54000C34F26 /* MZClockControl.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA8BAEC430A3CB8C00C34F26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA8BAED230A3CB8C00C34F26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 134E391B19BA107B004FA01A /* VistaClock */;
+			targetProxy = EA8BAED130A3CB8C00C34F26 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		134E392819BA107B004FA01A /* InfoPlist.strings */ = {
@@ -550,14 +549,6 @@
 				134E392919BA107B004FA01A /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		13A4EB4D19EDA6E70031D4DE /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1333123222DA917400D21E7B /* Base */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -592,10 +583,10 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = G7Y6J5C2S2;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -652,11 +643,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = G7Y6J5C2S2;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -686,31 +677,26 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CODE_SIGN_ENTITLEMENTS = VistaClock/VistaClock.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 96;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = G7Y6J5C2S2;
 				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_RESOURCE_ACCESS_CALENDARS = YES;
-				EXCLUDED_ARCHS = x86_64;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VistaClock/VistaClock-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "VistaClock/VistaClock-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 2.4.0;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Mazookie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -724,32 +710,67 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
 				CODE_SIGN_ENTITLEMENTS = VistaClock/VistaClock.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 96;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = G7Y6J5C2S2;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_CALENDARS = YES;
-				EXCLUDED_ARCHS = x86_64;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VistaClock/VistaClock-Prefix.pch";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "VistaClock/VistaClock-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 2.4.0;
-				ONLY_ACTIVE_ARCH = YES;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Mazookie.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		EA8BAECC30A3CB8C00C34F26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Mazookie.VistaClockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VistaClock.app/Contents/MacOS/VistaClock";
+			};
+			name = Debug;
+		};
+		EA8BAECD30A3CB8C00C34F26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Mazookie.VistaClockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_VERSION = 6.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VistaClock.app/Contents/MacOS/VistaClock";
 			};
 			name = Release;
 		};
@@ -770,6 +791,15 @@
 			buildConfigurations = (
 				134E394E19BA107B004FA01A /* Debug */,
 				134E394F19BA107B004FA01A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA8BAECF30A3CB8C00C34F26 /* Build configuration list for PBXNativeTarget "VistaClockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA8BAECC30A3CB8C00C34F26 /* Debug */,
+				EA8BAECD30A3CB8C00C34F26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
