@@ -39,6 +39,13 @@ Rather than loading a time consuming calendar to simply get the date for next Tu
 >    - Untested
 > 
 
+>[3.0.0](builds/VistaClock_v3.0.0/VistaClock.zip)
+>    
+>    Changes:
+>    - Convert to Swift
+>    - Update the UI
+>    - Tested with MacOS Version 26+
+
 ## Support
 
 **Bugs and requests?**  Please use the project's [issue tracker].
