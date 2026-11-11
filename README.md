@@ -48,7 +48,7 @@ Rather than loading a time consuming calendar to simply get the date for next Tu
 >    - Update the UI
 >    - Tested with MacOS Version 26+
 
->3.0.1
+>[3.0.1](builds/VistaClock_v3.0.1/VistaClock.zip)
 >
 >    Changes:
 >    - Use Inverse Color now works (black text on a white background in the menu bar)
