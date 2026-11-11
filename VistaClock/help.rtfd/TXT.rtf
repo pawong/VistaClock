@@ -17,10 +17,10 @@
 
 \f0\b0 \cf0 \
 The panel shows the default configuration, calendar and one clock.  It also shows the toolbar, which can be selected from the settings button. A note about time zones.  \cf2 \expnd0\expndtw0\kerning0
-VistaClock uses the IANA Time Zone Database. This database contains every timezone in the world. It's just a matter of finding it. The easiest way is to look for the GMT offset of the timezone you want. And then you search for that number in the list and find a city in your timezone that corresponds to it. For example, India has *one* timezone, GMT+5.5. Looking in the list delivers "Asia/Kolkata +5.5" which is indeed the correct timezone for all of India.\cf0 \kerning1\expnd0\expndtw0 \
+VistaClock uses the IANA Time Zone Database. This database contains every timezone in the world. It's just a matter of finding it. The easiest way is to look for the GMT offset of the timezone you want. And then you search for that number in the list and find a city in your timezone that corresponds to it. For example, India has *one* timezone, GMT+5:30. Looking in the list delivers "Asia/Kolkata  (GMT+5:30)" which is indeed the correct timezone for all of India.\cf0 \kerning1\expnd0\expndtw0 \
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\pardirnatural\partightenfactor0
-\cf0 {{\NeXTGraphic vistaclock.png \width9800 \height6600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+\cf0 {{\NeXTGraphic vistaclock.png \width9040 \height6120 \appleattachmentpadding0 \appleembedtype0 \appleaqc
 }¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\pardirnatural\partightenfactor0
 \cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
@@ -38,7 +38,7 @@ Next is a handy button that will go to the current date.  You can also press the
 \
 These are followed by the current day of the year and the offset of the selected date in days.  \
 \
-And lastly is the settings button.\
+And lastly is the settings button (the gear).  Its menu shows or hides the toolbar, pins or unpins the panel, launches Calendar or Reminders, and opens Preferences, the Date & Time settings and this help.\
 \
 \
 \
@@ -50,8 +50,7 @@ And lastly is the settings button.\
 \fs28 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f0\b0\fs24 \cf0 {{\NeXTGraphic preferences.png \width10580 \height9680 \appleattachmentpadding0 \appleembedtype0 \appleaqc
-}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\f0\b0\fs24 \cf0 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
 \fs28 \cf0 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
@@ -60,6 +59,8 @@ And lastly is the settings button.\
 
 \fs48 General
 \fs28 \
+{{\NeXTGraphic prefs-general.png \width9200 \height5280 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
 \
 Automatically start VIstaClock at Login
 \f0\b0  \'96 Starts the program automatically when you log in to the computer.\
@@ -88,6 +89,8 @@ Automatically start VIstaClock at Login
 
 \f1\b\fs48 Menu Bar
 \fs28 \
+{{\NeXTGraphic prefs-menubar.png \width9200 \height10240 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
 \
 Enable Date Time Options
 \f0\b0  \'96 Show date and time options to allow date time on the menu bar else, show just an icon.\
@@ -110,7 +113,7 @@ Enable Date Time Options
 \
 
 \f1\b Use Inverse Color
-\f0\b0  \'96 Use inverse color for text on the menu bar.
+\f0\b0  \'96 Show the menu bar text as black on a white background, whatever the menu bar looks like.
 \f1\b \
 \
 Show Date
@@ -156,6 +159,8 @@ Display with seconds
 
 \f1\b\fs48 Calendar
 \fs28 \
+{{\NeXTGraphic prefs-calendar.png \width9200 \height5280 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ri-2158\partightenfactor0
 
 \f0\b0 \cf0 \
@@ -189,8 +194,10 @@ Display with seconds
 
 \f1\b\fs48 Clock
 \f0\b0\fs28 \
+{{\NeXTGraphic prefs-clock.png \width10800 \height8200 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\
 \
-This is the list of clocks to be shown on the panel.  There are buttons for reordering the clocks and also a button to remove it from the list.\
+This is the list of clocks to be shown on the panel.  You edit it right in the list: click a name to change it, choose the time zone from the menu in the row, and tick Seconds to show a second hand on that clock.  Drag a clock up or down to change the order.  The plus (+) button adds a clock, starting with this Mac time zone and its name ready to type over, and the minus (-) button removes the selected clock.\
 \
 
 \f1\b Clock Faces
@@ -201,15 +208,15 @@ This is the list of clocks to be shown on the panel.  There are buttons for reor
 \f0\b0  \'96 Force the panel clocks to use 24-hour style text.\
 \
 
-\f1\b Label
-\f0\b0  \'96 You can label the clocks, as you like.  Pick a city or pick something meaning for you like a name.\
+\f1\b Name
+\f0\b0  \'96 You can name the clocks, as you like.  Pick a city or pick something meaningful to you like a person.  A clock with no name is not shown.\
 \
 
-\f1\b Zone
+\f1\b Time Zone
 \f0\b0  \'96 This is the time zone to use for the clock.\
 \
 
-\f1\b Use second hand
-\f0\b0  \'96 Use this option to show a second hand on the clock.\
+\f1\b Seconds
+\f0\b0  \'96 Tick this to show a second hand on the clock and seconds in its time.  New clocks start with it off.\
 \
 }

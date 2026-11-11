@@ -11,8 +11,8 @@ Rather than loading a time consuming calendar to simply get the date for next Tu
 - Week Number Icon in the statusbar (color or monochrome).
 - Auto hide when not in focus.
 - Keep on Top option.
-- Two additional clocks with time zone support.
-- Format statusbar clock.
+- Any number of extra clocks with time zone support, edited in place and reordered by dragging.
+- Format statusbar clock: date and time, fuzzy time ("Quarter past Three"), a secondary time zone, or inverse colors (black on white).
 - Custom Clock Control, choice of clock faces.
 - Custom Calendar Control.
 - Week Number calendar view.
@@ -21,6 +21,8 @@ Rather than loading a time consuming calendar to simply get the date for next Tu
 
 ## Screenshots
 ![](Screenshot1.png)
+
+![](Screenshot2.png)
 
 ## Versions
 >[2.3.4](builds/VistaClock_v2.3.4/VistaClock.zip)
@@ -45,6 +47,32 @@ Rather than loading a time consuming calendar to simply get the date for next Tu
 >    - Convert to Swift
 >    - Update the UI
 >    - Tested with MacOS Version 26+
+
+>3.0.1
+>
+>    Changes:
+>    - Use Inverse Color now works (black text on a white background in the menu bar)
+>    - The clock list on the Clock preferences tab edits in place: name, time zone and seconds
+>    - Drag clocks to reorder them
+>    - The build number is the short git hash
+>    - Updated help
+>    - Added unit tests
+
+## Install
+
+Unzip `VistaClock.zip` from the [builds](builds) folder and move **VistaClock.app** to Applications. VistaClock requires **MacOS 26 or later** and the released builds are for Apple silicon.
+
+The builds are signed to run locally and are not notarized, so on first launch MacOS may ask you to allow the app in **System Settings > Privacy & Security**. VistaClock asks for Calendar and Reminders access to show the event and reminder indicators.
+
+## Building
+
+Open `VistaClock.xcodeproj` in Xcode and build the **VistaClock** scheme. No developer account is needed: the project signs to run locally.
+
+The build number is set to the short git hash of the checkout you build from (a build outside a git checkout keeps the number in the project settings).
+
+## Tests
+
+The unit tests use Swift Testing. Run them from Xcode with Product > Test (⌘U).
 
 ## Support
 

@@ -22,6 +22,8 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
     private typealias BoolSetting = ReferenceWritableKeyPath<VCSettings, Bool>
 
     private static let pageWidth: CGFloat = 460
+    /// The clock page is wider so the time zone menu and Seconds column fit.
+    private static let clockPageWidth: CGFloat = 540
 
     private let settings: VCSettings
 
@@ -78,7 +80,7 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
 
         tabs.addTabViewItem(page("General", symbol: "gearshape", views: generalPage()))
         tabs.addTabViewItem(page("Menu Bar", symbol: "menubar.rectangle", views: menuBarPage()))
-        tabs.addTabViewItem(page("Clock", symbol: "clock", views: clockPage()))
+        tabs.addTabViewItem(page("Clock", symbol: "clock", width: Self.clockPageWidth, views: clockPage()))
         tabs.addTabViewItem(page("Calendar", symbol: "calendar", views: calendarPage()))
 
         updateWindowControls()
@@ -90,7 +92,7 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
 
     // MARK: - Page building
 
-    private func page(_ title: String, symbol: String, views: [NSView]) -> NSTabViewItem {
+    private func page(_ title: String, symbol: String, width: CGFloat = pageWidth, views: [NSView]) -> NSTabViewItem {
         let stack = NSStackView(views: views)
         stack.orientation = .vertical
         stack.alignment = .leading
@@ -105,7 +107,7 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
             stack.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             stack.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            container.widthAnchor.constraint(equalToConstant: Self.pageWidth),
+            container.widthAnchor.constraint(equalToConstant: width),
         ])
 
         let controller = NSViewController()
@@ -197,7 +199,7 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
 
         // configured clocks
         let columns: [(id: String, title: String, width: CGFloat)] = [
-            ("name", "Name", 130), ("zone", "Time Zone", 215), ("seconds", "Seconds", 60),
+            ("name", "Name", 140), ("zone", "Time Zone", 250), ("seconds", "Seconds", 70),
         ]
         for column in columns {
             let tableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(column.id))
@@ -209,6 +211,8 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
         clockTable.delegate = self
         clockTable.usesAlternatingRowBackgroundColors = true
         clockTable.rowHeight = 26
+        // extra or missing width goes to the name, so the zone menu and Seconds keep their size
+        clockTable.columnAutoresizingStyle = .firstColumnOnlyAutoresizingStyle
 
         // drag rows to reorder
         clockTable.registerForDraggedTypes([Self.clockRowType])
@@ -221,7 +225,7 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
         scroll.borderType = .bezelBorder
         scroll.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scroll.widthAnchor.constraint(equalToConstant: Self.pageWidth - 40),
+            scroll.widthAnchor.constraint(equalToConstant: Self.clockPageWidth - 40),
             scroll.heightAnchor.constraint(equalToConstant: 150),
         ])
 
