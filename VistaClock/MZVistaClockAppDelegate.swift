@@ -589,7 +589,7 @@ final class MZVistaClockAppDelegate: NSObject, NSApplicationDelegate, NSToolbarD
 
         // update the status item
         updateStatusItemImage(now: now)
-        statusItem?.button?.title = statusItemTitle(now: now, statusItemDate: statusItemDate, locale: locale)
+        applyStatusItemTitle(statusItemTitle(now: now, statusItemDate: statusItemDate, locale: locale))
 
         // menu item
         timeNowMenuItem.title = fullDateTime
@@ -642,6 +642,26 @@ final class MZVistaClockAppDelegate: NSObject, NSApplicationDelegate, NSToolbarD
             let selected = calendarControl.selectedDate
             let days = Int(selected.timeIntervalSince(now.noonOfDay)) / 86400
             dayDetailLabel.stringValue = "\(selected.dayOfYearString) / \(days)"
+        }
+    }
+
+    /// Sets the status item text. With "Use Inverse Color" it is black on a white rounded
+    /// background, whatever the menu bar looks like; otherwise it follows the menu bar.
+    private func applyStatusItemTitle(_ title: String) {
+        guard let button = statusItem?.button else { return }
+
+        let inverse = settings.useInverseTitle && !title.isEmpty
+        button.wantsLayer = true
+        button.layer?.cornerRadius = 4
+        button.layer?.backgroundColor = inverse ? NSColor.white.cgColor : nil
+
+        if inverse {
+            button.attributedTitle = NSAttributedString(string: title, attributes: [
+                .foregroundColor: NSColor.black,
+                .font: NSFont.menuBarFont(ofSize: 0),
+            ])
+        } else {
+            button.title = title // plain text replaces any styled title
         }
     }
 
