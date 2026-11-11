@@ -23,7 +23,7 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
 
     private static let pageWidth: CGFloat = 460
 
-    private let settings = VCSettings.shared
+    private let settings: VCSettings
 
     // controls bound to boolean settings
     private var checkboxes: [BoolSetting: NSButton] = [:]
@@ -35,21 +35,22 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
     }
     private let zones: [ZoneChoice]
     private let statusTimezonePopup = NSPopUpButton()
-    private let newClockZonePopup = NSPopUpButton()
 
     // clock page
     private let clockFaces: [String]
     private var clockFaceIndex = 0
     private let clockPicker = MZClockControl()
     private let clockTable = NSTableView()
-    private let titleField = NSTextField()
-    private let moveUpButton = NSButton()
-    private let moveDownButton = NSButton()
+    private let addButton = NSButton()
     private let removeButton = NSButton()
+
+    /// Pasteboard type used to drag clock rows into a new order.
+    private static let clockRowType = NSPasteboard.PasteboardType("com.mazookie.vistaclock.clockrow")
 
     // MARK: - Setup
 
-    init() {
+    init(settings: VCSettings = .shared) {
+        self.settings = settings
         zones = TimeZone.knownTimeZoneIdentifiers.sorted().compactMap { identifier in
             guard let zone = TimeZone(identifier: identifier) else { return nil }
             let minutes = zone.secondsFromGMT() / 60
@@ -74,8 +75,6 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
         window.delegate = self
 
         fillZonePopup(statusTimezonePopup)
-        fillZonePopup(newClockZonePopup)
-        select(zone: TimeZone.current.identifier, in: newClockZonePopup)
 
         tabs.addTabViewItem(page("General", symbol: "gearshape", views: generalPage()))
         tabs.addTabViewItem(page("Menu Bar", symbol: "menubar.rectangle", views: menuBarPage()))
@@ -198,7 +197,7 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
 
         // configured clocks
         let columns: [(id: String, title: String, width: CGFloat)] = [
-            ("name", "Name", 150), ("zone", "Time Zone", 200), ("seconds", "Seconds", 60),
+            ("name", "Name", 130), ("zone", "Time Zone", 215), ("seconds", "Seconds", 60),
         ]
         for column in columns {
             let tableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(column.id))
@@ -209,6 +208,12 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
         clockTable.dataSource = self
         clockTable.delegate = self
         clockTable.usesAlternatingRowBackgroundColors = true
+        clockTable.rowHeight = 26
+
+        // drag rows to reorder
+        clockTable.registerForDraggedTypes([Self.clockRowType])
+        clockTable.setDraggingSourceOperationMask(.move, forLocal: true)
+        clockTable.draggingDestinationFeedbackStyle = .gap
 
         let scroll = NSScrollView()
         scroll.documentView = clockTable
@@ -217,33 +222,18 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
         scroll.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scroll.widthAnchor.constraint(equalToConstant: Self.pageWidth - 40),
-            scroll.heightAnchor.constraint(equalToConstant: 110),
+            scroll.heightAnchor.constraint(equalToConstant: 150),
         ])
 
-        configure(moveUpButton, symbol: "arrow.up", help: "Move Up", action: #selector(moveUpClockConfig(_:)))
-        configure(moveDownButton, symbol: "arrow.down", help: "Move Down", action: #selector(moveDownClockConfig(_:)))
-        configure(removeButton, symbol: "minus", help: "Remove", action: #selector(removeClockConfig(_:)))
-        let listButtons = NSStackView(views: [moveUpButton, moveDownButton, removeButton])
+        configure(addButton, symbol: "plus", help: "Add Clock", action: #selector(addClock(_:)))
+        configure(removeButton, symbol: "minus", help: "Remove Clock", action: #selector(removeClockConfig(_:)))
+        let listButtons = NSStackView(views: [addButton, removeButton])
         listButtons.spacing = 4
-
-        // new clock
-        titleField.placeholderString = "Name"
-        let addButton = NSButton(title: "Add", target: self, action: #selector(addClock(_:)))
-        // line 1: name; line 2: time zone and Add
-        titleField.translatesAutoresizingMaskIntoConstraints = false
-        titleField.widthAnchor.constraint(equalToConstant: Self.pageWidth - 40).isActive = true
-        let zoneRow = NSStackView(views: [newClockZonePopup, addButton])
-        zoneRow.spacing = 8
-        let newClock = NSStackView(views: [titleField, zoneRow])
-        newClock.orientation = .vertical
-        newClock.alignment = .leading
-        newClock.spacing = 8
 
         return [
             picker,
             scroll,
             listButtons,
-            newClock,
         ]
     }
 
@@ -280,8 +270,17 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
     }
 
     private func select(zone identifier: String, in popup: NSPopUpButton) {
-        let index = popup.itemArray.firstIndex { ($0.representedObject as? String) == identifier } ?? 0
-        popup.selectItem(at: index)
+        if let index = popup.itemArray.firstIndex(where: { ($0.representedObject as? String) == identifier }) {
+            popup.selectItem(at: index)
+        } else if !identifier.isEmpty {
+            // a saved zone this system doesn't list: show it rather than silently picking another
+            let item = NSMenuItem(title: identifier, action: nil, keyEquivalent: "")
+            item.representedObject = identifier
+            popup.menu?.insertItem(item, at: 0)
+            popup.selectItem(at: 0)
+        } else {
+            popup.selectItem(at: 0)
+        }
     }
 
     // MARK: - Clock list
@@ -293,20 +292,58 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let tableColumn, settings.clockConfigs.indices.contains(row) else { return nil }
         let config = settings.clockConfigs[row]
+        let identifier = tableColumn.identifier
 
-        if tableColumn.identifier.rawValue == "seconds" {
-            let button = NSButton(checkboxWithTitle: "", target: self, action: #selector(toggleSeconds(_:)))
+        switch identifier.rawValue {
+        case "seconds":
+            let button = tableView.makeView(withIdentifier: identifier, owner: nil) as? NSButton ?? {
+                let button = NSButton(checkboxWithTitle: "", target: self, action: #selector(toggleSeconds(_:)))
+                button.identifier = identifier
+                return button
+            }()
             button.state = config.useSeconds ? .on : .off
             return button
-        }
 
-        let isName = tableColumn.identifier.rawValue == "name"
-        let label = NSTextField(labelWithString: isName ? config.title : config.timezoneName)
-        label.lineBreakMode = .byTruncatingTail
-        if !isName {
-            label.textColor = .secondaryLabelColor
+        case "zone":
+            let popup = tableView.makeView(withIdentifier: identifier, owner: nil) as? NSPopUpButton ?? {
+                let popup = NSPopUpButton()
+                popup.identifier = identifier
+                popup.controlSize = .small
+                popup.target = self
+                popup.action = #selector(zoneChosen(_:))
+                fillZonePopup(popup)
+                return popup
+            }()
+            select(zone: config.timezoneName, in: popup)
+            return popup
+
+        default:
+            // the name edits in place, centered vertically in the row
+            let cell = tableView.makeView(withIdentifier: identifier, owner: nil) as? NSTableCellView ?? {
+                let cell = NSTableCellView()
+                cell.identifier = identifier
+                let field = NSTextField()
+                field.translatesAutoresizingMaskIntoConstraints = false
+                field.isEditable = true
+                field.isBordered = false
+                field.drawsBackground = false
+                field.focusRingType = .none
+                field.lineBreakMode = .byTruncatingTail
+                field.cell?.sendsActionOnEndEditing = true
+                field.target = self
+                field.action = #selector(nameEdited(_:))
+                cell.addSubview(field)
+                cell.textField = field
+                NSLayoutConstraint.activate([
+                    field.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 2),
+                    field.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -2),
+                    field.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
+                ])
+                return cell
+            }()
+            cell.textField?.stringValue = config.title
+            return cell
         }
-        return label
     }
 
     func tableViewSelectionDidChange(_ notification: Notification) {
@@ -314,10 +351,7 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
     }
 
     private func updateListButtons() {
-        let row = clockTable.selectedRow
-        moveUpButton.isEnabled = row > 0
-        moveDownButton.isEnabled = row >= 0 && row < settings.clockConfigs.count - 1
-        removeButton.isEnabled = row >= 0
+        removeButton.isEnabled = clockTable.selectedRow >= 0
     }
 
     private func clocksChanged(select row: Int? = nil) {
@@ -329,35 +363,89 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
         settings.needsDisplay = true
     }
 
+    /// Adds a clock for this Mac's time zone and starts editing its name.
     @objc private func addClock(_ sender: Any?) {
-        let zone = newClockZonePopup.selectedItem?.representedObject as? String ?? TimeZone.current.identifier
-        settings.clockConfigs.append(ClockConfig(
-            title: titleField.stringValue, timezoneName: zone, useSeconds: false))
-        titleField.stringValue = ""
-        clocksChanged(select: settings.clockConfigs.count - 1)
+        let row = addNewClock()
+        clockTable.scrollRowToVisible(row)
+
+        if let field = (clockTable.view(atColumn: 0, row: row, makeIfNecessary: true) as? NSTableCellView)?.textField {
+            window?.makeFirstResponder(field)
+            field.selectText(nil)
+        }
     }
 
-    @objc private func removeClockConfig(_ sender: Any?) {
-        let row = clockTable.selectedRow
+    /// Appends a clock for this Mac's time zone, selects it, and returns its row.
+    @discardableResult
+    func addNewClock() -> Int {
+        settings.clockConfigs.append(ClockConfig(
+            title: "New Clock", timezoneName: TimeZone.current.identifier, useSeconds: false))
+        let row = settings.clockConfigs.count - 1
+        clocksChanged(select: row)
+        return row
+    }
+
+    /// Removes the clock at `row` and keeps a neighbor selected.
+    func removeClock(at row: Int) {
         guard settings.clockConfigs.indices.contains(row) else { return }
         settings.clockConfigs.remove(at: row)
         clocksChanged(select: settings.clockConfigs.isEmpty ? nil : min(row, settings.clockConfigs.count - 1))
     }
 
-    @objc private func moveUpClockConfig(_ sender: Any?) {
-        moveSelectedClock(by: -1)
+    @objc private func removeClockConfig(_ sender: Any?) {
+        removeClock(at: clockTable.selectedRow)
     }
 
-    @objc private func moveDownClockConfig(_ sender: Any?) {
-        moveSelectedClock(by: 1)
+    @objc private func nameEdited(_ sender: NSTextField) {
+        let row = clockTable.row(for: sender)
+        guard settings.clockConfigs.indices.contains(row) else { return }
+        settings.clockConfigs[row].title = sender.stringValue
+        settings.needsDisplay = true
     }
 
-    private func moveSelectedClock(by offset: Int) {
-        let row = clockTable.selectedRow
-        let target = row + offset
-        guard settings.clockConfigs.indices.contains(row), settings.clockConfigs.indices.contains(target) else { return }
-        settings.clockConfigs.swapAt(row, target)
-        clocksChanged(select: target)
+    @objc private func zoneChosen(_ sender: NSPopUpButton) {
+        let row = clockTable.row(for: sender)
+        guard settings.clockConfigs.indices.contains(row),
+              let identifier = sender.selectedItem?.representedObject as? String else { return }
+        settings.clockConfigs[row].timezoneName = identifier
+        settings.needsDisplay = true
+    }
+
+    // MARK: Drag to reorder
+
+    func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> (any NSPasteboardWriting)? {
+        let item = NSPasteboardItem()
+        item.setString(String(row), forType: Self.clockRowType)
+        return item
+    }
+
+    func tableView(_ tableView: NSTableView, validateDrop info: any NSDraggingInfo,
+                   proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
+        // only rows from this table, dropped between rows
+        guard (info.draggingSource as? NSTableView) === tableView else { return [] }
+        tableView.setDropRow(row, dropOperation: .above)
+        return .move
+    }
+
+    func tableView(_ tableView: NSTableView, acceptDrop info: any NSDraggingInfo,
+                   row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
+        guard let text = info.draggingPasteboard.pasteboardItems?.first?.string(forType: Self.clockRowType),
+              let from = Int(text) else { return false }
+        return moveClock(from: from, toRow: row) != nil
+    }
+
+    /// Moves the clock at `from` to the gap before `row` (a drop position counted with the
+    /// dragged clock still in place) and returns its new index, or nil if `from` is invalid.
+    @discardableResult
+    func moveClock(from: Int, toRow row: Int) -> Int? {
+        guard settings.clockConfigs.indices.contains(from) else { return nil }
+
+        // moving later in the list shifts everything after the dragged row up by one
+        let destination = from < row ? row - 1 : row
+        let clock = settings.clockConfigs.remove(at: from)
+        let index = min(max(destination, 0), settings.clockConfigs.count)
+        settings.clockConfigs.insert(clock, at: index)
+        clocksChanged(select: index)
+        return index
     }
 
     @objc private func toggleSeconds(_ sender: NSButton) {
