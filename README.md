@@ -20,43 +20,47 @@ Rather than loading a time consuming calendar to simply get the date for next Tu
 - Connects to iCal and Reminders and shows indicators.
 
 ## Screenshots
+
 ![](Screenshot1.png)
 
-![](Screenshot2.png)
-
 ## Versions
->[2.3.4](builds/VistaClock_v2.3.4/VistaClock.zip)
->
->    Changes:
->    - Works with Intel and Silicon chip sets
 
->[2.4.0](builds/VistaClock_v2.4.0/VistaClock.zip)
+> [2.3.4](builds/VistaClock_v2.3.4/VistaClock.zip)
 >
->    Changes:
->    - Open sourced code
->    - Update to support latest MacOS
->    - Updated for Silicon only
+> Changes:
 >
->    Issues:
->    - Untested
-> 
+> - Works with Intel and Silicon chip sets
 
->[3.0.0](builds/VistaClock_v3.0.0/VistaClock.zip)
->    
->    Changes:
->    - Convert to Swift
->    - Update the UI
->    - Tested with MacOS Version 26+
-
->[3.0.1](builds/VistaClock_v3.0.1/VistaClock.zip)
+> [2.4.0](builds/VistaClock_v2.4.0/VistaClock.zip)
 >
->    Changes:
->    - Use Inverse Color now works (black text on a white background in the menu bar)
->    - The clock list on the Clock preferences tab edits in place: name, time zone and seconds
->    - Drag clocks to reorder them
->    - The build number is the short git hash
->    - Updated help
->    - Added unit tests
+> Changes:
+>
+> - Open sourced code
+> - Update to support latest MacOS
+> - Updated for Silicon only
+>
+> Issues:
+>
+> - Untested
+
+> [3.0.0](builds/VistaClock_v3.0.0/VistaClock.zip)
+>
+> Changes:
+>
+> - Convert to Swift
+> - Update the UI
+> - Tested with MacOS Version 26+
+
+> [3.0.1](builds/VistaClock_v3.0.1/VistaClock.zip)
+>
+> Changes:
+>
+> - Use Inverse Color now works (black text on a white background in the menu bar)
+> - The clock list on the Clock preferences tab edits in place: name, time zone and seconds
+> - Drag clocks to reorder them
+> - The build number is the short git hash
+> - Updated help
+> - Added unit tests
 
 ## Install
 
@@ -76,18 +80,19 @@ The unit tests use Swift Testing. Run them from Xcode with Product > Test (⌘U)
 
 ## Support
 
-**Bugs and requests?**  Please use the project's [issue tracker].
+**Bugs and requests?** Please use the project's [issue tracker].
 
 [![Issues](http://img.shields.io/github/issues/pawong/VistaClock.svg)](https://github.com/pawong/VistaClock/issues)
 
-**Want to contribute?**  Please fork this repository and open a pull request with your new changes.
+**Want to contribute?** Please fork this repository and open a pull request with your new changes.
 
 [![Pull requests](http://img.shields.io/github/issues-pr/pawong/VistaClock.svg?maxAge=3600)](https://github.com/pawong/VistaClock/pulls)
 
-**Do you like it?**  Support the project by starring the repository or [tweet] about it.
+**Do you like it?** Support the project by starring the repository or [tweet] about it.
 
 ## Thanks for looking!
-*If you like what you see* [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/pawong)
+
+_If you like what you see_ [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/pawong)
 
 **VistaClock** © 2026, Mazookie, LLC. Released under the [MIT License](LICENSE).
 
