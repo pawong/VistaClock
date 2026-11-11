@@ -669,7 +669,7 @@ final class MZVistaClockAppDelegate: NSObject, NSApplicationDelegate, NSToolbarD
         guard settings.showDateTime else { return "" }
 
         if settings.useFuzzyTime && settings.showTime {
-            return fuzzyTime(now)
+            return now.fuzzyTimeString
         }
 
         if settings.showStatusSecondaryTime && settings.showTime {
@@ -688,33 +688,6 @@ final class MZVistaClockAppDelegate: NSObject, NSApplicationDelegate, NSToolbarD
         }
 
         return statusItemDate
-    }
-
-    /// The time in words, e.g. "Quarter past Three".
-    private func fuzzyTime(_ now: Date) -> String {
-        let hourNames = ["One", "Two", "Three", "Four", "Five", "Six",
-                         "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve"]
-        let messages = [
-            "%@ o'clock", "Five past %@", "Ten past %@", "Quarter past %@",
-            "Twenty past %@", "Twenty Five past %@", "Half past %@", "Twenty Five to %@",
-            "Twenty to %@", "Quarter to %@", "Ten to %@", "Five to %@",
-        ]
-
-        let components = Calendar.current.dateComponents([.hour, .minute], from: now)
-        var hours = components.hour ?? 0
-        let minutes = components.minute ?? 0
-
-        var index = 0
-        if minutes > 2 {
-            index = (minutes - 3) / 5 + 1
-        }
-        if hours < 1 {
-            hours = 12
-        }
-        if minutes > 32 {
-            hours += 1
-        }
-        return String(format: messages[index % 12], hourNames[(hours - 1) % 12])
     }
 
     /// True the first time it is asked, and whenever the user's calendar changes.
