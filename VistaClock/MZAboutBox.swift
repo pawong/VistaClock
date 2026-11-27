@@ -10,14 +10,20 @@ import AppKit
 
 /// The About window, which also hosts the help text.
 final class MZAboutBox: NSWindowController {
+    /// Content height of the About page.
+    private static let aboutContentHeight: CGFloat = 293
+    /// The Help page grows to at most this fraction of the screen's visible height.
+    private static let maxHelpScreenFraction: CGFloat = 0.8
+
     private let aboutView = NSView()
     private let helpView = NSView()
     private let toggleButton = NSButton(title: "Help", target: nil, action: nil)
+    private var helpTextView: NSTextView?
     private(set) var isHelpVisible = false
 
     init() {
         let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 612, height: 293),
+            contentRect: NSRect(x: 0, y: 0, width: 612, height: Self.aboutContentHeight),
             styleMask: [.titled, .closable],
             backing: .buffered, defer: false)
         window.title = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? "VistaClock"
@@ -88,6 +94,7 @@ final class MZAboutBox: NSWindowController {
         help.textView.backgroundColor = .white
         help.scrollView.translatesAutoresizingMaskIntoConstraints = false
         helpView.addSubview(help.scrollView)
+        helpTextView = help.textView
 
         // buttons
         let sourceButton = NSButton(title: "Source Code", target: self, action: #selector(openSourceCode(_:)))
@@ -170,5 +177,44 @@ final class MZAboutBox: NSWindowController {
         helpView.isHidden = !show
         aboutView.isHidden = show
         toggleButton.title = show ? "About" : "Help"
+        resizeWindow(forHelp: show)
+    }
+
+    /// Help grows the window to fit the whole help document, capped at 80% of the screen height,
+    /// and centers it on the screen; About restores the original size, keeping the top edge put.
+    private func resizeWindow(forHelp show: Bool) {
+        guard let window, let content = window.contentView else { return }
+        content.layoutSubtreeIfNeeded()
+
+        var contentHeight = Self.aboutContentHeight
+        let visibleFrame = (window.screen ?? NSScreen.main)?.visibleFrame
+        if show, let visibleFrame {
+            // everything around the help text: the buttons and their margins
+            let chromeHeight = content.frame.height - helpView.frame.height
+            let documentHeight = helpDocumentHeight() + chromeHeight
+            let maxFrame = NSRect(x: 0, y: 0, width: window.frame.width,
+                                  height: visibleFrame.height * Self.maxHelpScreenFraction)
+            let maxContentHeight = window.contentRect(forFrameRect: maxFrame).height
+            contentHeight = max(Self.aboutContentHeight, min(documentHeight, maxContentHeight))
+        }
+
+        var frame = window.frameRect(forContentRect: NSRect(x: 0, y: 0, width: content.frame.width, height: contentHeight))
+        frame.origin = NSPoint(x: window.frame.minX, y: window.frame.maxY - frame.height)
+        if show, let visibleFrame {
+            // center the taller help window on the screen
+            frame.origin = NSPoint(x: visibleFrame.midX - frame.width / 2, y: visibleFrame.midY - frame.height / 2)
+        } else if let visibleFrame, frame.minY < visibleFrame.minY {
+            frame.origin.y = visibleFrame.minY
+        }
+        window.setFrame(frame, display: true, animate: window.isVisible)
+    }
+
+    /// Height of the fully laid-out help document, including the text view's insets.
+    private func helpDocumentHeight() -> CGFloat {
+        guard let textView = helpTextView,
+              let layoutManager = textView.layoutManager,
+              let textContainer = textView.textContainer else { return 0 }
+        layoutManager.ensureLayout(for: textContainer)
+        return ceil(layoutManager.usedRect(for: textContainer).height + textView.textContainerInset.height * 2)
     }
 }
