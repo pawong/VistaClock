@@ -25,11 +25,33 @@ Rather than loading a time consuming calendar to simply get the date for next Tu
 
 ## Versions
 
-> [2.3.4](builds/VistaClock_v2.3.4/VistaClock.zip)
+> [3.0.2](builds/VistaClock_v3.0.2/VistaClock.zip)
 >
 > Changes:
 >
-> - Works with Intel and Silicon chip sets
+> - The main window title is inset from the left edge
+> - The clock-face preview in Preferences shows a ticking second hand
+> - Help grows the About window to fit the help document (up to 80% of the screen height) and centers it
+> - Updated help
+
+> [3.0.1](builds/VistaClock_v3.0.1/VistaClock.zip)
+>
+> Changes:
+>
+> - Use Inverse Color now works (black text on a white background in the menu bar)
+> - The clock list on the Clock preferences tab edits in place: name, time zone and seconds
+> - Drag clocks to reorder them
+> - The build number is the short git hash
+> - Updated help
+> - Added unit tests
+
+> [3.0.0](builds/VistaClock_v3.0.0/VistaClock.zip)
+>
+> Changes:
+>
+> - Convert to Swift
+> - Update the UI
+> - Tested with MacOS Version 26+
 
 > [2.4.0](builds/VistaClock_v2.4.0/VistaClock.zip)
 >
@@ -43,24 +65,11 @@ Rather than loading a time consuming calendar to simply get the date for next Tu
 >
 > - Untested
 
-> [3.0.0](builds/VistaClock_v3.0.0/VistaClock.zip)
+> [2.3.4](builds/VistaClock_v2.3.4/VistaClock.zip)
 >
 > Changes:
 >
-> - Convert to Swift
-> - Update the UI
-> - Tested with MacOS Version 26+
-
-> [3.0.1](builds/VistaClock_v3.0.1/VistaClock.zip)
->
-> Changes:
->
-> - Use Inverse Color now works (black text on a white background in the menu bar)
-> - The clock list on the Clock preferences tab edits in place: name, time zone and seconds
-> - Drag clocks to reorder them
-> - The build number is the short git hash
-> - Updated help
-> - Added unit tests
+> - Works with Intel and Silicon chip sets
 
 ## Install
 
