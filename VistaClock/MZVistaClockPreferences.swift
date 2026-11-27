@@ -42,6 +42,8 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
     private let clockFaces: [String]
     private var clockFaceIndex = 0
     private let clockPicker = MZClockControl()
+    /// Ticks the preview clock's second hand while the window is open.
+    private var clockTimer: Timer?
     private let clockTable = NSTableView()
     private let addButton = NSButton()
     private let removeButton = NSButton()
@@ -187,6 +189,7 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
                                 target: self, action: #selector(movePreviousClockFace(_:)))
         let next = NSButton(image: NSImage(systemSymbolName: "chevron.right", accessibilityDescription: "Next Clock Face") ?? NSImage(),
                             target: self, action: #selector(moveNextClockFace(_:)))
+        clockPicker.showsSecondHand = true
         clockPicker.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             clockPicker.widthAnchor.constraint(equalToConstant: 96),
@@ -559,8 +562,21 @@ final class MZVistaClockPreferences: NSWindowController, NSWindowDelegate, NSTab
 
     // MARK: - Window
 
+    override func showWindow(_ sender: Any?) {
+        super.showWindow(sender)
+        clockPicker.setTime(Date())
+        guard clockTimer == nil else { return }
+        let timer = Timer(timeInterval: 1.0, repeats: true) { [weak self] _ in
+            MainActor.assumeIsolated { self?.clockPicker.setTime(Date()) }
+        }
+        RunLoop.main.add(timer, forMode: .common)
+        clockTimer = timer
+    }
+
     /// Save settings before closing.
     func windowWillClose(_ notification: Notification) {
+        clockTimer?.invalidate()
+        clockTimer = nil
         settings.archive()
     }
 }

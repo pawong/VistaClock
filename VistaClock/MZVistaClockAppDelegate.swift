@@ -55,7 +55,17 @@ final class MZVistaClockAppDelegate: NSObject, NSApplicationDelegate, NSToolbarD
     // toolbar
     private let toolbar = NSToolbar(identifier: "VistaClockToolbar")
     private var toolbarItems: [NSToolbarItem.Identifier: NSToolbarItem] = [:]
-    private let titleLabel = NSTextField(labelWithString: "")
+    private let titleLabel: NSTextField = {
+        let label = NSTextField(labelWithString: "")
+        label.cell = InsetLabelCell(textCell: "")
+        // replacing the cell resets the label styling, so restore it
+        label.isBezeled = false
+        label.drawsBackground = false
+        label.isEditable = false
+        label.isSelectable = false
+        label.textColor = .labelColor
+        return label
+    }()
     private let dayDetailLabel = NSTextField(labelWithString: "")
     private let gotoDateField = MZTextField()
     private let toolbarMenuItem = NSMenuItem(title: "Show Toolbar", action: nil, keyEquivalent: "t")
@@ -829,5 +839,25 @@ final class MZVistaClockAppDelegate: NSObject, NSApplicationDelegate, NSToolbarD
             alert.runModal()
             NSApp.terminate(self)
         }
+    }
+}
+
+/// A label cell that indents its text so the toolbar title isn't flush with the window's left edge.
+/// Insetting the cell (rather than wrapping the label in a container view) keeps the toolbar
+/// from drawing a button-style background behind the title.
+private final class InsetLabelCell: NSTextFieldCell {
+    private static let leadingInset: CGFloat = 8
+
+    override func cellSize(forBounds rect: NSRect) -> NSSize {
+        var size = super.cellSize(forBounds: rect)
+        size.width += Self.leadingInset
+        return size
+    }
+
+    override func drawingRect(forBounds rect: NSRect) -> NSRect {
+        var drawingRect = super.drawingRect(forBounds: rect)
+        drawingRect.origin.x += Self.leadingInset
+        drawingRect.size.width -= Self.leadingInset
+        return drawingRect
     }
 }
